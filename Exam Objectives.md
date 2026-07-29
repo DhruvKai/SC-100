@@ -60,7 +60,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 ### Security operations
 
 - Detection and response: [[Microsoft Defender XDR]] and [[Microsoft Sentinel]] (XDR/SIEM)
-- Centralized logging and auditing, including Microsoft Purview Audit ([[Purview]])
+- Centralized [[Azure Security Logging|logging]] and auditing, including Microsoft Purview Audit ([[Purview]])
 - Monitoring across hybrid and multicloud
 - SOAR solution using [[Microsoft Sentinel]] and [[Microsoft Defender XDR]]
 - Incident response, threat hunting, incident management workflows

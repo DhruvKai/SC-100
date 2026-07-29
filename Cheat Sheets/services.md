@@ -9,3 +9,4 @@ One-line description per service. Update whenever a new service note is created.
 | [[Cloud Adoption Framework]] | Microsoft's seven-methodology roadmap for adopting and operating Azure; sequences when/how security and governance are embedded. |
 | [[Microsoft Sentinel]] | Cloud-native SIEM + SOAR — ingests logs, correlates incidents, automates response. |
 | [[Microsoft Defender]] | Umbrella family of threat protection products, unified under Defender XDR. |
+| [[Azure Security Logging]] | Six core log sources (Activity Log, Resource Logs, VM guest logs, Storage Analytics, network flow logs, Entra ID reports) that feed centralized logging design. |
