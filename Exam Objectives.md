@@ -44,7 +44,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Best practices for cybersecurity capabilities and controls
 - Protection against insider, external, and supply chain attacks
 - AI solutions aligned to Microsoft Cloud Security Benchmark
-- Zero Trust adoption framework alignment
+- [[Zero Trust]] adoption framework alignment
 
 ### Align with Cloud Adoption Framework (CAF) and Well-Architected Framework (WAF)
 
@@ -73,7 +73,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - [[Entra ID]] solution for hybrid/multicloud
 - External identities: B2B and decentralized identity
 - Modern authN/authZ strategy: [[Conditional Access]], continuous access evaluation, risk scoring, protected actions
-- Validate Conditional Access alignment with Zero Trust
+- Validate [[Conditional Access]] alignment with [[Zero Trust]]
 - Harden Active Directory Domain Services (AD DS)
 - Secrets, keys, certificates management ([[Key Vault]])
 
