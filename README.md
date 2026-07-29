@@ -14,6 +14,7 @@ Written for readers who have already passed AZ-500 — see [CLAUDE.md](CLAUDE.md
 | [04 Applications](04%20Applications) | App security, DevSecOps, API security |
 | [05 Data](05%20Data) | Data discovery, classification, encryption, AI data security |
 | [06 Governance](06%20Governance) | Regulatory compliance, Azure Policy, Purview |
+| [Azure Technologies](Azure%20Technologies) | Quick-review cheat sheets per service (no cross-service comparisons — those live inline in the relevant deep note) |
 | [Cheat Sheets](Cheat%20Sheets) | Quick-reference tables and decision trees |
 | [Diagrams](Diagrams) | Mermaid/architecture diagrams |
 | [Images](Images) | Screenshots and reference images |
