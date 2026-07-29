@@ -46,12 +46,12 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - AI solutions aligned to Microsoft Cloud Security Benchmark
 - [[Zero Trust]] adoption framework alignment
 
-### Align with Cloud Adoption Framework (CAF) and Well-Architected Framework (WAF)
+### Align with [[Cloud Adoption Framework]] (CAF) and Well-Architected Framework (WAF)
 
 - Strategy for secure AI adoption
-- Security/governance strategy based on CAF and WAF
+- Security/governance strategy based on [[Cloud Adoption Framework]] and WAF
 - Security and governance via Azure landing zones
-- DevSecOps process aligned with CAF
+- DevSecOps process aligned with [[Cloud Adoption Framework]]
 
 ---
 
