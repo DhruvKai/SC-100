@@ -10,14 +10,14 @@ Six core log sources architects combine into a centralized logging design.
 
 ## Log Sources
 
-| Source | Plane | What it captures |
-| --- | --- | --- |
-| Activity Log | Control plane | Subscription-level record of every ARM operation (who did what, when) |
-| Azure Resource Logs (Diagnostic logs) | Data plane | Operations performed *within* a resource (e.g. queries against a database, requests to a Key Vault) |
-| Virtual Machines | Data plane | Guest OS logs (Windows Event Log, Linux syslog) via Azure Monitor Agent |
-| Azure Storage Analytics | Data plane | Insights on requests made to storage accounts |
-| Network flow logs | Data plane | Inbound/outbound traffic via network security groups or virtual networks |
-| Microsoft Entra ID reports | Identity plane | Sign-in activity, audit logs, and other directory activity |
+| Source                                | Plane          | What it captures                                                                                    |
+| ------------------------------------- | -------------- | --------------------------------------------------------------------------------------------------- |
+| Activity Log                          | Control plane  | Subscription-level record of every ARM Azure Resource Manager operation (who did what, when)        |
+| Azure Resource Logs (Diagnostic logs) | Data plane     | Operations performed _within_ a resource (e.g. queries against a database, requests to a Key Vault) |
+| Virtual Machines                      | Data plane     | Guest OS logs (Windows Event Log, Linux syslog) via Azure Monitor Agent                             |
+| Azure Storage Analytics               | Data plane     | Insights on requests made to storage accounts                                                       |
+| Network flow logs                     | Data plane     | Inbound/outbound traffic via network security groups or virtual networks                            |
+| Microsoft Entra ID reports            | Identity plane | Sign-in activity, audit logs, and other directory activity                                          |
 
 ## Key Facts
 
@@ -31,7 +31,7 @@ Six core log sources architects combine into a centralized logging design.
 - SC-100 objective explicitly calls out designing **centralized logging and auditing, including Microsoft Purview Audit** — these six sources are the raw inputs; the architecture decision is where they converge (typically a Log Analytics workspace feeding [[Microsoft Sentinel]]).
 - "Design monitoring to support hybrid and multicloud environments" → Azure Monitor Agent + Azure Arc is the expected answer for non-Azure/on-prem VM log collection.
 - A scenario needing traffic-flow visibility should point to VNet flow logs, not classic NSG flow logs — watch for exam content still referencing the older name.
-- These sources are the connectors that feed [[Microsoft Sentinel]] analytics rules and [[Microsoft Defender for Cloud]] posture assessments — the AZ-500-level knowledge is *where each log comes from*; the SC-100 addition is *designing which sources centralize where* for hybrid/multicloud coverage.
+- These sources are the connectors that feed [[Microsoft Sentinel]] analytics rules and [[Microsoft Defender for Cloud]] posture assessments — the AZ-500-level knowledge is _where each log comes from_; the SC-100 addition is _designing which sources centralize where_ for hybrid/multicloud coverage.
 
 ## Related
 
