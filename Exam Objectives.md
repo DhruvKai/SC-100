@@ -46,12 +46,12 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - AI solutions aligned to Microsoft Cloud Security Benchmark
 - [[Zero Trust]] adoption framework alignment
 
-### Align with [[Cloud Adoption Framework]] (CAF) and Well-Architected Framework (WAF)
+### Align with [[Cloud Adoption Framework (CAF)]] and [[Azure Well-Architected Framework (WAF)]]
 
 - Strategy for secure AI adoption
-- Security/governance strategy based on [[Cloud Adoption Framework]] and WAF
-- Security and governance via Azure landing zones
-- DevSecOps process aligned with [[Cloud Adoption Framework]]
+- Security/governance strategy based on [[Cloud Adoption Framework (CAF)]] and [[Azure Well-Architected Framework (WAF)]]
+- Security and governance via [[Azure Landing Zones|Azure landing zones]]
+- DevSecOps process aligned with [[Cloud Adoption Framework (CAF)]]
 
 ---
 
@@ -98,10 +98,10 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 ## 3. Security Solutions for Infrastructure (25–30%)
 
-### Security posture management (hybrid/multicloud)
+### [[Security Posture Assessments|Security posture management]] (hybrid/multicloud)
 
 - Posture evaluation via [[Microsoft Defender for Cloud]] and MCSB
-- Microsoft Secure Score evaluation
+- [[Security Scoring Dashboards|Microsoft Secure Score]] evaluation
 - Integrated posture management across hybrid/multicloud
 - Cloud workload protection plans in [[Microsoft Defender for Cloud]]
 - Hybrid/multicloud integration via [[Azure Arc]]

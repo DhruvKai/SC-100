@@ -110,6 +110,19 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 
 ---
 
+## Keywords
+
+- Policy engine, sign-in-time evaluation
+- Grant controls vs. session controls
+- Continuous Access Evaluation (CAE)
+- Protected Actions
+- Conditional Access for workload identities
+- Break-glass / emergency access account
+- Report-only mode
+- Policies combine with AND logic
+
+---
+
 ## Related Services
 
 - [[Entra ID]]

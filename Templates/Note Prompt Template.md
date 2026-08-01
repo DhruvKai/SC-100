@@ -18,3 +18,4 @@ Requirements
 - Keep the note concise (500–1200 words unless the topic genuinely requires more)
 - Update related cheat sheets if needed
 - Do not duplicate information already covered elsewhere
+- Add common keywords to identify this concept in the exam (if any), keep them in bullet points

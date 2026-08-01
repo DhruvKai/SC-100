@@ -103,6 +103,10 @@ Sentinel vs Defender XDR
 
 Purview vs Information Protection
 
+## Keywords
+
+Bullet list of common keywords and phrases that should trigger recall of this concept in the exam.
+
 ---
 
 # Obsidian

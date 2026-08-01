@@ -128,6 +128,18 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 
 ---
 
+## Keywords
+
+- Verify explicitly, least privilege, assume breach
+- Zero Trust adoption framework
+- Zero Trust maturity model (Traditional / Advanced / Optimal)
+- Implicit trust / network-based trust
+- Six pillars (identity, endpoints, apps, data, infrastructure, network)
+- Assume breach / blast radius
+- Explicit verification per request
+
+---
+
 ## References
 
 - [Zero Trust Guidance Center](https://learn.microsoft.com/en-us/security/zero-trust/) — Microsoft Learn

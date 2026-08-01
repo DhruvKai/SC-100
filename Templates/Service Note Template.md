@@ -90,6 +90,14 @@ Azure Policy vs Defender for Cloud
 
 ---
 
+## Keywords
+
+- ...
+- ...
+- ...
+
+---
+
 ## References
 
 Microsoft Learn
