@@ -14,4 +14,8 @@ Need endpoint protection?
 Need cloud posture?
   ↓
 [[Microsoft Defender for Cloud]]
+
+Need ransomware/BCDR resiliency strategy?
+  ↓
+[[Ransomware Resiliency and BCDR]]
 ```

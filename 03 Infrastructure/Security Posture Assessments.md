@@ -14,7 +14,7 @@ Continuous evaluation of resource configuration against a security benchmark, pr
 ## Why Architects Choose It
 
 - Converts scattered configuration checks into one quantifiable metric ([[Microsoft Defender for Cloud]]'s Secure Score) that leadership and engineering can both track.
-- Benchmarks every subscription against the **Microsoft Cloud Security Benchmark (MCSB)** by default, so posture is measured consistently instead of per-team ad hoc checklists.
+- Benchmarks every subscription against the **[[Microsoft Cloud Security Benchmark (MCSB)|Microsoft Cloud Security Benchmark (MCSB)]]** by default, so posture is measured consistently instead of per-team ad hoc checklists.
 - Extends across Azure, AWS, GCP, and on-prem/hybrid (via Azure Arc) — a single assessment surface instead of one per cloud.
 - Feeds directly into regulatory compliance reporting and, more recently, into attack-path-based prioritization rather than raw score-chasing.
 - For how this score relates to other Microsoft scoring dashboards (Advisor, Purview Compliance Manager, Microsoft Secure Score), see [[Security Scoring Dashboards]].
@@ -89,7 +89,7 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - Design posture management as an org-wide, **hybrid/multicloud** architecture decision — which connectors (AWS, GCP, Arc), which subscriptions, and how exemptions are governed.
 - Evaluate and validate alignment with regulatory standards using the compliance dashboard as an explicit exam skill, not just reading Secure Score.
 - Use **Security Exposure Management** to prioritize by attack-path exploitability instead of chasing raw recommendation counts.
-- Treat MCSB as the default, org-wide baseline benchmark — know it by name, since it replaced the older Azure Security Benchmark.
+- Treat [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]] as the default, org-wide baseline benchmark — know it by name, since it replaced the older Azure Security Benchmark. For what MCSB actually contains (domains, controls, subcontrols), see its own note.
 
 ---
 
@@ -127,6 +127,7 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Microsoft Defender]]
 - [[Azure Security Logging]]
 - [[Zero Trust]]
+- [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Cloud Adoption Framework (CAF)]]
 
 ---

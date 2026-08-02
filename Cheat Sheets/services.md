@@ -16,3 +16,7 @@ One-line description per service. Update whenever a new service note is created.
 | [[Cloud Adoption Security Review (CASR)]] | Checklist-driven review scoring a baseline-secured landing zone against the CAF Secure methodology; self-assessed or Microsoft-led. |
 | [[Azure Landing Zones]] | Multi-subscription platform + application environment (management groups, subscription vending, network topology) established in CAF's Ready phase. |
 | [[Azure Well-Architected Framework (WAF)]] | Five pillars + self-assessment for evaluating a single workload's architecture; Security pillar is WAF's SC-100-relevant piece. |
+| [[Microsoft Cybersecurity Reference Architectures (MCRA)]] | Microsoft's downloadable capability-to-Zero-Trust reference architecture deck; target-state and gap-analysis tool. |
+| [[Microsoft Cloud Security Benchmark (MCSB)]] | Prescriptive, cross-cloud control framework (Domain → Control → Subcontrol) pre-mapped to CIS/NIST/PCI-DSS; scored via Secure Score. |
+| [[Ransomware Resiliency and BCDR]] | Microsoft's three-phase strategy (Prepare/Limit/Prevent) treating recover-without-paying as the primary goal; backups as an attacker target. |
+| [[Compliance and Privacy]] | Translating regulation into controls via Purview's six compliance solutions vs. Priva's privacy-specific tools (Privacy Risk Management, Subject Rights Requests). |

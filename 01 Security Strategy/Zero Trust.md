@@ -16,7 +16,7 @@ Zero Trust is the strategic principle — "verify explicitly, use least privileg
 - Removes implicit trust granted by network location (corporate LAN, VPN) — every request is authenticated, authorized, and encrypted regardless of origin.
 - Gives a single evaluation lens across identity, endpoints, apps, data, infrastructure, and network, so controls are judged for consistency rather than designed in silos.
 - Underpins the [Zero Trust adoption framework](https://learn.microsoft.com/en-us/security/zero-trust/adopt/zero-trust-adoption-framework), which architects use to plan rollout in business-aligned phases (secure remote/hybrid work, protect data, modernize security operations).
-- Required alignment target for [[Conditional Access]] policy design and for MCRA/MCSB-based architecture reviews on the exam.
+- Required alignment target for [[Conditional Access]] policy design and for [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]]/[[Microsoft Cloud Security Benchmark (MCSB)|MCSB]]-based architecture reviews on the exam.
 
 ---
 
@@ -24,7 +24,7 @@ Zero Trust is the strategic principle — "verify explicitly, use least privileg
 
 - Designing or evaluating a security strategy that must survive a compromised network segment or identity.
 - Validating whether existing [[Conditional Access]] policies actually enforce explicit verification (vs. relying on network location as a signal).
-- Planning ransomware resiliency, since Zero Trust's "assume breach" principle drives segmentation and least-privilege design.
+- Planning [[Ransomware Resiliency and BCDR|ransomware resiliency]], since Zero Trust's "assume breach" principle drives segmentation and least-privilege design.
 - Assessing Zero Trust maturity (Traditional → Advanced → Optimal) as part of a security posture review.
 
 ---

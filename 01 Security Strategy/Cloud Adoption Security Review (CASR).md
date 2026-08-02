@@ -24,7 +24,7 @@ CASR is a checklist-driven review that self-assesses (or Microsoft-assesses) an 
 
 - After a landing zone reaches baseline security, to identify the next optimization increment.
 - As a recurring governance checkpoint, on a cadence aligned with CAF's Govern/Secure methodologies.
-- Before a Microsoft-led CISO or MCRA workshop, to establish a starting baseline.
+- Before a Microsoft-led CISO or [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]] workshop, to establish a starting baseline.
 - When independent, Microsoft-validated evidence of landing zone security maturity is needed (Microsoft-led path).
 
 ---

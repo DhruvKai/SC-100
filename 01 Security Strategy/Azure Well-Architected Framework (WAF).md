@@ -67,6 +67,7 @@ flowchart TD
 
 ---
 
+
 ## Comparison
 
 | Compare | Difference |
@@ -135,4 +136,5 @@ AZ-500 already covers the individual controls the Security pillar checklist poin
 - [Well-Architected Framework Security pillar](https://learn.microsoft.com/en-us/azure/well-architected/security/) — Microsoft Learn
 - https://aka.ms/WAF
 - https://aka.ms/WAFsecure
+- https://aka.ms/wafsecure-assess
 - [[Exam Objectives]]

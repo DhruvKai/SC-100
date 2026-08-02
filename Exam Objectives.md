@@ -32,18 +32,18 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 ## 1. Security Best Practices and Priorities (20–25%)
 
-### Design a resiliency strategy for ransomware and other attacks (Microsoft Security Best Practices)
+### Design a [[Ransomware Resiliency and BCDR|resiliency strategy for ransomware]] and other attacks (Microsoft Security Best Practices)
 
 - Security strategy for business resiliency, including prioritizing threats to business-critical assets
 - BCDR for hybrid and multicloud, including secure backup and restore
 - Ransomware mitigation, including BCDR and privileged access prioritization
 - Evaluate solutions for security updates
 
-### Align with MCRA and MCSB
+### Align with [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]] and [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]]
 
 - Best practices for cybersecurity capabilities and controls
 - Protection against insider, external, and supply chain attacks
-- AI solutions aligned to Microsoft Cloud Security Benchmark
+- AI solutions aligned to [[Microsoft Cloud Security Benchmark (MCSB)|Microsoft Cloud Security Benchmark]]
 - [[Zero Trust]] adoption framework alignment
 
 ### Align with [[Cloud Adoption Framework (CAF)]] and [[Azure Well-Architected Framework (WAF)]]
@@ -87,7 +87,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Access review management solution evaluation
 - Secure workstations for privileged access, including remote access
 
-### Regulatory compliance
+### [[Compliance and Privacy|Regulatory compliance]]
 
 - Translate compliance requirements into security controls
 - Compliance via [[Purview]]
