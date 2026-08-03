@@ -37,6 +37,7 @@ Six core log sources architects combine into a centralized logging design.
 
 - [[Microsoft Sentinel]]
 - [[Microsoft Defender for Cloud]]
+- [[Security Operations]]
 - [[Exam Objectives]]
 
 ## References

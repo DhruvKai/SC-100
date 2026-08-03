@@ -138,6 +138,9 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - [[PIM]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Key Vault]]
+- [[Security Operations]]
+- [[Identity and Access Management (IAM)]]
+- [[Securing Privileged Access]]
 
 ---
 

@@ -89,9 +89,10 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 
 - Design Conditional Access as part of an org-wide [[Zero Trust]] strategy, not as a single isolated policy — includes validating existing policies for Zero Trust alignment (an explicit exam objective).
 - Extend Conditional Access to **workload identities** (service principals, managed identities) — not just interactive users.
+- Extend further to **agent identities** (Microsoft Entra Agent ID) for autonomous AI agents — see [[AI and Copilot Security Architecture]] for how this fits the broader AI security picture.
 - Use **Continuous Access Evaluation (CAE)** to react to risk/revocation mid-session instead of waiting for token expiry.
 - Use **Protected Actions** to require step-up authentication before high-impact directory changes, including changes to CA itself.
-- Combine Conditional Access with Microsoft Entra Internet/Private Access (Global Secure Access) to add network-level compliance as a signal.
+- Combine Conditional Access with Microsoft Entra Internet/Private Access (Global Secure Access) to add network-level compliance as a signal — full architecture in [[Identity as the Security Perimeter]].
 
 ---
 
@@ -129,6 +130,9 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 - [[Identity Protection]]
 - [[PIM]]
 - [[Zero Trust]]
+- [[AI and Copilot Security Architecture]]
+- [[Identity as the Security Perimeter]]
+- [[Identity and Access Management (IAM)]]
 
 ---
 

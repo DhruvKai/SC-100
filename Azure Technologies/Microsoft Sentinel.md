@@ -17,7 +17,7 @@ Cloud-native SIEM + SOAR. Ingests logs into a Log Analytics/Data Lake workspace,
 - **Workbooks** — dashboards/visualizations
 - **Playbooks** — [[Logic Apps]]-based automated response (SOAR)
 - **UEBA** — behavioral baselining and anomaly detection
-- **Threat intelligence** — indicator ingestion (TAXII, upload, connectors) feeding analytics rules
+- **Threat intelligence** — indicator ingestion (TAXII, upload, connectors) feeding analytics rules; architecture-level detail in [[Threat Intelligence]]
 
 ## Key Facts
 
@@ -39,4 +39,6 @@ Cloud-native SIEM + SOAR. Ingests logs into a Log Analytics/Data Lake workspace,
 - [[Microsoft Defender XDR]]
 - [[Microsoft Defender for Cloud]]
 - [[Zero Trust]]
+- [[Security Operations]]
+- [[Threat Intelligence]]
 - [[Exam Objectives]]

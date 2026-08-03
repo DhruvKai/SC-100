@@ -75,6 +75,7 @@ flowchart TD
 | Posture assessment vs. regulatory compliance dashboard | Posture assessment scores against MCSB continuously; the compliance dashboard maps that same data to a *named external standard* for audit purposes. |
 | Defender for Cloud Secure Score vs. Microsoft Secure Score (M365) | Same name, different products — Defender for Cloud's score covers cloud resource configuration; the Microsoft 365 Secure Score covers identity/app/device posture in the Defender portal. Don't conflate them on the exam. |
 | CSPM vs. CWPP | Posture assessment (CSPM) evaluates configuration; workload protection (CWPP) actively defends the running resource — see [[Microsoft Defender]] for the full comparison. |
+| CSPM vs. [[Data Security Posture Management (DSPM)|DSPM]] | CSPM scores *resource configuration*; DSPM scores risk to the *data itself* (sensitivity, exposure, access) — complementary, not interchangeable. Full comparison in the DSPM note. |
 
 ---
 
@@ -129,6 +130,7 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Zero Trust]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Cloud Adoption Framework (CAF)]]
+- [[Data Security Posture Management (DSPM)]]
 
 ---
 

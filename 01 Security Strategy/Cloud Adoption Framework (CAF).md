@@ -106,6 +106,7 @@ AZ-500 already covers the individual controls that populate Govern and Secure â€
 - Evaluate an *existing* CAF/WAF-based strategy for gaps rather than always designing one from scratch.
 - Use [[Security Posture Assessments]] and [[Security Scoring Dashboards]] as the recurring measurement layer for the Secure and Govern methodologies â€” CAF sequences *when* they run, those notes cover *what the numbers mean*.
 - Once a landing zone hits baseline security, use a [[Cloud Adoption Security Review (CASR)]] to self-assess (or have Microsoft assess) maturity against the Secure methodology specifically.
+- CAF's AI adoption lifecycle adds a dedicated Secure AI track â€” see [[AI and Copilot Security Architecture]] for the architecture decisions it drives.
 
 ---
 
@@ -144,6 +145,7 @@ AZ-500 already covers the individual controls that populate Govern and Secure â€
 - [[Microsoft Sentinel]]
 - [[Security Posture Assessments]]
 - [[Security Scoring Dashboards]]
+- [[AI and Copilot Security Architecture]]
 
 ---
 

@@ -43,12 +43,12 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 - Best practices for cybersecurity capabilities and controls
 - Protection against insider, external, and supply chain attacks
-- AI solutions aligned to [[Microsoft Cloud Security Benchmark (MCSB)|Microsoft Cloud Security Benchmark]]
+- [[AI and Copilot Security Architecture|AI solutions aligned to Microsoft Cloud Security Benchmark]]
 - [[Zero Trust]] adoption framework alignment
 
 ### Align with [[Cloud Adoption Framework (CAF)]] and [[Azure Well-Architected Framework (WAF)]]
 
-- Strategy for secure AI adoption
+- [[AI and Copilot Security Architecture|Strategy for secure AI adoption]]
 - Security/governance strategy based on [[Cloud Adoption Framework (CAF)]] and [[Azure Well-Architected Framework (WAF)]]
 - Security and governance via [[Azure Landing Zones|Azure landing zones]]
 - DevSecOps process aligned with [[Cloud Adoption Framework (CAF)]]
@@ -57,35 +57,35 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 ## 2. Security Operations, Identity, and Compliance (25–30%)
 
-### Security operations
+### [[Security Operations]]
 
-- Detection and response: [[Microsoft Defender XDR]] and [[Microsoft Sentinel]] (XDR/SIEM)
+- Detection and response: [[Microsoft Defender XDR]] and [[Microsoft Sentinel]] ([[Security Operations|XDR/SIEM]])
 - Centralized [[Azure Security Logging|logging]] and auditing, including Microsoft Purview Audit ([[Purview]])
-- Monitoring across hybrid and multicloud
-- SOAR solution using [[Microsoft Sentinel]] and [[Microsoft Defender XDR]]
-- Incident response, threat hunting, incident management workflows
-- Threat detection coverage via MITRE ATT&CK (Enterprise, Mobile, ICS)
+- [[Security Operations|Monitoring across hybrid and multicloud]]
+- [[Security Operations|SOAR solution using Microsoft Sentinel and Microsoft Defender XDR]]
+- [[Security Operations|Incident response, threat hunting, incident management workflows]]
+- [[Security Operations|Threat detection coverage via MITRE ATT&CK (Enterprise, Mobile, ICS)]]
 
 ### Identity and access management
 
-- Agent identities via Microsoft Entra Agent ID and [[Conditional Access]] policies
-- Access to SaaS, PaaS, IaaS, hybrid/on-prem, multicloud (identity, network, app controls)
-- [[Entra ID]] solution for hybrid/multicloud
-- External identities: B2B and decentralized identity
+- [[AI and Copilot Security Architecture|Agent identities via Microsoft Entra Agent ID]] and [[Conditional Access]] policies
+- [[Identity and Access Management (IAM)|Access to SaaS, PaaS, IaaS, hybrid/on-prem, multicloud (identity, network, app controls)]]
+- [[Entra ID]] solution for hybrid/multicloud ([[Identity as the Security Perimeter|IdP architecture]])
+- [[Identity as the Security Perimeter|External identities: B2B and decentralized identity]]
 - Modern authN/authZ strategy: [[Conditional Access]], continuous access evaluation, risk scoring, protected actions
 - Validate [[Conditional Access]] alignment with [[Zero Trust]]
-- Harden Active Directory Domain Services (AD DS)
-- Secrets, keys, certificates management ([[Key Vault]])
+- [[Identity and Access Management (IAM)|Harden Active Directory Domain Services (AD DS)]]
+- [[Identity and Access Management (IAM)|Secrets, keys, certificates management]] ([[Key Vault]])
 
-### Securing privileged access
+### [[Securing Privileged Access]]
 
-- Privileged role assignment/delegation via enterprise access model
-- Security/governance of [[Entra ID]], including [[PIM]], entitlement management, access reviews
-- Security/governance of AD DS, resilience to common attacks
-- Securing cloud tenant administration (SaaS + multicloud)
-- Cloud infrastructure entitlement management (CIEM)
-- Access review management solution evaluation
-- Secure workstations for privileged access, including remote access
+- [[Securing Privileged Access|Privileged role assignment/delegation via enterprise access model]]
+- Security/governance of [[Entra ID]], including [[PIM]], [[Securing Privileged Access|entitlement management, access reviews]]
+- [[Securing Privileged Access|Security/governance of AD DS, resilience to common attacks]]
+- [[Securing Privileged Access|Securing cloud tenant administration (SaaS + multicloud)]]
+- [[Securing Privileged Access|Cloud infrastructure entitlement management (CIEM)]]
+- [[Securing Privileged Access|Access review management solution evaluation]]
+- [[Securing Privileged Access|Secure workstations for privileged access, including remote access]]
 
 ### [[Compliance and Privacy|Regulatory compliance]]
 
@@ -124,14 +124,14 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Web workload security requirements
 - Container security requirements
 - Container orchestration security requirements
-- Azure AI services security
+- [[AI and Copilot Security Architecture|Azure AI services security]]
 
-### Network security and Security Service Edge (SSE)
+### [[Identity as the Security Perimeter|Network security and Security Service Edge (SSE)]]
 
 - Network design evaluation against security requirements
-- Microsoft Entra Internet Access as secure web gateway
-- Microsoft Entra Internet Access for Microsoft services (cross-tenant)
-- Microsoft Entra Private Access
+- [[Identity as the Security Perimeter|Microsoft Entra Internet Access as secure web gateway]]
+- [[Identity as the Security Perimeter|Microsoft Entra Internet Access for Microsoft services (cross-tenant)]]
+- [[Identity as the Security Perimeter|Microsoft Entra Private Access]]
 
 ---
 
@@ -143,7 +143,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Microsoft Defender for Office 365 and Microsoft Defender for Cloud Apps
 - Device management via [[Intune]]
 - Data security in Microsoft 365 via [[Purview]]
-- Data security/compliance in Microsoft Copilot for Microsoft 365
+- [[AI and Copilot Security Architecture|Data security/compliance in Microsoft Copilot for Microsoft 365]]
 
 ### Securing applications
 
@@ -158,12 +158,12 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 ### Securing organizational data
 
-- Data discovery and classification
-- Prioritize threat mitigation for data
+- [[Data Security Posture Management (DSPM)|Data discovery and classification]]
+- [[Data Security Posture Management (DSPM)|Prioritize threat mitigation for data]]
 - Encryption at rest/in transit, including [[Key Vault]] and infrastructure encryption
-- Data security for AI workloads
-- Data security for Azure SQL, Azure Synapse Analytics, Azure Cosmos DB
-- Data security for Azure Storage
+- [[AI and Copilot Security Architecture|Data security for AI workloads]]
+- [[Data Security Posture Management (DSPM)|Data security for Azure SQL, Azure Synapse Analytics, Azure Cosmos DB]]
+- [[Data Security Posture Management (DSPM)|Data security for Azure Storage]]
 - Microsoft Defender for Storage and Microsoft Defender for Databases
 
 ---
@@ -187,6 +187,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - [[Key Vault]]
 - [[Azure Policy]]
 - [[Azure Arc]]
+- [[AI and Copilot Security Architecture]]
 
 ---
 

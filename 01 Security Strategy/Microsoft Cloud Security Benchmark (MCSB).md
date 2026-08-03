@@ -89,7 +89,7 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 
 - Know MCSB by name as the framework [[Security Posture Assessments|Secure Score]] scores against by default — this note covers what MCSB *is*; scoring mechanics live in [[Security Posture Assessments]].
 - Recognize MCSB's synthesis role: it isn't original content, it's CAF + WAF + Secure Future Initiative + CISO Workshop + industry standards combined into one control set.
-- MCSB v2 (preview) adds a dedicated AI Security domain — directly relevant to the exam's "AI solutions aligned to Microsoft Cloud Security Benchmark" objective.
+- MCSB v2 (preview) adds a dedicated AI Security domain — directly relevant to the exam's "AI solutions aligned to Microsoft Cloud Security Benchmark" objective; see [[AI and Copilot Security Architecture]] for the tooling that operationalizes this domain.
 - Use the Plan → Monitor → Establish lifecycle (map to standards → Regulatory Compliance dashboard → Azure Policy/Blueprints) as the architecture answer for "how do you operationalize MCSB."
 
 ---
@@ -128,6 +128,7 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 - [[Cloud Adoption Framework (CAF)]]
 - [[Azure Policy]]
 - [[Microsoft Defender for Cloud]]
+- [[AI and Copilot Security Architecture]]
 
 ---
 

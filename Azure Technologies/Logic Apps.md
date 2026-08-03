@@ -28,10 +28,12 @@ Serverless workflow engine — triggers and connectors chain together to automat
 - When a scenario needs to automate a response to a detection (isolate a VM, disable a user, notify a team), the expected building block is a **Sentinel playbook**, which is a Logic App under the hood — don't overlook Logic Apps as the literal mechanism.
 - Ties into "design a solution for workload identities to authenticate and access Azure resources" — Logic Apps' managed identity is a concrete example of that pattern.
 - If a design requires the workflow to reach a private VNet resource, Standard plan is the correct recommendation, not Consumption.
+- SOAR/workspace-topology architecture decisions live in [[Security Operations]]; this page covers the automation mechanism itself.
 
 ## Related
 
 - [[Microsoft Sentinel]]
+- [[Security Operations]]
 - [[Zero Trust]]
 - [[Exam Objectives]]
 

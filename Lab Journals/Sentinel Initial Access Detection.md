@@ -40,6 +40,7 @@ Build the basic detection pipeline end-to-end: VMs → Log Analytics → Sentine
 - [[Microsoft Sentinel]]
 - [[Microsoft Defender]]
 - [[Azure Security Logging]]
+- [[Security Operations]]
 
 ## Related Exam Objectives
 

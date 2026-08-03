@@ -141,7 +141,7 @@ Whenever a note is modified, look for opportunities to create new wiki links. Th
 
 # Maintenance
 
-Whenever a new service note is created, also update [Cheat Sheets/services.md](Cheat%20Sheets/services.md) with one line describing it.
+Whenever a new service note is created, also update [Cheat Sheets/services.md](Services.md) with one line describing it.
 
 Keep [Cheat Sheets/Architecture Decisions.md](Cheat%20Sheets/Architecture%20Decisions.md) up to date as a decision-tree style cheat sheet, e.g.:
 

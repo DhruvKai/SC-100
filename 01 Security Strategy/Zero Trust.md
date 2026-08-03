@@ -68,7 +68,7 @@ Each pillar maps to concrete controls an architect designs or validates:
 | Applications | API security, [[Azure Web Application Firewall]], workload identities |
 | Data | [[Purview]], [[Key Vault]], encryption at rest/in transit |
 | Infrastructure | [[Microsoft Defender for Cloud]], [[Azure Policy]], Azure Arc |
-| Network | [[Azure Firewall]], [[Private Link]], micro-segmentation |
+| Network | [[Azure Firewall]], [[Private Link]], micro-segmentation, Global Secure Access (see [[Identity as the Security Perimeter]]) |
 | Visibility/automation | [[Microsoft Sentinel]], [[Microsoft Defender XDR]] |
 
 ---
@@ -84,7 +84,7 @@ flowchart LR
 ```
 
 - If a design still grants access based on being "inside the network," it fails Zero Trust — recommend Conditional Access with explicit identity/device checks instead.
-- If privileged access is standing rather than just-in-time, recommend [[PIM]] before recommending any new perimeter control.
+- If privileged access is standing rather than just-in-time, recommend [[PIM]] before recommending any new perimeter control — full privileged-access architecture in [[Securing Privileged Access]].
 
 ---
 
@@ -93,7 +93,7 @@ flowchart LR
 | Compare | Difference |
 | --- | --- |
 | Zero Trust vs. Defense in Depth | Zero Trust removes implicit trust per request; defense in depth adds redundant layered controls. Complementary, not competing — Zero Trust decides *what* to verify, defense in depth decides *how many layers* verify it. |
-| Zero Trust vs. Perimeter (castle-and-moat) security | Perimeter model trusts everything inside the network boundary; Zero Trust trusts nothing by default, inside or outside. |
+| Zero Trust vs. Perimeter (castle-and-moat) security | Perimeter model trusts everything inside the network boundary; Zero Trust trusts nothing by default, inside or outside — the concrete replacement mechanism is covered in [[Identity as the Security Perimeter]]. |
 | Zero Trust vs. Conditional Access | Zero Trust is the strategy; [[Conditional Access]] is one enforcement mechanism that implements it for identity access decisions. |
 
 ---
@@ -137,6 +137,18 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - Six pillars (identity, endpoints, apps, data, infrastructure, network)
 - Assume breach / blast radius
 - Explicit verification per request
+
+---
+
+## Related Services
+
+- [[Conditional Access]]
+- [[PIM]]
+- [[Identity as the Security Perimeter]]
+- [[Securing Privileged Access]]
+- [[Microsoft Cybersecurity Reference Architectures (MCRA)]]
+- [[Microsoft Cloud Security Benchmark (MCSB)]]
+- [[Ransomware Resiliency and BCDR]]
 
 ---
 

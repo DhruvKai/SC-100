@@ -134,6 +134,8 @@ AZ-500 doesn't cover Purview compliance solutions or Priva at all — it's scope
 - [[Security Scoring Dashboards]]
 - [[Azure Policy]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
+- [[AI and Copilot Security Architecture]]
+- [[Data Security Posture Management (DSPM)]]
 
 ---
 
