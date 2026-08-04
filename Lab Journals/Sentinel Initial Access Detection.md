@@ -32,7 +32,7 @@ Build the basic detection pipeline end-to-end: VMs → Log Analytics → Sentine
 
 - This is the practical version of the exam objective "design a solution for detection and response that includes XDR and SIEM" and "design a SOAR solution using Microsoft Sentinel and Microsoft Defender XDR" — connectors → analytics rules → incidents is exactly that pipeline.
 - Directly exercises "evaluate threat detection coverage by using MITRE ATT&CK matrices" — the Initial Access rule is one cell in that coverage map, not an isolated detection.
-- AMA is the same collection mechanism used for hybrid/multicloud monitoring (via Azure Arc) — this lab's VM-to-workspace path is the foundation that scales to non-Azure sources.
+- AMA is the same collection mechanism used for hybrid/multicloud monitoring (via [[Azure Arc]]) — this lab's VM-to-workspace path is the foundation that scales to non-Azure sources.
 - The Sentinel-to-Defender-portal move is worth remembering specifically because exam prep material may still describe the old Azure-portal experience — the architecturally current answer is the unified Defender portal.
 
 ## Related Services

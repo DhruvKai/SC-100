@@ -129,7 +129,7 @@ AZ-500 doesn't cover Purview compliance solutions or Priva at all — it's scope
 
 ## Related Services
 
-- [[Purview]]
+- [[Purview]] — Purview's own product orientation map lives there; this note covers the Risk & Compliance area in depth.
 - [[Security Posture Assessments]]
 - [[Security Scoring Dashboards]]
 - [[Azure Policy]]

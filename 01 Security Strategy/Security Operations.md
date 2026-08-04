@@ -36,7 +36,7 @@ flowchart LR
 
 Three layers, each solving a different part of detection and response — the architecture question is how to combine them, not which one to pick:
 
-- **XDR** ([[Microsoft Defender]] XDR) — native, deep detection/response within Microsoft's own signal sources (endpoint, identity, email, cloud apps). Its correlation engine auto-merges related alerts into a single incident before Sentinel ever sees it.
+- **XDR** ([[Microsoft Defender XDR]]) — native, deep detection/response within Microsoft's own signal sources (endpoint, identity, email, cloud apps). Its correlation engine auto-merges related alerts into a single incident before Sentinel ever sees it; AIR, Attack Disruption, Advanced Hunting, and Unified RBAC are detailed in its own note.
 - **SIEM** ([[Microsoft Sentinel]]) — breadth and retention. Ingests what XDR can't natively reach (network devices, on-prem, other clouds, legacy/custom apps, third-party security tools) and gives long-term storage for custom analytics rules and hunting over raw logs.
 - **SOAR** (Sentinel playbooks, built on [[Logic Apps]]) — the orchestration layer that turns a detected incident, from either XDR or SIEM, into an automated response action.
 
@@ -184,6 +184,7 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 ## Related Services
 
 - [[Microsoft Sentinel]]
+- [[Microsoft Defender XDR]]
 - [[Microsoft Defender]]
 - [[Azure Security Logging]]
 - [[Logic Apps]]

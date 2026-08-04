@@ -137,8 +137,9 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - [[Zero Trust]]
 - [[PIM]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
-- [[Key Vault]]
+- [[Key Vault]] — purge protection is the specific control preventing permanent key destruction during an attack.
 - [[Security Operations]]
+- [[Microsoft Defender XDR]]
 - [[Identity and Access Management (IAM)]]
 - [[Securing Privileged Access]]
 

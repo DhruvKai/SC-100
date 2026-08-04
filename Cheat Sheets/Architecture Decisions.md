@@ -7,9 +7,9 @@ Need SIEM?
   ↓
 [[Microsoft Sentinel]]
 
-Need endpoint protection?
+Need endpoint protection (server, client/BYOD, or IoT/OT)?
   ↓
-[[Defender XDR]]
+[[Securing Server and Client Endpoints]]
 
 Need cloud posture?
   ↓
@@ -46,4 +46,44 @@ Need to scope what an identity/workload can actually do (RBAC, managed identity,
 Need to reduce standing privilege (JIT, bundled access, over-provisioned permissions)?
   ↓
 [[Securing Privileged Access]]
+
+Need runtime protection for a running VM/container/database, not just config scoring?
+  ↓
+[[Cloud Workload Protection (CWPP)]]
+
+Need to prioritize findings across posture + workload + data + permissions signals?
+  ↓
+[[CSPM and CWPP]]
+
+Need to secure a VM's network exposure or a PaaS resource's reachability?
+  ↓
+[[Securing IaaS and PaaS Services]]
+
+Need to evaluate/design network topology, perimeter, or DDoS/WAF/firewall controls?
+  ↓
+[[Network Security Architecture]]
+
+Need to identify design-time threats for a business-critical app (STRIDE)?
+  ↓
+[[Threat Modeling]]
+
+Need to secure the pipeline itself (secrets, code, dependencies, IaC)?
+  ↓
+[[DevOps Security]]
+
+Need to discover, classify, handle (DLP/retention), or encrypt organizational data?
+  ↓
+[[Data Classification and Protection]]
+
+Need autonomous attack containment, verdict-based remediation, or cross-workload Defender admin delegation?
+  ↓
+[[Microsoft Defender XDR]]
+
+Need to store/protect secrets, keys, or certificates (including HSM-backed)?
+  ↓
+[[Key Vault]]
+
+Need to discover shadow SaaS usage or control an app's session in real time?
+  ↓
+[[SaaS Application Discovery and Control]]
 ```

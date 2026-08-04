@@ -146,6 +146,7 @@ AZ-500 covers the individual controls that live inside these subscriptions — A
 - [[Microsoft Defender for Cloud]]
 - [[Microsoft Sentinel]]
 - [[Entra ID]]
+- [[Network Security Architecture]]
 
 ---
 

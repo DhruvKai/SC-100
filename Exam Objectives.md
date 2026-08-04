@@ -51,7 +51,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - [[AI and Copilot Security Architecture|Strategy for secure AI adoption]]
 - Security/governance strategy based on [[Cloud Adoption Framework (CAF)]] and [[Azure Well-Architected Framework (WAF)]]
 - Security and governance via [[Azure Landing Zones|Azure landing zones]]
-- DevSecOps process aligned with [[Cloud Adoption Framework (CAF)]]
+- [[DevOps Security|DevSecOps process aligned with Cloud Adoption Framework (CAF)]]
 
 ---
 
@@ -69,7 +69,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 ### Identity and access management
 
 - [[AI and Copilot Security Architecture|Agent identities via Microsoft Entra Agent ID]] and [[Conditional Access]] policies
-- [[Identity and Access Management (IAM)|Access to SaaS, PaaS, IaaS, hybrid/on-prem, multicloud (identity, network, app controls)]]
+- [[Identity and Access Management (IAM)|Access to SaaS, PaaS, IaaS, hybrid/on-prem, multicloud]] (identity, network, [[SaaS Application Discovery and Control|app controls]])
 - [[Entra ID]] solution for hybrid/multicloud ([[Identity as the Security Perimeter|IdP architecture]])
 - [[Identity as the Security Perimeter|External identities: B2B and decentralized identity]]
 - Modern authN/authZ strategy: [[Conditional Access]], continuous access evaluation, risk scoring, protected actions
@@ -103,23 +103,23 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Posture evaluation via [[Microsoft Defender for Cloud]] and MCSB
 - [[Security Scoring Dashboards|Microsoft Secure Score]] evaluation
 - Integrated posture management across hybrid/multicloud
-- Cloud workload protection plans in [[Microsoft Defender for Cloud]]
-- Hybrid/multicloud integration via [[Azure Arc]]
-- Microsoft Defender External Attack Surface Management (Defender EASM)
+- [[Cloud Workload Protection (CWPP)|Cloud workload protection plans]] in [[Microsoft Defender for Cloud]]
+- [[Azure Arc|Hybrid/multicloud integration via Azure Arc]]
+- [[CSPM and CWPP|Microsoft Defender External Attack Surface Management (Defender EASM)]]
 - Microsoft Security Exposure Management: attack paths, attack surface reduction, initiatives
 
-### Server and client endpoint security
+### [[Securing Server and Client Endpoints]]
 
-- Server security across platforms/OS
-- Mobile device/client endpoint protection, hardening, configuration
-- IoT and embedded system security
-- OT/ICS security via Microsoft Defender for IoT
-- Security baselines for server/client endpoints
-- Windows LAPS evaluation
+- [[Securing Server and Client Endpoints|Server security across platforms/OS]]
+- [[Securing Server and Client Endpoints|Mobile device/client endpoint protection, hardening, configuration]]
+- [[Securing Server and Client Endpoints|IoT and embedded system security]]
+- [[Securing Server and Client Endpoints|OT/ICS security via Microsoft Defender for IoT]]
+- [[Securing Server and Client Endpoints|Security baselines for server/client endpoints]]
+- [[Securing Server and Client Endpoints|Windows LAPS evaluation]]
 
 ### SaaS, PaaS, IaaS security requirements
 
-- Security baselines for SaaS/PaaS/IaaS
+- [[Securing IaaS and PaaS Services|Security baselines for SaaS/PaaS/IaaS]]
 - IoT workload security requirements
 - Web workload security requirements
 - Container security requirements
@@ -128,7 +128,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 ### [[Identity as the Security Perimeter|Network security and Security Service Edge (SSE)]]
 
-- Network design evaluation against security requirements
+- [[Network Security Architecture|Network design evaluation against security requirements]]
 - [[Identity as the Security Perimeter|Microsoft Entra Internet Access as secure web gateway]]
 - [[Identity as the Security Perimeter|Microsoft Entra Internet Access for Microsoft services (cross-tenant)]]
 - [[Identity as the Security Perimeter|Microsoft Entra Private Access]]
@@ -148,9 +148,9 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 ### Securing applications
 
 - Security posture of existing application portfolios
-- Threat modeling for business-critical applications
+- [[Threat Modeling|Threat modeling for business-critical applications]]
 - Full lifecycle application security strategy
-- Standards/practices for secure application development
+- [[DevOps Security|Standards/practices for secure application development]]
 - Map technologies to application security requirements
 - Workload identities for authenticating/accessing Azure resources
 - API management and security
@@ -160,7 +160,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 - [[Data Security Posture Management (DSPM)|Data discovery and classification]]
 - [[Data Security Posture Management (DSPM)|Prioritize threat mitigation for data]]
-- Encryption at rest/in transit, including [[Key Vault]] and infrastructure encryption
+- [[Data Classification and Protection|Encryption at rest/in transit, including Key Vault and infrastructure encryption]]
 - [[AI and Copilot Security Architecture|Data security for AI workloads]]
 - [[Data Security Posture Management (DSPM)|Data security for Azure SQL, Azure Synapse Analytics, Azure Cosmos DB]]
 - [[Data Security Posture Management (DSPM)|Data security for Azure Storage]]

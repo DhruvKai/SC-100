@@ -15,7 +15,7 @@ Continuous evaluation of resource configuration against a security benchmark, pr
 
 - Converts scattered configuration checks into one quantifiable metric ([[Microsoft Defender for Cloud]]'s Secure Score) that leadership and engineering can both track.
 - Benchmarks every subscription against the **[[Microsoft Cloud Security Benchmark (MCSB)|Microsoft Cloud Security Benchmark (MCSB)]]** by default, so posture is measured consistently instead of per-team ad hoc checklists.
-- Extends across Azure, AWS, GCP, and on-prem/hybrid (via Azure Arc) — a single assessment surface instead of one per cloud.
+- Extends across Azure, AWS, GCP, and on-prem/hybrid (via [[Azure Arc]]) — a single assessment surface instead of one per cloud.
 - Feeds directly into regulatory compliance reporting and, more recently, into attack-path-based prioritization rather than raw score-chasing.
 - For how this score relates to other Microsoft scoring dashboards (Advisor, Purview Compliance Manager, Microsoft Secure Score), see [[Security Scoring Dashboards]].
 
@@ -33,7 +33,7 @@ Continuous evaluation of resource configuration against a security benchmark, pr
 ## When NOT to Use
 
 - As a runtime threat detection or response mechanism — that's [[Microsoft Sentinel]] / Defender XDR, not posture assessment.
-- As the sole workload protection control — posture (CSPM) tells you what's misconfigured; cloud workload protection (CWPP) plans in Defender for Cloud actively defend the running resource.
+- As the sole workload protection control — posture (CSPM) tells you what's misconfigured; [[Cloud Workload Protection (CWPP)|CWPP]] plans in Defender for Cloud actively defend the running resource.
 - As proof of regulatory compliance by itself — a high Secure Score is a prioritization signal, not a certification.
 
 ---
@@ -58,7 +58,7 @@ flowchart LR
 flowchart TD
     Q1["Assessing AWS/GCP resources?"] -->|Yes| MC["Add multicloud connectors in Defender for Cloud"]
     Q1 -->|No| Q2["Assessing on-prem/hybrid servers?"]
-    Q2 -->|Yes| ARC["Onboard via Azure Arc first"]
+    Q2 -->|Yes| ARC["Onboard via [[Azure Arc]] first"]
     Q2 -->|No| Q3["Need to map score to a named regulation?"]
     Q3 -->|Yes| RCD["Enable that standard in the Regulatory Compliance dashboard"]
     Q3 -->|No| Q4["Need to prioritize by real attack risk, not raw count?"]
@@ -74,7 +74,7 @@ flowchart TD
 | --- | --- |
 | Posture assessment vs. regulatory compliance dashboard | Posture assessment scores against MCSB continuously; the compliance dashboard maps that same data to a *named external standard* for audit purposes. |
 | Defender for Cloud Secure Score vs. Microsoft Secure Score (M365) | Same name, different products — Defender for Cloud's score covers cloud resource configuration; the Microsoft 365 Secure Score covers identity/app/device posture in the Defender portal. Don't conflate them on the exam. |
-| CSPM vs. CWPP | Posture assessment (CSPM) evaluates configuration; workload protection (CWPP) actively defends the running resource — see [[Microsoft Defender]] for the full comparison. |
+| CSPM vs. [[Cloud Workload Protection (CWPP)|CWPP]] | Posture assessment (CSPM) evaluates configuration; workload protection (CWPP) actively defends the running resource — full comparison in the CWPP note, and how they combine in [[CSPM and CWPP]]. |
 | CSPM vs. [[Data Security Posture Management (DSPM)|DSPM]] | CSPM scores *resource configuration*; DSPM scores risk to the *data itself* (sensitivity, exposure, access) — complementary, not interchangeable. Full comparison in the DSPM note. |
 
 ---
@@ -91,13 +91,14 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - Evaluate and validate alignment with regulatory standards using the compliance dashboard as an explicit exam skill, not just reading Secure Score.
 - Use **Security Exposure Management** to prioritize by attack-path exploitability instead of chasing raw recommendation counts.
 - Treat [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]] as the default, org-wide baseline benchmark — know it by name, since it replaced the older Azure Security Benchmark. For what MCSB actually contains (domains, controls, subcontrols), see its own note.
+- Know this note *is* the CSPM half of Microsoft's CNAPP — see [[CSPM and CWPP]] for how it combines with workload, data, and permissions signals into one prioritized risk view.
 
 ---
 
 ## Exam Tips
 
 - A high Secure Score answering a "prove regulatory compliance" scenario is a distractor — the correct answer maps to the regulatory compliance dashboard and a named standard.
-- Multicloud posture requires connectors; hybrid/on-prem requires Azure Arc onboarding first — a scenario mentioning AWS or on-prem servers is testing whether you know which mechanism applies.
+- Multicloud posture requires connectors; hybrid/on-prem requires [[Azure Arc]] onboarding first — a scenario mentioning AWS or on-prem servers is testing whether you know which mechanism applies.
 - "Prioritize remediation by risk" scenarios point to Security Exposure Management attack paths, not sorting recommendations by count.
 
 ---
@@ -116,9 +117,10 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - Microsoft Cloud Security Benchmark (MCSB)
 - Regulatory Compliance dashboard
 - Multicloud connectors (AWS/GCP)
-- Azure Arc onboarding
+- [[Azure Arc]] onboarding
 - Security Exposure Management / attack paths
 - CWPP (Cloud Workload Protection Platform)
+- CNAPP (Cloud-Native Application Protection Platform)
 
 ---
 
@@ -131,6 +133,9 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Cloud Adoption Framework (CAF)]]
 - [[Data Security Posture Management (DSPM)]]
+- [[Cloud Workload Protection (CWPP)]]
+- [[CSPM and CWPP]]
+- [[Azure Arc]]
 
 ---
 

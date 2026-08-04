@@ -46,13 +46,13 @@ flowchart LR
 - Replacing legacy VPN with per-app, Conditional-Access-governed remote access — Microsoft Entra **Private Access** (Zero Trust Network Access/ZTNA; **Quick Access** for IP/FQDN ranges without full per-app config).
 - Applying identity-aware, risk-based filtering to general internet/SaaS traffic — Microsoft Entra **Internet Access** (cloud-delivered Secure Web Gateway: content/FQDN filtering, TLS inspection, threat intelligence).
 - Hardening access to Microsoft services specifically — **Internet Access for Microsoft services**: the Compliant Network Conditional Access check, Universal Tenant Restrictions (blocks exfiltration to unauthorized/personal tenants), and sign-in log source IP restoration.
-- Governing a SaaS session *after* sign-in rather than the network path to it — that's Defender for Cloud Apps (CASB), a companion to Global Secure Access, not a replacement.
+- Governing a SaaS session *after* sign-in rather than the network path to it — that's Defender for Cloud Apps (CASB), a companion to Global Secure Access, not a replacement; full discovery/control depth in [[SaaS Application Discovery and Control]].
 
 ---
 
 ## When NOT to Use
 
-- Assuming Global Secure Access replaces [[Azure Firewall]]/NSGs outright — GSA governs user-to-resource (north-south) traffic; resource-to-resource (east-west) segmentation inside Azure still needs Azure Firewall/NSGs.
+- Assuming Global Secure Access replaces [[Azure Firewall]]/NSGs outright — GSA governs user-to-resource (north-south) traffic; resource-to-resource (east-west) segmentation inside Azure still needs Azure Firewall/NSGs (see [[Securing IaaS and PaaS Services]]).
 - Treating "Compliant Network" as the same signal as "Compliant Device" — Compliant Network confirms traffic passed through Global Secure Access; Compliant Device confirms Intune device posture. Requiring one doesn't imply the other.
 - Rolling out Private Access on broad IP/FQDN ranges (Quick Access) as the permanent design — that recreates flat, VPN-style trust; per-app TCP/UDP access is the fuller Zero Trust answer.
 
@@ -99,7 +99,7 @@ flowchart TD
 | Private Access vs. traditional VPN | Private Access grants per-app/per-protocol access evaluated by Conditional Access on every request (ZTNA); VPN grants flat, standing network-layer access to everything behind the tunnel once connected. |
 | Internet Access vs. Internet Access for Microsoft services | Internet Access is a general identity-aware SWG for all internet/SaaS destinations; Internet Access for Microsoft services is scoped to Microsoft traffic and adds the Compliant Network signal, Universal Tenant Restrictions, and sign-in log source IP restoration. |
 | Compliant Network vs. Compliant Device (Conditional Access signals) | Compliant Network confirms the request traversed Global Secure Access; Compliant Device confirms Intune device posture — distinct signals, requirable independently or together. |
-| Global Secure Access vs. Defender for Cloud Apps (CASB) | GSA controls the network path to a resource (pre-connection, identity-aware routing/filtering); Defender for Cloud Apps controls the SaaS session after sign-in (in-session policies, file inspection). Complementary layers. |
+| Global Secure Access vs. Defender for Cloud Apps (CASB) | GSA controls the network path to a resource (pre-connection, identity-aware routing/filtering); Defender for Cloud Apps controls the SaaS session after sign-in (in-session policies, file inspection) — full CASB depth in [[SaaS Application Discovery and Control]]. Complementary layers. |
 | Global Secure Access vs. Azure Firewall/NSGs | GSA governs user-to-resource (north-south) traffic via identity signals; Azure Firewall/NSGs govern resource-to-resource (east-west) traffic via network constructs — different traffic direction, different control plane. |
 
 ---
@@ -160,6 +160,8 @@ AZ-500 covers the network-perimeter tools this shift moves away from (Azure Fire
 ---
 
 ## Related Services
+
+- [[SaaS Application Discovery and Control]]
 
 - [[Zero Trust]]
 - [[Conditional Access]]

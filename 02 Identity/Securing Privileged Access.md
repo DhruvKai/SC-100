@@ -153,4 +153,5 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - [What's Microsoft Entra Permissions Management?](https://learn.microsoft.com/en-us/entra/permissions-management/overview) — Microsoft Learn
 - [Cloud infrastructure entitlement management (CIEM)](https://learn.microsoft.com/en-us/azure/defender-for-cloud/permissions-management) — Microsoft Learn
 - (https://aka.ms/eam)
+- (https://aka.ms/paw)
 - [[Exam Objectives]]

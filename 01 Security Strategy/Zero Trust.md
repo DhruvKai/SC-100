@@ -64,11 +64,11 @@ Each pillar maps to concrete controls an architect designs or validates:
 | Pillar | Primary controls |
 | --- | --- |
 | Identity | [[Entra ID]], [[Conditional Access]], [[PIM]], [[Identity Protection]] |
-| Endpoints | Device compliance, Intune, endpoint detection |
+| Endpoints | Device compliance, Intune, endpoint detection — full architecture in [[Securing Server and Client Endpoints]] |
 | Applications | API security, [[Azure Web Application Firewall]], workload identities |
-| Data | [[Purview]], [[Key Vault]], encryption at rest/in transit |
-| Infrastructure | [[Microsoft Defender for Cloud]], [[Azure Policy]], Azure Arc |
-| Network | [[Azure Firewall]], [[Private Link]], micro-segmentation, Global Secure Access (see [[Identity as the Security Perimeter]]) |
+| Data | [[Purview]], [[Key Vault]], encryption at rest/in transit — full pipeline in [[Data Classification and Protection]] |
+| Infrastructure | [[Microsoft Defender for Cloud]], [[Azure Policy]], [[Azure Arc]] |
+| Network | [[Azure Firewall]], [[Private Link]], micro-segmentation, Global Secure Access (see [[Identity as the Security Perimeter]] and [[Network Security Architecture]]) |
 | Visibility/automation | [[Microsoft Sentinel]], [[Microsoft Defender XDR]] |
 
 ---
@@ -146,6 +146,7 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - [[PIM]]
 - [[Identity as the Security Perimeter]]
 - [[Securing Privileged Access]]
+- [[Securing Server and Client Endpoints]]
 - [[Microsoft Cybersecurity Reference Architectures (MCRA)]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Ransomware Resiliency and BCDR]]

@@ -60,9 +60,9 @@ flowchart LR
   F -.feedback loop.-> A
 ```
 
-- Design stage: threat modeling is the anchor activity — feeds requirements into backlog items so security is delivered as a product feature, not an afterthought.
-- Code stage: static analysis, secret scanning, peer review gates.
-- Pipeline stage: [[Azure Policy]] as code / [[Microsoft Defender for Cloud]] DevOps security posture scanning IaC templates before deployment.
+- Design stage: [[Threat Modeling|threat modeling]] is the anchor activity — feeds requirements into backlog items so security is delivered as a product feature, not an afterthought.
+- Code stage: static analysis, secret scanning, peer review gates — see [[DevOps Security]] for the concrete Defender for DevOps mechanism.
+- Pipeline stage: [[Azure Policy]] as code / [[DevOps Security|Defender for DevOps]] IaC template scanning before deployment.
 - Environment stage: segregated pre-prod with reduced-privilege identities — ties directly into [[PIM]] and least-privilege design.
 - Runtime stage: closes the loop — findings feed back into design (continuous improvement, matching WAF's "not a one-time setup" philosophy).
 
@@ -70,6 +70,8 @@ flowchart LR
 
 ## Related Services
 
+- [[DevOps Security]] — the concrete Defender for DevOps mechanism that scans IaC, secrets, code, and dependencies pre-deployment.
+- [[Threat Modeling]] — the design-stage anchor activity, including STRIDE.
 - [[Microsoft Defender for Cloud]] — DevOps security posture management scans IaC and pipelines pre-deployment.
 - [[Azure Policy]] — enforces guardrails as code, usable in pipeline stage.
 - [[PIM]] — least-privilege access for pipeline identities and pre-prod environments.

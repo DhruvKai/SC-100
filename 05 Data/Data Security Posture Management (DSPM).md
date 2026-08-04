@@ -33,7 +33,7 @@ Continuous discovery, risk-scoring, and exposure-reduction for *sensitive data i
 
 - As a substitute for [[Security Posture Assessments|CSPM]]/Secure Score — DSPM scores data risk, not resource configuration; run both.
 - Expecting Defender for Cloud's sensitive data discovery to fully classify every asset — it uses **smart sampling** (up to 20 MB per file, 300–1,024 rows per table) for cost/coverage efficiency, not exhaustive scanning; use full Purview classification scanning when complete SIT coverage is required.
-- As an enforcement mechanism by itself — DSPM discovers and prioritizes risk; DLP policies and sensitivity labels are what actually block, encrypt, or restrict.
+- As an enforcement mechanism by itself — DSPM discovers and prioritizes risk; DLP policies and sensitivity labels (mechanics detailed in [[Data Classification and Protection]]) are what actually block, encrypt, or restrict.
 
 ---
 
@@ -134,6 +134,7 @@ AZ-500 covers the underlying building blocks — Defender for Cloud/Secure Score
 - [[Compliance and Privacy]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Zero Trust]]
+- [[Data Classification and Protection]]
 
 ---
 

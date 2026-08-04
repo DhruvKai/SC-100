@@ -29,7 +29,7 @@ Six core log sources architects combine into a centralized logging design.
 ## Exam Notes
 
 - SC-100 objective explicitly calls out designing **centralized logging and auditing, including Microsoft Purview Audit** — these six sources are the raw inputs; the architecture decision is where they converge (typically a Log Analytics workspace feeding [[Microsoft Sentinel]]).
-- "Design monitoring to support hybrid and multicloud environments" → Azure Monitor Agent + Azure Arc is the expected answer for non-Azure/on-prem VM log collection.
+- "Design monitoring to support hybrid and multicloud environments" → Azure Monitor Agent + [[Azure Arc]] is the expected answer for non-Azure/on-prem VM log collection.
 - A scenario needing traffic-flow visibility should point to VNet flow logs, not classic NSG flow logs — watch for exam content still referencing the older name.
 - These sources are the connectors that feed [[Microsoft Sentinel]] analytics rules and [[Microsoft Defender for Cloud]] posture assessments — the AZ-500-level knowledge is _where each log comes from_; the SC-100 addition is _designing which sources centralize where_ for hybrid/multicloud coverage.
 

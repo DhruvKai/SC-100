@@ -98,6 +98,7 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 - Choose the ingestion path deliberately (Defender TI connector, TAXII, or upload API) and know the legacy TIP connector is being retired.
 - Apply TLP and ingestion rules as the governance layer for TI at scale — an explicit "how do you operationalize this" answer, not just "turn on a connector."
 - Distinguish Threat Intelligence from Threat Analytics as two different, complementary capabilities in the same Defender portal.
+- Threat Analytics/TI can feed [[Microsoft Defender XDR|Defender XDR's Attack Disruption]] with the high-confidence campaign context that triggers autonomous containment — TI enriches detection, Attack Disruption acts on it.
 - Security Copilot has an embedded TI query experience — see [[AI and Copilot Security Architecture]]; this note covers the underlying TI architecture it queries.
 
 ---
@@ -137,6 +138,7 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 
 - [[Microsoft Sentinel]]
 - [[Microsoft Defender]]
+- [[Microsoft Defender XDR]]
 - [[Security Operations]]
 - [[AI and Copilot Security Architecture]]
 - [[Zero Trust]]

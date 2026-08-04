@@ -177,6 +177,9 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - [[Key Vault]]
 - [[Ransomware Resiliency and BCDR]]
 - [[Zero Trust]]
+- [[Securing IaaS and PaaS Services]]
+- [[Data Classification and Protection]]
+- [[Microsoft Defender XDR]]
 - [[PIM]]
 - [[Securing Privileged Access]]
 
@@ -187,4 +190,5 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - [Managed identities for Azure resources](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) — Microsoft Learn
 - [Workload identity federation](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation) — Microsoft Learn
 - [Azure roles, Microsoft Entra roles, and classic subscription administrator roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles) — Microsoft Learn
+- (https://aka.ms/idplatform)
 - [[Exam Objectives]]
