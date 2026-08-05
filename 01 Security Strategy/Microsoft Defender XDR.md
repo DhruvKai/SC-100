@@ -18,6 +18,7 @@ Microsoft's native cross-signal detection and response product — endpoint, ide
 - **Automated Investigation and Remediation (AIR)** triages and remediates verdict-based alerts (a malicious file, a suspicious mailbox rule) without analyst effort, freeing analyst time for genuine investigation.
 - **Unified RBAC** lets an org delegate per-workload administration — an Exchange admin managing Defender for Office 365 policy without also getting endpoint device-isolation rights — instead of relying on Global Admin or separate workload consoles.
 - The component products (Defender for Endpoint, Office 365, Identity, Cloud Apps) and how XDR compares to Defender for Cloud are already mapped in [[Microsoft Defender]] — not repeated here.
+- [[Microsoft Sentinel]] is no longer a separate product Defender XDR integrates with — both now render from the same Defender portal, share one incident queue, and new capability (Security Copilot, Security Exposure Management, unified RBAC) ships as one platform's feature, not two products' overlapping roadmaps. Full convergence detail lives in [[Microsoft Sentinel]]'s own note.
 
 ---
 

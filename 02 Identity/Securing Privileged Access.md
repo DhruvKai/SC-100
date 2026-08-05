@@ -86,6 +86,7 @@ flowchart TD
 | PIM vs. CIEM | PIM controls *when* an already-correctly-scoped role is active (temporal); CIEM finds and shrinks roles/permissions that are *too broad in the first place* (scope), across Azure/AWS/GCP. PIM without CIEM still leaves standing over-permission live during the activation window. |
 | Enterprise Access Model vs. legacy AD tier model (Tier 0/1/2) | The tier model was on-prem/AD-only; the Enterprise Access Model extends the same "protect the top plane above all" logic across hybrid, multicloud, and SaaS admin surfaces — the current architecture to recommend. |
 | Access reviews vs. Identity Protection risk policies | Access reviews are scheduled, human-driven recertification of standing access; Identity Protection is continuous, automated risk *detection* feeding [[Conditional Access]] — different cadence, different trigger. |
+| PIM vs. Endpoint Privilege Management (EPM) | PIM (this note) JIT-activates *directory/Azure RBAC role* privilege. EPM (see [[Intune]]) JIT-elevates a *specific local app/task on a device* for a standard user, without granting standing local admin — same "reduce standing privilege" principle, different layer (cloud roles vs. local device). |
 
 ---
 
@@ -137,7 +138,8 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 
 ## Related Services
 
-- [[PIM]]
+- [[PIM]] — activation mechanism detail (eligible/active, PIM for Groups) lives in its own note.
+- [[Entra ID]] — PIM requires P2 licensing.
 - [[Identity and Access Management (IAM)]]
 - [[Identity as the Security Perimeter]]
 - [[Conditional Access]]

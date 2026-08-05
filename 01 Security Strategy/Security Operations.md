@@ -47,7 +47,7 @@ flowchart LR
     Queue --> SOAR2["SOAR playbooks<br/>(automated response)"]
 ```
 
-- Enabling the **Microsoft Defender XDR connector** streams Defender XDR incidents into the Sentinel incident queue automatically — this is what "unified security operations platform" means at the data-flow level: one incident list, not two portals to reconcile.
+- Enabling the **Microsoft Defender XDR connector** streams Defender XDR incidents into the Sentinel incident queue automatically — this is what "unified security operations platform" means at the data-flow level: one incident list, not two portals to reconcile. This is now the *default* product shape, not an optional integration — see [[Microsoft Sentinel]]'s Convergence section for how far that unification has gone (one portal, one licensing motion, Defender-portal-first capability investment).
 - In a **multi-workspace** Sentinel design, only one workspace can be the **Primary workspace** — full Defender XDR incident integration and correlation applies there only. This is a real constraint on the workspace-topology decisions above, not just a naming detail.
 - XDR alone can suffice for a Microsoft-only estate with no custom-detection, long-retention, or non-Microsoft-source requirement; add Sentinel (SIEM) when any of those apply, and SOAR playbooks whenever response needs to be automated rather than manual.
 

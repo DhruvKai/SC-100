@@ -86,4 +86,24 @@ Need to store/protect secrets, keys, or certificates (including HSM-backed)?
 Need to discover shadow SaaS usage or control an app's session in real time?
   ↓
 [[SaaS Application Discovery and Control]]
+
+Need to know which Entra ID license a control requires, or activate a role JIT?
+  ↓
+[[Entra ID]] / [[PIM]]
+
+Need co-management, zero-touch device provisioning, or JIT local admin elevation?
+  ↓
+[[Intune]]
+
+Need NSG rule mechanics (service tags, ASGs) or Azure Firewall rule mechanics (NAT/network/application)?
+  ↓
+[[Network Security Group]] / [[Azure Firewall]]
+
+Need a global or regional L7 reverse proxy, or the right DDoS Protection plan?
+  ↓
+[[Front Door and Application Gateway]] / [[DDoS Protection]]
+
+Need to enforce/deny configuration or understand what drives Secure Score?
+  ↓
+[[Azure Policy]]
 ```

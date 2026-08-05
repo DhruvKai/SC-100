@@ -2,7 +2,6 @@
 tags:
   - sc100
 ---
-
 # Azure Well-Architected Framework (WAF)
 
 ## Purpose

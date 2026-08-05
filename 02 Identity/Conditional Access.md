@@ -126,6 +126,8 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 
 ## Related Services
 
+- [[Entra ID]] — Conditional Access requires P1; risk-based policies require P2.
+
 - [[Entra ID]]
 - [[Identity Protection]]
 - [[PIM]]

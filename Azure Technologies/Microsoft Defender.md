@@ -29,12 +29,12 @@ Umbrella brand for Microsoft's threat protection products. [[Microsoft Defender 
 
 - Defender for Cloud is the CSPM/CWPP layer; the workload-specific plans within it (Containers, Databases, Storage, etc.) are enabled per-resource-type.
 - Defender XDR does not replace the individual products — it's the correlation/incident layer sitting above them.
-- Most Defender products flow their alerts into [[Microsoft Sentinel]] for SIEM-level correlation with everything else.
+- Most Defender products flow their alerts into [[Microsoft Sentinel]] for SIEM-level correlation with everything else — and Sentinel itself now renders inside this same Defender portal rather than a separate console (see [[Microsoft Sentinel]]'s Convergence section).
 
 ## Exam Notes
 
 - Don't confuse **Defender for Cloud** (posture + cloud workload protection) with **Defender XDR** (endpoint/identity/email/app correlation) — a frequent exam distractor pair.
-- **Defender for Cloud vs. Azure Policy**: Defender for Cloud evaluates and scores posture (incl. via MCSB); Azure Policy enforces/denies configuration — Defender for Cloud can use Azure Policy under the hood for its assessments.
+- **Defender for Cloud vs. Azure Policy**: Defender for Cloud evaluates and scores posture (incl. via MCSB); Azure Policy enforces/denies configuration — Defender for Cloud can use Azure Policy under the hood for its assessments. In fact, **Azure Policy drives Secure Score**: full mechanics in [[Azure Policy]].
 - Full technical deep-dives on [[Microsoft Defender for Cloud]] belong in its own note under `03 Infrastructure` — this page is an orientation map only. CSPM lives in [[Security Posture Assessments]], CWPP in [[Cloud Workload Protection (CWPP)]], and how they combine in [[CSPM and CWPP]].
 
 

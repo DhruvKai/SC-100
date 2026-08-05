@@ -23,7 +23,7 @@ Evaluating a network design against a workload's actual security requirements �
 ## When to Use
 
 - Choosing the network topology itself (Hub & Spoke vs. Virtual WAN) — already covered in [[Azure Landing Zones]]; this note assumes that choice is made and focuses on the security controls layered onto it.
-- Public internet-facing HTTP(S) workload needing OWASP-based protection (SQLi, XSS) — **WAF** on Application Gateway or Front Door, layered behind DDoS Protection.
+- Public internet-facing HTTP(S) workload needing OWASP-based protection (SQLi, XSS) — **WAF** on [[Front Door and Application Gateway|Application Gateway or Front Door]], layered behind DDoS Protection.
 - Centralizing firewall/segmentation policy across many hub VNets or secured virtual hubs — **Azure Firewall Manager**.
 - Mission-critical, internet-facing services where the cost-protection guarantee and Rapid Response support matter — **DDoS Protection Standard**, layered on top of the Basic tier that's already on by default.
 - Needing IDS/IPS or a vendor-specific feature Azure Firewall doesn't provide — a third-party **network virtual appliance (NVA)** routed through the hub, after confirming **Azure Firewall Premium** (TLS inspection, IDPS) genuinely can't cover the requirement.
@@ -81,7 +81,7 @@ flowchart TD
 | Compare | Difference |
 | --- | --- |
 | WAF vs. Azure Firewall | WAF (on Application Gateway/Front Door) is Layer 7, HTTP(S)-only, and inspects for web-specific threats (OWASP Top 10 — SQLi, XSS). Azure Firewall is a general Layer 3–7 network firewall (FQDN filtering, threat intelligence, any protocol) sitting at the VNet/hub level. A scenario about protecting a web app from injection attacks points to WAF; one about filtering arbitrary outbound traffic points to Azure Firewall. Layered together, not either/or. |
-| DDoS Protection Basic vs. Standard | Basic: free, automatic, always-on for every public IP — no SLA, no cost protection. Standard: paid, tuned to the specific application's traffic patterns, adds a cost-protection guarantee (credits for scale-out costs during an attack), Rapid Response support team access, and integrates with WAF for combined L3–L7 defense. Standard is justified for specific business-critical, internet-facing workloads — not a universal upgrade. |
+| DDoS Protection Basic vs. Standard | Basic: free, automatic, always-on for every public IP — no SLA, no cost protection. Standard: paid, tuned to the specific application's traffic patterns, adds a cost-protection guarantee (credits for scale-out costs during an attack), Rapid Response support team access, and integrates with WAF for combined L3–L7 defense. Standard is justified for specific business-critical, internet-facing workloads — not a universal upgrade. Standard itself splits into Network Protection (VNet-wide) vs. IP Protection (per-IP) — full plan detail in [[DDoS Protection]]. |
 | Azure Firewall vs. third-party NVA | Azure Firewall is Microsoft-managed PaaS (auto-scale, no patching, Firewall Manager policy) with Premium tier adding IDPS and TLS inspection. An NVA is a customer-deployed/managed appliance (own scaling, HA, patching) chosen only when a specific vendor feature or existing licensing requirement isn't met by Azure Firewall Premium. |
 | Azure Firewall vs. NSG | Full comparison already in [[Securing IaaS and PaaS Services]] — segmentation (NSG) vs. centralized, stateful policy/inspection (Azure Firewall); not repeated here. |
 
@@ -142,6 +142,10 @@ AZ-500 already covers configuring NSGs, Azure Firewall rules, DDoS Protection pl
 - [[Zero Trust]]
 - [[Microsoft Defender for Cloud]]
 - [[Private Link]]
+- [[Network Security Group]]
+- [[Azure Firewall]]
+- [[Front Door and Application Gateway]]
+- [[DDoS Protection]]
 
 ---
 

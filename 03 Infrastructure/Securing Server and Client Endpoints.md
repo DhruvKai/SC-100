@@ -100,7 +100,7 @@ flowchart TD
 | --- | --- |
 | MDM vs. MAM | MDM (Intune device enrollment) manages the whole device — compliance policies, wipe, full configuration. MAM (app protection policies) manages only corporate data inside specific apps, without enrolling the device — the BYOD answer when full enrollment isn't acceptable or possible. |
 | Defender for IoT: Enterprise vs. OT edition | Enterprise IoT extends Defender for Endpoint to non-traditional enterprise devices (printers, cameras, badge readers) and surfaces them in Defender XDR; OT edition covers true industrial control systems via passive, agentless network sensors on plant-floor/substation networks. Different attack surface, different deployment model. |
-| Windows LAPS vs. PIM | LAPS rotates and randomizes a *local* machine account's admin password per device; PIM governs *directory-level* standing privilege (Entra ID/Azure RBAC roles) — different layer, see [[Securing Privileged Access]] for the PIM side. |
+| Windows LAPS vs. PIM | LAPS rotates and randomizes a *local* machine account's admin password per device; PIM governs *directory-level* standing privilege (Entra ID/Azure RBAC roles) — different layer, see [[Securing Privileged Access]] for the PIM side. A third layer, Endpoint Privilege Management (JIT elevation of a specific app/task without standing local admin), is covered in [[Intune]]. |
 | Intune security baselines vs. MCSB | Intune baselines are pre-configured client/mobile device policy templates (Windows, Defender, Edge settings); MCSB is the cross-cloud resource-configuration benchmark used for servers/infrastructure (see [[Security Posture Assessments]]) — different scope, same "baseline-first" philosophy. |
 
 ---
@@ -137,7 +137,7 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - **MAM-WE vs. MDM+MAM combined** — BYOD device never enrolled (only lightweight Entra ID registration) vs. corporate device fully enrolled *and* app-protected; the exam expects you to match the combination to device ownership, not assume they're interchangeable.
 - **"Require compliant device" vs. "Require app protection policy"** — the MDM-backed Conditional Access signal vs. the MAM-backed one; a BYOD scenario needing the latter is a common distractor toward the former.
 - **Defender for IoT Enterprise vs. OT** — enterprise device discovery (Defender for Endpoint add-on) vs. true industrial control monitoring (passive sensors); full comparison above.
-- **Windows LAPS vs. PIM** — local machine credential rotation vs. directory-level standing privilege governance.
+- **Windows LAPS vs. PIM** — local machine credential rotation vs. directory-level standing privilege governance; see [[Intune]] for the third layer, Endpoint Privilege Management.
 
 ---
 
@@ -165,6 +165,7 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - [[Zero Trust]]
 - [[Microsoft Defender]]
 - [[Microsoft Cybersecurity Reference Architectures (MCRA)]]
+- [[Intune]] — co-management, Autopilot, and Endpoint Privilege Management detailed there.
 
 ---
 

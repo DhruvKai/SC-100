@@ -15,6 +15,7 @@ Continuous evaluation of resource configuration against a security benchmark, pr
 
 - Converts scattered configuration checks into one quantifiable metric ([[Microsoft Defender for Cloud]]'s Secure Score) that leadership and engineering can both track.
 - Benchmarks every subscription against the **[[Microsoft Cloud Security Benchmark (MCSB)|Microsoft Cloud Security Benchmark (MCSB)]]** by default, so posture is measured consistently instead of per-team ad hoc checklists.
+- **[[Azure Policy]] drives Secure Score** — Secure Score isn't a separate scoring engine; it's built from the MCSB initiative, an Azure Policy initiative auto-assigned to every onboarded subscription. Each recommendation is one policy definition, and a resource's policy compliance state *is* the pass/fail signal behind it — extending Secure Score with org-specific checks means adding a custom policy to a custom initiative, not requesting a Microsoft feature.
 - Extends across Azure, AWS, GCP, and on-prem/hybrid (via [[Azure Arc]]) — a single assessment surface instead of one per cloud.
 - Feeds directly into regulatory compliance reporting and, more recently, into attack-path-based prioritization rather than raw score-chasing.
 - For how this score relates to other Microsoft scoring dashboards (Advisor, Purview Compliance Manager, Microsoft Secure Score), see [[Security Scoring Dashboards]].
@@ -44,7 +45,8 @@ Continuous evaluation of resource configuration against a security benchmark, pr
 flowchart LR
     R["Resources:<br/>Azure, AWS, GCP, on-prem (via Azure Arc)"] --> DC["Microsoft Defender for Cloud<br/>(assessment engine)"]
     DC -->|scored against| MCSB["Microsoft Cloud Security Benchmark"]
-    DC --> SS["Secure Score + Recommendations"]
+    MCSB -->|implemented as| Policy["Azure Policy: MCSB initiative<br/>(auto-assigned)"]
+    Policy -->|compliance state| SS["Secure Score + Recommendations"]
     DC --> RC["Regulatory Compliance Dashboard<br/>(PCI, ISO, NIST, custom initiatives)"]
     SS --> SEM["Microsoft Security Exposure Management<br/>(attack paths, exploitability)"]
     SEM --> Rem["Prioritized remediation"]
@@ -91,6 +93,7 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - Evaluate and validate alignment with regulatory standards using the compliance dashboard as an explicit exam skill, not just reading Secure Score.
 - Use **Security Exposure Management** to prioritize by attack-path exploitability instead of chasing raw recommendation counts.
 - Treat [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]] as the default, org-wide baseline benchmark — know it by name, since it replaced the older Azure Security Benchmark. For what MCSB actually contains (domains, controls, subcontrols), see its own note.
+- Recognize [[Azure Policy]] as the literal enforcement substrate beneath Secure Score — full mechanics (Deny vs. Audit, remediation tasks, custom initiatives) live in its own note, not repeated here.
 - Know this note *is* the CSPM half of Microsoft's CNAPP — see [[CSPM and CWPP]] for how it combines with workload, data, and permissions signals into one prioritized risk view.
 
 ---
@@ -136,6 +139,7 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Cloud Workload Protection (CWPP)]]
 - [[CSPM and CWPP]]
 - [[Azure Arc]]
+- [[Azure Policy]]
 
 ---
 
