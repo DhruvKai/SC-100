@@ -13,7 +13,7 @@ Microsoft's security stack exposes several distinct, non-interchangeable scores;
 
 ## Why Architects Choose It
 
-- Gives leadership a trend line without requiring technical depth, but only when the right score reaches the right audience.
+- Gives leadership a trend line without requiring technical depth, but only when the right score reaches the right audience. Microsoft Secure Score specifically rolls up identity, device, app, and Microsoft 365 hardening — see [[Securing Microsoft 365]] for the productivity/collaboration-domain products (Defender for Office 365, Defender for Cloud Apps) that feed it.
 - Scores are often layered rather than independent — Azure Advisor's Security category is literally calculated *using* Defender for Cloud's secure-score model, not a separate assessment.
 - Some domains — data governance, regulatory attestation — need a score [[Microsoft Defender for Cloud]] simply doesn't produce.
 
@@ -127,6 +127,7 @@ AZ-500 already covers reading and acting on Microsoft Secure Score and Defender 
 - [[Microsoft Defender]]
 - [[Purview]]
 - [[Microsoft Sentinel]]
+- [[Securing Microsoft 365]]
 
 ---
 

@@ -27,6 +27,7 @@ Architecting how privileged access is granted, activated, bundled, reviewed, and
 - Periodically recertifying who still needs standing access, group membership, or an entitlement package — **access reviews**.
 - Finding and shrinking over-provisioned permissions across Azure/AWS/GCP that no JIT policy alone would catch — **CIEM** (Microsoft Entra Permissions Management, surfaced in Defender for Cloud).
 - Isolating the device and network path used for privileged administration — **privileged access workstations (PAW)** tiering, not a standard managed device.
+- Delegating a narrow, predefined set of admin tasks on Windows Server/AD DS via PowerShell remoting, without granting the operator full Domain Admin/local Administrator rights — **JEA (Just Enough Administration)**: the session runs under a temporary virtual account (or group-managed service account) scoped to a role capability file, not the operator's own elevated credentials.
 
 ---
 
@@ -86,13 +87,13 @@ flowchart TD
 | PIM vs. CIEM | PIM controls *when* an already-correctly-scoped role is active (temporal); CIEM finds and shrinks roles/permissions that are *too broad in the first place* (scope), across Azure/AWS/GCP. PIM without CIEM still leaves standing over-permission live during the activation window. |
 | Enterprise Access Model vs. legacy AD tier model (Tier 0/1/2) | The tier model was on-prem/AD-only; the Enterprise Access Model extends the same "protect the top plane above all" logic across hybrid, multicloud, and SaaS admin surfaces — the current architecture to recommend. |
 | Access reviews vs. Identity Protection risk policies | Access reviews are scheduled, human-driven recertification of standing access; Identity Protection is continuous, automated risk *detection* feeding [[Conditional Access]] — different cadence, different trigger. |
-| PIM vs. Endpoint Privilege Management (EPM) | PIM (this note) JIT-activates *directory/Azure RBAC role* privilege. EPM (see [[Intune]]) JIT-elevates a *specific local app/task on a device* for a standard user, without granting standing local admin — same "reduce standing privilege" principle, different layer (cloud roles vs. local device). |
+| PIM vs. JEA vs. Endpoint Privilege Management (EPM) | Three JIT/least-privilege mechanisms at three different layers, easy to conflate. PIM (this note) JIT-activates *directory/Azure RBAC role* privilege in the cloud. JEA constrains a *Windows Server/AD DS PowerShell remoting session* to a predefined set of cmdlets/functions (a role capability file), running under a temporary virtual account instead of the operator's own admin credentials — the on-prem/hybrid, PowerShell-specific answer. EPM (see [[Intune]]) JIT-elevates a *specific local app/task on a client device* for a standard user, without granting standing local admin. Same "reduce standing privilege" principle, three distinct layers — cloud role, server/AD DS admin task, client device task. |
 
 ---
 
 ## AZ-500 Review
 
-AZ-500 already covers configuring PIM activation, individual access reviews, and basic RBAC hygiene at the resource level. SC-100 adds: the Enterprise Access Model as the named containment framework, entitlement management for bundled/external access at scale, CIEM as a distinct cross-cloud permission-right-sizing capability, and privileged access workstations as an architecture decision rather than a device policy.
+AZ-500 already covers configuring PIM activation, individual access reviews, and basic RBAC hygiene at the resource level. SC-100 adds: the Enterprise Access Model as the named containment framework, entitlement management for bundled/external access at scale, CIEM as a distinct cross-cloud permission-right-sizing capability, privileged access workstations as an architecture decision rather than a device policy, and recognizing JEA as the AD DS/Windows Server-layer counterpart to PIM/EPM rather than a standalone PowerShell feature.
 
 ---
 
@@ -103,6 +104,7 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - Use entitlement management, not manual approval emails, as the architecture answer for bundled, time-bound, B2B-inclusive resource access at scale.
 - Tie privileged access workstation tier to the plane being administered — Control-plane administration deserves the most isolated tier, not a uniform PAW policy for every admin.
 - Sequence privileged-access hardening as explicitly prioritized work (see [[Ransomware Resiliency and BCDR]]), not a generic "least privilege" platitude.
+- Recognize JEA as the named, testable mechanism for AD DS/Windows Server admin-task least privilege — the same "reduce standing privilege" principle as PIM, applied at the on-prem/hybrid server layer instead of the directory/Azure RBAC layer.
 
 ---
 
@@ -112,6 +114,7 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - "Find permissions nobody uses, across three clouds" → CIEM/Entra Permissions Management, not PIM or access reviews.
 - "Grant a partner org's team access to a project's resources for 90 days with approval" → entitlement management access package.
 - A scenario naming "Tier 0" or the legacy AD tiering model is testing whether you recognize the retired terminology and reach for the Enterprise Access Model instead.
+- "Delegate a narrow set of AD DS/Windows Server admin tasks over PowerShell without granting full Domain Admin rights" → JEA, not a broader RBAC/PIM role (PIM governs cloud-directory/Azure RBAC roles, not on-prem server PowerShell sessions).
 
 ---
 
@@ -120,6 +123,7 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - **PIM vs. entitlement management** — activate an eligible role vs. request a bundle of resources; full breakdown above.
 - **PIM vs. CIEM** — temporal control vs. scope control.
 - **Enterprise Access Model vs. legacy tier model** — current, cloud-inclusive vs. retired, AD-only.
+- **PIM vs. JEA vs. EPM** — three JIT/least-privilege mechanisms at three different layers (cloud directory role, Windows Server/AD DS PowerShell task, client device app task); a scenario naming the layer picks the mechanism — full breakdown above.
 
 ---
 
@@ -133,6 +137,8 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - Privileged access workstations (PAW)
 - Standing access vs. just-in-time access
 - Legacy AD tier model (Tier 0/1/2) — retired terminology
+- Just Enough Administration (JEA), role capability file
+- Constrained PowerShell endpoint, virtual account / group-managed service account
 
 ---
 

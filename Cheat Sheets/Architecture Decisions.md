@@ -106,4 +106,32 @@ Need a global or regional L7 reverse proxy, or the right DDoS Protection plan?
 Need to enforce/deny configuration or understand what drives Secure Score?
   ↓
 [[Azure Policy]]
+
+Need to prove a device's boot chain wasn't tampered with, or back BitLocker/Windows Hello/Credential Guard with hardware?
+  ↓
+[[Trusted Platform Module (TPM)]]
+
+Need to publish/secure an API (throttling, token validation, versioning) in front of a backend?
+  ↓
+[[API Management and Security]]
+
+Need to secure a container image, an AKS cluster, or pod-to-Azure authentication?
+  ↓
+[[Container and Kubernetes Security]]
+
+Need Windows Server/AD DS admin tasks delegated without full Domain Admin rights?
+  ↓
+[[Securing Privileged Access]] (JEA)
+
+Need to secure Exchange/SharePoint/Teams mail and collaboration threats, or M365 Secure Score?
+  ↓
+[[Securing Microsoft 365]]
+
+Need IoT device authentication (X.509/SAS/TPM via IoT Hub/DPS), not just device discovery?
+  ↓
+[[Securing Server and Client Endpoints]]
+
+Need App Service-specific hardening (Easy Auth, deployment slots) beyond generic PaaS network controls?
+  ↓
+[[Securing IaaS and PaaS Services]]
 ```

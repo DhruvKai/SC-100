@@ -92,6 +92,7 @@ AZ-500 doesn't cover Intune Suite, co-management workload sliding, Windows Autop
 - [[PIM]]
 - [[Entra ID]]
 - [[Conditional Access]]
+- [[Securing Microsoft 365]]
 - [[Exam Objectives]]
 
 ## References

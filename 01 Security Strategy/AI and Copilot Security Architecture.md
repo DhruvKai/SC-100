@@ -157,6 +157,7 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, an
 - [[Microsoft Entra Agent ID]]
 - [[Microsoft Security Copilot]]
 - [[Threat Intelligence]]
+- [[Securing Microsoft 365]]
 
 ---
 

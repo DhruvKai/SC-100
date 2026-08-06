@@ -37,7 +37,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Security strategy for business resiliency, including prioritizing threats to business-critical assets
 - BCDR for hybrid and multicloud, including secure backup and restore
 - Ransomware mitigation, including BCDR and privileged access prioritization
-- Evaluate solutions for security updates
+- [[Ransomware Resiliency and BCDR|Evaluate solutions for security updates]] (Azure Update Manager)
 
 ### Align with [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]] and [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]]
 
@@ -120,10 +120,10 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 ### SaaS, PaaS, IaaS security requirements
 
 - [[Securing IaaS and PaaS Services|Security baselines for SaaS/PaaS/IaaS]]
-- IoT workload security requirements
-- Web workload security requirements
-- Container security requirements
-- Container orchestration security requirements
+- [[Securing Server and Client Endpoints|IoT workload security requirements]]
+- [[Securing IaaS and PaaS Services|Web workload security requirements]]
+- [[Container and Kubernetes Security|Container security requirements]]
+- [[Container and Kubernetes Security|Container orchestration security requirements]]
 - [[AI and Copilot Security Architecture|Azure AI services security]]
 
 ### [[Identity as the Security Perimeter|Network security and Security Service Edge (SSE)]]
@@ -137,10 +137,10 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 ## 4. Security Solutions for Applications and Data (20–25%)
 
-### Securing Microsoft 365
+### [[Securing Microsoft 365]]
 
-- Productivity/collaboration security posture (Secure Score)
-- Microsoft Defender for Office 365 and Microsoft Defender for Cloud Apps
+- [[Securing Microsoft 365|Productivity/collaboration security posture (Secure Score)]]
+- [[Securing Microsoft 365|Microsoft Defender for Office 365]] and [[SaaS Application Discovery and Control|Microsoft Defender for Cloud Apps]]
 - Device management via [[Intune]]
 - Data security in Microsoft 365 via [[Purview]]
 - [[AI and Copilot Security Architecture|Data security/compliance in Microsoft Copilot for Microsoft 365]]
@@ -152,8 +152,8 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Full lifecycle application security strategy
 - [[DevOps Security|Standards/practices for secure application development]]
 - Map technologies to application security requirements
-- Workload identities for authenticating/accessing Azure resources
-- API management and security
+- [[Identity and Access Management (IAM)|Workload identities for authenticating/accessing Azure resources]]
+- [[API Management and Security|API management and security]]
 - [[Azure Web Application Firewall]] (WAF)
 
 ### Securing organizational data
@@ -164,7 +164,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - [[AI and Copilot Security Architecture|Data security for AI workloads]]
 - [[Data Security Posture Management (DSPM)|Data security for Azure SQL, Azure Synapse Analytics, Azure Cosmos DB]]
 - [[Data Security Posture Management (DSPM)|Data security for Azure Storage]]
-- Microsoft Defender for Storage and Microsoft Defender for Databases
+- [[Cloud Workload Protection (CWPP)|Microsoft Defender for Storage and Microsoft Defender for Databases]]
 
 ---
 
@@ -188,6 +188,10 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - [[Azure Policy]]
 - [[Azure Arc]]
 - [[AI and Copilot Security Architecture]]
+- [[Container and Kubernetes Security]]
+- [[API Management and Security]]
+- [[Trusted Platform Module (TPM)]]
+- [[Securing Microsoft 365]]
 
 ---
 

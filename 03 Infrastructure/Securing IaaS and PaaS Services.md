@@ -22,7 +22,7 @@ Matching network exposure and identity controls to the deployment model — IaaS
 ## When to Use
 
 - Any Azure VM/VM Scale Set/hybrid compute — apply the IaaS network stack: NSGs for subnet segmentation, [[Azure Firewall]] for centralized policy, **Azure Bastion** for browser-based RDP/SSH with no public IP, **JIT VM access** (Defender for Cloud) to open management ports only on approved request.
-- Any managed data or app service (Storage, SQL, Cosmos DB, App Service, Key Vault) — apply the PaaS network stack: disable public network access by default, then choose **Private Link** (private IP, no data-exfiltration risk via other tenants' public endpoints) or **Service Endpoint** (simpler, no extra cost, still traverses the service's public IP space) per resource sensitivity.
+- Any managed data or app service (Storage, SQL, Cosmos DB, App Service, Key Vault, API Management) — apply the PaaS network stack: disable public network access by default, then choose **Private Link** (private IP, no data-exfiltration risk via other tenants' public endpoints) or **Service Endpoint** (simpler, no extra cost, still traverses the service's public IP space) per resource sensitivity. API-specific policy (throttling, token validation, versioning) in front of that backend is covered in [[API Management and Security]].
 - Service-to-service calls between Azure resources — [[Identity and Access Management (IAM)|managed identity]], not a stored key/connection string.
 - Portfolio-wide enforcement of the above ("public network access disabled," "JIT required") — [[Azure Policy]] and MCSB initiatives, not manual per-resource configuration.
 
@@ -33,7 +33,7 @@ Matching network exposure and identity controls to the deployment model — IaaS
 - Applying NSGs to control reachability *into* a PaaS resource — wrong layer; PaaS network reachability is governed by the resource's own firewall/network-rules blade or Private Link, not a subnet NSG.
 - Treating JIT VM access as fire-and-forget — it's a per-request, time-boxed exposure window, not a one-time setting; a scenario needing *permanent* closed ports still wants NSG deny rules, not JIT alone.
 - Defaulting to Service Endpoints at scale for sensitive data purely to save cost — Private Link is the stronger, recommended posture (private IP, works across peered/on-prem networks, no shared public endpoint); Service Endpoint is the lighter-weight answer for lower-sensitivity, cost-conscious scenarios only.
-- Assuming Defender for Servers/agent-based EDR (see [[Cloud Workload Protection (CWPP)]]) applies to PaaS compute the customer doesn't manage — CWPP's server/container plans are the IaaS-adjacent runtime layer; PaaS runtime is Microsoft's responsibility.
+- Assuming Defender for Servers/agent-based EDR (see [[Cloud Workload Protection (CWPP)]]) applies to PaaS compute the customer doesn't manage — CWPP's server/container plans are the IaaS-adjacent runtime layer; PaaS runtime is Microsoft's responsibility. Container/AKS-specific cluster architecture beyond this network stack is covered in [[Container and Kubernetes Security]], not repeated here.
 
 ---
 
@@ -67,6 +67,18 @@ flowchart TD
     MCSB["MCSB baseline via<br/>Defender for Cloud / Azure Policy"] --> IaaS
     MCSB --> PaaS
 ```
+
+---
+
+## Web Workload Security (App Service Specifics)
+
+The PaaS network stack above (Private Link/Service Endpoint, managed identity) applies to App Service like any managed service — these are the additional controls specific to *web* workloads:
+
+- **Built-in authentication (Easy Auth)** — App Service can front an app with Entra ID/OAuth sign-in at the platform level, before a request ever reaches application code — useful for adding auth to an app with no native auth code, but not a substitute for [[Conditional Access]] policy on the underlying identity.
+- **Deployment slots** — stage a new version (and its security configuration) in an isolated slot, validate it, then swap — patches and config changes ship without an in-place, higher-risk edit to the production instance.
+- **TLS/certificate management** — bind a certificate from [[Key Vault]] rather than uploading one manually, so rotation follows the same lifecycle as every other secret in the architecture.
+- **Front-end protection** — pairs with [[Front Door and Application Gateway]] + [[Azure Web Application Firewall|WAF]] for HTTP-layer attack protection (OWASP Top 10); App Service itself doesn't inspect payloads for exploits.
+- **API-shaped web workloads** — if the "web workload" is actually an API being consumed by multiple clients (not just browsers), the throttling/token-validation/versioning layer belongs in front of it — see [[API Management and Security]].
 
 ---
 
@@ -120,6 +132,8 @@ AZ-500 already covers configuring NSGs, Azure Firewall, Azure Bastion, JIT VM ac
 - "Restrict a storage/SQL resource to a specific VNet, including over ExpressRoute/on-prem" → Private Link, not Service Endpoint (Service Endpoint doesn't extend past the Azure backbone to on-prem).
 - A scenario naming a cost constraint alongside "acceptable to still be on a public endpoint" → Service Endpoint is the intended answer, not Private Link.
 - Service-to-service auth to a PaaS resource → managed identity is the default correct answer over a connection string/key, unless the scenario explicitly requires cross-tenant/non-Azure auth (service principal).
+- "Deploy a security patch to a web app with zero risk of breaking production if something's wrong" → deployment slots + swap, not an in-place update.
+- "Web app needs sign-in with no auth code written" → App Service built-in authentication (Easy Auth) — but a scenario needing risk-based/device-aware policy on top still needs Conditional Access as well.
 
 ---
 
@@ -142,6 +156,9 @@ AZ-500 already covers configuring NSGs, Azure Firewall, Azure Bastion, JIT VM ac
 - Resource firewall / network rules (Storage, SQL, Key Vault)
 - Managed identity vs. stored key/connection string
 - MCSB baseline enforcement, Azure Policy
+- App Service built-in authentication (Easy Auth)
+- Deployment slots, slot swap
+- Web workload vs. API workload security
 
 ---
 
@@ -156,6 +173,10 @@ AZ-500 already covers configuring NSGs, Azure Firewall, Azure Bastion, JIT VM ac
 - [[Microsoft Defender for Cloud]]
 - [[Network Security Architecture]]
 - [[Private Link]]
+- [[Container and Kubernetes Security]]
+- [[API Management and Security]]
+- [[Front Door and Application Gateway]]
+- [[Key Vault]]
 
 ---
 

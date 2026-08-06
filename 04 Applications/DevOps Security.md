@@ -25,7 +25,7 @@ Centralizing pipeline and repository security findings — secrets, vulnerable c
 - **Secret scanning** — detects committed credentials, keys, and tokens across repository history and pipeline logs, before they reach production or a public repo.
 - **Static Application Security Testing (SAST)** — CodeQL semantic analysis of first-party code for known vulnerability patterns (injection, insecure deserialization, etc.).
 - **Software Composition Analysis (SCA) / dependency scanning** — flags third-party/open-source packages with known CVEs, and can surface OSS license risk.
-- **Infrastructure as Code (IaC) scanning** — checks Bicep/Terraform/ARM templates against misconfiguration rules *before* deployment — the same posture rules [[Security Posture Assessments|MCSB]] applies *after* deployment, shifted earlier.
+- **Infrastructure as Code (IaC) scanning** — checks Bicep/Terraform/ARM templates against misconfiguration rules *before* deployment — the same posture rules [[Security Posture Assessments|MCSB]] applies *after* deployment, shifted earlier. Container image scanning is the same shift-left idea applied to a container build — see [[Container and Kubernetes Security]] for the registry-scan-to-admission-control pipeline it feeds into.
 - **Pull request annotations** — inline PR comments surface findings from all four scan types at the exact point a merge decision is made.
 - **Centralized findings** — DevOps security recommendations feed the same Secure Score and attack-path view in Defender for Cloud that cloud resource findings do (see [[CSPM and CWPP]]).
 
@@ -135,6 +135,7 @@ AZ-500 does not cover pipeline or repository security at all — secret scanning
 - [[Azure Policy]]
 - [[Microsoft Defender for Cloud]]
 - [[Cloud Adoption Framework (CAF)]]
+- [[Container and Kubernetes Security]]
 
 ---
 

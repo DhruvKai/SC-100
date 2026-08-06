@@ -14,6 +14,7 @@ Two Azure Layer 7 (HTTP/S) reverse proxies that both attach the same [[Azure Web
 - **Application Gateway** operates inside a single region's VNet — the right layer for routing to backends that live in that VNet (or a peered one), including fully private origins with no public IP at all.
 - Both can host the identical Azure WAF policy (OWASP Core Rule Set-based) — a design doesn't choose "WAF or not," it chooses *which reverse proxy* the WAF policy attaches to.
 - Layering both is a standard, valid pattern — Front Door at the global edge routing into one or more regional Application Gateways, which then route into the VNet — not a mutually exclusive either/or choice.
+- A third layer commonly sits behind either: **API Management**, when the backend is an API needing throttling, token validation, or versioning rather than generic HTTP routing — see [[API Management and Security]] for where that policy layer fits.
 
 ## Azure Front Door
 
@@ -98,6 +99,7 @@ AZ-500 already covers deploying Application Gateway/Front Door, configuring back
 - [[Private Link]]
 - [[Azure Firewall]]
 - [[Azure Landing Zones]]
+- [[API Management and Security]]
 - [[Exam Objectives]]
 
 ## References

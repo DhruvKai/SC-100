@@ -17,6 +17,7 @@ The mechanical pipeline behind "securing organizational data" — discover it, c
 - The four stages are sequential and each depends on the one before it: you can't enforce handling on data that isn't classified, and you can't classify what wasn't discovered — a scenario naming one stage usually implies the others already happened.
 - Encryption is deliberately the last stage because it's the one control that applies regardless of classification outcome — infrastructure/transport encryption is baseline hygiene, while classification-driven encryption (Rights Management) is an *additional*, label-triggered layer.
 - Both AZ-500 and SC-100 touch these mechanisms, but SC-100 asks architects to choose *taxonomy, key ownership, and enforcement scope* — org-wide design decisions AZ-500 doesn't test.
+- This pipeline is preventive/static (classify, encrypt, restrict); it doesn't watch for active misuse of already-classified data. Runtime threat detection on the data services themselves — Defender for Storage's malware scanning, Defender for Databases' anomalous-query detection — is the complementary layer, covered in [[Cloud Workload Protection (CWPP)]].
 
 ---
 
@@ -210,6 +211,7 @@ AZ-500 already covers configuring sensitivity labels, basic DLP policies, TDE, K
 - [[Identity and Access Management (IAM)]]
 - [[Zero Trust]]
 - [[Ransomware Resiliency and BCDR]]
+- [[Cloud Workload Protection (CWPP)]]
 
 ---
 

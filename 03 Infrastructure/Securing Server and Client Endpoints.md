@@ -15,6 +15,7 @@ Architecting endpoint protection across the full device estate — servers, clie
 
 - Endpoint types have fundamentally different risk profiles and management surfaces: a server, a BYOD phone, and a factory-floor sensor each need a different combination of identity, agent, and management tooling — one Zero Trust "Endpoints" pillar, several concrete implementations.
 - Local admin credential reuse across machines is a classic lateral-movement vector — **Windows LAPS** closes it by rotating and uniquely randomizing local admin passwords per device, backed to Entra ID or AD DS.
+- Device compliance itself rests on a hardware root of trust, not just policy configuration — [[Trusted Platform Module (TPM)]] covers the TPM/Secure Boot/Measured Boot chain that produces the attestation Intune compliance and [[Conditional Access]] ultimately consume.
 - BYOD and unmanaged personal devices can't always accept full device management — **MAM** (app-level control) extends data protection to devices MDM can't fully enroll.
 - IoT/OT devices often can't run an agent at all — Defender for IoT's passive network-sensor architecture protects what can't be instrumented directly.
 
@@ -33,8 +34,21 @@ MDM and MAM are the two Intune-based answers to "how do we manage a client devic
 
 ---
 
+## IoT Workload Security
+
+Distinct from the IoT *device discovery/monitoring* covered above (Defender for IoT Enterprise/OT editions) — this is securing the IoT *workload itself*: how a device proves its identity to Azure IoT Hub/Device Provisioning Service (DPS), and how its telemetry is protected in transit.
+
+- **Device authentication to IoT Hub** — X.509 certificate-based auth (recommended; supports per-device or group CA-signed certs) vs. Shared Access Signature (SAS) tokens (simpler, symmetric-key based, but a compromised key affects every device sharing it — a much larger blast radius than one compromised certificate).
+- **Device Provisioning Service (DPS)** — zero-touch enrollment at fleet scale, using the same X.509/SAS/TPM mechanisms to prove a device's identity before it's assigned to an IoT Hub — the IoT-specific counterpart to Windows Autopilot's zero-touch device provisioning (see [[Intune]]).
+- **TPM attestation for IoT devices** — where the hardware supports it, DPS can attest a device's identity using its onboard TPM — the same hardware-root-of-trust pattern used for Windows device compliance (see [[Trusted Platform Module (TPM)]]), applied to IoT enrollment instead.
+- **Transport security** — TLS for device-to-cloud/cloud-to-device messaging by default; Private Link for IoT Hub removes the public endpoint from the message path entirely (see [[Private Link]]).
+- **Architecture decision** — prefer X.509 (TPM-backed where possible) over SAS tokens at any meaningful fleet scale; a scenario needing individually revocable device identity points to certificates, not shared symmetric keys.
+
+---
+
 ## When to Use
 
+- Authenticating IoT devices at enrollment and message-send time — X.509/TPM-backed DPS enrollment over SAS tokens once fleet size makes shared-key blast radius a real risk.
 - Protecting Azure-hosted or hybrid/multicloud servers with runtime detection — Defender for Servers (full depth in [[Cloud Workload Protection (CWPP)]]; this note covers where it fits in the broader endpoint picture).
 - Enrolling and enforcing configuration on org-owned client devices — **Intune MDM** (full device management, compliance policies feeding [[Conditional Access]]).
 - Protecting corporate data on unenrolled/BYOD devices — **Intune MAM**/app protection policies (app-level control, no full device enrollment).
@@ -42,6 +56,7 @@ MDM and MAM are the two Intune-based answers to "how do we manage a client devic
 - Discovering and monitoring enterprise IoT devices (printers, cameras, badge readers) — **Defender for IoT Enterprise** edition, surfaced in Defender XDR.
 - Monitoring true industrial control systems/OT networks — **Defender for IoT OT** edition, passive network sensors.
 - Establishing a consistent starting configuration across a device fleet — Intune security baselines (client/mobile), alongside MCSB-based Azure baselines for servers (see [[Security Posture Assessments]]).
+- Keeping patch compliance current across the server fleet as a solution, not a manual task — **Azure Update Manager**, unified across Azure/Arc-enabled/on-prem — see [[Ransomware Resiliency and BCDR]] for how it fits the Prevent phase.
 
 ---
 
@@ -102,6 +117,7 @@ flowchart TD
 | Defender for IoT: Enterprise vs. OT edition | Enterprise IoT extends Defender for Endpoint to non-traditional enterprise devices (printers, cameras, badge readers) and surfaces them in Defender XDR; OT edition covers true industrial control systems via passive, agentless network sensors on plant-floor/substation networks. Different attack surface, different deployment model. |
 | Windows LAPS vs. PIM | LAPS rotates and randomizes a *local* machine account's admin password per device; PIM governs *directory-level* standing privilege (Entra ID/Azure RBAC roles) — different layer, see [[Securing Privileged Access]] for the PIM side. A third layer, Endpoint Privilege Management (JIT elevation of a specific app/task without standing local admin), is covered in [[Intune]]. |
 | Intune security baselines vs. MCSB | Intune baselines are pre-configured client/mobile device policy templates (Windows, Defender, Edge settings); MCSB is the cross-cloud resource-configuration benchmark used for servers/infrastructure (see [[Security Posture Assessments]]) — different scope, same "baseline-first" philosophy. |
+| X.509 certificate auth vs. SAS tokens (IoT device identity) | X.509: asymmetric, per-device (or per-group CA-signed) identity — a compromised device's certificate can be individually revoked without affecting the rest of the fleet, and can be TPM-backed for hardware-rooted trust. SAS tokens: simpler, symmetric-key based — a leaked key often covers a whole device group, and revocation means rotating that shared key everywhere. X.509 is the stronger, recommended default at scale. |
 
 ---
 
@@ -117,6 +133,8 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - Know Windows LAPS as a specific, named, cloud-capable control (Entra ID- or AD DS-backed) — recently added to [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]] — and that Intune is the recommended management path for it.
 - Distinguish Defender for IoT's Enterprise and OT editions by deployment model and target device type — a frequent exam trap given they share a product name.
 - Feed device compliance and LAPS-backed posture into [[Conditional Access]] as a sign-in signal — endpoint security and identity architecture are one connected system, not separate concerns.
+- Separate IoT *device discovery/monitoring* (Defender for IoT) from IoT *workload authentication* (X.509/SAS/TPM via DPS/IoT Hub) as two distinct exam-tested requirements, not one "IoT security" bucket.
+- Know Azure Update Manager by name as the concrete answer to "evaluate solutions for security updates," tied to the ransomware Prevent phase, not a generic "keep systems patched" platitude.
 
 ---
 
@@ -128,6 +146,8 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - "Eliminate shared/reused local admin passwords across a Windows fleet" → Windows LAPS.
 - "Discover and monitor badge readers, printers, and cameras" → Defender for IoT Enterprise edition, not the OT edition.
 - "Monitor a plant-floor industrial control network without installing agents" → Defender for IoT OT edition, passive sensors.
+- "Individually revoke one compromised IoT device's identity without affecting the rest of the fleet" → X.509 certificate auth, not a shared SAS token.
+- "Standardize patch compliance across Azure and on-prem servers" → Azure Update Manager.
 
 ---
 
@@ -138,6 +158,7 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - **"Require compliant device" vs. "Require app protection policy"** — the MDM-backed Conditional Access signal vs. the MAM-backed one; a BYOD scenario needing the latter is a common distractor toward the former.
 - **Defender for IoT Enterprise vs. OT** — enterprise device discovery (Defender for Endpoint add-on) vs. true industrial control monitoring (passive sensors); full comparison above.
 - **Windows LAPS vs. PIM** — local machine credential rotation vs. directory-level standing privilege governance; see [[Intune]] for the third layer, Endpoint Privilege Management.
+- **IoT device monitoring (Defender for IoT) vs. IoT workload authentication (X.509/SAS/DPS)** — discovering and watching devices on the network vs. how those devices actually prove their identity to IoT Hub; two different exam bullets, easy to collapse into one.
 
 ---
 
@@ -153,6 +174,9 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - Passive network sensors, plant-floor/substation networks
 - Security baselines (Intune baselines vs. MCSB)
 - Device compliance signal (Conditional Access)
+- IoT Hub, Device Provisioning Service (DPS)
+- X.509 certificate auth vs. SAS tokens (IoT device identity)
+- Azure Update Manager, patch compliance
 
 ---
 
@@ -166,6 +190,9 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - [[Microsoft Defender]]
 - [[Microsoft Cybersecurity Reference Architectures (MCRA)]]
 - [[Intune]] — co-management, Autopilot, and Endpoint Privilege Management detailed there.
+- [[Trusted Platform Module (TPM)]]
+- [[Private Link]]
+- [[Ransomware Resiliency and BCDR]]
 
 ---
 

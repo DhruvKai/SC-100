@@ -10,7 +10,7 @@ Gives a PaaS resource (or a customer's own service) a private IP inside a consum
 
 ## Core Capabilities
 
-- **Private Endpoint** — a NIC with a private IP, created in the *consumer's* subnet, mapped to one specific resource instance (a single storage account, SQL server, Key Vault, etc.) — not the whole service, and not the whole subnet the way a Service Endpoint applies.
+- **Private Endpoint** — a NIC with a private IP, created in the *consumer's* subnet, mapped to one specific resource instance (a single storage account, SQL server, Key Vault, API Management instance, etc.) — not the whole service, and not the whole subnet the way a Service Endpoint applies. APIM's inbound Private Link use case (Premium tier) is covered in [[API Management and Security]].
 - **Private Link Service** — the *provider* side: exposes a Standard Load Balancer-fronted service (the customer's own app/service, not just Microsoft PaaS) to other consumers via Private Link — this is how an organization offers Private Link connectivity to its own multi-tenant service across subscriptions or tenants.
 - **Private DNS integration** — resolution of the resource's public FQDN to its new private IP depends on an **Azure Private DNS zone** (`privatelink.<service>.<suffix>`), either auto-registered via the private endpoint's DNS zone group or resolved from on-prem via conditional forwarding.
 - **Connection approval workflow** — **Auto-approve** when the consumer has sufficient RBAC on the target resource (same tenant/subscription); **Manual approve** when the provider must explicitly accept each connection request (typical for cross-tenant Private Link Service scenarios) — least-privilege by default for anything outside the provider's own control boundary.
@@ -67,6 +67,7 @@ flowchart LR
 - [[Identity as the Security Perimeter]]
 - [[Azure Landing Zones]]
 - [[Zero Trust]]
+- [[API Management and Security]]
 - [[Exam Objectives]]
 
 ## References

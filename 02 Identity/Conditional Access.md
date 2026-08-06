@@ -14,7 +14,7 @@ Conditional Access is [[Entra ID]]'s policy engine that grants, blocks, or limit
 ## Why Architects Choose It
 
 - Primary enforcement point for [[Zero Trust]]'s "verify explicitly" principle — every sign-in is evaluated against current signals, not a one-time network check.
-- Combines signals (user/group, app, location, device compliance, sign-in risk) into a single access decision, replacing scattered per-app controls.
+- Combines signals (user/group, app, location, device compliance, sign-in risk) into a single access decision, replacing scattered per-app controls. Device compliance itself traces back to hardware attestation — see [[Trusted Platform Module (TPM)]] for the chain that produces the Compliant Device signal.
 - Extends beyond interactive users to workload identities and continuously re-evaluates sessions, closing gaps that static, sign-in-only checks leave open.
 
 ---
@@ -135,6 +135,7 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 - [[AI and Copilot Security Architecture]]
 - [[Identity as the Security Perimeter]]
 - [[Identity and Access Management (IAM)]]
+- [[Trusted Platform Module (TPM)]]
 
 ---
 

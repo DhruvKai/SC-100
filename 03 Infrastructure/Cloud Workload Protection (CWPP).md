@@ -21,10 +21,10 @@ CWPP is active, runtime protection of the workload itself (VMs, containers, data
 
 ## When to Use
 
-- Protecting compute that runs continuously (VMs, containers, App Service) against active exploitation — Defender for Servers / Containers / App Service.
+- Protecting compute that runs continuously (VMs, containers, App Service) against active exploitation — Defender for Servers / Containers / App Service. Container/AKS-specific architecture (cluster RBAC, network policy, workload identity, admission control) beyond enabling this plan is covered in [[Container and Kubernetes Security]].
 - Baseline visibility (vulnerabilities, secrets, malware, software inventory) across a large fleet with minimal deployment friction — **agentless scanning** (bundled in the Defender CSPM plan).
 - Real-time behavioral detection and response on a server — **Defender for Servers Plan 2**, which layers Defender for Endpoint's agent-based EDR on top.
-- Protecting managed data services (SQL, Cosmos DB, Storage) from anomalous access/exfiltration patterns — Defender for SQL/Databases/Storage.
+- Protecting managed data services (SQL, Cosmos DB, Storage) from anomalous access/exfiltration patterns — Defender for SQL/Databases/Storage. **Defender for Storage** specifically scans blobs for malware on upload and flags anomalous access patterns (unusual location, Tor exit node, unexpected data-extraction volume); **Defender for Databases** flags anomalous query patterns (potential SQL injection, brute-force login, unusual data-exfiltration-shaped queries) — both are detection layers on top of, not a replacement for, the encryption/access-control design in [[Data Classification and Protection]].
 - Assessing custom API exposure against the OWASP API Top 10 — Defender for APIs.
 
 ---
@@ -103,6 +103,8 @@ AZ-500 already covers enabling individual Defender for Cloud plans and reading t
 - "Fast, low-friction vulnerability/secrets/malware baseline across a large VM fleet" → agentless scanning, not agent deployment.
 - "Real-time runtime threat detection and response on a server" → Defender for Servers Plan 2, not agentless scanning alone.
 - "Which plan adds EDR" → Defender for Servers Plan 2, not Plan 1.
+- "Detect malware in a file uploaded to Blob Storage" → Defender for Storage's malware scanning, not Defender for Servers or a CSPM finding.
+- "Detect a potential SQL injection or brute-force login attempt against a database" → Defender for Databases, a runtime detection — not an encryption or access-control (CSPM) fix on its own.
 - A scenario describing a misconfiguration (not an active attack) is a CSPM question even if it's about a running workload — see [[Security Posture Assessments]].
 
 ---
@@ -136,6 +138,7 @@ AZ-500 already covers enabling individual Defender for Cloud plans and reading t
 - [[Microsoft Defender XDR]]
 - [[Security Operations]]
 - [[Securing IaaS and PaaS Services]]
+- [[Container and Kubernetes Security]]
 
 ---
 

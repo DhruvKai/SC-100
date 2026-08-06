@@ -7,7 +7,7 @@ tags:
 
 ## Purpose
 
-Finding unsanctioned SaaS usage (Shadow IT) and applying real-time, in-session control over both sanctioned and unsanctioned apps — via **Microsoft Defender for Cloud Apps (CASB)** — the discovery-and-control layer for application security, distinct from network-perimeter controls.
+Finding unsanctioned SaaS usage (Shadow IT) and applying real-time, in-session control over both sanctioned and unsanctioned apps — via **Microsoft Defender for Cloud Apps (CASB)** — the discovery-and-control layer for application security, distinct from network-perimeter controls. The Microsoft 365-specific counterpart — mail/collaboration threat protection via Defender for Office 365 — is covered in [[Securing Microsoft 365]], not repeated here.
 
 ---
 
@@ -170,6 +170,7 @@ AZ-500 does not cover Defender for Cloud Apps, Cloud Discovery, OAuth App Govern
 - [[Data Classification and Protection]]
 - [[Zero Trust]]
 - [[Identity and Access Management (IAM)]]
+- [[Securing Microsoft 365]]
 
 ---
 
