@@ -1,7 +1,11 @@
 ---
 tags:
   - sc100
-  - cheat-sheet
+type: cheat-sheet
+domain:
+  - ops-identity-compliance
+aliases:
+  - Privileged Identity Management
 ---
 
 # Microsoft Entra Privileged Identity Management (PIM)

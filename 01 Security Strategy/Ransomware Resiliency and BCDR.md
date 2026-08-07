@@ -1,6 +1,11 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - best-practices
+aliases:
+  - BCDR
 ---
 
 # Ransomware Resiliency and BCDR

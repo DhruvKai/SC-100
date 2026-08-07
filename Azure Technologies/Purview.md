@@ -1,7 +1,10 @@
 ---
 tags:
   - sc100
-  - cheat-sheet
+type: cheat-sheet
+domain:
+  - ops-identity-compliance
+  - apps-data
 ---
 # Microsoft Purview
 

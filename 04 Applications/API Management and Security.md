@@ -1,6 +1,11 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - apps-data
+aliases:
+  - APIM
 ---
 # API Management and Security
 

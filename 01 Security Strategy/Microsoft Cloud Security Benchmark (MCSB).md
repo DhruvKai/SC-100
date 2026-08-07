@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - best-practices
+  - infrastructure
+aliases:
+  - MCSB
 ---
 
 # Microsoft Cloud Security Benchmark (MCSB)

@@ -2,6 +2,9 @@
 tags:
   - sc100
   - lab
+type: lab
+domain:
+  - ops-identity-compliance
 ---
 
 # Lab: Multi-Region VM Logging into Sentinel with Initial Access Detection

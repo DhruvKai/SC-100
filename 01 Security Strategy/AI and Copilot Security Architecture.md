@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - best-practices
+  - ops-identity-compliance
+  - infrastructure
+  - apps-data
 ---
 
 # AI and Copilot Security Architecture

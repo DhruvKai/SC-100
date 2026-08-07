@@ -1,6 +1,13 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - ops-identity-compliance
+  - infrastructure
+aliases:
+  - Global Secure Access
+  - GSA
 ---
 # Identity as the Security Perimeter
 

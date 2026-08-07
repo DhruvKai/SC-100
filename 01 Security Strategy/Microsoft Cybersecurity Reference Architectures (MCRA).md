@@ -1,6 +1,11 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - best-practices
+aliases:
+  - MCRA
 ---
 
 # Microsoft Cybersecurity Reference Architectures (MCRA)

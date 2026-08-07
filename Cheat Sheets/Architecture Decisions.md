@@ -1,3 +1,9 @@
+---
+tags:
+  - sc100
+type: cheat-sheet
+---
+
 # Architecture Decisions
 
 Decision-tree style quick reference. Update as new decision points come up.

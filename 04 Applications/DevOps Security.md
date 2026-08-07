@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - best-practices
+  - apps-data
+aliases:
+  - DevSecOps
 ---
 
 # DevOps Security

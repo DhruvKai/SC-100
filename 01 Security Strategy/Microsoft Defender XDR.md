@@ -1,6 +1,11 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - ops-identity-compliance
+aliases:
+  - XDR
 ---
 
 # Microsoft Defender XDR

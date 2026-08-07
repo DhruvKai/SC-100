@@ -1,7 +1,12 @@
 ---
 tags:
   - sc100
-  - cheat-sheet
+type: cheat-sheet
+domain:
+  - ops-identity-compliance
+aliases:
+  - Azure AD
+  - Azure Active Directory
 ---
 
 # Microsoft Entra ID

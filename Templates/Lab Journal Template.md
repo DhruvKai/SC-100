@@ -2,6 +2,7 @@
 tags:
   - sc100
   - lab
+type: template
 ---
 
 # Lab: Title

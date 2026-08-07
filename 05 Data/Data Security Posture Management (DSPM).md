@@ -1,6 +1,11 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - apps-data
+aliases:
+  - DSPM
 ---
 
 # Data Security Posture Management (DSPM)

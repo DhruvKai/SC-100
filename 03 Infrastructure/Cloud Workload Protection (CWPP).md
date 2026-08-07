@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - infrastructure
+  - apps-data
+aliases:
+  - CWPP
 ---
 # Cloud Workload Protection (CWPP)
 

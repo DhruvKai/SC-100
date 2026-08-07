@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - ops-identity-compliance
+  - apps-data
+aliases:
+  - IAM
 ---
 # Identity and Access Management (IAM)
 

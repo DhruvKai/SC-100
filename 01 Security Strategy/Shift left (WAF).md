@@ -1,9 +1,11 @@
 ---
-
 tags:
-
-- sc100
-
+  - sc100
+type: concept
+domain:
+  - best-practices
+aliases:
+  - Shift Left
 ---
 
 # Shift Left (WAF)

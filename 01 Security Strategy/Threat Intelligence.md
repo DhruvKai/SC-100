@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - ops-identity-compliance
+aliases:
+  - CTI
+  - MDTI
 ---
 # Threat Intelligence
 

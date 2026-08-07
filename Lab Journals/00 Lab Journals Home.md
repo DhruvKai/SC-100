@@ -1,3 +1,9 @@
+---
+tags:
+  - sc100
+type: index
+---
+
 # Lab Journals
 
 Hands-on lab entries — what was done, what it demonstrated, and how it maps back to SC-100 concepts. Separate from the deep reference notes: these are experience logs, not service documentation.

@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - infrastructure
+aliases:
+  - AKS Security
+  - Kubernetes Security
 ---
 # Container and Kubernetes Security
 

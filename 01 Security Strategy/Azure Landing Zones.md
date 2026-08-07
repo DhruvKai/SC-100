@@ -1,6 +1,9 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - best-practices
 ---
 
 # Azure Landing Zones

@@ -1,6 +1,11 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - infrastructure
+aliases:
+  - CSPM
 ---
 
 # Security Posture Assessments

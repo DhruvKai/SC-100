@@ -1,7 +1,13 @@
 ---
 tags:
   - sc100
-  - cheat-sheet
+type: cheat-sheet
+domain:
+  - infrastructure
+  - apps-data
+aliases:
+  - Microsoft Endpoint Manager
+  - MEM
 ---
 
 # Microsoft Intune (formerly Microsoft Endpoint Manager)

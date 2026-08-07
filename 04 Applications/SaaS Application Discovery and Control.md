@@ -1,6 +1,12 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - ops-identity-compliance
+  - apps-data
+aliases:
+  - CASB
 ---
 
 # SaaS Application Discovery and Control

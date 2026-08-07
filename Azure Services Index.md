@@ -1,3 +1,9 @@
+---
+tags:
+  - sc100
+type: index
+---
+
 # Identity
 
 [[Conditional Access]]

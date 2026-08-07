@@ -1,3 +1,9 @@
+---
+tags:
+  - sc100
+type: index
+---
+
 # SC-100 Notes
 
 ## Sections

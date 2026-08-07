@@ -1,7 +1,11 @@
 ---
 tags:
   - sc100
-  - cheat-sheet
+type: cheat-sheet
+domain:
+  - infrastructure
+aliases:
+  - NSG
 ---
 
 # Network Security Group (NSG)

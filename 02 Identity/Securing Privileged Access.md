@@ -1,6 +1,9 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - ops-identity-compliance
 ---
 # Securing Privileged Access
 

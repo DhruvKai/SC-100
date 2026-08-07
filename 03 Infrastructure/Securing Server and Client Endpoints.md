@@ -1,6 +1,9 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - infrastructure
 ---
 
 # Securing Server and Client Endpoints

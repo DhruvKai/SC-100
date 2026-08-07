@@ -1,6 +1,11 @@
 ---
 tags:
   - sc100
+type: concept
+domain:
+  - apps-data
+aliases:
+  - M365 Security
 ---
 # Securing Microsoft 365
 

@@ -1,6 +1,7 @@
 ---
 tags:
   - sc100
+type: index
 ---
 
 # Exam Objectives
