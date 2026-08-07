@@ -55,7 +55,7 @@ flowchart LR
 
 - "Extend Defender for Cloud/Sentinel/Azure Policy to on-prem or AWS/GCP VMs" → Azure Arc onboarding is always the first step; a scenario skipping straight to "enable Defender for Servers" on a non-Azure VM is missing the Arc prerequisite.
 - Full posture-management decision flow (when multicloud connectors vs. Arc apply) already lives in [[Security Posture Assessments]] — this page is the mechanism, that page is the decision.
-- Ties to "design monitoring to support hybrid and multicloud environments" — Azure Monitor Agent running on an Arc-enabled server is the expected collection path into [[Microsoft Sentinel]] (see [[Azure Security Logging]]).
+- Ties to "design monitoring to support hybrid and multicloud environments" — Azure Monitor Agent running on an Arc-enabled server is the expected collection path into [[Microsoft Sentinel]] (see [[Azure Security Logging]]). Arc is the specific mechanism behind CAF's named **Unified Operations model** for that exam objective — full model in [[Cloud Adoption Framework (CAF)]].
 - A scenario needing management traffic to avoid the public internet entirely points to Azure Arc Private Link Scope, not a VPN/ExpressRoute-only answer.
 
 ## Comparison
@@ -76,6 +76,7 @@ flowchart LR
 - [[Microsoft Defender for Cloud]]
 - [[Azure Policy]]
 - [[Zero Trust]]
+- [[Cloud Adoption Framework (CAF)]]
 - [[Exam Objectives]]
 
 ## References

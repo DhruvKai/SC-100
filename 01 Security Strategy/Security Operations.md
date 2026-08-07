@@ -148,6 +148,7 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - Evaluate threat detection coverage explicitly against MITRE ATT&CK's **three** matrices (Enterprise, Mobile, ICS), not just Enterprise — an explicit exam objective, and easy to under-scope if OT/ICS or mobile is in the estate.
 - Know *why* SIEM, XDR, and SOAR get layered together rather than choosing one — native depth (XDR) vs. cross-source breadth/retention (SIEM) vs. automated response (SOAR) — and that the Defender XDR connector plus a single Primary workspace is the concrete mechanism that unifies them in the Defender portal. Legacy separate-portal designs are outdated, see [[Microsoft Sentinel]].
 - Centralized logging/auditing design (which sources converge where) is covered in [[Azure Security Logging]]; this note covers what happens to that data once it lands — correlation, hunting, automation, coverage evaluation.
+- The org-wide framework for *why* hybrid/multicloud resources feed this platform at all — CAF's Unified Operations model, extended via [[Azure Arc]] — is covered in [[Cloud Adoption Framework (CAF)]]; this note picks up once that data reaches Sentinel/Defender XDR.
 
 ---
 
@@ -199,6 +200,8 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - [[Security Posture Assessments]]
 - [[Ransomware Resiliency and BCDR]]
 - [[Threat Intelligence]]
+- [[Cloud Adoption Framework (CAF)]]
+- [[Azure Arc]]
 
 ---
 

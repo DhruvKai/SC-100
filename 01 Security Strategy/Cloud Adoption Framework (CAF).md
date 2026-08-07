@@ -6,6 +6,7 @@ domain:
   - best-practices
 aliases:
   - CAF
+status: needs-verification
 ---
 
 # Cloud Adoption Framework (CAF)
@@ -66,9 +67,41 @@ flowchart LR
 | Adopt       | Migrate/modernize/build — security requirements carried into each workload                                                                                      |
 | Govern      | Risk assessment, policy, compliance ([[Azure Policy]]); tracked via [[Security Scoring Dashboards]]                                                             |
 | Secure      | Active protection — SecOps, threat protection ([[Microsoft Defender for Cloud]], [[Microsoft Sentinel]]); posture measured via [[Security Posture Assessments]] |
-| Manage      | Ongoing operations and optimization                                                                                                                             |
+| Manage      | Ongoing operations and optimization — the **Unified Operations model** below is its named architecture for hybrid/multicloud monitoring                        |
 
 **Secure** and **Govern** are distinct, parallel methodologies — Govern is risk/compliance controls, Secure is active threat protection.
+
+---
+
+## Manage Methodology: Unified Operations Model
+
+CAF's named answer to "design monitoring to support hybrid and multicloud environments" — a specific model, not a generic "monitor everything" instruction.
+
+```mermaid
+flowchart TD
+    subgraph Processes["Customer processes"]
+        Govern2["Govern:<br/>Cost Management, Security Baseline,<br/>Resource Consistency, Identity Baseline,<br/>Deployment Acceleration"]
+        Manage2["Manage:<br/>Inventory & Visibility, Operational Compliance,<br/>Protection & Recovery, Platform Operations,<br/>Workload Operations"]
+    end
+
+    Processes --> UOS["Unified Operations Solution"]
+
+    subgraph Tiers["Control tiers (applied uniformly)"]
+        Basic["Basic features:<br/>search/index/tag, template/automate,<br/>access & security boundaries"]
+        Enhanced["Enhanced visibility:<br/>performance & inventory, security & compliance,<br/>applications & dependencies"]
+        Automated["Automated controls:<br/>environment & in-guest policy,<br/>configuration & updates, protection & recovery"]
+    end
+
+    UOS --> Tiers
+
+    Tiers --> Primary["Primary Cloud Controls<br/>(Azure-native servers, containers, apps, data)"]
+    Tiers -->|extended via Azure Arc| HybridExt["Hybrid & Multicloud Extension<br/>(hybrid, multicloud, edge datacenters/facilities)"]
+```
+
+- **Govern** and **Manage** are two parallel customer-process tracks, each with five named disciplines (above) — they run continuously against whatever the **Unified Operations Solution** layer below them controls.
+- The **Unified Operations Solution** applies the *same three control tiers* regardless of where a resource actually lives: **Basic features** (search/index/tag, template/automate, access boundaries), **Enhanced visibility** (performance/inventory, security/compliance, app dependencies), and **Automated controls** (environment/in-guest policy, config/updates, protection and recovery).
+- **Primary Cloud Controls** is those three tiers applied natively to Azure-hosted resources. **Hybrid & Multicloud Extension** is the *same* three tiers stretched out to hybrid, multicloud, and edge resources — the mechanism that makes this possible is [[Azure Arc]], which projects non-Azure resources into Azure Resource Manager so they're addressable by the identical policy/RBAC/monitoring tooling as native resources (technical detail in [[Azure Arc]]; SIEM-side ingestion once that data lands is [[Security Operations]]).
+- The architectural point: **one control plane, extended outward** — not a separate monitoring stack per cloud/environment. That's the direct answer whenever a scenario says "hybrid and multicloud monitoring."
 
 ---
 
@@ -93,6 +126,7 @@ flowchart TD
 | CAF vs. [[Azure Well-Architected Framework (WAF)]] | CAF sequences the org-wide adoption lifecycle; WAF evaluates an individual workload's architecture across five pillars — full comparison in the WAF note. |
 | CAF vs. [[Zero Trust]] | CAF is a lifecycle/governance roadmap; Zero Trust is the trust-verification principle applied within controls CAF introduces. |
 | Platform landing zone vs. application landing zone | Platform = shared services (identity, connectivity, management); application = hosts a specific workload. Full architecture in [[Azure Landing Zones]]. |
+| Primary Cloud Controls vs. Hybrid & Multicloud Extension | Same three control tiers (Basic features/Enhanced visibility/Automated controls) in both cases — the difference is *reach*, not different tooling. Primary Cloud Controls apply natively to Azure-hosted resources; the Hybrid & Multicloud Extension applies the identical tiers to non-Azure resources once [[Azure Arc]] has projected them into Azure Resource Manager. |
 
 ---
 
@@ -112,6 +146,8 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - Use [[Security Posture Assessments]] and [[Security Scoring Dashboards]] as the recurring measurement layer for the Secure and Govern methodologies — CAF sequences *when* they run, those notes cover *what the numbers mean*.
 - Once a landing zone hits baseline security, use a [[Cloud Adoption Security Review (CASR)]] to self-assess (or have Microsoft assess) maturity against the Secure methodology specifically.
 - CAF's AI adoption lifecycle adds a dedicated Secure AI track — see [[AI and Copilot Security Architecture]] for the architecture decisions it drives.
+- Know the Unified Operations model by name for "design monitoring to support hybrid and multicloud environments" — the answer is extending the *same* Basic/Enhanced/Automated control tiers outward via [[Azure Arc]], not standing up a separate monitoring stack per cloud.
+- Recognize Govern's five disciplines (Cost Management, Security Baseline, Resource Consistency, Identity Baseline, Deployment Acceleration) and Manage's five (Inventory & Visibility, Operational Compliance, Protection & Recovery, Platform Operations, Workload Operations) as named, testable process groups, not generic "governance" and "operations" labels.
 
 ---
 
@@ -120,6 +156,7 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - Know which methodology a scenario belongs to: landing zone setup = Ready; ongoing policy/compliance = Govern; active detection/response = Secure.
 - Distractors often mislabel Secure-phase controls (Defender for Cloud, Sentinel) as Govern-phase, or vice versa — check whether the scenario is about *risk/compliance* or *active protection*.
 - "Recommend a strategy based on CAF and WAF" questions expect you to name the specific methodology or pillar, not just "use CAF."
+- "Design monitoring to support hybrid and multicloud environments" → the Unified Operations model: same control tiers, extended via Azure Arc — not a separate tool per environment.
 
 ---
 
@@ -128,6 +165,7 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - **CAF Govern vs. Secure** — Govern manages risk and compliance controls; Secure operationalizes active threat protection. Easy to conflate since both sound like "security."
 - **CAF vs. [[Azure Well-Architected Framework (WAF)]]** — CAF is the org-wide roadmap; WAF is per-workload guidance across five pillars. See the WAF note for the acronym collision with [[Azure Web Application Firewall]].
 - **Platform landing zone vs. application landing zone** — shared foundation vs. workload-specific environment built on it.
+- **Primary Cloud Controls vs. Hybrid & Multicloud Extension** — same control tiers, different reach; see Comparison above.
 
 ---
 
@@ -139,6 +177,10 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - DevSecOps process alignment
 - Secure methodology vs. Govern methodology
 - Adoption lifecycle sequencing
+- Unified Operations model, Unified Operations Solution
+- Primary Cloud Controls, Hybrid & Multicloud Extension
+- Govern's five disciplines, Manage's five disciplines
+- Basic features / Enhanced visibility / Automated controls (control tiers)
 
 ---
 
@@ -151,6 +193,9 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - [[Security Posture Assessments]]
 - [[Security Scoring Dashboards]]
 - [[AI and Copilot Security Architecture]]
+- [[Azure Arc]]
+- [[Security Operations]]
+- [[Azure Security Logging]]
 
 ---
 
@@ -161,3 +206,9 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - [Security Teams, Roles, and Functions - Cloud Adoption Framework | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/secure/teams-roles)
 - [Secure Overview - Cloud Adoption Framework | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/secure/overview)
 - [[Exam Objectives]]
+
+---
+
+## Verification Flag
+
+The Unified Operations model (Govern/Manage discipline names, the Basic features/Enhanced visibility/Automated controls tiers, Primary Cloud Controls vs. Hybrid & Multicloud Extension) was transcribed from a Microsoft Learn training-module diagram, not cross-checked against the live CAF Manage methodology page. Re-verify exact discipline names and diagram terminology against [Cloud Adoption Framework: Manage](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/manage/) before treating it as exam-final wording.
