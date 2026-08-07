@@ -24,7 +24,7 @@ Matching network exposure and identity controls to the deployment model — IaaS
 
 ## When to Use
 
-- Any Azure VM/VM Scale Set/hybrid compute — apply the IaaS network stack: NSGs for subnet segmentation, [[Azure Firewall]] for centralized policy, **Azure Bastion** for browser-based RDP/SSH with no public IP, **JIT VM access** (Defender for Cloud) to open management ports only on approved request.
+- Any Azure VM/VM Scale Set/hybrid compute — apply the IaaS network stack: NSGs for subnet segmentation, [[Azure Firewall]] for centralized policy, **[[Azure Bastion]]** for browser-based RDP/SSH with no public IP, **JIT VM access** (Defender for Cloud) to open management ports only on approved request.
 - Any managed data or app service (Storage, SQL, Cosmos DB, App Service, Key Vault, API Management) — apply the PaaS network stack: disable public network access by default, then choose **Private Link** (private IP, no data-exfiltration risk via other tenants' public endpoints) or **Service Endpoint** (simpler, no extra cost, still traverses the service's public IP space) per resource sensitivity. API-specific policy (throttling, token validation, versioning) in front of that backend is covered in [[API Management and Security]].
 - Service-to-service calls between Azure resources — [[Identity and Access Management (IAM)|managed identity]], not a stored key/connection string.
 - Portfolio-wide enforcement of the above ("public network access disabled," "JIT required") — [[Azure Policy]] and MCSB initiatives, not manual per-resource configuration.
@@ -108,7 +108,7 @@ flowchart TD
 | --- | --- |
 | Private Link vs. Service Endpoint | Private Link assigns the PaaS resource a **private IP inside the VNet**, reachable over ExpressRoute/VPN/peering too, and removes it from the public endpoint entirely — no data-exfiltration path via another tenant's traffic on the same public IP space. Service Endpoint keeps the resource's public IP but restricts traffic to it from selected subnets, routed over the Azure backbone — simpler and free, but the resource is still technically on a public endpoint. Private Link is the stronger default recommendation; Service Endpoint is the cost-conscious, lower-sensitivity option. Private Link mechanics (Private Endpoint vs. Private Link Service, DNS resolution) are detailed in [[Private Link]]. |
 | NSG vs. Azure Firewall | NSG is a free, stateless-ish allow/deny filter at subnet/NIC level (5-tuple rules) — segmentation. Azure Firewall is a stateful, managed PaaS firewall with FQDN filtering, threat intelligence feeds, and centralized policy (Firewall Manager) across many VNets/hubs — egress/ingress policy at scale. Layered together, not either/or: NSGs segment, Azure Firewall centralizes and inspects. Rule-level mechanics for each live in [[Network Security Group]] and [[Azure Firewall]]. |
-| JIT VM access vs. Azure Bastion | JIT (Defender for Cloud) narrows the *time window* a management port is open at the NSG/firewall level, on approved request — the port can still be opened to a source IP briefly. Bastion removes the need for any public IP or open management port at all — RDP/SSH is brokered through the Azure portal over TLS. Complementary: Bastion for the connection path, JIT for tightening any remaining direct access. |
+| JIT VM access vs. [[Azure Bastion]] | JIT (Defender for Cloud) narrows the *time window* a management port is open at the NSG/firewall level, on approved request — the port can still be opened to a source IP briefly. Bastion removes the need for any public IP or open management port at all — RDP/SSH is brokered through the Azure portal over TLS. Complementary: Bastion for the connection path, JIT for tightening any remaining direct access. Full Bastion SKU/feature mechanics live in [[Azure Bastion]], not repeated here. |
 | Managed identity vs. service principal (PaaS auth) | Full comparison in [[Identity and Access Management (IAM)]] — managed identity is the default for Azure-resource-to-Azure-resource calls; a stored key/connection string is the pattern both are meant to replace. |
 | IaaS vs. PaaS shared responsibility (network layer) | IaaS: customer configures NSGs, firewall, Bastion/JIT — Microsoft only secures the physical/hypervisor layer. PaaS: Microsoft patches host/OS/runtime; customer only configures the resource's public-access setting, firewall rules, and Private Link/Service Endpoint. |
 
@@ -180,6 +180,7 @@ AZ-500 already covers configuring NSGs, Azure Firewall, Azure Bastion, JIT VM ac
 - [[API Management and Security]]
 - [[Front Door and Application Gateway]]
 - [[Key Vault]]
+- [[Azure Bastion]]
 
 ---
 

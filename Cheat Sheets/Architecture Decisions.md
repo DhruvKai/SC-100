@@ -129,6 +129,18 @@ Need Windows Server/AD DS admin tasks delegated without full Domain Admin rights
   ↓
 [[Securing Privileged Access]] (JEA)
 
+Need to detect and score sign-in/user risk for Conditional Access to consume?
+  ↓
+[[Identity Protection]]
+
+Need browser/native-client RDP-SSH with no public IP on the VM?
+  ↓
+[[Azure Bastion]]
+
+Need to verify an NSG rule, troubleshoot connectivity, or delegate management across tenants?
+  ↓
+[[Network Watcher and Lighthouse]]
+
 Need to secure Exchange/SharePoint/Teams mail and collaboration threats, or M365 Secure Score?
   ↓
 [[Securing Microsoft 365]]

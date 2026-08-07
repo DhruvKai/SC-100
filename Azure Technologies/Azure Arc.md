@@ -62,7 +62,7 @@ flowchart LR
 
 | Compare | Difference |
 | --- | --- |
-| Azure Arc vs. Azure Lighthouse | Arc projects *non-Azure resources* into a tenant's own Azure Resource Manager so native Azure tooling can govern them. Lighthouse is cross-*tenant* delegated administration — letting one tenant (typically an MSP) manage resources that already live in a *different* customer's Azure tenant. Different problem: "manage things outside Azure" vs. "manage another tenant's Azure resources." |
+| Azure Arc vs. [[Network Watcher and Lighthouse\|Azure Lighthouse]] | Arc projects *non-Azure resources* into a tenant's own Azure Resource Manager so native Azure tooling can govern them. Lighthouse is cross-*tenant* delegated administration — letting one tenant (typically an MSP) manage resources that already live in a *different* customer's Azure tenant. Different problem: "manage things outside Azure" vs. "manage another tenant's Azure resources." Lighthouse mechanics live in [[Network Watcher and Lighthouse]], not repeated here. |
 | Arc-enabled Kubernetes vs. AKS | AKS is Azure's own managed Kubernetes control plane. Arc-enabled Kubernetes onboards a cluster whose control plane already runs elsewhere (on-prem, another cloud, edge) so it can receive the same GitOps/Policy/Defender treatment — Arc doesn't replace or host the control plane. |
 | Arc-enabled servers vs. Update Manager alone | Update Manager is one capability *unlocked by* Arc for non-Azure servers; Arc itself is the broader projection/identity layer (RBAC, Policy, Defender eligibility) that Update Manager, Change Tracking, and Defender for Servers all depend on. |
 
@@ -77,6 +77,7 @@ flowchart LR
 - [[Azure Policy]]
 - [[Zero Trust]]
 - [[Cloud Adoption Framework (CAF)]]
+- [[Network Watcher and Lighthouse]]
 - [[Exam Objectives]]
 
 ## References

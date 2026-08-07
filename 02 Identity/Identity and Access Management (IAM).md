@@ -50,6 +50,28 @@ flowchart TD
 
 ---
 
+## App Registration and API Permissions
+
+The identity elements inside an app registration, and the permission model that governs what a registered app can actually do — the mechanics underneath the "app registration vs. enterprise application" distinction above.
+
+- **Application (client) ID** — the globally unique ID for the app's *definition*, same value across every tenant it's registered/consented into.
+- **Object ID** — the ID of the *directory object itself* (different value from the Application ID — a frequent exam trap; the app registration and its per-tenant enterprise application/service principal each have their own, separate Object ID).
+- **Directory (tenant) ID** — which tenant the registration was created in — its home tenant.
+- **Redirect URIs (reply URLs)** — pre-registered destinations the IdP is allowed to send the auth response to; not pre-registering (or over-broadly registering) these opens the door to token redirection attacks.
+- **Certificates & secrets** — the credential material a confidential client presents to authenticate itself; a certificate is preferred over a client secret, and workload identity federation (see [[Identity and Access Management (IAM)|Comparison]] above) removes the need for either.
+- **API permissions** — which permissions this app requests from other APIs (Microsoft Graph, a custom API), each either delegated or application (see below), subject to consent.
+- **Expose an API** — the scopes *this* app itself defines, for other apps to request delegated/application permissions against.
+- **App roles** — custom roles an app defines for its own authorization model, assignable to users/groups/other apps — an app-level authorization layer distinct from Azure RBAC or Entra ID roles.
+
+### Application Permission vs. Delegated Permission
+
+- **Delegated permission** — the app acts **as the signed-in user**, bounded by *both* the consented scope *and* whatever that user is actually allowed to do. A user with no mailbox access still can't be used to read mail through the app, even if `Mail.Read` (delegated) was consented — least privilege by construction. Requires an actual signed-in user (interactive sign-in, or on-behalf-of for a downstream call).
+- **Application permission** — the app acts **as itself**, with no signed-in user, and the permission applies **tenant-wide** regardless of any individual user's own access. `Mail.Read` as an *application* permission means the app can read *any* mailbox in the tenant — a materially larger blast radius, not just a stricter version of the delegated case.
+- **Consent**: low-privilege delegated permissions can sometimes be user-consented (subject to tenant consent policy); application permissions **always** require admin consent — no signed-in user exists to consent on their own behalf. Restricting risky user consent org-wide is covered in [[SaaS Application Discovery and Control|OAuth App Governance]], not repeated here.
+- **Architecture decision**: default to delegated permissions wherever a human is actually present in the flow; reserve application permissions for genuine unattended/backend services, and scope them as narrowly as the task allows — an application permission is the identity equivalent of the "not just narrower RBAC scope" theme running through this whole note.
+
+---
+
 ## When to Use
 
 - An Azure-hosted app/script needs to authenticate to other Azure resources — **managed identity**, not a service principal with stored credentials.
@@ -120,6 +142,7 @@ flowchart TD
 | System-assigned vs. user-assigned managed identity | System-assigned: 1:1 with a single resource, created and deleted with it — simplest, least reusable. User-assigned: a standalone resource, shareable across multiple compute resources — needed when several resources must present the same identity or the identity must outlive one resource. |
 | Azure RBAC vs. Entra ID roles | Azure RBAC governs access to Azure resources (management group → subscription → resource group → resource scope); Entra ID roles govern the directory itself (users, groups, Conditional Access, licensing) at tenant/administrative-unit/object scope. Different control planes — assigning one doesn't grant the other. |
 | Client secret/certificate vs. workload identity federation | A client secret/certificate is a stored, rotatable credential. Workload identity federation configures a service principal *or* a user-assigned managed identity to trust tokens from an external IdP (GitHub Actions, Kubernetes, another cloud), exchanging them for an Entra ID token with nothing stored at rest. |
+| Application permission vs. delegated permission | Delegated: the app acts as the signed-in user, bounded by both the consented scope and that user's own access — smaller blast radius, requires a signed-in user. Application: the app acts as itself with no signed-in user, and the permission applies tenant-wide regardless of any individual user's access — larger blast radius, always requires admin consent. |
 
 ---
 
@@ -137,6 +160,7 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - Treat AD DS hardening as tied directly to ransomware/BCDR priority (see [[Ransomware Resiliency and BCDR]]) — a named, prioritized IAM decision, not routine patching.
 - Full privileged-access governance — [[PIM]], entitlement management, access reviews, the enterprise access model, CIEM — is the related but distinct "Securing privileged access" exam subsection; this note covers general IAM/authorization, not standing-privilege reduction.
 - Treat the tenant as the outermost authorization boundary — Azure RBAC and Entra ID roles both operate *inside* one tenant; a multi-tenant estate is a governance decision (consolidate vs. deliberately separate), not just an IdP question.
+- Treat application permissions as a blast-radius decision, not a stricter form of delegated permission — an application permission grants tenant-wide access regardless of any user's own scope, which is why it always requires admin consent.
 
 ---
 
@@ -147,6 +171,9 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - "GitHub Actions pipeline deploys to Azure without storing a secret" → workload identity federation.
 - A scenario granting directory-level power (creating users, managing Conditional Access) via an Azure RBAC role is a trap — that requires an Entra ID role instead.
 - "A subscription needs to move between organizations/tenants" → re-associate it with the target tenant; RBAC assignments don't carry over and must be recreated, since they're scoped inside the original tenant.
+- "An app needs to read any mailbox in the tenant, with no user signed in" → application permission (tenant-wide, admin-consent-only), not delegated.
+- "An app should only ever see what the signed-in user can already see" → delegated permission — the correct least-privilege default when a human is present.
+- A scenario confusing an app's **Application ID** with its **Object ID** is testing whether you know they're different values on the same app registration.
 
 ---
 
@@ -157,6 +184,8 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - **App registration vs. enterprise application** — global app definition (home tenant) vs. its per-tenant service principal instance; a scenario "consenting" a multi-tenant app is creating an enterprise application, not a new app registration.
 - **Client secret vs. federated credential** — a rotatable stored secret vs. no stored secret at all.
 - **Tenant vs. subscription** — identity/directory boundary vs. billing/resource boundary; a subscription trusts one tenant, it isn't part of one.
+- **Application permission vs. delegated permission** — acts as itself, tenant-wide vs. acts as the signed-in user, bounded by their access; full breakdown above.
+- **Application (client) ID vs. Object ID** — the app's global definition ID vs. the directory object's own ID — different values, often assumed to be the same.
 
 ---
 
@@ -172,6 +201,10 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - Tenant, directory objects (users, groups, devices)
 - App registration vs. enterprise application (service principal)
 - Administrative units, delegated administration
+- Application (client) ID, Object ID, Directory (tenant) ID
+- Redirect URIs (reply URLs), certificates & secrets
+- API permissions, Expose an API, app roles
+- Application permission vs. delegated permission, admin consent vs. user consent
 
 ---
 
@@ -188,6 +221,8 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - [[Microsoft Defender XDR]]
 - [[PIM]]
 - [[Securing Privileged Access]]
+- [[SaaS Application Discovery and Control]]
+- [[Identity Protection]]
 
 ---
 
@@ -196,5 +231,6 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - [Managed identities for Azure resources](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview) — Microsoft Learn
 - [Workload identity federation](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation) — Microsoft Learn
 - [Azure roles, Microsoft Entra roles, and classic subscription administrator roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles) — Microsoft Learn
+- [Permissions and consent in the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/permissions-consent-overview) — Microsoft Learn
 - (https://aka.ms/idplatform)
 - [[Exam Objectives]]
