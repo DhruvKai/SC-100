@@ -7,6 +7,7 @@ domain:
 aliases:
   - CTI
   - MDTI
+status: needs-verification
 ---
 # Threat Intelligence
 

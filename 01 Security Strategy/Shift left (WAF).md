@@ -6,6 +6,7 @@ domain:
   - best-practices
 aliases:
   - Shift Left
+status: needs-verification
 ---
 
 # Shift Left (WAF)
@@ -132,4 +133,8 @@ flowchart LR
 - Microsoft Learn — Well-Architected Framework, Security pillar, Secure Development Lifecycle (SE:02)
 - Microsoft Learn — Cloud Adoption Framework, Secure methodology, Adopt phase
 
-**Verification flag:** Shift left is not a standalone WAF pillar or numbered principle on its own — it is realized through SE:02 and reinforced in CAF's Secure/Adopt guidance. Re-verify pillar checklist IDs against Microsoft Learn if citing SE:02 directly in exam prep, as checklist numbering has been revised before.
+---
+
+## Verification Flag
+
+Shift left is not a standalone WAF pillar or numbered principle on its own — it is realized through SE:02 and reinforced in CAF's Secure/Adopt guidance. Re-verify pillar checklist IDs against Microsoft Learn if citing SE:02 directly in exam prep, as checklist numbering has been revised before.

@@ -7,6 +7,7 @@ domain:
 aliases:
   - AKS Security
   - Kubernetes Security
+status: needs-verification
 ---
 # Container and Kubernetes Security
 
@@ -123,7 +124,6 @@ AZ-500 covers AKS security at the configuration level — enabling the Network P
 - Recommend Microsoft Entra Workload ID as the default for pod-to-Azure authentication — explicitly over AAD Pod Identity (retired) and over node-level managed identity (too broad).
 - Recommend Azure RBAC for Kubernetes Authorization over native Kubernetes RBAC when the goal is centralizing governance into existing Entra ID roles, PIM, and access reviews.
 - Pair Azure Policy for Kubernetes (prevent, admission-time) with Defender for Containers (detect, runtime) as two distinct, necessary controls — a common exam trap is treating either one as sufficient alone.
-- *(Verify before the exam: exact current status/GA date of AAD Pod Identity's retirement and any newer Workload ID capabilities — Microsoft's container identity guidance moves quickly.)*
 
 ---
 
@@ -183,3 +183,9 @@ AZ-500 covers AKS security at the configuration level — enabling the Network P
 - [Defender for Containers overview](https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction) — Microsoft Learn
 - [Azure Policy for Kubernetes](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes) — Microsoft Learn
 - [[Exam Objectives]]
+
+---
+
+## Verification Flag
+
+Exact current status/GA date of AAD Pod Identity's retirement and any newer Workload ID capabilities — Microsoft's container identity guidance moves quickly. Re-verify close to exam date.

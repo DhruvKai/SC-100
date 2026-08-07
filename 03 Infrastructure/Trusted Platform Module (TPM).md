@@ -6,6 +6,7 @@ domain:
   - infrastructure
 aliases:
   - TPM
+status: needs-verification
 ---
 # Trusted Platform Module (TPM)
 
@@ -98,7 +99,6 @@ AZ-500 covers BitLocker and Windows Hello for Business at a configuration level 
 - Treat TPM/Secure Boot/Measured Boot as the **foundation** of the device-compliance signal Conditional Access consumes — not an isolated device setting, but the first link in a chain that ends in an identity-layer access decision.
 - Recognize TPM 2.0 as a hard baseline tied to current OS/device architecture decisions (Windows 11, Credential Guard/VBS), not an optional hardening add-on.
 - Design the compensating-control path explicitly for devices that can't meet the TPM 2.0 baseline (older hardware, some IoT/OT) rather than treating device trust as binary pass/fail across an entire estate.
-- *(Verify before the exam: current exact hardware requirements for Credential Guard/VBS assurance levels and any Windows/Intune attestation changes — Microsoft revises these periodically.)*
 
 ---
 
@@ -151,3 +151,9 @@ AZ-500 covers BitLocker and Windows Hello for Business at a configuration level 
 - [Device Health Attestation](https://learn.microsoft.com/en-us/windows/security/hardware-security/how-hardware-based-root-of-trust-helps-protect-windows) — Microsoft Learn
 - [BitLocker overview](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/) — Microsoft Learn
 - [[Exam Objectives]]
+
+---
+
+## Verification Flag
+
+Current exact hardware requirements for Credential Guard/VBS assurance levels and any Windows/Intune attestation changes — Microsoft revises these periodically. Re-verify close to exam date.

@@ -6,6 +6,7 @@ domain:
   - best-practices
 aliases:
   - CASR
+status: needs-verification
 ---
 
 # Cloud Adoption Security Review (CASR)
@@ -133,4 +134,8 @@ Not covered in AZ-500 at all — AZ-500 teaches the individual controls CASR che
 - [Cloud Adoption Framework Secure methodology](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/secure/overview) — Microsoft Learn
 - [[Exam Objectives]]
 
-> **Verification flag**: primary source is a Microsoft Tech Community blog post (not a canonical Learn article), and the exact checklist categories live in an actively maintained GitHub project. Confirm current scope/categories before treating this as exam-final detail.
+---
+
+## Verification Flag
+
+Primary source is a Microsoft Tech Community blog post (not a canonical Learn article), and the exact checklist categories live in an actively maintained GitHub project. Confirm current scope/categories before treating this as exam-final detail.

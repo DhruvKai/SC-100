@@ -6,6 +6,7 @@ domain:
   - apps-data
 aliases:
   - DSPM
+status: needs-verification
 ---
 
 # Data Security Posture Management (DSPM)

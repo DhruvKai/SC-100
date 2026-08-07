@@ -7,6 +7,7 @@ domain:
   - ops-identity-compliance
   - infrastructure
   - apps-data
+status: needs-verification
 ---
 
 # AI and Copilot Security Architecture

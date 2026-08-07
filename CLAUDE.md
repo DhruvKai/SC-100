@@ -202,4 +202,4 @@ Prefer Microsoft Learn terminology.
 
 Do not invent architecture guidance.
 
-Flag anything that requires verification.
+Flag anything that requires verification: add a `## Verification Flag` section near the end of the note (after References) explaining what to re-check and why, and add `status: needs-verification` to the note's frontmatter so it's queryable across the vault. Remove the property once the fact has actually been re-verified and the note updated — an unresolved flag left in place after verification is noise, not signal.

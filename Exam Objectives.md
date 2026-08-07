@@ -2,6 +2,7 @@
 tags:
   - sc100
 type: index
+status: needs-verification
 ---
 
 # Exam Objectives

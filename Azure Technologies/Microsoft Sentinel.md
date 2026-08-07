@@ -6,6 +6,7 @@ domain:
   - ops-identity-compliance
 aliases:
   - Sentinel
+status: needs-verification
 ---
 
 # Microsoft Sentinel

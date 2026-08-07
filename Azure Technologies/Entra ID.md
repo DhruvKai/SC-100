@@ -7,6 +7,7 @@ domain:
 aliases:
   - Azure AD
   - Azure Active Directory
+status: needs-verification
 ---
 
 # Microsoft Entra ID

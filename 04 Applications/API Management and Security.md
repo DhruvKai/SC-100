@@ -6,6 +6,7 @@ domain:
   - apps-data
 aliases:
   - APIM
+status: needs-verification
 ---
 # API Management and Security
 
@@ -108,7 +109,6 @@ AZ-500 does not cover Azure API Management as a named service or architecture de
 - Recommend pairing APIM with WAF (Front Door/App Gateway) for defense in depth — API-contract policy and HTTP-payload protection are different layers, both needed for internet-facing APIs.
 - Default to APIM's own managed identity for backend/Azure-resource calls, consistent with the credential-elimination pattern in [[Identity and Access Management (IAM)]].
 - Recognize subscription keys as an identification/quota mechanism, not an authentication control — a frequent scenario-matching trap.
-- *(Verify before the exam: current GA status of APIM's v2 tiers — Basic v2/Standard v2/Premium v2 — and their exact feature parity with the classic tiers; Microsoft has been actively evolving this tier lineup.)*
 
 ---
 
@@ -164,3 +164,9 @@ AZ-500 does not cover Azure API Management as a named service or architecture de
 - [Protect an API using OAuth 2.0 with Microsoft Entra ID](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad) — Microsoft Learn
 - [API Management security baseline](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/api-management-security-baseline) — Microsoft Learn
 - [[Exam Objectives]]
+
+---
+
+## Verification Flag
+
+Current GA status of APIM's v2 tiers — Basic v2/Standard v2/Premium v2 — and their exact feature parity with the classic tiers; Microsoft has been actively evolving this tier lineup. Re-verify close to exam date.
