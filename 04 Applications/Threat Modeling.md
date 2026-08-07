@@ -6,6 +6,7 @@ domain:
   - apps-data
 aliases:
   - STRIDE
+status: needs-verification
 ---
 # Threat Modeling
 
@@ -42,11 +43,29 @@ STRIDE is applied **per DFD element** — every process, data store, data flow, 
 
 ---
 
+## AI/LLM Threat Modeling
+
+STRIDE's six categories don't name several threats specific to generative AI/LLM systems — for an AI or agent-based application, layer the **OWASP Top 10 for LLM Applications** on top of STRIDE for the model, prompt/context data flow, and any tool-calling elements, instead of replacing STRIDE outright.
+
+| OWASP LLM threat | Example | Mitigation |
+| --- | --- | --- |
+| Prompt Injection (direct/jailbreak, indirect) | A user tries to override system instructions, or a poisoned document tricks the model into leaking data when summarized | Content Safety / Prompt Shields — see [[AI and Copilot Security Architecture]] |
+| Insecure Output Handling | Model output is executed as code or inserted into a downstream query without validation | Treat model output as untrusted input — validate/sanitize before use, same as any external input in classic STRIDE |
+| Excessive Agency | An autonomous agent with broad tool/API access acts beyond its intended scope | Scope agent permissions narrowly via [[Microsoft Entra Agent ID]] — least privilege |
+| Sensitive Information Disclosure | A response surfaces training data or over-permissioned org content | [[Data Security Posture Management (DSPM)|Purview DSPM]] data risk assessment before rollout |
+| Training Data / Model Poisoning | Fine-tuning on unvetted or malicious data skews model behavior | Vet and control training data sources — the same supply-chain discipline as [[DevOps Security]] applied to data instead of code |
+
+- This is an industry framework (OWASP), not a Microsoft one — cite it as the threat taxonomy, but map mitigations to the Microsoft controls above, the same way this note maps STRIDE mitigations to controls elsewhere in the vault.
+- Applies at the same proportionality rule as the rest of this note: full OWASP LLM analysis for a business-critical AI application or agent, not every internal chatbot prototype.
+
+---
+
 ## When to Use
 
 - Designing a new business-critical or high-blast-radius application, before code is written.
 - Any significant architecture change — a new trust boundary, a new external integration, a new data store handling sensitive data — re-running or updating the existing threat model, not treating it as one-time.
 - As the design-stage anchor activity inside [[Shift left (WAF)]]'s SDLC pipeline.
+- Threat modeling a business-critical AI/LLM application or agent — layer the OWASP Top 10 for LLM Applications on top of STRIDE for the AI-specific elements.
 
 ---
 
@@ -93,6 +112,7 @@ flowchart TD
 | STRIDE vs. DREAD | STRIDE categorizes *what kind* of threat exists (Spoofing, Tampering, etc.). DREAD (Damage, Reproducibility, Exploitability, Affected users, Discoverability) scores *how severe* an already-identified threat is. Complementary — STRIDE finds threats, DREAD (largely legacy now) would rank them — not competing frameworks. |
 | Threat modeling vs. penetration testing | Threat modeling is theoretical/design-time analysis of a system that may not exist yet; penetration testing is active, hands-on exploitation attempted against a real, built system. Threat modeling should happen first and narrow what a pen test needs to focus on. |
 | Microsoft Threat Modeling Tool vs. MITRE ATT&CK | The Threat Modeling Tool models *application-design* threats via STRIDE/DFD. MITRE ATT&CK (see [[Security Operations]]) catalogs real-world *adversary TTPs* used to map SOC detection coverage. Different altitude: one shapes an app's design, the other measures a SOC's detection breadth — don't conflate "threat" framework names. |
+| STRIDE vs. OWASP Top 10 for LLM Applications | STRIDE is a general-purpose, six-category framework applied per DFD element to any system. OWASP LLM Top 10 is a threat taxonomy specific to generative AI/LLM applications (prompt injection, excessive agency, etc.) that names risks STRIDE's six categories don't map to cleanly. Used *together* for an AI system — OWASP LLM Top 10 isn't a replacement for STRIDE, it's layered on top for the AI-specific elements. |
 
 ---
 
@@ -108,6 +128,7 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - Prioritize threat modeling effort by business-criticality/blast radius — an explicit resourcing decision, not a uniform mandate across every app.
 - Treat a threat model as a living artifact updated on architecture change, matching the "not a one-time setup" theme that also applies to WAF Security pillar guidance.
 - Distinguish design-time threat modeling from runtime attack path analysis as two different, complementary lifecycle stages — the exam rewards knowing which one a scenario is actually describing.
+- Layer OWASP Top 10 for LLM Applications onto STRIDE for AI/agent-based systems — a scenario naming prompt injection, excessive agency, or model poisoning is testing this extension, not classic STRIDE alone.
 
 ---
 
@@ -117,6 +138,8 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - A scenario naming a new external integration or trust boundary → update the existing threat model, don't treat it as done once.
 - If a scenario already has a live environment with real findings to prioritize, that's attack path analysis (see [[CSPM and CWPP]]), not threat modeling — a frequent distractor pair.
 - Don't confuse STRIDE (used to find threats) with MITRE ATT&CK (used to map detection coverage) — different exam objective, different note ([[Security Operations]]).
+- "Threat model an AI/LLM application or autonomous agent" → STRIDE **plus** OWASP Top 10 for LLM Applications for the model/prompt/agent elements, not STRIDE alone.
+- A scenario naming prompt injection, jailbreak, or excessive agent permissions → OWASP LLM Top 10 categories, mitigated by Content Safety/Prompt Shields or Entra Agent ID scoping (see [[AI and Copilot Security Architecture]]) — not a classic STRIDE mitigation.
 
 ---
 
@@ -125,6 +148,7 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - **Threat modeling vs. attack path analysis** — design-time hypothetical vs. runtime actual; full comparison above.
 - **STRIDE vs. DREAD** — threat categorization vs. severity scoring.
 - **Microsoft Threat Modeling Tool vs. MITRE ATT&CK** — application design threats vs. SOC detection coverage.
+- **STRIDE vs. OWASP Top 10 for LLM Applications** — general-purpose DFD-element framework vs. AI/LLM-specific threat taxonomy, used together for AI systems, not as alternatives.
 
 ---
 
@@ -136,6 +160,9 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - DREAD (legacy severity scoring)
 - Business-critical application prioritization
 - Design-time vs. runtime (threat modeling vs. attack path analysis)
+- OWASP Top 10 for LLM Applications
+- Prompt injection (direct/jailbreak vs. indirect), excessive agency
+- Insecure output handling, training data/model poisoning
 
 ---
 
@@ -148,6 +175,8 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - [[Azure Web Application Firewall]]
 - [[Zero Trust]]
 - [[Cloud Adoption Framework (CAF)]]
+- [[AI and Copilot Security Architecture]]
+- [[Data Security Posture Management (DSPM)]]
 
 ---
 
@@ -155,6 +184,13 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 
 - [Microsoft Threat Modeling Tool](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool) — Microsoft Learn
 - [Threat Modeling Security Fundamentals](https://learn.microsoft.com/en-us/training/modules/tm-threat-modeling-fundamentals/) — Microsoft Learn
+- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/) — OWASP (industry framework, not Microsoft Learn)
 - (https://aka.ms/mssdl)
 - (https://aka.ms/stride)
 - [[Exam Objectives]]
+
+---
+
+## Verification Flag
+
+OWASP Top 10 for LLM Applications has been revised since its original 2023 draft (category names/numbering shifted in later releases), and it's an OWASP framework, not a Microsoft one — re-verify current category names/numbering against the live OWASP GenAI project page, and confirm whether SC-100 material references it by this exact name, close to exam date.

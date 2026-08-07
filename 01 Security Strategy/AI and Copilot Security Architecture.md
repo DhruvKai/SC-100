@@ -55,6 +55,18 @@ For DSPM's general, non-AI data-estate scope — and its comparison to Defender 
 
 ---
 
+## Azure AI Services Security
+
+Securing the AI service itself — Azure OpenAI, Azure AI Foundry, and the broader Azure AI services family — as a PaaS workload, following the same network/identity/encryption pattern used everywhere else in this vault, plus AI-specific content filtering that has no equivalent on a normal PaaS resource.
+
+- **Content Safety / Prompt Shields** — Azure AI Content Safety filters harmful content (hate, violence, sexual, self-harm) in both prompts and model output. **Prompt Shields** specifically detects and blocks **jailbreak attempts** (a user directly trying to override system instructions) and **indirect prompt injection** (malicious instructions hidden in third-party content the model processes — a document, email, or web page it's asked to summarize) — the concrete, in-line *preventive* control for the "prompt injection" threat category, distinct from Defender for Cloud's out-of-band *detective* layer (see Comparison). Full AI-specific threat taxonomy (prompt injection, excessive agency, etc.) is in [[Threat Modeling]].
+- **Network isolation** — disable public network access on Azure OpenAI/AI Foundry resources by default, then use **Private Link** (same pattern as [[Securing IaaS and PaaS Services]]); Azure AI Foundry hubs additionally support a **managed virtual network** scoping outbound access from the compute the hub provisions.
+- **Customer-managed keys (CMK)** — encrypt fine-tuned models and stored training data with a customer-managed key in [[Key Vault]] instead of the Microsoft-managed default, the same CMK decision already covered in [[Data Classification and Protection]].
+- **RBAC for AI Foundry** — hub/project-scoped Azure roles (e.g., a role that can deploy/manage a model vs. a narrower role that can only call it) separate *who can change the model* from *who can only use it* — least privilege applied to the AI resource itself, not just the data behind it.
+- **Data-use guarantee** — prompts and completions sent to Azure OpenAI are **not** used to train the underlying foundation models and aren't shared with other customers — a specific, testable compliance/data-residency fact that distinguishes an enterprise Azure AI deployment from a public consumer AI product.
+
+---
+
 ## Architecture
 
 ```mermaid
@@ -67,7 +79,8 @@ flowchart TD
     Attack --> AgentID["Agent identities"]
 
     M365C --> DSPM["Purview DSPM<br/>(AI observability)"]
-    CustomAI --> AISPM["Defender for Cloud<br/>AI-SPM + AI threat protection"]
+    CustomAI --> AISPM["Defender for Cloud<br/>AI-SPM + AI threat protection<br/>(detect, out-of-band)"]
+    CustomAI --> Native["AI-service-native controls:<br/>Content Safety/Prompt Shields (prevent, in-line),<br/>network isolation, CMK, RBAC"]
     AgentID --> Ent["Microsoft Entra Agent ID<br/>+ Conditional Access + Identity Governance"]
 
     Defense --> SecCopilot["Microsoft Security Copilot"]
@@ -84,6 +97,8 @@ flowchart TD
     Q1["Deploying M365 Copilot or a genAI app on org data?"] -->|Yes| A1["Purview DSPM:<br/>data risk assessment first"]
     Q1 -->|No| Q2["Building/hosting a custom AI app?"]
     Q2 -->|Yes| A2["Defender for Cloud AI-SPM<br/>+ AI threat protection"]
+    A2 --> Q2b["Need to block jailbreak/prompt injection<br/>in-line, before it reaches the model?"]
+    Q2b -->|Yes| A2b["Content Safety + Prompt Shields<br/>(in-line, preventive)"]
     Q2 -->|No| Q3["Agent authenticates or acts autonomously?"]
     Q3 -->|Yes| A3["Microsoft Entra Agent ID<br/>+ Conditional Access + governance"]
     Q3 -->|No| Q4["Need faster SOC triage/investigation?"]
@@ -100,12 +115,13 @@ flowchart TD
 | Defender for Cloud AI-SPM vs. AI threat protection | Posture: assesses configuration/attack paths *before* an incident, vs. runtime: detects active threats (prompt injection, jailbreak, data leakage, credential theft), feeding [[Microsoft Defender XDR]]. Same split as CSPM vs. CWPP elsewhere in [[Microsoft Defender for Cloud]]. |
 | Microsoft Entra Agent ID vs. service principal / managed identity | Those authenticate an application or resource; Agent ID is purpose-built for autonomous agents — identity blueprints provision them at scale with parent-child relationships, governed by the same [[Conditional Access]] and Identity Governance controls used for human identities. |
 | MCSB v2 AI Security domain vs. Defender for Cloud AI-SPM | [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]] is the scored baseline defining what good AI security looks like; AI-SPM is the tool that assesses and enforces against it — same Plan/Monitor/Establish relationship MCSB has with every other domain. |
+| Content Safety/Prompt Shields vs. Defender for Cloud AI threat protection | Content Safety/Prompt Shields runs **in-line**, inside the AI service's own request/response pipeline — it blocks harmful content or a jailbreak/injection attempt *before* the model ever processes it or a user ever sees the output. AI threat protection is **out-of-band** — it analyzes Azure resource telemetry after the fact and raises an alert in [[Microsoft Defender XDR]]. Same prevent-vs-detect split as AI-SPM vs. AI threat protection, one layer closer to the actual request. |
 
 ---
 
 ## AZ-500 Review
 
-Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, and Defender for Cloud's AI-specific posture/threat protection all shipped after AZ-500's scope. Underlying mechanisms (Conditional Access, Purview, Defender for Cloud) are still AZ-500 fundamentals; only the AI-specific layer is new.
+Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, Defender for Cloud's AI-specific posture/threat protection, and Azure AI services' own controls (Content Safety, Prompt Shields, AI Foundry network isolation/RBAC) all shipped after AZ-500's scope. Underlying mechanisms (Conditional Access, Purview, Defender for Cloud, Private Link, CMK, RBAC) are still AZ-500 fundamentals; only the AI-specific application of them is new.
 
 ---
 
@@ -116,6 +132,8 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, an
 - Recognize Purview DSPM's Data Risk Assessment as the standard pre-Copilot-rollout answer to oversharing risk, not DLP alone.
 - Know Defender for Cloud's AI-SPM/AI threat protection as the AI-specific extension of the CSPM/CWPP model already covered in [[Security Posture Assessments]] — same pattern, new workload type.
 - Tie AI security decisions back to [[Cloud Adoption Framework (CAF)|CAF]]'s AI adoption lifecycle (Strategy → Plan → Ready → Govern → Manage → Secure) for strategy-level questions.
+- Recognize Content Safety/Prompt Shields as the concrete, in-line answer to prompt-injection scenarios — Defender for Cloud's AI threat protection detects after the fact, it doesn't block the request itself.
+- Apply the same PaaS network/identity/encryption pattern (Private Link, CMK, RBAC) used across the rest of the vault to Azure OpenAI/AI Foundry — it isn't a special case, just a new resource type wearing the same controls.
 
 ---
 
@@ -125,6 +143,9 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, an
 - "Assistant embedded in Defender/Sentinel, capacity billed in compute units" → Security Copilot, not Microsoft 365 Copilot.
 - "Authenticate and govern an autonomous AI agent at scale" → Microsoft Entra Agent ID with identity blueprints, not a shared service principal.
 - Expect AI scenarios blended with an existing SC-100 topic (sensitivity labels, Conditional Access, Zero Trust) rather than AI tested in isolation.
+- "Block a jailbreak or prompt injection attempt before it reaches the model" → Content Safety/Prompt Shields, not Defender for Cloud (which only detects after telemetry is emitted).
+- "Restrict who can deploy/change a model vs. who can only call it" → RBAC scoped to the AI Foundry hub/project, not a broad Contributor role.
+- "Encrypt fine-tuned model data with org-controlled keys" → customer-managed keys in Key Vault, the same CMK pattern as any other PaaS data store.
 
 ---
 
@@ -133,6 +154,7 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, an
 - **Security Copilot vs. Microsoft 365 Copilot** — see Comparison table; the exam relies on candidates conflating "Copilot" as one product.
 - **AI-SPM vs. AI threat protection** — posture/pre-incident vs. runtime/active-incident, same pattern as CSPM vs. CWPP.
 - **Agent identity vs. workload identity** — agents are a governed *subset* of non-human identity, not a replacement term for service principals or managed identities.
+- **Content Safety/Prompt Shields vs. Defender for Cloud AI threat protection** — in-line prevention inside the request pipeline vs. out-of-band detection after telemetry is emitted; see Comparison above.
 
 ---
 
@@ -146,6 +168,9 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, an
 - Prompt injection, jailbreak, data leakage, data poisoning, credential theft
 - Microsoft Agent 365, shadow AI / shadow agents
 - MCSB v2 AI Security domain, CAF Secure AI adoption lifecycle
+- Azure AI Content Safety, Prompt Shields
+- Jailbreak (direct) vs. indirect prompt injection
+- Azure AI Foundry managed virtual network, customer-managed keys (AI), AI Foundry RBAC
 
 ---
 
@@ -165,6 +190,11 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, an
 - [[Microsoft Security Copilot]]
 - [[Threat Intelligence]]
 - [[Securing Microsoft 365]]
+- [[Threat Modeling]]
+- [[Key Vault]]
+- [[Private Link]]
+- [[Securing IaaS and PaaS Services]]
+- [[Data Classification and Protection]]
 
 ---
 
@@ -176,10 +206,13 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, an
 - [Prevent oversharing with DSPM for AI data risk assessments](https://learn.microsoft.com/en-us/purview/data-security-posture-management-oversharing) — Microsoft Learn
 - [AI security posture management - Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/defender-for-cloud/ai-security-posture) — Microsoft Learn
 - [Secure AI - Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai/secure) — Microsoft Learn
+- [Azure AI Content Safety overview](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview) — Microsoft Learn
+- [Prompt Shields in Azure AI Content Safety](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection) — Microsoft Learn
+- [Azure AI Foundry network isolation](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/configure-private-link) — Microsoft Learn
 - [[Exam Objectives]]
 
 ---
 
 ## Verification Flag
 
-Fast-moving surface — Entra Agent ID, MCSB v2's AI Security domain, and Microsoft Agent 365 were preview or recently-GA as of 2026-08-03. Re-verify GA status and licensing (especially SCU pricing) close to exam date.
+Fast-moving surface — Entra Agent ID, MCSB v2's AI Security domain, and Microsoft Agent 365 were preview or recently-GA as of 2026-08-03. Re-verify GA status and licensing (especially SCU pricing) close to exam date. Also re-verify Azure AI Foundry's managed virtual network capabilities and exact RBAC role names for hub/project scoping — the AI Foundry platform (network isolation, role definitions) has been iterating quickly and naming may have shifted since this note was written (2026-08-08).
