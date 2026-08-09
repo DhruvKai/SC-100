@@ -21,7 +21,7 @@ MCSB is Microsoft's prescriptive, cross-cloud security control framework — syn
 ## Why Architects Choose It
 
 - Pre-maps controls to CIS, NIST, and PCI-DSS, so meeting MCSB gives a head start on multiple regulatory frameworks instead of mapping each one separately.
-- Synthesizes guidance from CAF, the Well-Architected Framework, Microsoft's Secure Future Initiative, and the CISO Workshop into one control set — a single reference instead of five.
+- Synthesizes guidance from CAF, the Well-Architected Framework, Microsoft's [[Secure Future Initiative (SFI)|Secure Future Initiative]], and the CISO Workshop into one control set — a single reference instead of five.
 - Cloud-agnostic in scope (Azure + multicloud), so the same control set monitors Azure, AWS, and other providers through one pane of glass.
 - A structured hierarchy (Domain → Control → Subcontrol) gives both an executive-level summary and implementation-level detail from the same framework.
 
@@ -50,7 +50,7 @@ MCSB is Microsoft's prescriptive, cross-cloud security control framework — syn
 flowchart TD
     CAF3["Cloud Adoption Framework"] --> MCSB
     WAF3["Well-Architected Framework"] --> MCSB
-    SFI["Secure Future Initiative"] --> MCSB
+    SFI["Secure Future Initiative (SFI)"] --> MCSB
     CISO["CISO Workshop"] --> MCSB
     Industry["CIS / NIST / PCI-DSS"] --> MCSB
 
@@ -135,6 +135,7 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 - [[Azure Policy]]
 - [[Microsoft Defender for Cloud]]
 - [[AI and Copilot Security Architecture]]
+- [[Secure Future Initiative (SFI)]]
 
 ---
 

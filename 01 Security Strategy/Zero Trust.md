@@ -192,6 +192,8 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - [[Securing Privileged Access]]
 - [[Securing Server and Client Endpoints]]
 - [[Securing IaaS and PaaS Services]]
+- [[Security Adoption Framework (SAF)]]
+- [[Secure Future Initiative (SFI)]]
 - [[Network Security Group]]
 - [[SaaS Application Discovery and Control]]
 - [[Data Classification and Protection]]

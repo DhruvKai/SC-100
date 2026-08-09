@@ -93,7 +93,6 @@ AZ-500 already covers deploying Azure Firewall, configuring NAT/network/applicat
 - [[Securing IaaS and PaaS Services]]
 - [[Network Security Group]]
 - [[Azure Landing Zones]]
-- [[Azure Landing Zones (Beginner Explainer)]]
 - [[Threat Intelligence]]
 - [[Zero Trust]]
 - [[Exam Objectives]]

@@ -197,6 +197,8 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - [[Logic Apps]]
 - [[Compliance and Privacy]]
 - [[Zero Trust]]
+- [[Security Adoption Framework (SAF)]]
+- [[Secure Future Initiative (SFI)]]
 - [[Security Posture Assessments]]
 - [[Ransomware Resiliency and BCDR]]
 - [[Threat Intelligence]]

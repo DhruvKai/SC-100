@@ -152,6 +152,7 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - [[Identity and Access Management (IAM)]]
 - [[Identity as the Security Perimeter]]
 - [[Conditional Access]]
+- [[Security Adoption Framework (SAF)]] — privileged access/workstation guidance is one of the inputs SAF integrates.
 - [[Ransomware Resiliency and BCDR]]
 - [[Microsoft Defender for Cloud]]
 - [[Zero Trust]]

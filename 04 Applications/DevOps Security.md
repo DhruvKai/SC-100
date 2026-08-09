@@ -137,6 +137,7 @@ AZ-500 does not cover pipeline or repository security at all — secret scanning
 - [[Shift left (WAF)]]
 - [[Threat Modeling]]
 - [[Security Posture Assessments]]
+- [[Secure Future Initiative (SFI)]] — Protect engineering systems is SFI's pillar for SDLC/pipeline security.
 - [[CSPM and CWPP]]
 - [[Azure Policy]]
 - [[Microsoft Defender for Cloud]]

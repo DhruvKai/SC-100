@@ -25,7 +25,7 @@ Evaluating a network design against a workload's actual security requirements �
 
 ## When to Use
 
-- Choosing the network topology itself (Hub & Spoke vs. Virtual WAN) — already covered in [[Azure Landing Zones]] (beginner walkthrough: [[Azure Landing Zones (Beginner Explainer)]]); this note assumes that choice is made and focuses on the security controls layered onto it.
+- Choosing the network topology itself (Hub & Spoke vs. Virtual WAN) — already covered in [[Azure Landing Zones]]; this note assumes that choice is made and focuses on the security controls layered onto it.
 - Public internet-facing HTTP(S) workload needing OWASP-based protection (SQLi, XSS) — **WAF** on [[Front Door and Application Gateway|Application Gateway or Front Door]], layered behind DDoS Protection.
 - Centralizing firewall/segmentation policy across many hub VNets or secured virtual hubs — **Azure Firewall Manager**.
 - Mission-critical, internet-facing services where the cost-protection guarantee and Rapid Response support matter — **DDoS Protection Standard**, layered on top of the Basic tier that's already on by default.
@@ -138,7 +138,6 @@ AZ-500 already covers configuring NSGs, Azure Firewall rules, DDoS Protection pl
 ## Related Services
 
 - [[Azure Landing Zones]]
-- [[Azure Landing Zones (Beginner Explainer)]]
 - [[Securing IaaS and PaaS Services]]
 - [[Identity as the Security Perimeter]]
 - [[Azure Web Application Firewall]]

@@ -91,7 +91,7 @@ Not covered in AZ-500 — AZ-500 teaches individual product configuration; MCRA 
 
 - Recognize MCRA as the named artifact behind the "align with MCRA and MCSB" exam objective — a specific, downloadable Microsoft deck, not a generic phrase.
 - Use MCRA as the starting template/gap-analysis tool for a target-state architecture, and know its diagram categories (Zero Trust user access, SecOps, multicloud, OT, attack chain coverage, infrastructure/DevSecOps).
-- MCRA is a component of Microsoft's broader Security Adoption Framework (SAF) — know the relationship, not just the acronym.
+- MCRA is a component of Microsoft's broader [[Security Adoption Framework (SAF)|Security Adoption Framework (SAF)]] — know the relationship, not just the acronym.
 - MCRA content shifts with product reality (recent revision moved emphasis from Secure Score toward Security Exposure Management) — treat it as a living reference, not a fixed syllabus.
 
 ---
@@ -131,6 +131,7 @@ Not covered in AZ-500 — AZ-500 teaches individual product configuration; MCRA 
 - [[Security Posture Assessments]]
 - [[Microsoft Defender for Cloud]]
 - [[Microsoft Sentinel]]
+- [[Security Adoption Framework (SAF)]]
 
 ---
 

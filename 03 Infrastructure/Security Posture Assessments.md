@@ -29,7 +29,7 @@ Continuous evaluation of resource configuration against a security benchmark, pr
 
 ## When to Use
 
-- Establishing a security baseline before or during [[Azure Landing Zones|landing zone]] rollout (new to that concept? [[Azure Landing Zones (Beginner Explainer)|start here]]).
+- Establishing a security baseline before or during [[Azure Landing Zones|landing zone]] rollout.
 - Continuously tracking configuration drift across hybrid/multicloud estates.
 - Mapping technical controls to a named regulatory standard (PCI DSS, ISO 27001, NIST) for audit evidence.
 - Prioritizing remediation by actual exploitability/impact, not just recommendation count.
@@ -146,7 +146,6 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Azure Arc]]
 - [[Azure Policy]]
 - [[Azure Landing Zones]]
-- [[Azure Landing Zones (Beginner Explainer)]]
 
 ---
 

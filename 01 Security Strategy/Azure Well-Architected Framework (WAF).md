@@ -18,7 +18,7 @@ WAF is a set of five pillars and a self-assessment review used to evaluate and i
 ## Why Architects Choose It
 
 - Gives a structured checklist for the Security pillar (plan readiness; protect confidentiality, integrity, availability; sustain and evolve) instead of an ad hoc workload review.
-- Complements CAF: CAF governs org-wide via [[Azure Landing Zones]] (new to that concept? [[Azure Landing Zones (Beginner Explainer)|start here]]); WAF evaluates what's actually built *inside* a landing zone, one workload at a time.
+- Complements CAF: CAF governs org-wide via [[Azure Landing Zones]]; WAF evaluates what's actually built *inside* a landing zone, one workload at a time.
 - Has its own self-assessment tool (the Azure Well-Architected Review) — same self-assess pattern as [[Cloud Adoption Security Review (CASR)]], but scoped to one workload across all five pillars rather than landing zone security.
 - Forces explicit trade-offs — naming what you're sacrificing (e.g., cost vs. resiliency) instead of treating all five pillars as free.
 
@@ -129,7 +129,6 @@ AZ-500 already covers the individual controls the Security pillar checklist poin
 
 - [[Cloud Adoption Framework (CAF)]]
 - [[Azure Landing Zones]]
-- [[Azure Landing Zones (Beginner Explainer)]]
 - [[Cloud Adoption Security Review (CASR)]]
 - [[Zero Trust]]
 - [[Azure Web Application Firewall]]

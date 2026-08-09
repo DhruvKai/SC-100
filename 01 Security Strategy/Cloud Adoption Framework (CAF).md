@@ -20,7 +20,7 @@ CAF is Microsoft's structured roadmap of seven methodologies for adopting and op
 ## Why Architects Choose It
 
 - Gives a single, ordered methodology (Strategy → Plan → Ready → Adopt, then Govern/Secure/Manage running in parallel) instead of ad-hoc security bolted on after deployment.
-- [[Azure Landing Zones|Landing zones]] (new to the concept? [[Azure Landing Zones (Beginner Explainer)|start here]]) — the environment workloads land in — are defined in the **Ready** phase, so security requirements get built into the platform before any workload exists.
+- [[Azure Landing Zones|Landing zones]] — the environment workloads land in — are defined in the **Ready** phase, so security requirements get built into the platform before any workload exists.
 - Integrates directly with the [Azure Well-Architected Framework](https://learn.microsoft.com/en-us/azure/well-architected/) for workload-level guidance once CAF has set the org-wide foundation.
 
 ---
@@ -197,7 +197,6 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - [[Security Operations]]
 - [[Azure Security Logging]]
 - [[Azure Landing Zones]]
-- [[Azure Landing Zones (Beginner Explainer)]]
 
 ---
 
