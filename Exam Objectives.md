@@ -52,7 +52,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 - [[AI and Copilot Security Architecture|Strategy for secure AI adoption]]
 - Security/governance strategy based on [[Cloud Adoption Framework (CAF)]] and [[Azure Well-Architected Framework (WAF)]]
-- Security and governance via [[Azure Landing Zones|Azure landing zones]]
+- Security and governance via [[Azure Landing Zones|Azure landing zones]] (new to this? [[Azure Landing Zones (Beginner Explainer)|start here]])
 - [[DevOps Security|DevSecOps process aligned with Cloud Adoption Framework (CAF)]]
 
 ---

@@ -68,6 +68,7 @@ flowchart LR
 - [[Azure Arc]]
 - [[Identity as the Security Perimeter]]
 - [[Azure Landing Zones]]
+- [[Azure Landing Zones (Beginner Explainer)]]
 - [[Zero Trust]]
 - [[API Management and Security]]
 - [[Exam Objectives]]

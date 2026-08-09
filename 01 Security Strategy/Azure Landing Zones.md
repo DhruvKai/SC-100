@@ -8,6 +8,8 @@ domain:
 
 # Azure Landing Zones
 
+> New to this concept, or need it re-explained from zero with examples? See [[Azure Landing Zones (Beginner Explainer)]] first — this page assumes it already makes sense.
+
 ## Purpose
 
 An Azure landing zone is the multi-subscription environment — platform plus application — that [[Cloud Adoption Framework (CAF)]]'s Ready phase establishes to govern, secure, and scale workloads consistently.
@@ -143,6 +145,7 @@ AZ-500 covers the individual controls that live inside these subscriptions — A
 
 ## Related Services
 
+- [[Azure Landing Zones (Beginner Explainer)]]
 - [[Cloud Adoption Framework (CAF)]]
 - [[Cloud Adoption Security Review (CASR)]]
 - [[Azure Firewall]]

@@ -13,7 +13,7 @@ status: needs-verification
 
 ## Purpose
 
-CASR is a checklist-driven review that self-assesses (or Microsoft-assesses) an [[Azure Landing Zones|Azure landing zone]] that has already met baseline security, scoring it against the [[Cloud Adoption Framework (CAF)]] Secure methodology and returning prioritized recommendations.
+CASR is a checklist-driven review that self-assesses (or Microsoft-assesses) an [[Azure Landing Zones|Azure landing zone]] (new to that concept? see [[Azure Landing Zones (Beginner Explainer)]]) that has already met baseline security, scoring it against the [[Cloud Adoption Framework (CAF)]] Secure methodology and returning prioritized recommendations.
 
 ---
 
@@ -125,6 +125,8 @@ Not covered in AZ-500 at all — AZ-500 teaches the individual controls CASR che
 - [[Security Posture Assessments]]
 - [[Zero Trust]]
 - [[Microsoft Defender for Cloud]]
+- [[Azure Landing Zones]]
+- [[Azure Landing Zones (Beginner Explainer)]]
 
 ---
 

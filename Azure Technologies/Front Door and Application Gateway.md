@@ -101,6 +101,7 @@ AZ-500 already covers deploying Application Gateway/Front Door, configuring back
 - [[Private Link]]
 - [[Azure Firewall]]
 - [[Azure Landing Zones]]
+- [[Azure Landing Zones (Beginner Explainer)]]
 - [[API Management and Security]]
 - [[Exam Objectives]]
 

@@ -91,6 +91,7 @@ AZ-500 already covers creating and assigning individual policy definitions and i
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Microsoft Defender for Cloud]]
 - [[Azure Landing Zones]]
+- [[Azure Landing Zones (Beginner Explainer)]]
 - [[Cloud Adoption Framework (CAF)]]
 - [[Securing IaaS and PaaS Services]]
 - [[Exam Objectives]]
