@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Azure Technologies/Azure Policy.md",
+                "file": "03 Infrastructure/Security Posture Assessments.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Azure Policy"
+              "title": "Security Posture Assessments"
             }
           }
         ]
@@ -37,7 +37,7 @@
           "type": "file-explorer",
           "state": {
             "sortOrder": "alphabetical",
-            "autoReveal": false,
+            "autoReveal": true,
             "showSearch": false,
             "searchQuery": ""
           },
@@ -117,7 +117,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "01 Security Strategy/Cloud Adoption Framework (CAF).md",
+            "file": "03 Infrastructure/Security Posture Assessments.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -187,10 +187,10 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "34cff14f1d150179",
+  "active": "0c6fb0b7312662e1",
   "lastOpenFiles": [
-    "01 Security Strategy/Zero Trust.md",
     "Azure Technologies/Azure Policy.md",
+    "01 Security Strategy/Zero Trust.md",
     "00 Home.md",
     "01 Security Strategy.md",
     "01 Security Strategy/Cloud Adoption Framework (CAF).md",
