@@ -21,7 +21,7 @@ MCRA is Microsoft's downloadable reference-architecture deck mapping Microsoft (
 - Gives a capability-level target-state architecture instead of starting a security architecture from a blank slide.
 - Maps concrete products — and how they integrate — directly onto Zero Trust principles and industry standards (e.g., The Open Group's Zero Trust Reference Model), closing the gap between abstract principle and product choice.
 - Doubles as a gap-analysis tool: compare what an organization already owns/licenses against the reference diagrams to surface unused capability.
-- Actively maintained and revised as products change (the most recent major revision added Security Exposure Management, Security Copilot, Windows LAPS, passkeys, and Entra Verified ID, and de-emphasized Secure Score) — a living reference, not a static framework.
+- Actively maintained and revised as products change (the most recent major revision added Security Exposure Management, [[Microsoft Security Copilot|Security Copilot]], Windows LAPS, passkeys, and Entra Verified ID, and de-emphasized Secure Score) — a living reference, not a static framework.
 
 ---
 
@@ -131,6 +131,7 @@ Not covered in AZ-500 — AZ-500 teaches individual product configuration; MCRA 
 - [[Security Posture Assessments]]
 - [[Microsoft Defender for Cloud]]
 - [[Microsoft Sentinel]]
+- [[Microsoft Security Copilot]]
 - [[Security Adoption Framework (SAF)]]
 
 ---

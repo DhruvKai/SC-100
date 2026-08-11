@@ -5,7 +5,6 @@ type: concept
 domain:
   - ops-identity-compliance
 ---
-
 # Conditional Access
 
 ## Purpose

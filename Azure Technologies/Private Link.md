@@ -5,7 +5,6 @@ type: cheat-sheet
 domain:
   - infrastructure
 ---
-
 # Azure Private Link
 
 Gives a PaaS resource (or a customer's own service) a private IP inside a consumer's VNet, removing it from the public endpoint path entirely. The *when to use it vs. Service Endpoint* decision already lives in [[Securing IaaS and PaaS Services]] — this page is the mechanism itself.

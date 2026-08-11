@@ -22,7 +22,7 @@ Continuous discovery, risk-scoring, and exposure-reduction for *sensitive data i
 - Shifts the posture question from "is the resource configured correctly" ([[Security Posture Assessments|CSPM]]) to "where is my sensitive data, who can reach it, and is it protected" — breaches increasingly hinge on data exposure, not just misconfiguration.
 - Both DSPM implementations share one classification taxonomy — the Purview classification engine's Sensitive Information Types (SITs) and sensitivity labels — so a label defined once is recognized consistently whether the data sits in SharePoint or an Azure SQL database.
 - Consolidates previously separate Purview tools (DLP, Insider Risk Management, Information Protection, Data Security Investigations) into one posture view organized around outcome-based **data security objectives**, not per-tool consoles.
-- Feeds remediation, not just reporting — one-click policies (disable oversharing links, apply DLP) and Security Copilot triage agents act directly on findings.
+- Feeds remediation, not just reporting — one-click policies (disable oversharing links, apply DLP) and [[Microsoft Security Copilot|Security Copilot]] triage agents act directly on findings.
 
 ---
 
@@ -136,6 +136,7 @@ AZ-500 covers the underlying building blocks — Defender for Cloud/Secure Score
 - [[Security Posture Assessments]]
 - [[Microsoft Defender for Cloud]]
 - [[AI and Copilot Security Architecture]]
+- [[Microsoft Security Copilot]]
 - [[Purview]]
 - [[Compliance and Privacy]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]

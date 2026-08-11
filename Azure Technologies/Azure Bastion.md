@@ -6,7 +6,6 @@ domain:
   - infrastructure
 status: needs-verification
 ---
-
 # Azure Bastion
 
 Browser- (or native-client-) based RDP/SSH to a VM with **no public IP required on the VM itself** — traffic is brokered through the Bastion host over TLS 443. The *when to use it vs. JIT VM access* decision already lives in [[Securing IaaS and PaaS Services]]; this page is the mechanism and SKU mechanics.
