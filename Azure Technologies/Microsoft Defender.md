@@ -8,9 +8,9 @@ domain:
 # Microsoft Defender (Family Overview)
 
 Umbrella brand for Microsoft's threat protection products. [[Microsoft Defender XDR]] is the unifying portal that correlates signals across the workload-specific products below into single incidents.
-![[Pasted image 20260804162451.png]]
+![Defender product map overview](../Images/Pasted%20image%2020260804162451.png)
 
-![[Pasted image 20260804162621.png]]
+![Defender XDR signal correlation](../Images/Pasted%20image%2020260804162621.png)
 ## Product Map
 
 | Product | Protects | One-line purpose |

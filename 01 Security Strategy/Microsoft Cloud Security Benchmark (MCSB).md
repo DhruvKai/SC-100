@@ -8,13 +8,12 @@ domain:
 aliases:
   - MCSB
 ---
-
 # Microsoft Cloud Security Benchmark (MCSB)
 
 ## Purpose
 
 MCSB is Microsoft's prescriptive, cross-cloud security control framework — synthesizing [[Cloud Adoption Framework (CAF)]], the Well-Architected Framework, and industry standards — that underpins the default scoring in [[Security Posture Assessments]].
-![[Pasted image 20260802142723.png]]
+![MCSB control domains](../Images/Pasted%20image%2020260802142723.png)
 
 ---
 

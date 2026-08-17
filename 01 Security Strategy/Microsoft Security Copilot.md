@@ -8,7 +8,6 @@ aliases:
   - Security Copilot
 status: needs-verification
 ---
-
 # Microsoft Security Copilot
 
 ## Purpose

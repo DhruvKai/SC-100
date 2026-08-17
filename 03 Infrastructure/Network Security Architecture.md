@@ -10,7 +10,7 @@ domain:
 ## Purpose
 
 Evaluating a network design against a workload's actual security requirements — layering perimeter (DDoS, WAF, firewall), segmentation, and policy-centralization controls instead of treating any single control as sufficient.
-![[Pasted image 20260804145911.png]]
+![Network security layering diagram](../Images/Pasted%20image%2020260804145911.png)
 
 ---
 

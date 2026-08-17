@@ -9,7 +9,7 @@ domain:
 # Microsoft Purview
 
 Unified data governance, security, and compliance platform, organized into three solution areas: **Data Governance** (catalog/map/lineage — detailed below), **Data Security** (detailed in [[Data Classification and Protection]] and [[Data Security Posture Management (DSPM)]]), and **Risk & Compliance** (detailed in [[Compliance and Privacy]]). This page is the orientation map only, matching the pattern set by [[Microsoft Defender]].
-![[Pasted image 20260804155349.png]]
+![Purview solution areas overview](../Images/Pasted%20image%2020260804155349.png)
 ## Core Capabilities
 
 - **Data Map** — automated scanning and classification of the data estate (Azure, multicloud, on-prem, SaaS) into a metadata catalog; the substrate everything else in Purview is built on.

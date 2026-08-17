@@ -119,6 +119,8 @@ Example
 
 Never use normal hyperlinks for internal notes.
 
+Exception: image embeds. Use standard markdown image syntax, not `![[filename.png]]` — see the GitHub section below for why.
+
 Every important Azure service must have its own page.
 
 Whenever a service is mentioned, create an Obsidian wiki link.
@@ -183,6 +185,14 @@ Do not leave orphan notes unless the concept is completely standalone.
 # GitHub
 
 Markdown must render correctly on GitHub.
+
+Images: never use Obsidian embed syntax (`![[filename.png]]`) — GitHub does not render it, it only shows as literal text. Always use standard markdown image syntax with a relative path, URL-encoding spaces as `%20`:
+
+```
+![Alt text](../Images/Pasted%20image%2020260802142723.png)
+```
+
+This renders correctly in both Obsidian and GitHub. The path is relative to the note's own folder (e.g. `../Images/...` for a note one level below the vault root).
 
 ---
 
