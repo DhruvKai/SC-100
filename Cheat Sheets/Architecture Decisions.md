@@ -29,6 +29,8 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to identify design-time threats for a business-critical app (STRIDE)? | [[Threat Modeling]] |
 | Need to secure the pipeline itself (secrets, code, dependencies, IaC)? | [[DevOps Security]] |
 | Need to discover, classify, handle (DLP/retention), or encrypt organizational data? | [[Data Classification and Protection]] |
+| Need to translate a named regulation into technical/organizational controls, or respond to litigation/legal hold? | [[Compliance and Privacy]] |
+| Need to fulfill an individual's data access/erasure request, or detect privacy-specific risk (overexposure, cross-border transfer)? | [[Priva]] |
 | Need autonomous attack containment, verdict-based remediation, or cross-workload Defender admin delegation? | [[Microsoft Defender XDR]] |
 | Need to store/protect secrets, keys, or certificates (including HSM-backed)? | [[Key Vault]] |
 | Need to discover shadow SaaS usage or control an app's session in real time? | [[SaaS Application Discovery and Control]] |

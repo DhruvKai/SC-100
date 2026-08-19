@@ -86,6 +86,47 @@ flowchart TD
 
 ---
 
+## Tiers and Deployment Types
+
+Azure API Management ships as two parallel tier families — **classic** (Consumption/Developer/Basic/Standard/Premium) and the newer **v2** line (Basic v2/Standard v2/Premium v2) — plus gateway and VNet deployment options layered on top of whichever tier is chosen.
+
+### Pricing Tiers
+
+| Tier | Family | Production use | VNet integration | Multi-region | Availability zones | Self-hosted gateway |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Consumption** | Classic | Yes (serverless) | No | No | No | No |
+| **Developer** | Classic | No — eval/non-prod only, no SLA | Yes (External/Internal) | No | No | Yes |
+| **Basic** | Classic | Yes, small scale | No | No | No | No |
+| **Standard** | Classic | Yes, mid scale | No | No | No | No |
+| **Premium** | Classic | Yes, enterprise scale | Yes (External/Internal) | Yes | Yes | Yes |
+| **Basic v2** | v2 | Yes, small scale | Yes | No | No | No |
+| **Standard v2** | v2 | Yes, mid scale | Yes | No | Verify | Verify |
+| **Premium v2** | v2 | Yes, enterprise scale (verify GA scope) | Yes | Verify | Verify | Verify |
+
+- **Consumption** is serverless — pay-per-execution, scales to zero, smallest policy set and no built-in cache; fits low/spiky-traffic APIs fronting Functions/Logic Apps, not enterprise workloads needing network isolation.
+- **Basic/Standard (classic)** are production-ready but have **no VNet integration at any price point below Premium** — a frequently tested gap: "publish an API privately with no public exposure" on Basic/Standard is the wrong tier, full stop.
+- **Premium** is the only classic tier with VNet integration, multi-region deployment, availability zones, [[Private Link]] inbound, self-hosted gateway, and **workspaces** — the enterprise-scale answer whenever network isolation or multi-region resilience is a requirement.
+- **v2 tiers'** headline change is bringing VNet integration down to **Basic v2**, previously a Premium-only capability — re-evaluate any "need VNet, so must be Premium" assumption against current v2 availability in the target region.
+
+### Deployment (VNet) Modes
+
+- **External** — the gateway keeps a public IP for inbound internet traffic, but is also injected into a VNet so it can reach private backends (App Service via Private Endpoint, VMs, on-prem via ExpressRoute/VPN). Most common mode for internet-facing APIs with private backends.
+- **Internal** — the gateway has **no public IP at all**; reachable only from inside the VNet (or a peered/connected network) — pair with [[Front Door and Application Gateway]] or [[Private Link]] inbound to expose it externally on your own terms, the Internal-mode + Private Link pattern already called out above.
+- **None** — no VNet integration; gateway and backend are both publicly routable. Default whenever a tier without VNet support is chosen, or isolation wasn't explicitly configured.
+
+### Gateway Types
+
+- **Managed gateway** — the default; Azure-hosted, deployed and scaled in the region(s) you pick. Every tier uses this unless self-hosted is explicitly added.
+- **Self-hosted gateway** — a containerized version of the same gateway, deployable anywhere with network access (on-prem, another cloud, the edge, AKS) while the control/management plane stays in Azure — the answer whenever *runtime* traffic must stay in a specific location (data residency, hybrid, edge latency) even though configuration is still managed centrally. Requires Premium on the classic line; confirm v2-tier support before relying on it.
+- **Workspace gateway** — a Premium-only refinement of **Workspaces**: one APIM instance subdivided so separate teams manage their own APIs/policies/subscriptions without full admin rights on the whole instance, each optionally backed by its own workspace gateway for isolated *runtime* execution, not just isolated configuration.
+
+### Products and Subscriptions
+
+- A **Product** bundles one or more APIs behind a shared usage policy — quota, rate limit, terms of use, open vs. requires-approval access — the unit a consumer actually subscribes to, not an individual API.
+- A **Subscription** is the credential (subscription key) issued once a consumer is approved for a product — identifies the caller for quota/analytics, not proof of identity (see Comparison table below).
+
+---
+
 ## Comparison
 
 | Compare | Difference |
@@ -138,9 +179,11 @@ AZ-500 does not cover Azure API Management as a named service or architecture de
 - Rate limiting, throttling, quota
 - API versioning, revisions
 - External vs. Internal vs. None deployment mode
-- Consumption / Developer / Basic / Standard / Premium tiers
+- Consumption / Developer / Basic / Standard / Premium tiers, plus Basic v2 / Standard v2 / Premium v2
+- Workspaces, workspace gateway, self-hosted vs. managed gateway
 - Private Link inbound, VNet integration
 - Named values, managed identity (APIM → backend)
+- Product, subscription, subscription key
 
 ---
 
@@ -169,4 +212,4 @@ AZ-500 does not cover Azure API Management as a named service or architecture de
 
 ## Verification Flag
 
-Current GA status of APIM's v2 tiers — Basic v2/Standard v2/Premium v2 — and their exact feature parity with the classic tiers; Microsoft has been actively evolving this tier lineup. Re-verify close to exam date.
+Current GA status and regional availability of APIM's v2 tiers — especially Premium v2 — and exact feature parity with classic tiers (multi-region, availability zones, self-hosted gateway support on Standard v2/Premium v2); Microsoft has been actively evolving this tier lineup. Re-verify the full tier/feature matrix close to exam date.

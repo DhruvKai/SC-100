@@ -15,6 +15,8 @@ type: index
 - [[06 Governance]]
 
 ## Resources
-- Cheat Sheets
-- Diagrams
-- Images
+- [[Architecture Decisions]]
+- [[services|Services]]
+- [[Frameworks Cheat Sheet]]
+- Diagrams — exported diagram assets (folder currently empty)
+- Images — pasted screenshots referenced by notes

@@ -83,6 +83,7 @@ flowchart TD
 | DSPM vs. [[Security Posture Assessments|CSPM]] | DSPM scores risk to the *data itself* (sensitivity, exposure, access); CSPM scores the *resource configuration* it sits on. Complementary — a fully-hardened storage account can still hold overexposed sensitive data. |
 | DSPM vs. DLP | DSPM discovers and prioritizes data risk (posture); DLP enforces policy against it (block, encrypt, restrict sharing). DSPM objectives commonly recommend a DLP policy as the remediation step. |
 | Purview DSPM vs. DSPM for AI (classic) | Current Purview DSPM is the unified successor — AI app/agent risk is now one section ("AI observability") within the same posture experience, not a separate product. "DSPM for AI (classic)" is the deprecated, AI-only predecessor; full AI-specific detail lives in [[AI and Copilot Security Architecture]]. |
+| Purview DSPM vs. [[Priva]] Privacy Risk Management | Same M365 data estate, different risk lens: DSPM scores general sensitive-data security exposure across a wider estate (M365, Azure, Fabric, third-party SaaS); Priva Privacy Risk Management flags privacy-law-specific patterns (personal-data overexposure, cross-border transfer, retention minimization) scoped to M365 only. Overlapping on oversharing, but pick based on whether the driver is privacy regulation or general data security posture. |
 
 ---
 
@@ -139,6 +140,7 @@ AZ-500 covers the underlying building blocks — Defender for Cloud/Secure Score
 - [[Microsoft Security Copilot]]
 - [[Purview]]
 - [[Compliance and Privacy]]
+- [[Priva]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Zero Trust]]
 - [[Data Classification and Protection]]

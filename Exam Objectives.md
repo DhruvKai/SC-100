@@ -92,7 +92,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 ### [[Compliance and Privacy|Regulatory compliance]]
 
 - Translate compliance requirements into security controls
-- Compliance via [[Purview]]
+- Compliance via [[Purview]], privacy via [[Priva]]
 - [[Azure Policy]] solutions for security/compliance
 - Alignment with regulatory standards/benchmarks via [[Microsoft Defender for Cloud]]
 

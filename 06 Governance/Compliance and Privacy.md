@@ -9,7 +9,7 @@ domain:
 
 ## Purpose
 
-Translating external regulatory and legal requirements into technical controls, choosing among [[Purview]]'s compliance solutions, Microsoft Priva's privacy-specific tools, [[Azure Policy]], and Defender for Cloud's regulatory dashboard.
+Translating external regulatory and legal requirements into technical controls, choosing among [[Purview]]'s compliance solutions, [[Priva|Microsoft Priva]]'s privacy-specific tools, [[Azure Policy]], and Defender for Cloud's regulatory dashboard.
 
 ---
 
@@ -132,6 +132,7 @@ AZ-500 doesn't cover Purview compliance solutions or Priva at all — it's scope
 ## Related Services
 
 - [[Purview]] — Purview's own product orientation map lives there; this note covers the Risk & Compliance area in depth.
+- [[Priva]] — full product depth (Privacy Risk Management, Subject Rights Requests) lives there; this note covers the comparison against Purview.
 - [[Security Posture Assessments]]
 - [[Security Scoring Dashboards]]
 - [[Azure Policy]]

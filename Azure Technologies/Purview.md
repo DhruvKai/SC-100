@@ -8,7 +8,7 @@ domain:
 ---
 # Microsoft Purview
 
-Unified data governance, security, and compliance platform, organized into three solution areas: **Data Governance** (catalog/map/lineage — detailed below), **Data Security** (detailed in [[Data Classification and Protection]] and [[Data Security Posture Management (DSPM)]]), and **Risk & Compliance** (detailed in [[Compliance and Privacy]]). This page is the orientation map only, matching the pattern set by [[Microsoft Defender]].
+Unified data governance, security, and compliance platform, organized into three solution areas: **Data Governance** (catalog/map/lineage — detailed below), **Data Security** (detailed in [[Data Classification and Protection]] and [[Data Security Posture Management (DSPM)]]), and **Risk & Compliance** (detailed in [[Compliance and Privacy]]). [[Priva]] sits alongside Purview in the same compliance portal as the privacy-specific sibling product — individual subject rights requests and privacy risk detection, not organizational compliance. This page is the orientation map only, matching the pattern set by [[Microsoft Defender]].
 ![Purview solution areas overview](../Images/Pasted%20image%2020260804155349.png)
 ## Core Capabilities
 
@@ -61,6 +61,7 @@ flowchart TD
 - [[Data Security Posture Management (DSPM)]]
 - [[Data Classification and Protection]]
 - [[Compliance and Privacy]]
+- [[Priva]]
 - [[Identity and Access Management (IAM)]]
 - [[Microsoft Defender]]
 - [[Exam Objectives]]
