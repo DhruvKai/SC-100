@@ -36,39 +36,16 @@ Microsoft's overlapping strategy/architecture frameworks — one-line definition
 
 ## Decision Shortcut
 
-```
-One workload's architecture trade-offs?
-  ↓
-WAF (Well-Architected Review)
-
-Org-wide adoption sequencing / landing zone design?
-  ↓
-CAF
-
-Landing zone already baseline-secure, need a maturity checkpoint?
-  ↓
-CASR
-
-Need a scored, regulation-mapped control baseline?
-  ↓
-MCSB
-
-Need a capability/target-state diagram or gap analysis?
-  ↓
-MCRA
-
-Evaluating whether a design satisfies trust principles?
-  ↓
-Zero Trust
-
-Need a role-aware, end-to-end security modernization roadmap (business → discipline → implementation)?
-  ↓
-SAF
-
-Explaining why Microsoft enforces a secure default or deprecates a legacy protocol?
-  ↓
-SFI
-```
+| Question | Answer |
+| --- | --- |
+| One workload's architecture trade-offs? | [[Azure Well-Architected Framework (WAF)\|WAF]] (Well-Architected Review) |
+| Org-wide adoption sequencing / landing zone design? | [[Cloud Adoption Framework (CAF)\|CAF]] |
+| Landing zone already baseline-secure, need a maturity checkpoint? | [[Cloud Adoption Security Review (CASR)\|CASR]] |
+| Need a scored, regulation-mapped control baseline? | [[Microsoft Cloud Security Benchmark (MCSB)\|MCSB]] |
+| Need a capability/target-state diagram or gap analysis? | [[Microsoft Cybersecurity Reference Architectures (MCRA)\|MCRA]] |
+| Evaluating whether a design satisfies trust principles? | [[Zero Trust]] |
+| Need a role-aware, end-to-end security modernization roadmap (business → discipline → implementation)? | [[Security Adoption Framework (SAF)\|SAF]] |
+| Explaining why Microsoft enforces a secure default or deprecates a legacy protocol? | [[Secure Future Initiative (SFI)\|SFI]] |
 
 ## Keywords Index (fast lookup)
 
