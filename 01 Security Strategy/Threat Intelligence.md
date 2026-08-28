@@ -100,7 +100,7 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 
 ## What's New for SC-100
 
-- Know STIX as the shared object model (indicator, threat actor, attack pattern, identity, relationship) — attack pattern objects map to MITRE ATT&CK stages, tying TI directly to the coverage-mapping work in [[Security Operations]].
+- Know STIX as the shared object model (indicator, threat actor, attack pattern, identity, relationship) — attack pattern objects map to MITRE ATT&CK stages, tying TI directly to the coverage-mapping work in [[Security Operations]]. ATT&CK itself — and how it compares to the Cyber Kill Chain — is covered in [[Attack Chain Models]].
 - Know the current, post-convergence architecture: MDTI isn't a separate product or license anymore — design around the bundled capability in Defender XDR/Sentinel.
 - Choose the ingestion path deliberately (Defender TI connector, TAXII, or upload API) and know the legacy TIP connector is being retired.
 - Apply TLP and ingestion rules as the governance layer for TI at scale — an explicit "how do you operationalize this" answer, not just "turn on a connector."
@@ -150,6 +150,7 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 - [[AI and Copilot Security Architecture]]
 - [[Microsoft Security Copilot]]
 - [[Zero Trust]]
+- [[Attack Chain Models]]
 
 ---
 

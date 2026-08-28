@@ -111,7 +111,7 @@ flowchart TD
 | Threat modeling vs. attack path analysis | Threat modeling is proactive and design-time — reasoning about hypothetical threats before the app exists. Attack path analysis (see [[CSPM and CWPP]]) is reactive and data-driven — ranking *actual* exploitable paths in an already-deployed environment. A scenario about a not-yet-built app points to threat modeling; one about a live environment's findings points to attack path analysis. |
 | STRIDE vs. DREAD | STRIDE categorizes *what kind* of threat exists (Spoofing, Tampering, etc.). DREAD (Damage, Reproducibility, Exploitability, Affected users, Discoverability) scores *how severe* an already-identified threat is. Complementary — STRIDE finds threats, DREAD (largely legacy now) would rank them — not competing frameworks. |
 | Threat modeling vs. penetration testing | Threat modeling is theoretical/design-time analysis of a system that may not exist yet; penetration testing is active, hands-on exploitation attempted against a real, built system. Threat modeling should happen first and narrow what a pen test needs to focus on. |
-| Microsoft Threat Modeling Tool vs. MITRE ATT&CK | The Threat Modeling Tool models *application-design* threats via STRIDE/DFD. MITRE ATT&CK (see [[Security Operations]]) catalogs real-world *adversary TTPs* used to map SOC detection coverage. Different altitude: one shapes an app's design, the other measures a SOC's detection breadth — don't conflate "threat" framework names. |
+| Microsoft Threat Modeling Tool vs. MITRE ATT&CK | The Threat Modeling Tool models *application-design* threats via STRIDE/DFD. MITRE ATT&CK (see [[Attack Chain Models]] and [[Security Operations]]) catalogs real-world *adversary TTPs* used to map SOC detection coverage. Different altitude: one shapes an app's design, the other measures a SOC's detection breadth — don't conflate "threat" framework names. |
 | STRIDE vs. OWASP Top 10 for LLM Applications | STRIDE is a general-purpose, six-category framework applied per DFD element to any system. OWASP LLM Top 10 is a threat taxonomy specific to generative AI/LLM applications (prompt injection, excessive agency, etc.) that names risks STRIDE's six categories don't map to cleanly. Used *together* for an AI system — OWASP LLM Top 10 isn't a replacement for STRIDE, it's layered on top for the AI-specific elements. |
 
 ---
@@ -177,6 +177,7 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - [[Cloud Adoption Framework (CAF)]]
 - [[AI and Copilot Security Architecture]]
 - [[Data Security Posture Management (DSPM)]]
+- [[Attack Chain Models]]
 
 ---
 

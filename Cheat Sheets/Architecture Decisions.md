@@ -19,6 +19,11 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to know where sensitive data is and who can reach it? | [[Data Security Posture Management (DSPM)]] |
 | Need to design the SOC itself (workspace topology, detection coverage)? | [[Security Operations]] |
 | Need to source/operationalize threat intelligence (IOCs, actors, TTPs)? | [[Threat Intelligence]] |
+| Need to model an attacker's lifecycle (comms narrative vs. SOC coverage mapping) or map a real incident to one? | [[Attack Chain Models]] |
+| Need which framework applies at all (Zero Trust/CAF/WAF/MCSB/MCRA/SAF/SFI/CASR)? | [[Frameworks Cheat Sheet]] |
+| Need the WAF Security pillar's 12-point checklist or its antipatterns/tradeoffs? | [[Azure Well-Architected Framework (WAF)]] |
+| Need common Zero Trust rollout mistakes to sanity-check a design against? | [[Zero Trust]] |
+| Need CAF's Govern methodology (policy MVP, Five Disciplines of Cloud Governance)? | [[Cloud Adoption Framework (CAF)]] |
 | Need to replace VPN or apply identity-aware control to network traffic? | [[Identity as the Security Perimeter]] |
 | Need to scope what an identity/workload can actually do (RBAC, managed identity, tenancy)? | [[Identity and Access Management (IAM)]] |
 | Need to reduce standing privilege (JIT, bundled access, over-provisioned permissions)? | [[Securing Privileged Access]] |

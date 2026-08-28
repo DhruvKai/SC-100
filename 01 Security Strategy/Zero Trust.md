@@ -4,6 +4,7 @@ tags:
 type: concept
 domain:
   - best-practices
+status: needs-verification
 ---
 # Zero Trust
 
@@ -102,6 +103,20 @@ Zero Trust depends on ingesting logs/signals from every pillar at a volume no hu
 
 ---
 
+## Common Adoption Antipatterns
+
+Recurring ways a Zero Trust rollout fails in practice — useful for "what's wrong with this design" scenario questions, not just "what is Zero Trust":
+
+- **Treating it as a project with an end date** — Zero Trust is a continuous operating model (assume breach never "finishes"); a rollout planned as a one-off migration drifts back to implicit trust once the project closes.
+- **Network-only Zero Trust** — segmenting the network (NSGs, firewalls) while identity, apps, and data still grant implicit trust. Removing trust in one pillar while leaving it in the other five doesn't satisfy the model — see the six pillars above.
+- **Big-bang enforcement** — switching Conditional Access or blocking policies straight to enforced, tenant-wide, without a Report-only validation phase first. Causes outages/lockouts and creates pressure to roll back or over-exempt, which reintroduces implicit trust. See [[Conditional Access]]'s Report-only guidance.
+- **Ignoring user friction** — over-restrictive policies push users toward workarounds (shadow IT, personal devices, unmanaged file sharing) that recreate the exact ungoverned access Zero Trust was meant to remove — see [[SaaS Application Discovery and Control]] for the discovery side of this gap.
+- **Pillar silos** — identity, network, and data teams each implement their own controls without sharing signals, defeating the "single evaluation lens across pillars" purpose of the model.
+- **No maturity baseline** — deploying controls without first assessing current Traditional/Advanced/Optimal maturity, so investment isn't prioritized against the actual biggest gap.
+- **Retrofitting instead of designing in** — applying Zero Trust as a bolt-on review after an architecture is finalized, rather than as the lens applied from the first design decision.
+
+---
+
 ## Architecture Decisions
 
 ```mermaid
@@ -181,6 +196,7 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - Confidential Computing (encryption in use)
 - Continuous Access Evaluation (CAE)
 - SIEM/SOAR, machine learning-driven anomaly detection
+- Adoption antipatterns: big-bang enforcement, network-only Zero Trust, pillar silos, retrofitting
 
 ---
 
@@ -213,3 +229,9 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - [Zero Trust Guidance Center](https://learn.microsoft.com/en-us/security/zero-trust/) — Microsoft Learn
 - [Zero Trust adoption framework](https://learn.microsoft.com/en-us/security/zero-trust/adopt/zero-trust-adoption-framework) — Microsoft Learn
 - [[Exam Objectives]]
+
+---
+
+## Verification Flag
+
+The Common Adoption Antipatterns list is synthesized from general Zero Trust rollout guidance and architecture judgment, not transcribed from one single Microsoft Learn page — re-verify against the current [Zero Trust Guidance Center](https://learn.microsoft.com/en-us/security/zero-trust/) for any named antipattern list before treating specific wording as exam-final.

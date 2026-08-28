@@ -20,6 +20,32 @@ Microsoft's overlapping strategy/architecture frameworks — one-line definition
 | [[Security Adoption Framework (SAF)\|SAF]] | Security Adoption Framework (Microsoft security adoption model) | Umbrella, role-aware model — business scenarios → security disciplines → technology pillars — unifying MCRA, SDL, Zero Trust/CISO workshops, IR playbooks. | "business scenarios / security disciplines / technology pillars", "SAF workshops", "security adoption model" |
 | [[Secure Future Initiative (SFI)\|SFI]] | Secure Future Initiative | Microsoft's own internal engineering commitment — six pillars mapped to Zero Trust + NIST CSF; a source MCSB synthesizes. | "Secure by Design/Default/Operations", "six pillars", "NIST CSF mapping" |
 
+## How the Frameworks Relate
+
+Not eight competing choices — one principle, one umbrella model, and a set of roadmaps/scorecards that plug into each other:
+
+```mermaid
+flowchart TD
+    ZT["Zero Trust<br/>(principle)"] --> SAF["SAF<br/>(umbrella adoption model:<br/>business scenarios → disciplines → pillars)"]
+    SAF --> MCRA["MCRA<br/>(capabilities mapped onto Zero Trust)"]
+    SAF --> CAF["CAF<br/>(org-wide adoption lifecycle)"]
+
+    CAF -->|Secure methodology,<br/>scored by| MCSB["MCSB<br/>(scored control baseline)"]
+    CAF -->|Secure methodology,<br/>maturity-checked by| CASR["CASR<br/>(landing zone review)"]
+    CAF -->|Ready phase lands a workload,<br/>then evaluated by| WAF["WAF<br/>(per-workload, 5 pillars)"]
+
+    SFI["SFI<br/>(Microsoft's internal commitment)"] -.->|one source MCSB synthesizes| MCSB
+```
+
+- **[[Zero Trust]]** is the principle every other framework here is judged against — it has no roadmap or scorecard of its own.
+- **[[Security Adoption Framework (SAF)\|SAF]]** is the umbrella: it integrates [[Microsoft Cybersecurity Reference Architectures (MCRA)\|MCRA]] (capability mapping), [[Cloud Adoption Framework (CAF)\|CAF]] (adoption lifecycle), SDL, and CISO workshops into one role-aware model — CAF and MCRA are inputs into SAF, not synonyms for it.
+- **[[Cloud Adoption Framework (CAF)\|CAF]]** sequences *when* controls appear org-wide; its **Secure** methodology is what gets *scored* by [[Microsoft Cloud Security Benchmark (MCSB)\|MCSB]] and *maturity-checked* by [[Cloud Adoption Security Review (CASR)\|CASR]] once a landing zone is baseline-secure.
+- **[[Azure Well-Architected Framework (WAF)\|WAF]]** picks up *after* CAF's Ready phase lands a workload in an application landing zone — it evaluates that one workload's architecture, CAF doesn't reach that depth.
+- **[[Secure Future Initiative (SFI)\|SFI]]** is Microsoft's own internal engineering commitment, not something you adopt directly — it's one of the sources [[Microsoft Cloud Security Benchmark (MCSB)\|MCSB]] synthesizes into customer-facing controls.
+- Net effect: **Zero Trust** sets the target, **SAF** sequences the org-wide modernization, **CAF** operationalizes it as an adoption lifecycle, **WAF** checks the resulting workload, and **MCSB/CASR** score how well any of it actually landed.
+
+---
+
 ## Confusion Pairs
 
 | Compare | Difference |

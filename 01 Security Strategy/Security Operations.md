@@ -33,7 +33,7 @@ flowchart LR
 
 - A reactive-only SOC depends entirely on existing analytics-rule/XDR coverage — anything outside that coverage goes unnoticed until damage is done.
 - Proactive threat hunting (KQL queries, notebooks, hypothesis-driven investigation over raw log data) assumes some attacks have *already* evaded detection and searches for them directly. This is the maturity signal the exam tests for, not just "is Sentinel deployed."
-- MITRE ATT&CK coverage gaps (see Comparison below) are exactly what proactive hunting should target first — hunt where the coverage map shows nothing.
+- MITRE ATT&CK coverage gaps (see Comparison below) are exactly what proactive hunting should target first — hunt where the coverage map shows nothing. ATT&CK itself — tactics, techniques, and how it compares to the Cyber Kill Chain — is covered in [[Attack Chain Models]]; this note covers *using* it as a coverage-mapping tool, not the model itself.
 - Hunting and analytics rules run *on* [[Threat Intelligence|threat intelligence]] — indicators and attack-pattern context are what turn a raw log query into a hypothesis worth hunting.
 
 ---
@@ -204,6 +204,7 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - [[Threat Intelligence]]
 - [[Cloud Adoption Framework (CAF)]]
 - [[Azure Arc]]
+- [[Attack Chain Models]]
 
 ---
 

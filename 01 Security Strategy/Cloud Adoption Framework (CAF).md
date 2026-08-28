@@ -105,6 +105,37 @@ flowchart TD
 
 ---
 
+## Govern Methodology
+
+CAF's named answer to "how do we turn business risk into enforced, auditable policy" — an iterative governance process, not a one-time policy document.
+
+```mermaid
+flowchart LR
+    Risk["Business risks"] --> Policy["Policy & compliance statements"]
+    Policy --> Process["Processes<br/>(Cloud Governance Team)"]
+    Process --> MVP["Governance MVP<br/>(minimum viable policy set)"]
+    MVP -->|deploy via Azure Policy,<br/>management groups, landing zone templates| Enforce["Enforced guardrails"]
+    Enforce -->|monitor drift, incorporate<br/>new risks/workloads| MVP
+```
+
+- **Corporate policy** is built top-down: identified business risks drive policy and compliance statements, which drive the processes a **Cloud Governance Team** actually runs — governance starts from risk, not from a tooling checklist.
+- The **governance MVP** (minimum viable product) is the deliberately small first policy set enforced from day one in the landing zone, then iterated — mirrors the Ready phase's platform landing zone, but for policy rather than infrastructure.
+- Enforcement is continuous: [[Azure Policy]] and management-group-scoped guardrails catch drift as new workloads land, feeding findings back into the next MVP iteration rather than a fixed, never-revisited policy set.
+
+**Five Disciplines of Cloud Governance** — the corporate policy areas Govern organizes work into:
+
+| Discipline | Governs |
+| --- | --- |
+| Cost Management | Budgets, cost allocation, showback/chargeback |
+| Security Baseline | Minimum security controls every subscription/workload must meet ([[Azure Policy]], MCSB — see [[Microsoft Cloud Security Benchmark (MCSB)]]) |
+| Resource Consistency | Naming, tagging, resource organization so resources are discoverable and manageable at scale |
+| Identity Baseline | Consistent [[Entra ID]] configuration — directory structure, role assignment conventions, guest access rules |
+| Deployment Acceleration | Standardized deployment mechanisms (IaC templates, landing zone blueprints) so new resources land pre-compliant instead of being remediated after the fact |
+
+- Each discipline gets its own maturity assessment and toolchain — Security Baseline is Govern's specific link to [[Azure Policy]]-driven Secure Score (see [[Security Posture Assessments]]), distinct from the Secure methodology's active threat protection.
+
+---
+
 ## Architecture Decisions
 
 ```mermaid
@@ -197,12 +228,15 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - [[Security Operations]]
 - [[Azure Security Logging]]
 - [[Azure Landing Zones]]
+- [[Microsoft Cloud Security Benchmark (MCSB)]]
+- [[Entra ID]]
 
 ---
 
 ## References
 
 - [Cloud Adoption Framework overview](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview) — Microsoft Learn
+- [Cloud Adoption Framework: Govern](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/govern/) — Microsoft Learn
 - [Cloud Adoption Framework for Microsoft - Cloud Adoption Framework | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/)
 - [Security Teams, Roles, and Functions - Cloud Adoption Framework | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/secure/teams-roles)
 - [Secure Overview - Cloud Adoption Framework | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/secure/overview)
@@ -213,3 +247,5 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 ## Verification Flag
 
 The Unified Operations model (Govern/Manage discipline names, the Basic features/Enhanced visibility/Automated controls tiers, Primary Cloud Controls vs. Hybrid & Multicloud Extension) was transcribed from a Microsoft Learn training-module diagram, not cross-checked against the live CAF Manage methodology page. Re-verify exact discipline names and diagram terminology against [Cloud Adoption Framework: Manage](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/manage/) before treating it as exam-final wording.
+
+The Govern Methodology section (governance MVP process, Cloud Governance Team, Five Disciplines of Cloud Governance) is transcribed from training-knowledge recall, not a live re-read of the current page — re-verify against [Cloud Adoption Framework: Govern](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/govern/) before treating discipline names/process steps as exam-final wording.
