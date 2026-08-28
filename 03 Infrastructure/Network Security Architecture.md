@@ -30,6 +30,7 @@ Evaluating a network design against a workload's actual security requirements �
 - Centralizing firewall/segmentation policy across many hub VNets or secured virtual hubs — **Azure Firewall Manager**.
 - Mission-critical, internet-facing services where the cost-protection guarantee and Rapid Response support matter — **DDoS Protection Standard**, layered on top of the Basic tier that's already on by default.
 - Needing IDS/IPS or a vendor-specific feature Azure Firewall doesn't provide — a third-party **network virtual appliance (NVA)** routed through the hub, after confirming **Azure Firewall Premium** (TLS inspection, IDPS) genuinely can't cover the requirement.
+- Replacing VPN for user-to-private-app access — that's [[Identity as the Security Perimeter|Entra Private Access]] (ZTNA), not this note's perimeter/segmentation layer; choosing between its **Quick Access** (IP/FQDN ranges, fast migration) and **per-app TCP/UDP access** (fuller Zero Trust granularity) is covered there in full, this note only notes where it sits relative to DDoS/WAF/Firewall.
 
 ---
 
@@ -87,6 +88,7 @@ flowchart TD
 | DDoS Protection Basic vs. Standard | Basic: free, automatic, always-on for every public IP — no SLA, no cost protection. Standard: paid, tuned to the specific application's traffic patterns, adds a cost-protection guarantee (credits for scale-out costs during an attack), Rapid Response support team access, and integrates with WAF for combined L3–L7 defense. Standard is justified for specific business-critical, internet-facing workloads — not a universal upgrade. Standard itself splits into Network Protection (VNet-wide) vs. IP Protection (per-IP) — full plan detail in [[DDoS Protection]]. |
 | Azure Firewall vs. third-party NVA | Azure Firewall is Microsoft-managed PaaS (auto-scale, no patching, Firewall Manager policy) with Premium tier adding IDPS and TLS inspection. An NVA is a customer-deployed/managed appliance (own scaling, HA, patching) chosen only when a specific vendor feature or existing licensing requirement isn't met by Azure Firewall Premium. |
 | Azure Firewall vs. NSG | Full comparison already in [[Securing IaaS and PaaS Services]] — segmentation (NSG) vs. centralized, stateful policy/inspection (Azure Firewall); not repeated here. |
+| Perimeter/segmentation controls (this note) vs. Private Access | This note's DDoS/WAF/Firewall/NSG layer protects resource-to-resource and internet-to-resource traffic inside the Azure network; [[Identity as the Security Perimeter|Entra Private Access]] replaces VPN for *user*-to-private-app access via Conditional-Access-governed ZTNA (Quick Access vs. per-app TCP/UDP — full decision in that note). Complementary layers, not overlapping ones. |
 
 ---
 
@@ -132,6 +134,7 @@ AZ-500 already covers configuring NSGs, Azure Firewall rules, DDoS Protection pl
 - Azure Firewall Premium: IDPS, TLS inspection
 - Network virtual appliance (NVA)
 - Defense in depth (perimeter, segmentation, identity)
+- Quick Access vs. per-app TCP/UDP access (Private Access, see [[Identity as the Security Perimeter]])
 
 ---
 

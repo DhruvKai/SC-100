@@ -118,7 +118,7 @@ flowchart TD
     Q1 -->|Evaluating coverage instead| Q3["What's the target environment?"]
     Q3 -->|Traditional IT/cloud| MEnt["MITRE ATT&CK Enterprise matrix"]
     Q3 -->|Mobile devices| MMob["MITRE ATT&CK Mobile matrix"]
-    Q3 -->|OT/industrial control| MICS["MITRE ATT&CK ICS matrix"]
+    Q3 -->|OT/industrial control| MICS["MITRE ATT&CK ICS matrix<br/>(see OT and ICS Security)"]
 ```
 
 ---
@@ -129,7 +129,7 @@ flowchart TD
 | --- | --- |
 | Single-workspace vs. multi-workspace Sentinel | Single workspace is the default — simpler RBAC, one detection surface, lower cost. Multi-workspace is justified only by sovereignty/regulatory boundaries, separate data ownership, multiple Entra tenants, or differing retention/billing needs. |
 | Direct-link vs. Co-Management vs. N-Tier | Direct-link: one central workspace controls all member workspaces (simplest). Co-Management: more than one central workspace manages a member workspace (e.g., in-house SOC + MSSP). N-Tier: a central workspace manages other central workspaces (e.g., conglomerate → subsidiaries → their own member workspaces). |
-| MITRE ATT&CK Enterprise vs. Mobile vs. ICS | Enterprise covers traditional IT, endpoint, and cloud tactics/techniques; Mobile covers Android/iOS-targeted threats; ICS covers OT/industrial control systems — evaluate coverage against the matrix matching the estate, not Enterprise alone. |
+| MITRE ATT&CK Enterprise vs. Mobile vs. ICS | Enterprise covers traditional IT, endpoint, and cloud tactics/techniques; Mobile covers Android/iOS-targeted threats; ICS covers OT/industrial control systems — evaluate coverage against the matrix matching the estate, not Enterprise alone. Actually securing that OT/ICS estate (Purdue Model segmentation, Defender for IoT OT sensors) is covered in [[OT and ICS Security]]; this note stops at coverage mapping. |
 | SIEM vs. XDR vs. SOAR | Sentinel (SIEM) correlates logs into incidents; Defender XDR provides native endpoint/identity/email/app-level detection and response; SOAR (Sentinel playbooks, built on [[Logic Apps]]) automates the response action across systems. Full breakdown above. |
 | Primary vs. secondary (member) workspace | Only the Primary workspace in a multi-workspace design gets full Defender XDR incident integration and correlation; secondary/member workspaces don't get native XDR correlation on their own. Choosing which workspace is Primary is part of the multi-workspace architecture decision, not an afterthought. |
 
@@ -205,6 +205,7 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - [[Cloud Adoption Framework (CAF)]]
 - [[Azure Arc]]
 - [[Attack Chain Models]]
+- [[OT and ICS Security]]
 
 ---
 

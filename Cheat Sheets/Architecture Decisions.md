@@ -24,11 +24,13 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need the WAF Security pillar's 12-point checklist or its antipatterns/tradeoffs? | [[Azure Well-Architected Framework (WAF)]] |
 | Need common Zero Trust rollout mistakes to sanity-check a design against? | [[Zero Trust]] |
 | Need CAF's Govern methodology (policy MVP, Five Disciplines of Cloud Governance)? | [[Cloud Adoption Framework (CAF)]] |
+| Need who owns what across on-prem/IaaS/PaaS/SaaS (or the AI-specific version)? | [[Shared Responsibility Model]] / [[AI and Copilot Security Architecture]] |
+| Need to evaluate or secure an OT/ICS/SCADA network? | [[OT and ICS Security]] |
 | Need to replace VPN or apply identity-aware control to network traffic? | [[Identity as the Security Perimeter]] |
 | Need to scope what an identity/workload can actually do (RBAC, managed identity, tenancy)? | [[Identity and Access Management (IAM)]] |
 | Need to reduce standing privilege (JIT, bundled access, over-provisioned permissions)? | [[Securing Privileged Access]] |
 | Need runtime protection for a running VM/container/database, not just config scoring? | [[Cloud Workload Protection (CWPP)]] |
-| Need to prioritize findings across posture + workload + data + permissions signals? | [[CSPM and CWPP]] |
+| Need to prioritize findings across posture + workload + data + permissions signals, or explain Defender for Cloud as a CNAPP? | [[CSPM and CWPP]] |
 | Need to secure a VM's network exposure or a PaaS resource's reachability? | [[Securing IaaS and PaaS Services]] |
 | Need to evaluate/design network topology, perimeter, or DDoS/WAF/firewall controls? | [[Network Security Architecture]] |
 | Need to identify design-time threats for a business-critical app (STRIDE)? | [[Threat Modeling]] |

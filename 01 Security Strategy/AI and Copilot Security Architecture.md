@@ -67,6 +67,26 @@ Securing the AI service itself — Azure OpenAI, Azure AI Foundry, and the broad
 
 ---
 
+## AI Shared Responsibility
+
+Extends the general [[Shared Responsibility Model]] to the three AI deployment shapes actually in play — same top-row logic (data/access always customer-owned), applied to AI-specific layers:
+
+| Responsibility | Microsoft 365 Copilot (SaaS AI) | Azure OpenAI / AI Foundry (PaaS AI) | Customer-hosted model (IaaS/custom) |
+| --- | --- | --- | --- |
+| Foundation model weights, training infra | Microsoft | Microsoft | Customer |
+| Hosting infrastructure, platform patching | Microsoft | Microsoft | Customer |
+| Fine-tuning/training data, prompts, system instructions | Customer | Customer | Customer |
+| Network isolation, RBAC, CMK config | N/A (SaaS-managed) | Customer | Customer |
+| Data governance/permissions (oversharing) | Customer | Customer | Customer |
+| Content-safety config (Content Safety/Prompt Shields) | Microsoft-managed default | Customer-configured | Customer-configured |
+| Agent permission scoping | Customer (via Agent ID) | Customer (via Agent ID) | Customer (via Agent ID) |
+
+- The three responsibility items with **no pre-AI equivalent** — and that are never Microsoft's to own regardless of deployment shape — are training/fine-tuning data provenance, prompt-injection defense configuration, and agent permission scoping. Every other row maps onto the classic IaaS/PaaS/SaaS split in [[Shared Responsibility Model]].
+- Microsoft 365 Copilot's row for data governance is the same "SaaS data stays customer-owned" fact that makes oversharing a Copilot risk in the first place (see Purpose above) — the shared-responsibility split is *why* the DSPM data risk assessment is the customer's job, not Microsoft's.
+- Moving from a customer-hosted model down to Azure OpenAI/AI Foundry removes infrastructure and patching burden, the same way PaaS removes it for any other workload — it does not remove responsibility for what's actually said to, or done by, the model.
+
+---
+
 ## Architecture
 
 ```mermaid
@@ -134,6 +154,7 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, De
 - Tie AI security decisions back to [[Cloud Adoption Framework (CAF)|CAF]]'s AI adoption lifecycle (Strategy → Plan → Ready → Govern → Manage → Secure) for strategy-level questions.
 - Recognize Content Safety/Prompt Shields as the concrete, in-line answer to prompt-injection scenarios — Defender for Cloud's AI threat protection detects after the fact, it doesn't block the request itself.
 - Apply the same PaaS network/identity/encryption pattern (Private Link, CMK, RBAC) used across the rest of the vault to Azure OpenAI/AI Foundry — it isn't a special case, just a new resource type wearing the same controls.
+- Extend the [[Shared Responsibility Model]] explicitly to AI — a scenario naming Microsoft 365 Copilot, Azure OpenAI, or a customer-hosted model expects you to place training data, prompts, content-safety config, and agent permissions correctly, not just infrastructure/OS.
 
 ---
 
@@ -146,6 +167,7 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, De
 - "Block a jailbreak or prompt injection attempt before it reaches the model" → Content Safety/Prompt Shields, not Defender for Cloud (which only detects after telemetry is emitted).
 - "Restrict who can deploy/change a model vs. who can only call it" → RBAC scoped to the AI Foundry hub/project, not a broad Contributor role.
 - "Encrypt fine-tuned model data with org-controlled keys" → customer-managed keys in Key Vault, the same CMK pattern as any other PaaS data store.
+- "Who is responsible for the training data, prompts, and agent permissions?" → the customer, at every AI deployment shape (SaaS, PaaS, or customer-hosted) — Microsoft's ownership only ever covers the foundation model and infrastructure.
 
 ---
 
@@ -171,6 +193,7 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, De
 - Azure AI Content Safety, Prompt Shields
 - Jailbreak (direct) vs. indirect prompt injection
 - Azure AI Foundry managed virtual network, customer-managed keys (AI), AI Foundry RBAC
+- AI shared responsibility: SaaS Copilot vs. PaaS Azure OpenAI/AI Foundry vs. customer-hosted model
 
 ---
 
@@ -195,6 +218,7 @@ Not covered at all — Security Copilot, Copilot data risk tooling, Agent ID, De
 - [[Private Link]]
 - [[Securing IaaS and PaaS Services]]
 - [[Data Classification and Protection]]
+- [[Shared Responsibility Model]]
 
 ---
 

@@ -15,7 +15,7 @@ Matching network exposure and identity controls to the deployment model — IaaS
 
 ## Why Architects Choose It
 
-- Shared responsibility shifts by model: on IaaS the customer owns OS patching, network segmentation, and endpoint hardening; on PaaS Microsoft owns the host/OS/runtime, leaving only the service's public/private network boundary and the identity used to call it. The exam tests recognizing which layer a scenario actually leaves the customer responsible for.
+- Shared responsibility shifts by model: on IaaS the customer owns OS patching, network segmentation, and endpoint hardening; on PaaS Microsoft owns the host/OS/runtime, leaving only the service's public/private network boundary and the identity used to call it. The exam tests recognizing which layer a scenario actually leaves the customer responsible for. Full on-prem/IaaS/PaaS/SaaS breakdown — and the AI-specific extension of it — lives in [[Shared Responsibility Model]]; this note operationalizes the IaaS/PaaS rows into concrete controls.
 - IaaS security is about eliminating direct exposure: no public IP on a management port, [[Network Security Group|NSGs]] micro-segmenting subnets, [[Azure Firewall]] centralizing egress/ingress policy, and **JIT VM access** closing the exposure window instead of leaving RDP/SSH permanently reachable.
 - PaaS security is about restricting reachability to a service the platform already patches: **Private Link/Service Endpoints/resource firewall rules** replace "public endpoint + key" as the default posture, and **managed identity** (full comparison already in [[Identity and Access Management (IAM)]] — not repeated here) replaces stored credentials for the calling side.
 - [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]] baselines (see [[Security Posture Assessments]]) are what actually enforce "public network access disabled," "JIT required," etc., across a portfolio — governance layer, not a per-resource manual step.
@@ -181,6 +181,7 @@ AZ-500 already covers configuring NSGs, Azure Firewall, Azure Bastion, JIT VM ac
 - [[Front Door and Application Gateway]]
 - [[Key Vault]]
 - [[Azure Bastion]]
+- [[Shared Responsibility Model]]
 
 ---
 

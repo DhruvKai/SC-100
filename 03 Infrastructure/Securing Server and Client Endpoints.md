@@ -20,7 +20,7 @@ Architecting endpoint protection across the full device estate — servers, clie
 - Local admin credential reuse across machines is a classic lateral-movement vector — **Windows LAPS** closes it by rotating and uniquely randomizing local admin passwords per device, backed to Entra ID or AD DS.
 - Device compliance itself rests on a hardware root of trust, not just policy configuration — [[Trusted Platform Module (TPM)]] covers the TPM/Secure Boot/Measured Boot chain that produces the attestation Intune compliance and [[Conditional Access]] ultimately consume.
 - BYOD and unmanaged personal devices can't always accept full device management — **MAM** (app-level control) extends data protection to devices MDM can't fully enroll.
-- IoT/OT devices often can't run an agent at all — Defender for IoT's passive network-sensor architecture protects what can't be instrumented directly.
+- IoT/OT devices often can't run an agent at all — Defender for IoT's passive network-sensor architecture protects what can't be instrumented directly. Full OT/ICS evaluation and segmentation depth — Purdue Model, sensor deployment options — lives in [[OT and ICS Security]]; this note stays at the edition-selection level.
 
 ---
 
@@ -66,7 +66,7 @@ Distinct from the IoT *device discovery/monitoring* covered above (Defender for 
 ## When NOT to Use
 
 - Assuming MDM enrollment is possible or desirable for every device — personal/BYOD devices often need MAM instead of a forced full-device policy.
-- Deploying Defender for IoT's OT edition where Enterprise IoT would do — true ICS/plant-floor sensors are a different edition and deployment model than enterprise IoT device discovery.
+- Deploying Defender for IoT's OT edition where Enterprise IoT would do — true ICS/plant-floor sensors are a different edition and deployment model than enterprise IoT device discovery. See [[OT and ICS Security]] for evaluating and deploying the OT edition itself.
 - Treating Windows LAPS as a replacement for privileged access governance — it rotates *local* admin passwords; standing directory-level privilege still needs [[PIM]]/[[Securing Privileged Access]].
 
 ---
@@ -195,6 +195,8 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - [[Intune]] — co-management, Autopilot, and Endpoint Privilege Management detailed there.
 - [[Trusted Platform Module (TPM)]]
 - [[Private Link]]
+- [[OT and ICS Security]]
+- [[Shared Responsibility Model]]
 - [[Ransomware Resiliency and BCDR]]
 
 ---
