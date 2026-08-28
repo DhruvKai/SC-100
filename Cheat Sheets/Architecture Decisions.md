@@ -26,6 +26,7 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need CAF's Govern methodology (policy MVP, Five Disciplines of Cloud Governance)? | [[Cloud Adoption Framework (CAF)]] |
 | Need who owns what across on-prem/IaaS/PaaS/SaaS (or the AI-specific version)? | [[Shared Responsibility Model]] / [[AI and Copilot Security Architecture]] |
 | Need to evaluate or secure an OT/ICS/SCADA network? | [[OT and ICS Security]] |
+| Need to find internet-facing assets the org doesn't know it owns (shadow IT, subdomain takeover, post-M&A)? | [[External Attack Surface Management (EASM)]] |
 | Need to replace VPN or apply identity-aware control to network traffic? | [[Identity as the Security Perimeter]] |
 | Need to scope what an identity/workload can actually do (RBAC, managed identity, tenancy)? | [[Identity and Access Management (IAM)]] |
 | Need to reduce standing privilege (JIT, bundled access, over-provisioned permissions)? | [[Securing Privileged Access]] |

@@ -32,6 +32,7 @@ Defender EASM answers a different question than CSPM, CWPP, DSPM, or CIEM: *what
 - **Discovery, not assessment** — Defender EASM's proprietary discovery engine recursively maps infrastructure from known seed assets (domains, IP blocks, ASNs, WHOIS records) to uncover previously unknown or unmonitored properties: forgotten subdomains, shadow-IT web apps, stale third-party dependencies, dev/test environments never decommissioned.
 - **Inventory and risk insights** — discovered assets are classified as recent (active) or historic, then scored for vulnerabilities, compliance gaps, and infrastructure risk — an **Attack Surface** view, distinct from Secure Score.
 - **Feeds the same correlated risk view** — EASM findings feed Security Exposure Management (see [[Security Posture Assessments]]) and the Cloud Security Graph alongside CSPM/CWPP/DSPM/CIEM, so an unknown internet-facing asset with a real vulnerability gets prioritized the same way a known one would.
+- Full depth — what actually counts as external attack surface (subdomain takeover, certificate sprawl, DNS hygiene, post-M&A exposure) and how to defend each category — lives in [[External Attack Surface Management (EASM)]]; this section stays at "where EASM fits among CSPM/CWPP/DSPM/CIEM."
 
 ---
 
@@ -145,6 +146,7 @@ AZ-500 doesn't cover CNAPP, attack path analysis, or the Cloud Security Graph at
 - [[Securing Privileged Access]]
 - [[Microsoft Defender for Cloud]]
 - [[Zero Trust]]
+- [[External Attack Surface Management (EASM)]]
 
 ---
 

@@ -143,6 +143,7 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Data Security Posture Management (DSPM)]]
 - [[Cloud Workload Protection (CWPP)]]
 - [[CSPM and CWPP]]
+- [[External Attack Surface Management (EASM)]]
 - [[Azure Arc]]
 - [[Azure Policy]]
 - [[Azure Landing Zones]]

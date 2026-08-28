@@ -143,6 +143,7 @@ AZ-500 does not cover pipeline or repository security at all — secret scanning
 - [[Microsoft Defender for Cloud]]
 - [[Cloud Adoption Framework (CAF)]]
 - [[Container and Kubernetes Security]]
+- [[External Attack Surface Management (EASM)]]
 
 ---
 
