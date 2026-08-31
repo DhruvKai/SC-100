@@ -20,6 +20,7 @@ Cloud-native SIEM + SOAR. Ingests logs into a Log Analytics/Data Lake workspace,
 - **Incidents** — grouped alerts with investigation graph
 - **Hunting** — proactive KQL queries + notebooks over raw log data
 - **Workbooks** — dashboards/visualizations
+- **Automation rules** — incident-level triage logic (trigger → conditions → ordered actions); the recommended place to attach playbooks — see [[Playbooks and Automation Rules]]
 - **Playbooks** — [[Logic Apps]]-based automated response (SOAR)
 - **UEBA** — behavioral baselining and anomaly detection
 - **Threat intelligence** — indicator ingestion (TAXII, upload, connectors) feeding analytics rules; architecture-level detail in [[Threat Intelligence]]
@@ -47,6 +48,7 @@ Sentinel and [[Microsoft Defender XDR]] are no longer two products an architect 
 - The **unified security operations platform** (Sentinel + Defender XDR + Security Exposure Management, all in the Defender portal) is the current architecture to recommend — don't design around the legacy separate-portals model, and don't describe Sentinel and Defender as separate products requiring a connector to work together.
 - MITRE ATT&CK coverage mapping is done via Sentinel's analytics rule gallery — know this maps to the exam's "evaluate threat detection coverage" objective.
 - SOAR = Sentinel (detection + orchestration); XDR = Defender suite (endpoint-level detection + native response) — a scenario asking to "automate a multi-system response" points to Sentinel playbooks.
+- Automation rules and playbooks are **not** interchangeable: rules do triage/routing for free, playbooks do cross-system work and are billed as Logic Apps. Full breakdown in [[Playbooks and Automation Rules]].
 
 ## Verification Flag
 
@@ -60,4 +62,7 @@ The Sentinel/Defender convergence is an active, ongoing process, not a completed
 - [[Zero Trust]]
 - [[Security Operations]]
 - [[Threat Intelligence]]
+- [[Playbooks and Automation Rules]]
+- [[Logic Apps]]
+- [[Secure Score Mechanics]]
 - [[Exam Objectives]]

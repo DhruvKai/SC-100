@@ -198,6 +198,8 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - [[OT and ICS Security]]
 - [[Shared Responsibility Model]]
 - [[Ransomware Resiliency and BCDR]]
+- [[Securing Active Directory Domain Services (AD DS)]] — domain-joined endpoints inherit the forest's blast radius; LAPS and tier boundaries are covered there.
+- [[Microsoft 365 Licensing]] — Defender for Endpoint Plan 1 vs. Plan 2 vs. Defender for Business is a SKU decision.
 
 ---
 

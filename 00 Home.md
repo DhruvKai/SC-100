@@ -15,6 +15,7 @@ type: index
 - [[06 Governance]]
 
 ## Resources
+- [[What's New]] — changelog of vault additions, newest first
 - [[Architecture Decisions]]
 - [[services|Services]]
 - [[Frameworks Cheat Sheet]]

@@ -157,7 +157,8 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - "Design a SOC for a multi-tenant MSSP" → multi-workspace with Co-Management or N-Tier, not a single shared workspace.
 - "Evaluate detection coverage" scenarios that mention OT, ICS, or mobile devices are testing whether you reach for the Mobile/ICS matrices, not just Enterprise.
 - Distractors often default to "add more workspaces" for scale — the correct answer is usually single workspace unless a named driver (sovereignty, ownership, tenancy) is stated.
-- "Automate response across multiple systems" → Sentinel SOAR playbooks; "detect and natively respond within an endpoint" → Defender XDR.
+- "Automate response across multiple systems" → Sentinel SOAR playbooks; "detect and natively respond within an endpoint" → Defender XDR. Which automation layer answers which scenario — automation rule vs. playbook vs. native AIR/attack disruption — is broken down in [[Playbooks and Automation Rules]].
+- "Incident exceeds internal capability, or the SOC can't trust its own tooling" → escalate to [[Microsoft Incident Response (DART)|Microsoft Incident Response (DART)]]; define that escalation threshold in advance.
 - "Improve SOC maturity" scenarios point to *adding proactive threat hunting*, not just adding more detection rules — reactive detection alone is the lower maturity state.
 - A multi-workspace design still needs exactly one **Primary workspace** for full Defender XDR correlation — don't assume every workspace in the topology gets equal integration.
 
@@ -206,6 +207,9 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - [[Azure Arc]]
 - [[Attack Chain Models]]
 - [[OT and ICS Security]]
+- [[Playbooks and Automation Rules]] — the automation-rule vs. playbook vs. native-XDR-response layering under SOAR.
+- [[Microsoft Incident Response (DART)]] — when an incident exceeds internal SOC scope or trust.
+- [[Securing Active Directory Domain Services (AD DS)]]
 
 ---
 

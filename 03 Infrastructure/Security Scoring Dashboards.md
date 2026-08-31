@@ -12,7 +12,7 @@ aliases:
 
 ## Purpose
 
-Microsoft's security stack exposes several distinct, non-interchangeable scores; knowing which one answers which question — and which portal owns it — is what turns a score into a decision.
+Microsoft's security stack exposes several distinct, non-interchangeable scores; knowing which one answers which question — and which portal owns it — is what turns a score into a decision. This page routes the *question* to the right score; [[Secure Score Mechanics]] covers how each score is *calculated*.
 
 ---
 
@@ -133,6 +133,8 @@ AZ-500 already covers reading and acting on Microsoft Secure Score and Defender 
 - [[Purview]]
 - [[Microsoft Sentinel]]
 - [[Securing Microsoft 365]]
+- [[Secure Score Mechanics]] — the calculation behind both Secure Scores compared here.
+- [[Microsoft 365 Licensing]] — licensed products set Microsoft Secure Score's denominator.
 
 ---
 

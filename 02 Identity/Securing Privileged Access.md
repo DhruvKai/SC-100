@@ -156,6 +156,9 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - [[Ransomware Resiliency and BCDR]]
 - [[Microsoft Defender for Cloud]]
 - [[Zero Trust]]
+- [[Rapid Modernization Plan (RaMP)]] — the privileged access RaMP stages this work across 30 days / 90 days / beyond.
+- [[Securing Active Directory Domain Services (AD DS)]] — the on-prem Tier 0 estate this model contains.
+- [[Resource Guard]] — the same separation-of-duties idea applied to backup destruction.
 
 ---
 

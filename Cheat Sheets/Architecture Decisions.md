@@ -57,3 +57,10 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to secure Exchange/SharePoint/Teams mail and collaboration threats, or M365 Secure Score? | [[Securing Microsoft 365]] |
 | Need IoT device authentication (X.509/SAS/TPM via IoT Hub/DPS), not just device discovery? | [[Securing Server and Client Endpoints]] |
 | Need App Service-specific hardening (Easy Auth, deployment slots) beyond generic PaaS network controls? | [[Securing IaaS and PaaS Services]] |
+| Need to know which Microsoft 365 SKU or add-on a required control needs (E3 vs. E5 vs. E5 Security/Compliance)? | [[Microsoft 365 Licensing]] |
+| Need to stop a single compromised backup admin from deleting backups or disabling soft delete? | [[Resource Guard]] (Multi-User Authorization) |
+| Need external incident response expertise, a compromise assessment, or an IR retainer? | [[Microsoft Incident Response (DART)]] |
+| Need to know where to *start* with Zero Trust — a prioritized backlog with named owners? | [[Rapid Modernization Plan (RaMP)]] |
+| Need to automate SOC response — and to pick between an automation rule, a playbook, and native XDR response? | [[Playbooks and Automation Rules]] |
+| Need to specify security requirements for on-prem AD DS or reduce its attack surface? | [[Securing Active Directory Domain Services (AD DS)]] |
+| Need to explain how a Secure Score is calculated, or turn a score target into a remediation plan? | [[Secure Score Mechanics]] |

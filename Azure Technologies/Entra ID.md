@@ -12,7 +12,7 @@ status: needs-verification
 
 # Microsoft Entra ID
 
-Microsoft's cloud identity platform — the IdP architecture (hybrid sync, external identities, decentralized identity) is covered in [[Identity as the Security Perimeter]]; this page is licensing and product-tier orientation, since a large share of this vault's recommended controls only exist at a specific tier.
+Microsoft's cloud identity platform — the IdP architecture (hybrid sync, external identities, decentralized identity) is covered in [[Identity as the Security Perimeter]]; this page is licensing and product-tier orientation, since a large share of this vault's recommended controls only exist at a specific tier. For how these tiers arrive bundled inside Microsoft 365 SKUs (P1 in E3, P2 in E5 or the E5 Security add-on), see [[Microsoft 365 Licensing]]. For hardening the on-prem directory that syncs into this one, see [[Securing Active Directory Domain Services (AD DS)]].
 
 ## License Tiers
 
@@ -76,6 +76,8 @@ How an **enterprise application** (the per-tenant service principal side of an a
 - [[Identity and Access Management (IAM)]]
 - [[Securing Privileged Access]]
 - [[Identity Protection]]
+- [[Microsoft 365 Licensing]]
+- [[Securing Active Directory Domain Services (AD DS)]]
 - [[Exam Objectives]]
 
 ## References

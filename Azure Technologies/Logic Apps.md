@@ -31,11 +31,15 @@ Serverless workflow engine — triggers and connectors chain together to automat
 - Ties into "design a solution for workload identities to authenticate and access Azure resources" — Logic Apps' managed identity is a concrete example of that pattern.
 - If a design requires the workflow to reach a private VNet resource, Standard plan is the correct recommendation, not Consumption.
 - SOAR/workspace-topology architecture decisions live in [[Security Operations]]; this page covers the automation mechanism itself.
+- Not every SOC automation needs a Logic App — Sentinel **automation rules** handle triage, routing, and suppression natively at no cost, and Defender XDR responds natively without either. Choose the layer using [[Playbooks and Automation Rules]].
+- Sentinel needs the **Microsoft Sentinel Automation Contributor** role on the playbook's resource group to run it — a common "playbook doesn't fire" answer.
 
 ## Related
 
 - [[Microsoft Sentinel]]
 - [[Security Operations]]
+- [[Playbooks and Automation Rules]]
+- [[Identity and Access Management (IAM)]]
 - [[Zero Trust]]
 - [[Exam Objectives]]
 

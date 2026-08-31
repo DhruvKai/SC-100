@@ -139,6 +139,8 @@ Not covered in AZ-500 at all — this is program-structure/roadmap knowledge, no
 - [[Secure Future Initiative (SFI)]]
 - [[Security Operations]]
 - [[Securing Privileged Access]]
+- [[Rapid Modernization Plan (RaMP)]] — the tactical checklist accelerator that sits inside this model.
+- [[Microsoft Incident Response (DART)]] — the source of the IR playbooks SAF integrates.
 
 ---
 

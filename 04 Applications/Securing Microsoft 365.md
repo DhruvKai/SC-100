@@ -114,6 +114,8 @@ AZ-500 covers configuring individual Defender for Office 365 policies (Safe Link
 - "Need automated investigation and phishing attack simulation" → Defender for Office 365 **Plan 2**, not Plan 1.
 - "Report productivity workload security trend to leadership" → Microsoft Secure Score, not Defender for Cloud's Secure Score.
 - A scenario mixing "third-party app granted OAuth permissions" with M365 data → Defender for Cloud Apps' OAuth App Governance, not Defender for Office 365.
+- Defender for Office 365 **Plan 2** arrives with Microsoft 365 E5, Office 365 E5, or the **E5 Security add-on** on E3 — the SKU path is often the actual answer; see [[Microsoft 365 Licensing]].
+- "Raise Microsoft Secure Score to X%" scenarios are testing the improvement-action point model (partial credit, status effects) — see [[Secure Score Mechanics]].
 
 ---
 
@@ -145,6 +147,8 @@ AZ-500 covers configuring individual Defender for Office 365 policies (Safe Link
 - [[Microsoft Defender XDR]]
 - [[Zero Trust]]
 - [[Data Classification and Protection]]
+- [[Microsoft 365 Licensing]] — which SKU or add-on actually unlocks each product on this page.
+- [[Secure Score Mechanics]] — how the Microsoft Secure Score referenced here is calculated.
 
 ---
 

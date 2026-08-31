@@ -163,6 +163,21 @@ Defender for Cloud
 
 ---
 
+# Changelog
+
+The vault root contains `What's New.md` — a changelog of vault additions, newest first.
+
+Rules:
+
+- **Every push to GitHub gets an entry.** Update `What's New.md` in the same commit as the change it describes, never as a separate follow-up commit.
+- One `## YYYY-MM-DD` heading per push. If a date already has an entry (multiple pushes in one day), append to that day's entry rather than creating a duplicate heading.
+- Newest entries at the top, immediately under the intro.
+- Each entry has an **Added** list (new notes) and an **Updated** list (significant changes to existing notes). Skip either list when empty.
+- Skip pure sync/merge commits (`Last Sync: … (Mobile)`, mobile merge commits) and `.obsidian/` workspace churn — the changelog tracks study content, not vault plumbing.
+- Every note referenced must use an Obsidian wiki link, per the Obsidian rules above. One line per note, with a short description of what was added or changed — not just the note title.
+
+---
+
 # Knowledge Graph Rules
 
 This repository should behave like a graph rather than a collection of isolated documents.

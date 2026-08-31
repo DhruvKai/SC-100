@@ -23,7 +23,7 @@ Continuous evaluation of resource configuration against a security benchmark, pr
 - **[[Azure Policy]] drives Secure Score** — Secure Score isn't a separate scoring engine; it's built from the MCSB initiative, an Azure Policy initiative auto-assigned to every onboarded subscription. Each recommendation is one policy definition, and a resource's policy compliance state *is* the pass/fail signal behind it — extending Secure Score with org-specific checks means adding a custom policy to a custom initiative, not requesting a Microsoft feature.
 - Extends across Azure, AWS, GCP, and on-prem/hybrid (via [[Azure Arc]]) — a single assessment surface instead of one per cloud.
 - Feeds directly into regulatory compliance reporting and, more recently, into attack-path-based prioritization rather than raw score-chasing.
-- For how this score relates to other Microsoft scoring dashboards (Advisor, Purview Compliance Manager, Microsoft Secure Score), see [[Security Scoring Dashboards]].
+- For how this score relates to other Microsoft scoring dashboards (Advisor, Purview Compliance Manager, Microsoft Secure Score), see [[Security Scoring Dashboards]]; for how the number is actually calculated — control weighting, `(max ÷ resources) × healthy`, exemption effects — see [[Secure Score Mechanics]].
 
 ---
 
@@ -147,6 +147,7 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Azure Arc]]
 - [[Azure Policy]]
 - [[Azure Landing Zones]]
+- [[Secure Score Mechanics]] — the scoring formula behind the recommendations on this page.
 
 ---
 

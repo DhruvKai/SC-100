@@ -151,7 +151,7 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 ## What's New for SC-100
 
 - Treat Zero Trust as the **evaluation criterion**, not a control to implement — the exam asks you to judge whether a proposed architecture satisfies Zero Trust principles, not to configure it.
-- Use the Zero Trust adoption framework to sequence a multi-year rollout plan across business scenarios, not just technical controls.
+- Use the Zero Trust adoption framework to sequence a multi-year rollout plan across business scenarios, not just technical controls. The tactical, checklist-level version of that sequencing — initiatives, deployment objectives, and named accountable/responsible owners — is the **[[Rapid Modernization Plan (RaMP)]]**.
 - Explicitly validate Conditional Access policies against Zero Trust as a standalone skill (exam objective, not just implementation task).
 - Map Zero Trust maturity stage (Traditional/Advanced/Optimal) to prioritize which pillar to invest in next.
 
@@ -164,6 +164,7 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - Don't pick answers that add more network perimeter controls when the gap is actually identity verification, and vice versa.
 - "Attacker already has a foothold — what limits the damage?" often has an **egress/outbound** answer (restrict outbound firewall rules, block exfil to unauthorized tenants), not just inbound segmentation — containment counts as breach mitigation even if the attacker was never kept out.
 - "90% of credential-guessing attacks use legacy authentication" style stats are useful intuition but not exact exam facts — the tested takeaway is *disable legacy auth*, not the precise percentage.
+- "Where does the organization start / what are the quick wins?" is **not** a Zero Trust principles answer — it points to the [[Rapid Modernization Plan (RaMP)|RaMP]] checklists.
 
 ---
 
@@ -217,6 +218,8 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Ransomware Resiliency and BCDR]]
 - [[Microsoft Sentinel]]
+- [[Rapid Modernization Plan (RaMP)]] — the prioritized execution plan for reaching this target state.
+- [[Securing Active Directory Domain Services (AD DS)]]
 - [[Microsoft Defender XDR]]
 - [[Trusted Platform Module (TPM)]]
 - [[Container and Kubernetes Security]]

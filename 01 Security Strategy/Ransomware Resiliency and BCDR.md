@@ -55,7 +55,10 @@ flowchart TD
     P1 --> B2["Immutable storage (WORM)"]
     P1 --> B3["MFA/PIN for backup deletion or modification"]
     P1 --> B4["Soft delete + Cross Region Restore"]
+    P1 --> B5["Multi-User Authorization via Resource Guard<br/>(second, separately owned approval)"]
 ```
+
+Immutability and soft delete protect the *data*; **[[Resource Guard|Multi-User Authorization]]** protects the *administrative controls over that data* — without it, a compromised Backup Contributor can simply disable soft delete and shorten retention before encrypting production.
 
 Priority order for identifying business-critical systems — also the restore order:
 
@@ -88,6 +91,7 @@ flowchart TD
 | Compare | Difference |
 | --- | --- |
 | Ransomware-specific BCDR vs. general disaster recovery | General DR assumes accidental or environmental loss; ransomware BCDR assumes an active adversary targeting backups directly — requiring immutability and offline copies, not just redundancy. |
+| [[Resource Guard\|MUA]] vs. RBAC least privilege | RBAC decides which single identity may act; MUA requires a **second, independently owned** authorization (ideally JIT via [[PIM]], in another subscription or tenant) before a destructive backup operation succeeds. |
 | Soft delete vs. immutable storage | Soft delete recovers accidentally or maliciously deleted backups within a retention window (14 days); immutable (WORM) storage prevents modification or deletion entirely for a set period, even by an authenticated attacker with delete permissions. |
 | Recovery Services vault vs. Backup vault | Recovery Services vault covers IaaS VMs, SQL, and on-prem/hybrid workloads; Backup vault covers newer workload types — both are Azure Backup storage entities, chosen per workload rather than interchangeably. |
 
@@ -113,6 +117,8 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 
 - A scenario prioritizing what to protect/restore first follows identity → life-safety → financial → product → security order, not an alphabetical or arbitrary one.
 - If a scenario describes backups that are network-reachable and mutable with no offline/immutable copy, the fix is immutability/offline storage — not just "back up more often."
+- "A compromised backup administrator could disable soft delete and delete the backups" → **[[Resource Guard|Multi-User Authorization via a Resource Guard]]**, owned by a different team in a different subscription/tenant, with JIT access via [[PIM]].
+- A domain-wide compromise where the internal team cannot establish scope → engage **[[Microsoft Incident Response (DART)|Microsoft Incident Response / DART]]**, rebuild Tier 0 rather than clean it, and rotate `krbtgt` twice.
 - Phase ordering matters: Prepare and Limit are prioritized ahead of Prevent in Microsoft's own guidance — a prevention-only answer is usually incomplete.
 - "Standardize patch compliance and scheduling across Azure, Arc-enabled, and on-prem servers" → Azure Update Manager, not per-resource manual patching or a third-party tool by default.
 
@@ -152,6 +158,10 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - [[Securing Privileged Access]]
 - [[Azure Arc]]
 - [[Securing Server and Client Endpoints]]
+- [[Resource Guard]] — Multi-User Authorization, the control that stops a privileged identity disabling the protections above.
+- [[Microsoft Incident Response (DART)]]
+- [[Securing Active Directory Domain Services (AD DS)]]
+- [[Rapid Modernization Plan (RaMP)]] — "ransomware recovery readiness" is one of its named initiatives.
 
 ---
 

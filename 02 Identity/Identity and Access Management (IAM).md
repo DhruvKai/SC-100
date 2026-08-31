@@ -157,7 +157,7 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - Recommend managed identity — and workload identity federation for external CI/CD — as the default over service principals with stored secrets: an explicit "eliminate the credential" answer, not "rotate it more often."
 - Separate authentication architecture ([[Identity as the Security Perimeter]]) from authorization architecture (this note) from sign-in policy ([[Conditional Access]]) — the exam tests these as distinct layers, not one "identity" bucket.
 - Know Azure RBAC and Entra ID roles as two different control planes with two different scope hierarchies — a scenario granting "too much access" often stems from confusing the two.
-- Treat AD DS hardening as tied directly to ransomware/BCDR priority (see [[Ransomware Resiliency and BCDR]]) — a named, prioritized IAM decision, not routine patching.
+- Treat AD DS hardening as tied directly to ransomware/BCDR priority (see [[Ransomware Resiliency and BCDR]]) — a named, prioritized IAM decision, not routine patching. The specific requirements (privileged group emptiness, PAWs and tier boundaries, DC attack surface reduction, gMSA/LAPS, Defender for Identity) live in [[Securing Active Directory Domain Services (AD DS)]].
 - Full privileged-access governance — [[PIM]], entitlement management, access reviews, the enterprise access model, CIEM — is the related but distinct "Securing privileged access" exam subsection; this note covers general IAM/authorization, not standing-privilege reduction.
 - Treat the tenant as the outermost authorization boundary — Azure RBAC and Entra ID roles both operate *inside* one tenant; a multi-tenant estate is a governance decision (consolidate vs. deliberately separate), not just an IdP question.
 - Treat application permissions as a blast-radius decision, not a stricter form of delegated permission — an application permission grants tenant-wide access regardless of any user's own scope, which is why it always requires admin consent.
@@ -223,6 +223,8 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - [[Securing Privileged Access]]
 - [[SaaS Application Discovery and Control]]
 - [[Identity Protection]]
+- [[Securing Active Directory Domain Services (AD DS)]] — the full AD DS hardening and attack-surface-reduction requirements.
+- [[Microsoft 365 Licensing]]
 
 ---
 
