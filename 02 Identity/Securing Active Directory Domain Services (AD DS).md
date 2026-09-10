@@ -122,7 +122,7 @@ flowchart TD
 | **Entra Password Protection** (on-prem agent) | Extends the global and custom banned-password lists to DCs, blocking weak passwords at change time. |
 | **Windows LAPS** | Unique, rotated local administrator passwords stop workstation-to-workstation lateral movement (see [[Securing Server and Client Endpoints]]). |
 | **AD CS hardening** | Certificate template misconfigurations (over-permissive enrollment, requester-supplied SANs) allow forging authentication certificates for any user, including Domain Admins. Review templates and enrollment permissions. |
-| **AD Recycle Bin + offline forest backup + tested forest recovery plan** | Recovery from deletion or destruction, aligned to [[Ransomware Resiliency and BCDR]]. |
+| **AD Recycle Bin + offline forest backup + tested forest recovery plan** | Recovery from deletion or destruction, aligned to [[Ransomware Resiliency and BCDR]]. DC **system state** backup (e.g. via the [[MARS Agent]]) captures the identity role for rebuilds. |
 
 ---
 
@@ -246,6 +246,7 @@ AZ-500 covers hybrid identity plumbing — Entra Connect / Cloud Sync, password 
 - [[Securing Server and Client Endpoints]]
 - [[Trusted Platform Module (TPM)]]
 - [[Ransomware Resiliency and BCDR]]
+- [[MARS Agent]]
 - [[Microsoft Incident Response (DART)]]
 - [[Rapid Modernization Plan (RaMP)]]
 - [[Zero Trust]]

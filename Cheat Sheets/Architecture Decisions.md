@@ -64,3 +64,5 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to automate SOC response — and to pick between an automation rule, a playbook, and native XDR response? | [[Playbooks and Automation Rules]] |
 | Need to specify security requirements for on-prem AD DS or reduce its attack surface? | [[Securing Active Directory Domain Services (AD DS)]] |
 | Need to explain how a Secure Score is calculated, or turn a score target into a remediation plan? | [[Secure Score Mechanics]] |
+| Need to back up on-prem/hybrid Windows files or domain-controller system state straight to Azure with no backup server? | [[MARS Agent]] |
+| Need application-consistent backup of on-prem SQL/Exchange/SharePoint/VMs, or to protect Linux? | [[Microsoft Azure Backup Server (MABS)]] / DPM (not [[MARS Agent]]) |

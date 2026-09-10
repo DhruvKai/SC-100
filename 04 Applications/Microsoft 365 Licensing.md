@@ -100,6 +100,26 @@ flowchart TD
 
 ---
 
+## Entra ID Protection: Capabilities by Tier
+
+The [[Entra ID]] P1 → P2 boundary is not "no risk vs. risk" — Free and P1 both surface *limited* risk **reports**, but only **P2** unlocks the **risk policies** and the full data. A common exam trap frames P1 as sufficient because "it shows risky users."
+
+| Capability | Free / M365 Apps | Entra ID **P1** | Entra ID **P2** |
+| --- | --- | --- | --- |
+| **Sign-in & user risk policies** (via [[Identity Protection]] or risk-based [[Conditional Access]]) | No | **No** | Yes |
+| Microsoft-managed / automatic risk remediation | No | No | Yes |
+| MFA registration policy | No | No | Yes |
+| **Risky users** report | Limited — medium/high only, no details drawer or history | Limited — same as Free | Full |
+| **Risky sign-ins** report | Limited — no risk detail or risk level shown | Limited — same as Free | Full |
+| **Risk detections** report | No | Limited — no details drawer | Full |
+| "Users at risk" alerts + weekly digest | No | No | Yes |
+| Identity Protection Microsoft Graph / risk-export APIs | No | No | Yes |
+
+- Some risk **detections** are themselves fed by Defender products — **Microsoft 365 E5** covers the Defender for Cloud Apps / Office 365 / Endpoint signals (impossible travel, suspicious inbox rules, PRT access, etc.).
+- **Workload identity** risk (Risky workload identities report) needs **Workload Identities Premium**, a separate add-on — not included in P2.
+
+---
+
 ## Add-Ons Instead of a Full E5 Uplift
 
 | Add-on (sits on E3) | Delivers |
@@ -178,6 +198,7 @@ AZ-500 largely assumes licenses already exist and focuses on configuring the con
 - "Tenant has Microsoft 365 E3, needs Defender for Identity / Defender for Cloud Apps / risk-based CA" → **E5 Security add-on**, not a full E5 uplift and not a standalone purchase of each product.
 - "Tenant has Office 365 E5, needs endpoint detection and response" → Office 365 E5 does **not** include Defender for Endpoint. Add Microsoft 365 E5 / E5 Security or Defender for Endpoint P2 standalone.
 - "Needs [[PIM]] for a handful of admins" → Entra ID P2 for those users, not E5 for the whole tenant.
+- "Needs [[Identity Protection]] risk **policies** / risk-based Conditional Access, tenant has O365 E3 or Entra ID P1" → **add Entra ID P2** to existing licensing. P1 is under-licensed (it only shows *limited* risky-user/sign-in reports, no policies). Adding P2 is cheaper than uplifting to EMS E5 or M365 E5 just for that capability.
 - "Needs Azure VM/SQL/storage protection" → Defender for Cloud plans on the Azure subscription — no M365 SKU answer is correct.
 - "Insider Risk Management / Communication Compliance / eDiscovery Premium" → **E5 Compliance**, not E5 Security. The two add-ons are not interchangeable.
 - Under 300 seats with a full-stack security ask → **Business Premium** is the intended answer, not E3+add-ons.
@@ -192,6 +213,7 @@ AZ-500 largely assumes licenses already exist and focuses on configuring the con
 - **Defender for Endpoint Plan 1 vs. Plan 2** — prevention/ASR vs. EDR + hunting + TVM (mirrors the [[Securing Microsoft 365|Defender for Office 365]] Plan 1/Plan 2 split).
 - **"We have E5, so we're covered for Azure"** — E5 covers users and M365 data; Azure resources need [[Microsoft Defender for Cloud]].
 - **Entra ID P2 vs. Entra ID Governance** — P2 is in E5; Entitlement Management and tenant-wide Access Reviews are a *separate* add-on even on E5 (see [[Entra ID]]).
+- **Entra ID P1 "shows risky users" vs. P2 risk policies** — P1 (and Free) expose only *limited* risky-users / risky-sign-ins reports with no risk detail or level; **risk policies and risk-based Conditional Access require P2**. "We can see risk on P1" is not the same as "we can act on it."
 
 ---
 

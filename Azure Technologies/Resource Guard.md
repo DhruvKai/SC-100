@@ -128,7 +128,7 @@ flowchart TD
 | **Resource Guard / MUA vs. immutable vault** | Immutability makes recovery points unmodifiable/undeletable for their retention period regardless of identity; MUA governs the administrative actions around the vault (including attempts to unlock immutability). Immutability protects the data, MUA protects the controls. |
 | **Resource Guard / MUA vs. RBAC least privilege** | RBAC decides which identity may act; MUA requires **two independently held** authorizations for the same act. Least privilege alone still leaves a single legitimate identity able to destroy backups. |
 | **Resource Guard / MUA vs. [[Azure Policy]] deny** | Azure Policy denies an operation outright, org-wide, with no approved path — good for prohibitions. MUA allows the operation through a controlled, auditable, time-bound approval — good for legitimate-but-dangerous operations. |
-| **MFA/security PIN (MARS/classic) vs. MUA** | The security PIN protects backup operations for the legacy MARS agent / classic experience with a shared PIN. MUA is the ARM-native, RBAC-and-PIM-integrated successor pattern for vault-level protection. |
+| **MFA/security PIN ([[MARS Agent\|MARS]]/classic) vs. MUA** | The security PIN protects backup operations for the legacy MARS agent / classic experience with a shared PIN. MUA is the ARM-native, RBAC-and-PIM-integrated successor pattern for vault-level protection. |
 
 ---
 
@@ -192,6 +192,7 @@ AZ-500 covers Recovery Services vaults, backup RBAC roles (Backup Contributor/Op
 - [[Zero Trust]]
 - [[Network Watcher and Lighthouse]]
 - [[Microsoft Defender for Cloud]]
+- [[MARS Agent]] — the security PIN it uses is the legacy-hybrid predecessor of MUA.
 
 ---
 

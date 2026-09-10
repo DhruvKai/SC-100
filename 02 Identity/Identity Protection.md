@@ -74,6 +74,15 @@ flowchart TD
 
 ---
 
+## License Requirements
+
+- **Risk policies** (sign-in risk, user risk — via Identity Protection or risk-based [[Conditional Access]]), automatic remediation, the MFA registration policy, risk notifications, and the risk-export **Graph APIs** all require **[[Entra ID]] P2**.
+- **Free and P1 are the same** for Identity Protection purposes: a *limited* **Risky users** report (medium/high risk only, no details drawer or history) and a *limited* **Risky sign-ins** report (no risk detail or level). P1 additionally shows a *limited* **Risk detections** report; Free shows none.
+- So P1 lets you *see* some risk but not *act* on it automatically — the exam treats a P1 tenant needing risk-based policy as under-licensed. Full capability-by-tier table lives in [[Microsoft 365 Licensing]].
+- Several detections are sourced from Defender products — **Microsoft 365 E5** covers the Defender for Cloud Apps / Office 365 / Endpoint signals (impossible travel, suspicious inbox rules, PRT abuse).
+
+---
+
 ## Comparison
 
 | Compare | Difference |
@@ -125,6 +134,9 @@ AZ-500 already covers enabling Identity Protection, configuring individual risk 
 - Risk-based Conditional Access policy
 - Self-service password reset (SSPR)
 - Entra ID P1 vs. P2 licensing
+- Risky users report, risky sign-ins report, risk detections report
+- "Limited information" / no risk detail or level (Free & P1)
+- Risk policies require P2; P1 reporting only
 - Real-time vs. offline risk detection
 
 ---
@@ -138,6 +150,7 @@ AZ-500 already covers enabling Identity Protection, configuring individual risk 
 - [[Securing Privileged Access]]
 - [[Identity and Access Management (IAM)]]
 - [[Identity as the Security Perimeter]]
+- [[Microsoft 365 Licensing]]
 
 ---
 

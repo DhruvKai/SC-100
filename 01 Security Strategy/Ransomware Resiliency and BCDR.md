@@ -94,6 +94,7 @@ flowchart TD
 | [[Resource Guard\|MUA]] vs. RBAC least privilege | RBAC decides which single identity may act; MUA requires a **second, independently owned** authorization (ideally JIT via [[PIM]], in another subscription or tenant) before a destructive backup operation succeeds. |
 | Soft delete vs. immutable storage | Soft delete recovers accidentally or maliciously deleted backups within a retention window (14 days); immutable (WORM) storage prevents modification or deletion entirely for a set period, even by an authenticated attacker with delete permissions. |
 | Recovery Services vault vs. Backup vault | Recovery Services vault covers IaaS VMs, SQL, and on-prem/hybrid workloads; Backup vault covers newer workload types — both are Azure Backup storage entities, chosen per workload rather than interchangeably. |
+| [[MARS Agent\|MARS agent]] vs. MABS/DPM (hybrid backup) | MARS backs up Windows files/folders/volume/**system state** direct to the vault (no server, no app consistency) and is semi-offline with a customer-held passphrase — useful ransomware properties. MABS/DPM adds application-consistent workload backup but reintroduces a server to protect. |
 
 ---
 
@@ -159,6 +160,7 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - [[Azure Arc]]
 - [[Securing Server and Client Endpoints]]
 - [[Resource Guard]] — Multi-User Authorization, the control that stops a privileged identity disabling the protections above.
+- [[MARS Agent]] — direct-to-vault Windows backup; passphrase + security PIN + soft delete for hybrid workloads and DC system state.
 - [[Microsoft Incident Response (DART)]]
 - [[Securing Active Directory Domain Services (AD DS)]]
 - [[Rapid Modernization Plan (RaMP)]] — "ransomware recovery readiness" is one of its named initiatives.

@@ -15,6 +15,21 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-09-10
+
+**Added**
+
+- [[MARS Agent]] — Microsoft Azure Recovery Services agent: direct-to-vault Windows backup of files/folders/volume/system state, full OS compatibility matrix (64-bit only, no Server Core, no Linux), the passphrase / security PIN / soft delete security model, and MARS vs. MABS/DPM vs. VM-extension decisions.
+
+**Updated**
+
+- [[Microsoft 365 Licensing]] — new "Entra ID Protection: capabilities by tier" table (Free/P1 give only *limited* risk reports; risk policies and risk-based Conditional Access need P2), plus matching exam tip and confusion pair.
+- [[Identity Protection]] — added a License Requirements section spelling out the Free = P1 reporting limits and the P2-only capabilities; linked to [[Microsoft 365 Licensing]].
+- [[services|Services]], [[Architecture Decisions]] — rows for [[MARS Agent]] and the MARS-vs-MABS/DPM decision.
+- [[Ransomware Resiliency and BCDR]], [[Resource Guard]], [[Securing Active Directory Domain Services (AD DS)]] — cross-linked to [[MARS Agent]] (DC system state backup, security PIN as the MUA predecessor).
+
+---
+
 ## 2026-08-31
 
 **Added**
