@@ -66,3 +66,10 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to explain how a Secure Score is calculated, or turn a score target into a remediation plan? | [[Secure Score Mechanics]] |
 | Need to back up on-prem/hybrid Windows files or domain-controller system state straight to Azure with no backup server? | [[MARS Agent]] |
 | Need application-consistent backup of on-prem SQL/Exchange/SharePoint/VMs, or to protect Linux? | [[Microsoft Azure Backup Server (MABS)]] / DPM (not [[MARS Agent]]) |
+| Need to place an account/device/role in the right containment boundary (Control/Management/Data-Workload plane, or a device security level)? | [[Privileged Access Tier Models]] |
+| Need to explain why a protected account's ACL keeps reverting, or find orphaned former-admin accounts? | [[AdminSDHolder and SDProp]] |
+| Need to turn a named regulation into a scored, tracked compliance posture, or decide where to assign/group an assessment? | [[Purview Compliance Manager]] |
+| Need SQL-specific data protection — key-revocable at-rest encryption, tamper-evident history, or mandatory in-transit encryption? | [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] |
+| Need content even Microsoft can't decrypt? | [[Double Key Encryption (DKE)]] |
+| Need to know exactly where/how to turn on a regulatory standard in Defender for Cloud, or how to actually get compliant? | [[Assigning Regulatory Compliance Standards]] |
+| Need to automate Defender for Cloud (enable plans, assign standards, pull Secure Score) across many subscriptions via code? | [[Defender for Cloud REST API]] |

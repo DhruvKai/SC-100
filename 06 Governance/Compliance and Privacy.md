@@ -50,7 +50,7 @@ flowchart TD
 
     Comp --> Audit["Audit"]
     Comp --> CC["Communication Compliance"]
-    Comp --> CM["Compliance Manager"]
+    Comp --> CM["Compliance Manager<br/>(see Purview Compliance Manager)"]
     Comp --> DLM["Data Lifecycle Management"]
     Comp --> ED["eDiscovery"]
     Comp --> RM["Records Management"]
@@ -84,7 +84,7 @@ flowchart TD
 | --- | --- |
 | Purview compliance solutions vs. Microsoft Priva | Purview compliance addresses organizational obligations (audit, legal hold, retention, records); Priva addresses individual privacy rights (subject rights requests) and proactive privacy risk detection. |
 | eDiscovery vs. Subject Rights Requests | eDiscovery collects evidence for legal cases/investigations across the organization; Subject Rights Requests fulfills an individual's specific data access/erasure request under privacy law. |
-| Compliance Manager vs. Defender for Cloud Regulatory Compliance dashboard | Compliance Manager scores organizational/process controls (often attestation-based, spans Microsoft 365 + multicloud); the Defender for Cloud dashboard scores technical resource configuration — full detail in [[Security Posture Assessments]]. |
+| Compliance Manager vs. Defender for Cloud Regulatory Compliance dashboard | Compliance Manager scores organizational/process controls (often attestation-based, spans Microsoft 365 + multicloud); the Defender for Cloud dashboard scores technical resource configuration — full detail in [[Security Posture Assessments]]. Compliance Manager's own control/assessment/group/template object model is detailed in [[Purview Compliance Manager]]. |
 
 ---
 
@@ -132,6 +132,7 @@ AZ-500 doesn't cover Purview compliance solutions or Priva at all — it's scope
 ## Related Services
 
 - [[Purview]] — Purview's own product orientation map lives there; this note covers the Risk & Compliance area in depth.
+- [[Purview Compliance Manager]] — control/assessment/group/regulatory-template object model behind the Compliance Manager score referenced here.
 - [[Priva]] — full product depth (Privacy Risk Management, Subject Rights Requests) lives there; this note covers the comparison against Purview.
 - [[Security Posture Assessments]]
 - [[Security Scoring Dashboards]]

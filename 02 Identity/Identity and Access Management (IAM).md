@@ -225,6 +225,7 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 - [[Identity Protection]]
 - [[Securing Active Directory Domain Services (AD DS)]] — the full AD DS hardening and attack-surface-reduction requirements.
 - [[Microsoft 365 Licensing]]
+- [[Privileged Access Tier Models]] — the containment model Azure RBAC/Entra role scoping is placed inside.
 
 ---
 

@@ -85,7 +85,7 @@ flowchart TD
 | Don't forget the "quiet" groups | **Account Operators**, **Backup Operators**, **Print Operators**, **Server Operators**, and **DnsAdmins** are effectively Tier 0 (they can log on to DCs or load code into them) yet are routinely overlooked. |
 | Separate accounts per tier | A distinct admin account per plane — Control (Tier 0), Management (Tier 1), Data/Workload (Tier 2) — never one account used across all three. Cloud-only admin accounts for [[Entra ID]] roles. |
 | Protected Users group | Blocks NTLM, DES/RC4, unconstrained delegation, and credential caching for its members. Add Tier 0 admins (verify no legacy dependency first). |
-| AdminSDHolder / SDProp | Understand that protected-group members have their ACLs reset by SDProp — permission changes on those accounts silently revert. |
+| [[AdminSDHolder and SDProp\|AdminSDHolder / SDProp]] | Understand that protected-group members have their ACLs reset by SDProp — permission changes on those accounts silently revert. Full mechanism, the orphaned `adminCount=1` cleanup problem, and its use as an attacker persistence technique live in [[AdminSDHolder and SDProp]]. |
 | Delegation, not membership | Delegate specific tasks at the **OU level**; use **JEA** (Just Enough Administration) for Windows Server administrative tasks instead of granting server-wide admin — see [[Securing Privileged Access]]. |
 | Service accounts | Replace shared password service accounts with **group Managed Service Accounts (gMSA)** — automatic 240-character password rotation, no human-known secret, resistant to Kerberoasting. |
 | Remove SPNs from privileged accounts | An SPN on a Domain Admin account makes it Kerberoastable — offline crackable to full domain compromise. |
@@ -252,6 +252,8 @@ AZ-500 covers hybrid identity plumbing — Entra Connect / Cloud Sync, password 
 - [[Zero Trust]]
 - [[Microsoft 365 Licensing]]
 - [[Azure Security Logging]]
+- [[Privileged Access Tier Models]] — the full Tier 0/Control-plane containment model this note's Tier 0 estate sits inside.
+- [[AdminSDHolder and SDProp]] — full mechanism detail for the row above.
 
 ---
 

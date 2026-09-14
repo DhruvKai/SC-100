@@ -103,6 +103,7 @@ flowchart LR
 - [[Securing IaaS and PaaS Services]]
 - [[Ransomware Resiliency and BCDR]]
 - [[Zero Trust]]
+- [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — TDE's customer-managed key (BYOK/CMK) architecture, backed by this vault.
 - [[Exam Objectives]]
 
 ## References

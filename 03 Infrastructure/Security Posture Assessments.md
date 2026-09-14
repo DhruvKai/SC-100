@@ -67,7 +67,7 @@ flowchart TD
     Q1 -->|No| Q2["Assessing on-prem/hybrid servers?"]
     Q2 -->|Yes| ARC["Onboard via [[Azure Arc]] first"]
     Q2 -->|No| Q3["Need to map score to a named regulation?"]
-    Q3 -->|Yes| RCD["Enable that standard in the Regulatory Compliance dashboard"]
+    Q3 -->|Yes| RCD["Enable that standard in the Regulatory Compliance dashboard<br/>(see Assigning Regulatory Compliance Standards)"]
     Q3 -->|No| Q4["Need to prioritize by real attack risk, not raw count?"]
     Q4 -->|Yes| SEM2["Use Security Exposure Management attack paths"]
     Q4 -->|No| Base["Baseline MCSB scoring is sufficient"]
@@ -148,6 +148,8 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Azure Policy]]
 - [[Azure Landing Zones]]
 - [[Secure Score Mechanics]] — the scoring formula behind the recommendations on this page.
+- [[Assigning Regulatory Compliance Standards]] — exactly where/how a standard gets turned on, and how compliance is actually achieved.
+- [[Defender for Cloud REST API]] — programmatic/IaC posture and compliance automation.
 
 ---
 

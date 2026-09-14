@@ -15,6 +15,28 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-09-14
+
+**Added**
+
+- [[Privileged Access Tier Models]] — deep dive on the legacy AD Tier 0/1/2 model vs. the Enterprise Access Model (Control/Management/Data-Workload planes, User/App/Privileged access pathways), plus the Enterprise/Specialized/Privileged device security levels.
+- [[AdminSDHolder and SDProp]] — the AD DS object/process that enforces ACLs on protected groups hourly, the orphaned `adminCount=1` cleanup problem, and its use as a Defender-for-Identity-detected attacker persistence technique.
+- [[Purview Compliance Manager]] — Compliance Manager's control/assessment/group/regulatory-template object model, groups' permanence and lack of security boundary, and shared improvement actions.
+- [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — TDE (service-managed vs. customer-managed/BYOK, revocation/rotation timing), Ledger (Merkle tree tamper-evidence, updatable vs. append-only tables), and TDS 8.0 strict encryption (`Encrypt=strict`, TLS before any TDS data).
+- [[Double Key Encryption (DKE)]] — the two-key, Microsoft-can't-decrypt architecture for the highest-sensitivity data tier, and the collaboration-feature trade-offs it forces.
+- [[Assigning Regulatory Compliance Standards]] — the exact portal workflow (scope, permissions, automated vs. manual assessments) for turning a named regulation into a tracked compliance percentage in Defender for Cloud, and its integration with Purview Compliance Manager.
+- [[Defender for Cloud REST API]] — `Microsoft.Security` operation groups and the landing-zone-scale automation use cases they enable (Pricings, Standard Assignments, Secure Scores, Alerts, Governance Rules, multicloud/DevOps connectors).
+
+**Updated**
+
+- [[Securing Privileged Access]], [[Securing Active Directory Domain Services (AD DS)]], [[Identity and Access Management (IAM)]] — cross-linked to [[Privileged Access Tier Models]] and [[AdminSDHolder and SDProp]].
+- [[Purview]], [[Compliance and Privacy]] — cross-linked to [[Purview Compliance Manager]].
+- [[Data Classification and Protection]], [[Key Vault]] — cross-linked to [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] and [[Double Key Encryption (DKE)]].
+- [[Security Posture Assessments]], [[Security Scoring Dashboards]], [[Purview Compliance Manager]] — cross-linked to [[Assigning Regulatory Compliance Standards]] and [[Defender for Cloud REST API]].
+- [[services|Services]], [[Architecture Decisions]] — rows for all seven new notes.
+
+---
+
 ## 2026-09-10
 
 **Added**

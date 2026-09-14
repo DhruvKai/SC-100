@@ -77,7 +77,8 @@ The always-on layer, independent of whether content was ever classified.
 - **Customer-managed keys (CMK)** — the customer owns the key in [[Key Vault]] (or Managed HSM), controlling rotation *and* revocation — deleting/disabling the key renders the data cryptographically inaccessible ("crypto-shredding"), which is what compliance regimes requiring customer key control actually need. The full HSM tier ladder — Premium's shared HSM pool vs. Managed HSM's dedicated pool vs. Azure Dedicated HSM vs. Payment HSM, and the FIPS 140-2 Level 2 vs. Level 3 distinction behind them — is detailed in [[Key Vault]], not repeated here.
 - **Infrastructure encryption (double encryption)** — a second encryption layer at the infrastructure level, using a different algorithm/key than the service-level layer above it — defense in depth against a single algorithm or key implementation being compromised.
 - **Encryption in transit** — TLS enforced between client and service; architects set a minimum TLS version and disable legacy protocol fallback as an explicit control, not an assumption.
-- **Encryption in use** — **Always Encrypted** (SQL) keeps column-level data encrypted client-side; the key never reaches the server, so even a compromised database engine or DBA can't read protected columns. This is the "in use" state completing the at-rest/in-transit/in-use triad.
+- **Encryption in use** — **Always Encrypted** (SQL) keeps column-level data encrypted client-side; the key never reaches the server, so even a compromised database engine or DBA can't read protected columns. This is the "in use" state completing the at-rest/in-transit/in-use triad. Full SQL-specific depth — TDE (including BYOK/CMK), Ledger tamper-evidence, and TDS 8.0 strict in-transit encryption — lives in [[SQL Data Protection (TDE, Ledger, TDS 8.0)]].
+- **Double Key Encryption (DKE)** — for the ~5% "crown jewels" tier where Microsoft itself must be structurally unable to decrypt, a second, entirely customer-hosted key is required alongside the label's normal key. Full detail, including the real collaboration-feature trade-offs, in [[Double Key Encryption (DKE)]].
 - **Key Vault access model** — Azure RBAC (recommended) vs. the legacy vault access policy model; RBAC gives consistent, auditable permission management aligned with the rest of the tenant's [[Identity and Access Management (IAM)|IAM]] design, rather than a per-vault permission list. Vault tiers, named RBAC roles, and soft-delete/purge protection mechanics are detailed in [[Key Vault]].
 
 ---
@@ -217,6 +218,8 @@ AZ-500 already covers configuring sensitivity labels, basic DLP policies, TDE, K
 - [[Zero Trust]]
 - [[Ransomware Resiliency and BCDR]]
 - [[Cloud Workload Protection (CWPP)]]
+- [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — full SQL-engine encryption/integrity mechanics.
+- [[Double Key Encryption (DKE)]] — the highest-sensitivity-tier encryption option this note only summarizes.
 
 ---
 

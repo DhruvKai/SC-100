@@ -135,6 +135,8 @@ AZ-500 already covers reading and acting on Microsoft Secure Score and Defender 
 - [[Securing Microsoft 365]]
 - [[Secure Score Mechanics]] — the calculation behind both Secure Scores compared here.
 - [[Microsoft 365 Licensing]] — licensed products set Microsoft Secure Score's denominator.
+- [[Assigning Regulatory Compliance Standards]] — where/how the Regulatory Compliance dashboard percentage is actually produced.
+- [[Purview Compliance Manager]] — the object model behind the Compliance Manager score referenced here.
 
 ---
 
