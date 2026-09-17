@@ -25,7 +25,7 @@ Translating external regulatory and legal requirements into technical controls, 
 ## When to Use
 
 - Translating a named regulation into specific technical and organizational controls.
-- Responding to legal holds, litigation, or regulatory investigations (eDiscovery).
+- Responding to legal holds, litigation, or regulatory investigations ([[eDiscovery]]).
 - Automating subject rights requests — access or erasure — at scale (Priva Subject Rights Requests).
 - Detecting privacy risk in how personal data is stored or shared before it becomes an incident (Priva Privacy Risk Management).
 - Meeting record-keeping and retention/disposal obligations (Data Lifecycle Management, Records Management).
@@ -69,7 +69,7 @@ flowchart TD
     Q1 -->|No| Q2["Detecting risky personal-data handling patterns?"]
     Q2 -->|Yes| PRM2["Priva Privacy Risk Management"]
     Q2 -->|No| Q3["Responding to litigation/regulatory investigation?"]
-    Q3 -->|Yes| ED2["Purview eDiscovery"]
+    Q3 -->|Yes| ED2["Purview eDiscovery (see its own note)"]
     Q3 -->|No| Q4["Need retention/disposal or immutable records?"]
     Q4 -->|Yes| DLM2["Data Lifecycle Management / Records Management"]
     Q4 -->|No| Q5["Need a scored, tracked compliance posture across standards?"]
@@ -83,7 +83,7 @@ flowchart TD
 | Compare | Difference |
 | --- | --- |
 | Purview compliance solutions vs. Microsoft Priva | Purview compliance addresses organizational obligations (audit, legal hold, retention, records); Priva addresses individual privacy rights (subject rights requests) and proactive privacy risk detection. |
-| eDiscovery vs. Subject Rights Requests | eDiscovery collects evidence for legal cases/investigations across the organization; Subject Rights Requests fulfills an individual's specific data access/erasure request under privacy law. |
+| [[eDiscovery]] vs. Subject Rights Requests | eDiscovery collects evidence for legal cases/investigations across the organization; Subject Rights Requests fulfills an individual's specific data access/erasure request under privacy law. Full eDiscovery case/hold/review-set model — and the retired classic Standard/Premium naming — in its own note. |
 | Compliance Manager vs. Defender for Cloud Regulatory Compliance dashboard | Compliance Manager scores organizational/process controls (often attestation-based, spans Microsoft 365 + multicloud); the Defender for Cloud dashboard scores technical resource configuration — full detail in [[Security Posture Assessments]]. Compliance Manager's own control/assessment/group/template object model is detailed in [[Purview Compliance Manager]]. |
 
 ---
@@ -133,6 +133,7 @@ AZ-500 doesn't cover Purview compliance solutions or Priva at all — it's scope
 
 - [[Purview]] — Purview's own product orientation map lives there; this note covers the Risk & Compliance area in depth.
 - [[Purview Compliance Manager]] — control/assessment/group/regulatory-template object model behind the Compliance Manager score referenced here.
+- [[eDiscovery]] — case/hold/review-set model behind the eDiscovery mentions here.
 - [[Priva]] — full product depth (Privacy Risk Management, Subject Rights Requests) lives there; this note covers the comparison against Purview.
 - [[Security Posture Assessments]]
 - [[Security Scoring Dashboards]]

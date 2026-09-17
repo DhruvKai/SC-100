@@ -15,6 +15,30 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-09-17
+
+**Added**
+
+- [[Microsoft Defender for Identity]] — sensor prerequisites (DSA/gMSA, Npcap, sizing, licensing, connectivity), the four actual sensor-host roles (DC/AD FS/AD CS/Entra Connect — not a generic server, not RADIUS), sensor v2.x vs. v3.x, detection categories, honeytoken accounts, and identity security posture assessments, pulled out of [[Securing Active Directory Domain Services (AD DS)]] into its own deep-dive note.
+- [[Azure Blueprints]] — its deprecation, why (Azure Policy already owned enforcement), and the migration mapping to Template Specs (template packaging) + Deployment Stacks (deny-settings, lifecycle tracking) + Azure Policy (assignment).
+- [[eDiscovery]] — the current eDiscovery/Premium eDiscovery model in the Microsoft Purview portal, the classic Content Search/Standard/Premium retirement (2025-08-31, except 21Vianet China), and the full terminology shift (Collections→Statistics, manual→automatic Advanced Indexing, Custodian-centric→Case-centric, Jobs→Processes).
+- [[Microsoft Entra Built-in Roles]] — least-privilege role selection methodology for tricky, similarly-named Entra roles, the Secure Score read/write role list (Security/Exchange/SharePoint Administrator), and two fully worked exam scenarios.
+
+**Updated**
+
+- [[Securing Active Directory Domain Services (AD DS)]], [[Microsoft Defender]], [[AdminSDHolder and SDProp]], [[Microsoft Defender XDR]], [[Microsoft 365 Licensing]] — cross-linked to [[Microsoft Defender for Identity]].
+- [[Azure Policy]], [[Microsoft Cloud Security Benchmark (MCSB)]], [[Azure Landing Zones]] — cross-linked to [[Azure Blueprints]] and corrected stale "Azure Policy/Blueprints" enforcement wording now that Blueprints is deprecated.
+- [[Intune]] — added software update coverage (update rings, Windows Autopatch, driver/firmware updates) and when Configuration Manager (SUP/WSUS, Distribution Points) or Azure Update Manager (Windows Server) is still the right answer instead.
+- [[DevOps Security]] — added the full DevSecOps lifecycle model (Plan → Develop → Build → Deploy → Operate) with an AKS task-to-stage mapping table, sourced from Microsoft's AKS-specific DevSecOps architecture guide.
+- [[Container and Kubernetes Security]] — cross-linked to the DevSecOps lifecycle table in [[DevOps Security]].
+- [[PIM]] — full rewrite: terminology table, the active-vs-eligible distinction (and why active needs zero activation steps), the complete activation/assignment-duration/active-creation role-settings breakdown, the Entra-role vs. Azure-resource-role permission split, PIM for Groups, and the full deployment plan.
+- [[Purview]], [[Compliance and Privacy]] — cross-linked to [[eDiscovery]].
+- [[Secure Score Mechanics]] — added the Secure Score permissions model (Defender Unified RBAC + the Entra global role read/write vs. read-only list) that explains why Exchange/SharePoint Administrator reach Secure Score.
+- [[Security Posture Assessments]] — added Foundational CSPM vs. Defender CSPM plan comparison (including the October 27, 2026 opt-in cutover) and the AWS connector's OIDC federation authentication flow (audience/signature/certificate-thumbprint/role-condition validation, no stored AWS keys).
+- [[services|Services]], [[Architecture Decisions]] — rows for all new notes and decision points from this push.
+
+---
+
 ## 2026-09-14
 
 **Added**

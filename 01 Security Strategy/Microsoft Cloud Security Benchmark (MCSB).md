@@ -30,7 +30,7 @@ MCSB is Microsoft's prescriptive, cross-cloud security control framework — syn
 
 - New to Azure/multicloud and needing a starting security baseline instead of building one from scratch.
 - Needing pre-mapped alignment to CIS, NIST, or PCI-DSS for a regulated industry.
-- Establishing automated guardrails via Azure Policy/Blueprints tied to a named control set.
+- Establishing automated guardrails via [[Azure Policy]] tied to a named control set.
 - Evaluating a new service before onboarding it into an approved service catalog.
 
 ---
@@ -69,7 +69,7 @@ flowchart TD
     Plan --> Q2["Monitor ongoing compliance"]
     Q2 --> Monitor["Defender for Cloud Regulatory Compliance dashboard"]
     Monitor --> Q3["Enforce automatically"]
-    Q3 --> Enforce["Azure Policy / Azure Blueprints guardrails"]
+    Q3 --> Enforce["Azure Policy guardrails"]
 ```
 
 ---
@@ -95,7 +95,7 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 - Know MCSB by name as the framework [[Security Posture Assessments|Secure Score]] scores against by default — this note covers what MCSB *is*; scoring mechanics live in [[Security Posture Assessments]].
 - Recognize MCSB's synthesis role: it isn't original content, it's CAF + WAF + Secure Future Initiative + CISO Workshop + industry standards combined into one control set.
 - MCSB v2 (preview) adds a dedicated AI Security domain — directly relevant to the exam's "AI solutions aligned to Microsoft Cloud Security Benchmark" objective; see [[AI and Copilot Security Architecture]] for the tooling that operationalizes this domain.
-- Use the Plan → Monitor → Establish lifecycle (map to standards → Regulatory Compliance dashboard → Azure Policy/Blueprints) as the architecture answer for "how do you operationalize MCSB."
+- Use the Plan → Monitor → Establish lifecycle (map to standards → Regulatory Compliance dashboard → [[Azure Policy]]) as the architecture answer for "how do you operationalize MCSB." Older material may say "Azure Policy/Blueprints" — [[Azure Blueprints|Blueprints is deprecated]]; Policy alone is the current enforcement mechanism.
 
 ---
 
@@ -103,7 +103,7 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 
 - A scenario aligning AI workloads to MCSB is testing awareness of the new AI Security domain in v2.
 - "Pre-mapped to CIS/NIST/PCI-DSS" is MCSB's distinguishing exam fact — don't confuse this regulatory pre-mapping with MCRA, which has none.
-- The enforcement mechanism for MCSB is Azure Policy/Blueprints, not manual configuration — expect this in "how do you enforce this at scale" questions.
+- The enforcement mechanism for MCSB is **Azure Policy**, not manual configuration — expect this in "how do you enforce this at scale" questions. Azure Blueprints is deprecated; don't pick it if offered as an option (see [[Azure Blueprints]]).
 
 ---
 
@@ -120,7 +120,7 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 - Security Domain / Control / Subcontrol / Baseline
 - Pre-mapped to CIS, NIST, PCI-DSS
 - Regulatory Compliance dashboard
-- Azure Policy / Blueprints enforcement
+- Azure Policy enforcement (Azure Blueprints is deprecated — see [[Azure Blueprints]])
 - MCSB v2 preview, AI Security domain
 - Plan, Monitor, Establish lifecycle
 
@@ -135,6 +135,7 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 - [[Microsoft Defender for Cloud]]
 - [[AI and Copilot Security Architecture]]
 - [[Secure Future Initiative (SFI)]]
+- [[Azure Blueprints]]
 
 ---
 

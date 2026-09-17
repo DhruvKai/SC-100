@@ -19,7 +19,7 @@ Umbrella brand for Microsoft's threat protection products. [[Microsoft Defender 
 | [[Microsoft Defender for Cloud]] | Cloud resources | [[Security Posture Assessments\|CSPM]] (posture/Secure Score) + [[Cloud Workload Protection (CWPP)\|CWPP]] (workload protection) across hybrid/multicloud |
 | Defender for Endpoint | Devices | EDR — endpoint detection & response; endpoint architecture in [[Securing Server and Client Endpoints]] |
 | Defender for Office 365 | Email/collaboration | Phishing, malware, Safe Links/Attachments |
-| Defender for Identity | On-prem AD DS | Sensor-based detection on domain controllers |
+| [[Microsoft Defender for Identity]] | On-prem AD DS | Sensor-based detection on domain controllers — full prerequisites and detection coverage in its own note |
 | Defender for Cloud Apps | SaaS apps | CASB — SaaS discovery, control, session policies; full depth in [[SaaS Application Discovery and Control]] |
 | Defender for IoT | OT/ICS/IoT | Device discovery and threat detection — Enterprise vs. OT editions in [[Securing Server and Client Endpoints]] |
 | Defender for Storage | Blob storage | Malware scanning, anomalous access detection |
@@ -48,6 +48,7 @@ Umbrella brand for Microsoft's threat protection products. [[Microsoft Defender 
 - [[Microsoft Sentinel]]
 - [[Microsoft Defender for Cloud]]
 - [[Microsoft Defender XDR]]
+- [[Microsoft Defender for Identity]]
 - [[Security Posture Assessments]]
 - [[Cloud Workload Protection (CWPP)]]
 - [[Securing Server and Client Endpoints]]

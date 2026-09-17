@@ -128,7 +128,7 @@ flowchart TD
 
 ## 4. Monitor and Plan for Compromise
 
-- **[[Microsoft Defender]] for Identity** — sensors deployed on domain controllers (and AD FS / AD CS servers) providing:
+- **[[Microsoft Defender for Identity]]** — sensors deployed on domain controllers (and AD FS / AD CS servers) providing:
   - detection of Kerberoasting, pass-the-hash/ticket, golden ticket, DCSync/DCShadow, reconnaissance, and lateral movement paths;
   - **identity security posture assessments** — unsecure account attributes, legacy protocol usage, dormant privileged accounts, risky delegation, exposed credentials;
   - signal into the unified [[Microsoft Defender XDR]] incident queue. Requires [[Microsoft 365 Licensing|Microsoft 365 E5 / E5 Security or EMS E5]].
@@ -161,8 +161,8 @@ flowchart TD
 | --- | --- |
 | **AD DS vs. [[Entra ID]]** | AD DS: on-prem, Kerberos/NTLM/LDAP, OUs and GPOs, domain/forest trusts, you own the DCs. Entra ID: cloud, OAuth/OIDC/SAML, flat tenant with Conditional Access, Microsoft operates it. Not a hierarchy or an upgrade path — different directories with different controls. |
 | **AD DS vs. Microsoft Entra Domain Services** | Entra Domain Services is a **managed** domain (LDAP/Kerberos/GPO for lift-and-shift VMs) where Microsoft owns the DCs — you never get Domain Admin, so most of this hardening list doesn't apply and cannot be applied. |
-| **Defender for Identity vs. [[Identity Protection]]** | Defender for Identity detects attacks against **on-prem AD** (and AD FS/AD CS) from DC sensors. Entra ID Protection scores **cloud sign-in and user risk** for Conditional Access. Different directories, complementary signals, both surface in Defender XDR. |
-| **Defender for Identity vs. [[Microsoft Sentinel]]** | Defender for Identity is a purpose-built AD detection product with prebuilt analytics; Sentinel ingests DC audit logs for long-term retention, custom hunting, and correlation with non-identity sources. Use both. |
+| **[[Microsoft Defender for Identity]] vs. [[Identity Protection]]** | Defender for Identity detects attacks against **on-prem AD** (and AD FS/AD CS) from DC sensors. Entra ID Protection scores **cloud sign-in and user risk** for Conditional Access. Different directories, complementary signals, both surface in Defender XDR. |
+| **[[Microsoft Defender for Identity]] vs. [[Microsoft Sentinel]]** | Defender for Identity is a purpose-built AD detection product with prebuilt analytics; Sentinel ingests DC audit logs for long-term retention, custom hunting, and correlation with non-identity sources. Use both. |
 | **gMSA vs. traditional service account** | gMSA: AD-managed, automatically rotated 240-character password, no human knows it, tied to authorized hosts. Traditional: static shared password, often with an SPN and privileged group membership — the classic Kerberoasting target. |
 | **Windows LAPS vs. gMSA** | LAPS randomizes and rotates the **local** administrator password per machine (lateral movement). gMSA manages **domain service account** credentials (service authentication). |
 | **Protected Users vs. "sensitive and cannot be delegated"** | Protected Users blocks weak authentication methods and credential caching for its members. The account flag specifically prevents delegation/impersonation of that account. Complementary, not alternatives. |
@@ -189,7 +189,7 @@ AZ-500 covers hybrid identity plumbing — Entra Connect / Cloud Sync, password 
 ## Exam Tips
 
 - "Reduce the AD DS attack surface" → the answer set is: **empty privileged groups, separate/tiered admin accounts, privileged access workstations, hardened DCs (Server Core, no internet, no spooler), disable legacy protocols**. Not "install more agents."
-- "Detect Kerberoasting / pass-the-hash / golden ticket / DCSync on-prem" → **Defender for Identity**, not Entra ID Protection and not Defender for Endpoint.
+- "Detect Kerberoasting / pass-the-hash / golden ticket / DCSync on-prem" → **[[Microsoft Defender for Identity]]**, not Entra ID Protection and not Defender for Endpoint.
 - "Prevent lateral movement using a shared local administrator password" → **Windows LAPS**.
 - "Service account with an SPN and a static password used across servers" → replace with **gMSA**, and remove the SPN from any privileged account.
 - "Protect a highly privileged account from credential theft and delegation abuse" → **Protected Users** group plus **"Account is sensitive and cannot be delegated."**
@@ -203,8 +203,8 @@ AZ-500 covers hybrid identity plumbing — Entra Connect / Cloud Sync, password 
 ## Common Exam Confusion
 
 - **AD DS vs. Entra ID vs. Entra Domain Services** — three different directories; only the first gives (and requires) full control-plane hardening.
-- **Defender for Identity vs. Entra ID Protection** — on-prem AD attack detection vs. cloud sign-in/user risk scoring.
-- **Defender for Identity vs. Defender for Endpoint** — identity-plane attack detection from DC sensors vs. endpoint EDR; both feed [[Microsoft Defender XDR]].
+- **[[Microsoft Defender for Identity]] vs. Entra ID Protection** — on-prem AD attack detection vs. cloud sign-in/user risk scoring.
+- **[[Microsoft Defender for Identity]] vs. Defender for Endpoint** — identity-plane attack detection from DC sensors vs. endpoint EDR; both feed [[Microsoft Defender XDR]].
 - **gMSA vs. LAPS** — domain service account credentials vs. per-machine local admin passwords.
 - **Tiering (Tier 0/1/2) vs. the enterprise access model (Control/Management/Data-Workload planes)** — the same containment idea, older and newer terminology; SC-100 prefers the plane language ([[Securing Privileged Access]]).
 - **Constrained vs. resource-based constrained delegation** — configured on the *source* service vs. on the *target* resource.
@@ -241,6 +241,7 @@ AZ-500 covers hybrid identity plumbing — Entra Connect / Cloud Sync, password 
 - [[PIM]]
 - [[Conditional Access]]
 - [[Microsoft Defender]]
+- [[Microsoft Defender for Identity]]
 - [[Microsoft Defender XDR]]
 - [[Microsoft Sentinel]]
 - [[Securing Server and Client Endpoints]]

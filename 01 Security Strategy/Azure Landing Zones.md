@@ -174,6 +174,8 @@ Designing this whole tree, all the policies, the network topology, from a blank 
 
 Using the accelerator is like buying a prefab building kit instead of hiring an architect to design a house from scratch — faster, tested, and you only deviate from the standard design where you have a genuinely unusual requirement.
 
+The accelerator's delivery mechanism has itself changed: earlier reference implementations used **Azure Blueprints** to package and deploy the management group tree and baseline policies. Blueprints is now deprecated (see [[Azure Blueprints]]), and the current accelerator is **Bicep/Terraform-based** instead — a landing zone built from an old Blueprints-based accelerator is itself a migration candidate.
+
 ---
 
 ## Networking: How the Hub Connects to Everyone
@@ -334,6 +336,8 @@ AZ-500 covers the individual controls that live inside these subscriptions — A
 - [[Microsoft Sentinel]]
 - [[Entra ID]]
 - [[Network Security Architecture]]
+- [[Azure Blueprints]]
+- [[Azure Policy]]
 
 ---
 

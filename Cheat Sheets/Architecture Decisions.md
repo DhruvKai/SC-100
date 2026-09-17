@@ -73,3 +73,12 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need content even Microsoft can't decrypt? | [[Double Key Encryption (DKE)]] |
 | Need to know exactly where/how to turn on a regulatory standard in Defender for Cloud, or how to actually get compliant? | [[Assigning Regulatory Compliance Standards]] |
 | Need to automate Defender for Cloud (enable plans, assign standards, pull Secure Score) across many subscriptions via code? | [[Defender for Cloud REST API]] |
+| Need to detect Kerberoasting, DCSync, golden ticket, or other on-prem AD attacks? | [[Microsoft Defender for Identity]] |
+| Need to package/deploy RBAC + Policy + templates together, or migrate away from Azure Blueprints? | [[Azure Blueprints]] (deprecated — see its migration mapping) |
+| Need Windows client update management, or to know when Configuration Manager/Azure Update Manager is still required? | [[Intune]] (client updates) / [[Ransomware Resiliency and BCDR]] (Azure Update Manager, server OS) |
+| Need to map an AKS/DevOps task to the correct DevSecOps lifecycle stage (Plan/Develop/Build/Deploy/Operate)? | [[DevOps Security]] |
+| Need to know whether an active or eligible PIM assignment requires activation, or which settings apply at activation vs. assignment creation? | [[PIM]] |
+| Need to search, hold, or export content for litigation/investigation, or know that classic eDiscovery Standard/Premium is retired? | [[eDiscovery]] |
+| Need to pick the least-privilege Entra role for a Secure Score / Purview / Exchange-alias task without over- or under-scoping? | [[Microsoft Entra Built-in Roles]] |
+| Need to know which roles have read/write vs. read-only access to Microsoft Secure Score? | [[Secure Score Mechanics]] |
+| Need to onboard an AWS/GCP account to Defender for Cloud, or know the CSPM free-vs-paid tier split? | [[Security Posture Assessments]] |

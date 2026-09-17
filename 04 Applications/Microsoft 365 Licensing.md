@@ -246,6 +246,7 @@ AZ-500 largely assumes licenses already exist and focuses on configuring the con
 - [[Securing Server and Client Endpoints]]
 - [[Microsoft Security Copilot]]
 - [[Securing Active Directory Domain Services (AD DS)]]
+- [[Microsoft Defender for Identity]]
 
 ---
 

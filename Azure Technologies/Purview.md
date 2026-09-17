@@ -17,7 +17,7 @@ Unified data governance, security, and compliance platform, organized into three
 - **Data Lineage** — tracks how data moves and transforms across sources (e.g., a pipeline from Data Factory into Synapse), so an architect can trace how far a sensitive dataset's copies/derivatives actually spread.
 - **Collections** — Purview's own internal permission boundary (a nested hierarchy, separate from Azure RBAC) controlling who can scan, browse, or manage metadata for which sources.
 - **Security solutions** — DLP, Information Protection (sensitivity labels), Insider Risk Management, Data Security Investigations, DSPM — mechanics in [[Data Classification and Protection]], DSPM-specific comparison in [[Data Security Posture Management (DSPM)]].
-- **Compliance solutions** — Audit, eDiscovery, Communication Compliance, [[Purview Compliance Manager|Compliance Manager]], Data Lifecycle Management, Records Management — full detail in [[Compliance and Privacy]]; Compliance Manager's own control/assessment/group/template object model in [[Purview Compliance Manager]].
+- **Compliance solutions** — Audit, [[eDiscovery]], Communication Compliance, [[Purview Compliance Manager|Compliance Manager]], Data Lifecycle Management, Records Management — full detail in [[Compliance and Privacy]]; Compliance Manager's own control/assessment/group/template object model in [[Purview Compliance Manager]], eDiscovery's own case/hold/review-set model (and the retired classic Standard/Premium naming) in [[eDiscovery]].
 
 ## Architecture
 
@@ -62,6 +62,7 @@ flowchart TD
 - [[Data Classification and Protection]]
 - [[Compliance and Privacy]]
 - [[Purview Compliance Manager]]
+- [[eDiscovery]]
 - [[Priva]]
 - [[Identity and Access Management (IAM)]]
 - [[Microsoft Defender]]

@@ -21,6 +21,7 @@ Architecting security across the container lifecycle — image build, cluster co
 
 - Containers share a kernel and, often, a cluster — one vulnerable base image or one over-permissioned pod can affect every workload co-located with it, so security has to be designed at build, cluster, and runtime layers, not toggled on as a single Defender plan.
 - [[Cloud Workload Protection (CWPP)]] covers *which Defender plan* protects a container workload at runtime; this note covers the architecture decisions upstream and around that plan — image provenance, cluster identity model, network segmentation inside the cluster, and pod-to-Azure authentication.
+- These build/cluster/network/runtime layers map onto the broader **DevSecOps Plan → Develop → Build → Deploy → Operate lifecycle** covered in [[DevOps Security]] — e.g., securing/choosing base images is a Develop-phase task, auto-rebuilding images on base-image update is Build, keeping the cluster patched is Operate. See that note's lifecycle table for the full task-to-stage mapping.
 - Kubernetes ships its own RBAC and network model, separate from Azure's — an architect has to decide whether to run two parallel permission systems or collapse into one governed by Entra ID.
 - Legacy pod-to-Azure authentication patterns (stored secrets, the retired AAD Pod Identity project) are exactly the standing-credential problem [[Identity and Access Management (IAM)]] argues against — containers are where that problem shows up at the highest density (many short-lived pods, each needing Azure access).
 
@@ -178,6 +179,8 @@ AZ-500 covers AKS security at the configuration level — enabling the Network P
 ## References
 
 - [AKS security concepts](https://learn.microsoft.com/en-us/azure/aks/concepts-security) — Microsoft Learn
+- [DevSecOps on Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/architecture/guide/devsecops/devsecops-on-aks) — Microsoft Learn
+- [What is Azure Kubernetes Service (AKS)?](https://learn.microsoft.com/en-us/azure/aks/what-is-aks) — Microsoft Learn
 - [Microsoft Entra Workload ID](https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-overview) — Microsoft Learn
 - [Azure RBAC for Kubernetes Authorization](https://learn.microsoft.com/en-us/azure/aks/manage-azure-rbac) — Microsoft Learn
 - [Defender for Containers overview](https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction) — Microsoft Learn

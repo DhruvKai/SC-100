@@ -121,6 +121,26 @@ Microsoft Secure Score % = achieved points ÷ total possible points
 
 The two "resolved through…" statuses are the governance risk: they are self-asserted and Microsoft does not verify them. A score that climbed via third-party attestations needs review before it's reported upward.
 
+### Products Included in Microsoft Secure Score
+
+Recommendations currently span: [[Entra ID]], Exchange Online, [[Securing Microsoft 365|SharePoint Online, Microsoft Teams]], [[Microsoft Defender XDR|Defender for Endpoint, Defender for Identity, Defender for Office, Defender for Cloud Apps]], [[Purview]] Information Protection, app governance, and several non-Microsoft SaaS apps (Citrix ShareFile, Docusign, GitHub, Okta, Salesforce, ServiceNow, Zoom). You see the *full* recommendation catalogue for a product regardless of which license/plan you hold — the absolute score doesn't change based on entitlement, only which recommendations you can actually action.
+
+**Security defaults** in Entra ID auto-satisfy three specific improvement actions at full points the moment they're turned on: MFA for all users (9 pts), MFA for administrative roles (10 pts), and blocking legacy authentication (7 pts). Because security defaults overlap functionally with the sign-in-risk/user-risk-policy recommended actions, mark those overlapping actions **"resolved through alternative mitigation"** instead of building risk-based Conditional Access on top of security defaults redundantly.
+
+### Secure Score Permissions — Who Can View vs. Manage It
+
+Two separate permission models govern access to the Microsoft Secure Score in the Defender portal:
+
+- **Microsoft Defender Unified RBAC** (current, portal-only) — create a custom role with the **Exposure Management (read)** or **Exposure Management (manage)** permission, under the *Security posture* category, scoped to the **Microsoft Security Exposure Management** data source. Takes effect immediately on assignment; GraphAPI access (including Defender for Identity's own Secure Score) still requires the legacy Entra-role model below until Microsoft extends GraphAPI support.
+- **Microsoft Entra global roles** (legacy, still fully supported) — if a user isn't assigned a Defender Unified RBAC custom role, their Entra role determines Secure Score access:
+
+| Access level | Roles |
+| --- | --- |
+| **Read + write** (edit status/notes, edit score zones, edit custom comparisons, grant others read-only) | **Security Administrator** (or higher), **Exchange Administrator**, **SharePoint Administrator** |
+| **Read-only** | Helpdesk Administrator, User Administrator, Service Support Administrator, Security Reader, Security Operator, Global Reader |
+
+The read/write list is the exam's favorite trap: **Exchange Administrator and SharePoint Administrator both grant full read/write Secure Score access**, identical in that one respect to Security Administrator — despite their names suggesting a workload-scoped, non-security role. Picking the *least-privilege correct* role for a user who needs Secure Score write access **plus** a workload-specific task (e.g., managing Exchange recipient/alias settings) means checking whether the workload-specific role *already* covers Secure Score, rather than reflexively reaching for Security Administrator or Global Administrator. Full built-in-role comparison and worked exam scenarios live in [[Microsoft Entra Built-in Roles]].
+
 ---
 
 ## Architecture
@@ -204,6 +224,7 @@ AZ-500 covers reading Secure Score, acting on recommendations, and exempting a r
 - In Microsoft Secure Score, **"risk accepted" earns no points** while **"resolved through third party"/"alternate mitigation" earn full points** — a frequently tested asymmetry.
 - Microsoft Secure Score's **total possible points depend on licensed products** — buying more licenses can lower the percentage by adding actions.
 - Microsoft Secure Score updates on roughly a **24-hour** cycle — "why hasn't the score changed yet" is usually this.
+- "Which role gives read/write access to Microsoft Secure Score?" → **Security Administrator, Exchange Administrator, or SharePoint Administrator** — not just Security Administrator. A scenario needing Secure Score write access *and* a workload-specific task (e.g., Exchange recipient management) is very likely testing whether you know Exchange Administrator already covers both, making it the least-privilege answer over Security Administrator or Global Administrator. Full role comparison in [[Microsoft Entra Built-in Roles]].
 
 ---
 
@@ -229,6 +250,10 @@ AZ-500 covers reading Secure Score, acting on recommendations, and exempting a r
 - To address / Planned / Risk accepted / Resolved through third party / Resolved through alternate mitigation / Completed
 - ~24-hour refresh, comparison benchmarks
 - Classic Secure Score vs. risk-based Cloud Secure Score
+- Security defaults — auto-scored MFA/legacy-auth actions
+- Defender Unified RBAC — Exposure Management (read)/(manage), Security posture category
+- Secure Score read/write roles: Security Administrator, Exchange Administrator, SharePoint Administrator
+- Secure Score read-only roles: Helpdesk Administrator, User Administrator, Service Support Administrator, Security Reader, Security Operator, Global Reader
 
 ---
 
@@ -246,6 +271,8 @@ AZ-500 covers reading Secure Score, acting on recommendations, and exempting a r
 - [[Purview]]
 - [[Entra ID]]
 - [[Cloud Adoption Framework (CAF)]]
+- [[Microsoft Entra Built-in Roles]]
+- [[Identity and Access Management (IAM)]]
 
 ---
 

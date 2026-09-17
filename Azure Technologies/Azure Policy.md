@@ -71,6 +71,7 @@ flowchart TD
 | Deny vs. Audit effect | Deny prevents the non-compliant operation from happening at all. Audit allows it but records non-compliance for reporting and Secure Score — prevention vs. visibility, a deliberate choice per control. |
 | Built-in MCSB initiative vs. custom initiative | The MCSB initiative is Microsoft-authored and auto-assigned, giving baseline Secure Score coverage. A custom initiative is org-authored, added deliberately to extend Secure Score with requirements Microsoft's baseline doesn't include. |
 | Policy assignment vs. remediation task | Assignment governs resources created or changed *going forward*. A remediation task is the explicit, separate action that fixes resources that were already non-compliant *before* the assignment existed. |
+| Azure Policy vs. [[Azure Blueprints]] | Azure Policy is the active enforcement/compliance-evaluation engine. Azure Blueprints was a now-**deprecated** service that bundled policy assignment, RBAC, ARM templates, and resource groups into one trackable package — its policy artifact simply assigned Azure Policy under the hood. Policy survives; Blueprints doesn't. |
 
 ## AZ-500 Review
 
@@ -93,6 +94,7 @@ AZ-500 already covers creating and assigning individual policy definitions and i
 - [[Azure Landing Zones]]
 - [[Cloud Adoption Framework (CAF)]]
 - [[Securing IaaS and PaaS Services]]
+- [[Azure Blueprints]]
 - [[Exam Objectives]]
 
 ## References

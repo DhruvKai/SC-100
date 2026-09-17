@@ -156,7 +156,8 @@ AZ-500 assumes general familiarity with AD groups, OUs, and delegation, but does
 - [[Securing Active Directory Domain Services (AD DS)]] — where this mechanism sits within the broader AD hardening checklist.
 - [[Privileged Access Tier Models]] — the containment model this mechanism protects.
 - [[Securing Privileged Access]]
-- [[Microsoft Defender]] — Defender for Identity's detection coverage.
+- [[Microsoft Defender]]
+- [[Microsoft Defender for Identity]] — full detection coverage and prerequisites.
 - [[Microsoft Defender XDR]]
 - [[Microsoft Sentinel]] — DC audit log correlation and hunting.
 - [[Microsoft Incident Response (DART)]]
