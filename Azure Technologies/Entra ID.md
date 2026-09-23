@@ -36,7 +36,7 @@ flowchart LR
 How an **enterprise application** (the per-tenant service principal side of an app registration — see [[Identity and Access Management (IAM)]]) is configured to authenticate through Entra ID, rather than prompting for standalone credentials. Not all five methods give the same security posture:
 
 - **SAML-based SSO** — SAML 2.0 assertions; the method most gallery enterprise apps and custom SAML-aware apps use. Requires configuring an Identifier/Reply URL and a signing certificate.
-- **OIDC/OAuth-based SSO** — modern token-based SSO, the flow behind app-registration-based (rather than pure gallery-SSO-config) applications and the API permission model covered in [[Identity and Access Management (IAM)]].
+- **OIDC/OAuth-based SSO** — modern token-based SSO, the flow behind app-registration-based (rather than pure gallery-SSO-config) applications and the API permission model covered in [[Identity and Access Management (IAM)]]. Role/process mechanics (resource owner, client, authorization server, resource server) are in [[OAuth 2.0 and OpenID Connect]].
 - **Password-based SSO** — Entra ID stores a shared username/password and replays it into the app's native web login form via a browser extension/agent. The **fallback of last resort** — no federation happens at all, the credential is stored and shared rather than eliminated. Only use when the app genuinely has no SAML/OIDC support.
 - **Linked SSO** — the app already has SSO configured through a *different* IdP; Entra ID just links to it from the My Apps portal for discovery/launch — it doesn't broker authentication itself.
 - **Disabled** — no SSO; the app prompts for its own credentials every time.

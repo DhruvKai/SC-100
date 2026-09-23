@@ -15,6 +15,26 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-09-23
+
+**Added**
+
+- [[OAuth 2.0 and OpenID Connect]] — the four OAuth 2.0 roles (resource owner, client, authorization server, resource server), the authorization code flow, and OAuth (authorization) vs. OIDC (authentication) as separate protocols producing different tokens.
+- [[VPN Gateway]] — Site-to-Site vs. Point-to-Site connectivity and the P2S protocol-to-client-OS support matrix (OpenVPN/SSTP/IKEv2), plus where VPN Gateway sits relative to Entra Private Access as the Zero Trust replacement.
+- [[App Control for Business and AppLocker]] — kernel-mode vs. user-mode Windows application allowlisting, the Intelligent Security Graph reputable-apps model, and the per-user/legacy-OS scenarios that specifically point to AppLocker over App Control for Business.
+- [[Workload Identity Federation]] — federated credential mechanics (issuer/subject/audience) for non-Azure-hosted workloads (Kubernetes pods, CI/CD, other clouds), and why it beats both managed identity (Azure-hosted only) and self-signed certificates (still a stored credential) outside their scope.
+
+**Updated**
+
+- [[Secure Score Mechanics]] — no content change; used to walk through the "highest secure score impact" control-weighting exam pattern (MFA/management ports over vulnerability/patch remediation).
+- [[Securing Server and Client Endpoints]] — added a control-selection table for "protect client data accessed on/stored on mobile devices" (App protection policies + Conditional Access vs. UEBA/App Control for Business/user risk policy distractors), and cross-linked [[App Control for Business and AppLocker]].
+- [[Identity and Access Management (IAM)]] — cross-linked [[OAuth 2.0 and OpenID Connect]] (delegated/application permissions as the OAuth flow's output) and [[Workload Identity Federation]] (federation mechanics detail).
+- [[Entra ID]] — cross-linked [[OAuth 2.0 and OpenID Connect]] from the OIDC/OAuth-based SSO section.
+- [[Container and Kubernetes Security]] — cross-linked [[Workload Identity Federation]] for general federation mechanics beyond the AKS-specific case.
+- [[Data Classification and Protection]] — added Microsoft Purview Message Encryption (OME) coverage: Azure RMS activation as the required first step before sensitivity labels/mail flow rules, and SCEP as an unrelated device-certificate distractor.
+
+---
+
 ## 2026-09-17
 
 **Added**

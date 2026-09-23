@@ -35,6 +35,20 @@ MDM and MAM are the two Intune-based answers to "how do we manage a client devic
 - **Why this matters architecturally**: MAM is the concrete, least-privilege application of Zero Trust to endpoints — it protects exactly the corporate data at risk (inside managed apps) instead of claiming authority over an entire personal device, which is both a privacy overreach and often legally/organizationally unacceptable for BYOD.
 - **Conditional Access integration** — the **"Require app protection policy"** grant control is the mechanism that ties MAM into sign-in policy, the same way "Require compliant device" ties in MDM. Microsoft is migrating the older combined "Require approved client app or app protection policy" grant to a straight "Require app protection policy" requirement (cutover March 2026) — know the current grant control name, not the retired combined one.
 
+### Protecting Client Data Accessed on Mobile Devices — Which Control
+
+A recurring multi-select pattern: "recommend a solution for managing client data accessed by and stored on mobile devices" almost always wants exactly two controls, from a lineup designed to include plausible-sounding wrong answers:
+
+| Control | Correct fit? | Why |
+| --- | --- | --- |
+| **App protection policies (APP)** | **Yes** | Protects the data itself inside managed apps — encryption, selective wipe, copy/paste restriction. Directly answers "data accessed by and stored on the device." |
+| **Conditional Access policies** | **Yes** | Governs the conditions under which access to the data is granted in the first place (location, risk, device state) — the access-gate half of the solution; APP alone doesn't control whether access is granted. |
+| User and Entity Behavior Analytics (UEBA) | No | A Defender for Cloud Apps anomaly-**detection** feature (unusual sign-in times/locations) — finds suspicious behavior after the fact, doesn't manage or protect data at rest on the device. |
+| [[App Control for Business and AppLocker\|App Control for Business policies]] | No | Controls which **Windows executables/scripts** are allowed to run on a system — an OS execution-control problem, not a mobile client-data problem. |
+| User risk policies | No | An [[Identity Protection]] control that responds to *identity compromise signals* (impossible travel, anonymous VPN) — protects the sign-in, not the data sitting on the device. |
+
+The pattern to recognize: the correct pair is always one **data-protection** control (APP) plus one **access-gating** control (Conditional Access) — the distractors are all real controls that solve an adjacent but different problem (behavior detection, OS execution control, identity risk).
+
 ---
 
 ## IoT Workload Security

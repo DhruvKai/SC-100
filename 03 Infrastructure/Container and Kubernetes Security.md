@@ -30,7 +30,7 @@ Architecting security across the container lifecycle — image build, cluster co
 ## When to Use
 
 - Running production workloads on AKS where multiple teams/namespaces share a cluster — namespace isolation, Network Policy, and Azure RBAC for Kubernetes Authorization become required, not optional.
-- A pod needs to call Azure resources (Key Vault, Storage, a database) — **Microsoft Entra Workload ID** (federated credential per Kubernetes service account), not a stored secret or the retired AAD Pod Identity.
+- A pod needs to call Azure resources (Key Vault, Storage, a database) — **Microsoft Entra Workload ID** (federated credential per Kubernetes service account), not a stored secret or the retired AAD Pod Identity. General federation mechanics and the managed-identity-vs-federation decision, beyond just Kubernetes, are in [[Workload Identity Federation]].
 - Images are pulled from a registry before deployment — Azure Container Registry (ACR) integrated with Defender for Containers for vulnerability scanning on push and continuous rescan.
 - Enforcing cluster-wide guardrails (no privileged containers, no `:latest` tags, required resource limits) before a pod is ever scheduled — **Azure Policy for Kubernetes** (Gatekeeper-based admission control).
 - Restricting the Kubernetes API server itself from public exposure — **AKS private cluster**.

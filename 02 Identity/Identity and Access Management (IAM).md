@@ -65,6 +65,8 @@ The identity elements inside an app registration, and the permission model that 
 
 ### Application Permission vs. Delegated Permission
 
+The permission a client holds is what's left after the [[OAuth 2.0 and OpenID Connect|OAuth 2.0 authorization]] flow completes — this section is the outcome; that note is the protocol mechanics (resource owner, client, authorization server, resource server) that produce it.
+
 - **Delegated permission** — the app acts **as the signed-in user**, bounded by *both* the consented scope *and* whatever that user is actually allowed to do. A user with no mailbox access still can't be used to read mail through the app, even if `Mail.Read` (delegated) was consented — least privilege by construction. Requires an actual signed-in user (interactive sign-in, or on-behalf-of for a downstream call).
 - **Application permission** — the app acts **as itself**, with no signed-in user, and the permission applies **tenant-wide** regardless of any individual user's own access. `Mail.Read` as an *application* permission means the app can read *any* mailbox in the tenant — a materially larger blast radius, not just a stricter version of the delegated case.
 - **Consent**: low-privilege delegated permissions can sometimes be user-consented (subject to tenant consent policy); application permissions **always** require admin consent — no signed-in user exists to consent on their own behalf. Restricting risky user consent org-wide is covered in [[SaaS Application Discovery and Control|OAuth App Governance]], not repeated here.
@@ -78,7 +80,7 @@ The identity elements inside an app registration, and the permission model that 
 - Non-human access that reaches Microsoft Graph, a third-party API, or crosses tenant boundaries — a **service principal** (app registration), since managed identity is scoped to Azure-resource-to-Azure-resource auth only.
 - Scoping what an identity can manage on Azure resources — **Azure RBAC** at the narrowest sufficient scope (resource → resource group → subscription → management group).
 - Scoping what an identity can do to the directory itself (create users, manage Conditional Access, assign roles) — **Entra ID roles**, not Azure RBAC.
-- Removing plaintext secrets from CI/CD pipelines calling Azure (GitHub Actions, Kubernetes, another cloud) — **workload identity federation**, not a stored client secret.
+- Removing plaintext secrets from CI/CD pipelines calling Azure (GitHub Actions, Kubernetes, another cloud) — **workload identity federation**, not a stored client secret. Full mechanics (issuer/subject/audience, Kubernetes pod scenario, comparison with self-signed certs) in [[Workload Identity Federation]].
 
 ---
 

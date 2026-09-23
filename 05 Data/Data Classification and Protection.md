@@ -64,6 +64,9 @@ What actually happens once content is labeled — the enforcement layer.
   - **Simulation mode** — every DLP policy can run in test/audit-only mode (matches logged, no user-facing block) before switching to enforcement, the same "pilot before enforce" discipline that applies to auto-labeling.
 - **Retention labels/policies** — govern the data's *lifecycle* (retain-then-delete, retain-then-review) — a records-management concern, distinct from DLP's in-the-moment blocking.
 - **Rights Management protection actions** — a label can bundle encryption, access restriction ("Do Not Forward," "Encrypt-Only my org"), and visual markings (watermark, header/footer) directly into the label definition, so classification and protection happen in one user action.
+  - **Microsoft Purview Message Encryption (OME)** — the email-specific application of Rights Management: encrypts messages so only intended recipients can read them, and works with recipients on **any** email service (Gmail, Yahoo!, Outlook.com) with no special software needed on their end. **Azure Rights Management (Azure RMS) must be activated in the tenant first** — RMS is the underlying encryption/key-management engine Message Encryption depends on; deployment order is: activate Azure RMS → create/publish sensitivity labels (or configure mail flow rules) → encryption actually applies. A scenario asking "what should you do **first**" when planning Purview Message Encryption is testing this prerequisite, not the labels or mail flow rules that come after.
+  - **Mail flow rules (Exchange transport rules)** — optional, condition-based triggers that apply OME automatically (e.g., "encrypt if the subject contains 'secure:'") — configured *after* RMS activation, not instead of it.
+  - Not related: **SCEP (Simple Certificate Enrollment Protocol)** — automated device/client certificate enrollment (via Intune) for things like Wi-Fi/VPN authentication. It has no role in email encryption and is a common distractor in Purview Message Encryption scenarios.
 - **Insider Risk Management** — correlates label sensitivity with user behavior (mass download, print, unusual sharing) to flag risky patterns DLP's content-only matching wouldn't catch alone.
 - The architecture choice is *which enforcement mechanism fits the requirement*: DLP for in-the-moment prevention, retention for lifecycle/legal hold, Rights Management for persistent protection that travels with the file even outside the tenant.
 
@@ -174,6 +177,7 @@ AZ-500 already covers configuring sensitivity labels, basic DLP policies, TDE, K
 - "Compliance requires us to be able to revoke access to our own data by destroying the key" → CMK, not MMK.
 - A scenario describing a label that exists but content still leaks → missing DLP/Rights Management policy, not a discovery/classification failure.
 - Don't confuse this note's classification *mechanism* with [[Data Security Posture Management (DSPM)|DSPM]]'s posture *scoring* — a "where is our exposed sensitive data" scenario is DSPM; a "how do we label/encrypt it" scenario is this note.
+- "Planning Purview Message Encryption — what to do **first**?" → verify/activate **Azure RMS**, before creating sensitivity labels or defining mail flow rules — RMS is the prerequisite engine, not a parallel option. SCEP is an unrelated device-certificate distractor here.
 
 ---
 
@@ -199,6 +203,8 @@ AZ-500 already covers configuring sensitivity labels, basic DLP policies, TDE, K
 - Endpoint DLP, Defender for Endpoint onboarding
 - Adaptive Protection, Insider Risk Management risk score
 - Rights Management protection, Insider Risk Management
+- Microsoft Purview Message Encryption (OME), Azure Rights Management (Azure RMS) activation
+- Mail flow rules (Exchange transport rules) vs. SCEP (unrelated device certificate enrollment)
 - Customer-managed key (CMK) vs. Microsoft-managed key (MMK)
 - Crypto-shredding, key revocation
 - Infrastructure encryption (double encryption)
