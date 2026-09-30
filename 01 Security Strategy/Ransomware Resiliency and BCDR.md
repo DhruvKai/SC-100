@@ -109,7 +109,7 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - Architect the three-phase strategy (Prepare, Limit, Prevent) and its priority order, not just configure backup jobs — a resiliency design decision, not a checkbox.
 - Explicitly sequence privileged access hardening (Phase 2, via the enterprise access model / [[PIM]]) as part of ransomware mitigation, not a separate identity task.
 - Treat backups as an attacker target requiring immutability and offline copies by design — an architectural requirement, not just a retention setting.
-- Tie "evaluate solutions for security updates" (Phase 3) into the same strategy instead of treating patch management as isolated — **Azure Update Manager** is the named solution: unified patch orchestration/scheduling and update-compliance reporting across Azure VMs, [[Azure Arc|Arc-enabled]] hybrid/multicloud servers, and on-prem machines, replacing per-resource manual patching.
+- Tie "evaluate solutions for security updates" (Phase 3) into the same strategy instead of treating patch management as isolated — **[[Azure Update Manager]]** is the named solution (full strategy and tool comparison in [[Security Updates and Patch Management]]): unified patch orchestration/scheduling and update-compliance reporting across Azure VMs, [[Azure Arc|Arc-enabled]] hybrid/multicloud servers, and on-prem machines, replacing per-resource manual patching.
 - Design and mandate recurring "Recover from Zero" BC/DR exercises as part of the architecture, not a one-time backup configuration.
 
 ---
@@ -121,7 +121,7 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - "A compromised backup administrator could disable soft delete and delete the backups" → **[[Resource Guard|Multi-User Authorization via a Resource Guard]]**, owned by a different team in a different subscription/tenant, with JIT access via [[PIM]].
 - A domain-wide compromise where the internal team cannot establish scope → engage **[[Microsoft Incident Response (DART)|Microsoft Incident Response / DART]]**, rebuild Tier 0 rather than clean it, and rotate `krbtgt` twice.
 - Phase ordering matters: Prepare and Limit are prioritized ahead of Prevent in Microsoft's own guidance — a prevention-only answer is usually incomplete.
-- "Standardize patch compliance and scheduling across Azure, Arc-enabled, and on-prem servers" → Azure Update Manager, not per-resource manual patching or a third-party tool by default.
+- "Standardize patch compliance and scheduling across Azure, Arc-enabled, and on-prem servers" → [[Azure Update Manager]], not per-resource manual patching or a third-party tool by default.
 
 ---
 

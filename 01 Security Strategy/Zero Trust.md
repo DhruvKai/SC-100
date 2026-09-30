@@ -91,7 +91,7 @@ Each pillar maps to concrete controls an architect designs or validates:
   - **Egress control matters as much as ingress control** — segmentation isn't only about keeping an attacker out, it's about limiting where a foothold that's already inside can reach or exfiltrate to. Outbound-restricted NSGs/Azure Firewall rules and Universal Tenant Restrictions turn a successful intrusion into a contained, low-impact event instead of a full breach.
 - **Infrastructure** — [[Azure Policy]] enforces guardrails and blocks insecure default configuration at deploy time. Management ports (RDP/SSH) stay closed by default and open only per-request, time-boxed, via Just-In-Time VM access — full mechanics in [[Securing IaaS and PaaS Services]]. Containerized workloads get the same guardrail treatment at the cluster level (admission control, workload identity, network policy) — see [[Container and Kubernetes Security]].
 - **Applications** — publish on-prem apps externally with modern, Conditional-Access-governed authentication (Azure AD Application Proxy) instead of a VPN/DMZ. Use Defender for Cloud Apps (CASB) — see [[Microsoft Defender]] — to discover shadow IT and apply in-session controls (e.g., block downloads from an unmanaged device) — full depth in [[SaaS Application Discovery and Control]]. API traffic gets its own policy enforcement point — throttling, token validation, versioning — covered in [[API Management and Security]].
-- **Data** — discovery and classification ([[Purview]]) is the prerequisite step; you can't protect data you haven't found and labeled. Prioritize protection by data criticality × probability of exposure, not uniform controls everywhere. Confidential Computing extends encryption to data *in use* (encrypted in memory during processing), closing the last gap after at-rest/in-transit encryption — full pipeline in [[Data Classification and Protection]].
+- **Data** — discovery and classification ([[Purview]]) is the prerequisite step; you can't protect data you haven't found and labeled. Prioritize protection by data criticality × probability of exposure, not uniform controls everywhere. [[Confidential Computing Enclaves|Confidential Computing]] extends encryption to data *in use* (encrypted in memory during processing), closing the last gap after at-rest/in-transit encryption — full pipeline in [[Data Classification and Protection]].
 
 ### Conditional Access as the Decision Engine
 
@@ -222,6 +222,7 @@ AZ-500 already covers the enforcement mechanisms: [[Conditional Access]], MFA, [
 - [[Securing Active Directory Domain Services (AD DS)]]
 - [[Microsoft Defender XDR]]
 - [[Trusted Platform Module (TPM)]]
+- [[Confidential Computing Enclaves]]
 - [[Container and Kubernetes Security]]
 - [[API Management and Security]]
 

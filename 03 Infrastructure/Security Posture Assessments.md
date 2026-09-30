@@ -195,6 +195,8 @@ AZ-500 already covers enabling [[Microsoft Defender for Cloud]] on a single subs
 - [[Azure Policy]]
 - [[Azure Landing Zones]]
 - [[Secure Score Mechanics]] — the scoring formula behind the recommendations on this page.
+- [[Defender for Cloud Recommendations]] — anatomy of a single recommendation (MITRE ATT&CK mapping, Quick fix, exemptions, governance).
+- [[Azure Resource Graph]] — KQL querying of posture data across subscriptions.
 - [[Assigning Regulatory Compliance Standards]] — exactly where/how a standard gets turned on, and how compliance is actually achieved.
 - [[Defender for Cloud REST API]] — programmatic/IaC posture and compliance automation.
 - [[Identity and Access Management (IAM)]] — workload identity federation, the Azure-native analogue of the AWS OIDC trust pattern.

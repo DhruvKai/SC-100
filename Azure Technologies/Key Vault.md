@@ -104,6 +104,7 @@ flowchart LR
 - [[Ransomware Resiliency and BCDR]]
 - [[Zero Trust]]
 - [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — TDE's customer-managed key (BYOK/CMK) architecture, backed by this vault.
+- [[Confidential Computing Enclaves]] — Managed HSM listed among Azure confidential services; attestation-gated key release to TEEs.
 - [[Exam Objectives]]
 
 ## References

@@ -148,6 +148,7 @@ Not covered in AZ-500 — this is background/context knowledge about Microsoft's
 - [[Microsoft Cybersecurity Reference Architectures (MCRA)]]
 - [[DevOps Security]]
 - [[Security Operations]]
+- [[Confidential Computing Enclaves]] — Microsoft uses confidential computing internally (Entra ID key material, code signing, payments) under SFI.
 
 ---
 

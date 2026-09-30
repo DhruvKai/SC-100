@@ -18,7 +18,7 @@ Cloud-native unified endpoint management platform. **Microsoft Endpoint Manager 
 ## Core Capabilities
 
 - **Intune** — cloud-native MDM/MAM (full architecture in [[Securing Server and Client Endpoints]]).
-- **Configuration Manager (ConfigMgr)** — the on-prem/legacy management product Intune's cloud-native model is superseding; still relevant for orgs with existing investment.
+- **[[Microsoft Configuration Manager|Configuration Manager (ConfigMgr)]]** — the on-prem/legacy management product Intune's cloud-native model is superseding; still relevant for orgs with existing investment.
 - **Co-management** — hybrid state where a device is enrolled in *both* ConfigMgr and Intune simultaneously, with individual **workloads** (compliance policies, device configuration, endpoint protection, resource access policies, client apps, Office Click-to-Run apps) independently "slid" from ConfigMgr authority to Intune authority as an org migrates — not an all-or-nothing cutover.
 - **Windows Autopilot** — zero-touch device provisioning: a device's hardware ID is pre-registered, so a new/reset machine self-enrolls into Entra ID and Intune out of the box, with the **Enrollment Status Page (ESP)** blocking user access until required compliance policies and apps finish provisioning.
 - **Endpoint Analytics** — proactive device health/performance telemetry (startup time, app reliability) to catch degrading endpoints before they become a support or security problem.
@@ -28,7 +28,7 @@ Cloud-native unified endpoint management platform. **Microsoft Endpoint Manager 
   - **Update rings (Windows Update for Business policy)** — deferral periods, deadlines, and active hours for feature and quality updates, delivered straight from Microsoft with no on-prem infrastructure; **Delivery Optimization** lets peer devices cache content locally to reduce WAN usage.
   - **Windows Autopatch** — a Microsoft-*managed* automation layer on top of update rings that also handles Microsoft 365 Apps update channels, Microsoft Edge, and Teams rollout; included with Windows Enterprise E3/E5 (part of Microsoft 365 E3/E5) — reduces update rings to something Microsoft operates for you rather than something you tune yourself.
   - **Driver and firmware update policies** — Intune can also manage Windows driver/firmware rollout alongside quality updates.
-  - This is **client-only**. Server OS patching (Azure VMs, [[Azure Arc|Arc-enabled]], on-prem) is a different product — **Azure Update Manager** — see [[Ransomware Resiliency and BCDR]].
+  - This is **client-only**. Server OS patching (Azure VMs, [[Azure Arc|Arc-enabled]], on-prem) is a different product — **[[Azure Update Manager]]** — see [[Security Updates and Patch Management]].
 
 ## Architecture
 
@@ -110,7 +110,7 @@ AZ-500 doesn't cover Intune Suite, co-management workload sliding, Windows Autop
 - Cloud PKI
 - Update rings, Windows Update for Business policy, deferral/deadlines, active hours
 - Windows Autopatch, Delivery Optimization
-- Configuration Manager Software Update Point (SUP), WSUS, Distribution Points
+- Configuration Manager Software Update Point (SUP), [[WSUS]], Distribution Points
 - Azure Update Manager (Windows Server — not Intune's scope)
 
 ## Related

@@ -73,7 +73,7 @@ Distinct from the IoT *device discovery/monitoring* covered above (Defender for 
 - Discovering and monitoring enterprise IoT devices (printers, cameras, badge readers) — **Defender for IoT Enterprise** edition, surfaced in Defender XDR.
 - Monitoring true industrial control systems/OT networks — **Defender for IoT OT** edition, passive network sensors.
 - Establishing a consistent starting configuration across a device fleet — Intune security baselines (client/mobile), alongside MCSB-based Azure baselines for servers (see [[Security Posture Assessments]]).
-- Keeping patch compliance current across the server fleet as a solution, not a manual task — **Azure Update Manager**, unified across Azure/Arc-enabled/on-prem — see [[Ransomware Resiliency and BCDR]] for how it fits the Prevent phase.
+- Keeping patch compliance current across the server fleet as a solution, not a manual task — **[[Azure Update Manager]]**, unified across Azure/Arc-enabled/on-prem — see [[Security Updates and Patch Management]] and [[Ransomware Resiliency and BCDR]] for how it fits the Prevent phase.
 
 ---
 
@@ -164,7 +164,7 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - "Discover and monitor badge readers, printers, and cameras" → Defender for IoT Enterprise edition, not the OT edition.
 - "Monitor a plant-floor industrial control network without installing agents" → Defender for IoT OT edition, passive sensors.
 - "Individually revoke one compromised IoT device's identity without affecting the rest of the fleet" → X.509 certificate auth, not a shared SAS token.
-- "Standardize patch compliance across Azure and on-prem servers" → Azure Update Manager.
+- "Standardize patch compliance across Azure and on-prem servers" → [[Azure Update Manager]]. Legacy ConfigMgr/WSUS options: [[Microsoft Configuration Manager]], [[WSUS]].
 
 ---
 

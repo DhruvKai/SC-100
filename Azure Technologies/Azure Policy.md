@@ -95,6 +95,9 @@ AZ-500 already covers creating and assigning individual policy definitions and i
 - [[Cloud Adoption Framework (CAF)]]
 - [[Securing IaaS and PaaS Services]]
 - [[Azure Blueprints]]
+- [[Defender for Cloud Recommendations]] — the findings generated when a resource fails a policy in a security initiative; Enforce/Deny uses policy effects.
+- [[Azure Update Manager]] — Policy enforces periodic assessment and patch schedules.
+- [[Azure Resource Graph]] — query compliance/resource state at scale.
 - [[Exam Objectives]]
 
 ## References

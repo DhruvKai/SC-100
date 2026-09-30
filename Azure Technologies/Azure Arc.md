@@ -47,7 +47,7 @@ flowchart LR
 ## Key Facts
 
 - Onboarding at scale uses a script, Group Policy/SCCM push, Azure Migrate, or the guest configuration extension via Azure Policy — not one VM at a time in the portal.
-- Arc-enabled servers get **Update Manager** and **Change Tracking/Inventory** the same way Azure VMs do — patching and drift detection extend to the hybrid fleet, not just Azure-native compute.
+- Arc-enabled servers get **[[Azure Update Manager|Update Manager]]** and **Change Tracking/Inventory** the same way Azure VMs do — patching and drift detection extend to the hybrid fleet, not just Azure-native compute.
 - Arc-enabled Kubernetes' GitOps configuration (via Flux) is the mechanism for pushing consistent policy/config to clusters the customer doesn't run on AKS.
 - Defender for Cloud plans (Servers, Containers, SQL) require the resource to be Arc-enabled first if it isn't natively Azure — Arc is the prerequisite projection step, not a separate protection layer itself.
 
@@ -78,6 +78,8 @@ flowchart LR
 - [[Zero Trust]]
 - [[Cloud Adoption Framework (CAF)]]
 - [[Network Watcher and Lighthouse]]
+- [[Azure Update Manager]]
+- [[Microsoft Configuration Manager]] — SCCM push is one Arc onboarding-at-scale path.
 - [[Exam Objectives]]
 
 ## References

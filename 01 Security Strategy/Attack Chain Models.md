@@ -157,6 +157,8 @@ AZ-500 doesn't name either model — it configures individual Defender/Sentinel 
 - [[Ransomware Resiliency and BCDR]]
 - [[Microsoft Sentinel]]
 - [[Microsoft Defender XDR]]
+- [[Defender for Cloud Recommendations]] — posture findings mapped to MITRE ATT&CK tactics/techniques ("how could this weakness be exploited").
+- [[Security Updates and Patch Management]] — patching closes exploit paths like MS17-010.
 
 ---
 

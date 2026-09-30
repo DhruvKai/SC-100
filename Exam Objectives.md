@@ -39,7 +39,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - Security strategy for business resiliency, including prioritizing threats to business-critical assets
 - BCDR for hybrid and multicloud, including secure backup and restore
 - Ransomware mitigation, including BCDR and privileged access prioritization
-- [[Ransomware Resiliency and BCDR|Evaluate solutions for security updates]] (Azure Update Manager)
+- [[Security Updates and Patch Management|Evaluate solutions for security updates]] ([[Azure Update Manager]], [[WSUS]], [[Microsoft Configuration Manager]])
 
 ### Align with [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]] and [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]]
 
@@ -102,7 +102,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 ### [[Security Posture Assessments|Security posture management]] (hybrid/multicloud)
 
-- Posture evaluation via [[Microsoft Defender for Cloud]] and MCSB
+- Posture evaluation via [[Microsoft Defender for Cloud]] and MCSB ([[Defender for Cloud Recommendations|recommendations]], [[Azure Resource Graph]])
 - [[Security Scoring Dashboards|Microsoft Secure Score]] evaluation
 - Integrated posture management across hybrid/multicloud
 - [[Cloud Workload Protection (CWPP)|Cloud workload protection plans]] in [[Microsoft Defender for Cloud]]
@@ -163,6 +163,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - [[Data Security Posture Management (DSPM)|Data discovery and classification]]
 - [[Data Security Posture Management (DSPM)|Prioritize threat mitigation for data]]
 - [[Data Classification and Protection|Encryption at rest/in transit, including Key Vault and infrastructure encryption]]
+- [[Confidential Computing Enclaves|Encryption in use — confidential computing (SGX enclaves, confidential VMs)]]
 - [[AI and Copilot Security Architecture|Data security for AI workloads]]
 - [[Data Security Posture Management (DSPM)|Data security for Azure SQL, Azure Synapse Analytics, Azure Cosmos DB]]
 - [[Data Security Posture Management (DSPM)|Data security for Azure Storage]]

@@ -15,6 +15,41 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-09-30
+
+**Added**
+
+- [[Security Updates and Patch Management]] — hub for the "evaluate solutions for security updates" Learn unit: four-area patch strategy, cloud-native vs. traditional vs. third-party approaches, CSPM integration, and AI-workload patching considerations.
+- [[Azure Update Manager]] — native Windows/Linux server patching for Azure and Arc machines, plus the retired Automation Update Management + Configuration Manager integration (exam scenario: no WSUS and updates not from ConfigMgr → give the Windows agent Microsoft Update access).
+- [[WSUS]] — upstream/downstream and autonomous/replica modes, GPO client configuration, deprecation status, and its role as an Azure Update Manager source for third-party updates.
+- [[Microsoft Configuration Manager]] — SCCM/MECM components (Software Update Point, ADRs, distribution points), co-management, and when it loses to Azure Update Manager/Intune.
+- [[Defender for Cloud Recommendations]] — recommendation anatomy (MITRE ATT&CK tactics/techniques, severity vs. risk level, Quick fix, exempt, governance, Enforce/Deny), with the "management ports → review the recommendation" exam scenario.
+- [[Azure Resource Graph]] — cross-subscription KQL querying of posture data, and why it isn't the answer for exploit analysis.
+- [[Confidential Computing Enclaves]] — Intel SGX enclaves (DCsv2/DCsv3 EPC limits, trusted/untrusted partitioning, attestation, SDKs) vs. confidential VMs, confidential containers, and Always Encrypted with secure enclaves.
+
+**Updated**
+
+- [[Microsoft 365 Licensing]] — added a "Keep in Mind" E3 vs. E5 cheat sheet (E3 = productivity + basic identity + device management; E5 = E3 + advanced security/compliance/identity), with a per-pillar table and the E5-vs-E5 Security add-on trap. Also updated the note for 2026 repackaging: Defender for Office 365 P1 in E3, Intune Suite features rolling into E3/E5, and the Security Copilot SCU allowance in E5.
+- [[Ransomware Resiliency and BCDR]] — Prevent-phase patching now links to [[Azure Update Manager]] and [[Security Updates and Patch Management]].
+- [[Securing Server and Client Endpoints]] — server patch-compliance guidance linked to Azure Update Manager, with legacy ConfigMgr/WSUS options.
+- [[Intune]] — Configuration Manager, WSUS and server-patching references now point to their own notes.
+- [[Azure Arc]] — Update Manager link, plus ConfigMgr as an onboarding-at-scale path.
+- [[Exam Objectives]] — security-updates objective re-pointed to the new patching hub; recommendations/ARG and encryption-in-use entries added.
+- [[Security Posture Assessments]] — related links to the recommendation-anatomy and Resource Graph notes.
+- [[Secure Score Mechanics]] — linked the individual recommendations the score is built from.
+- [[Azure Policy]] — linked recommendations (Enforce/Deny), Update Manager (assessment policies) and Resource Graph.
+- [[Attack Chain Models]] — linked Defender for Cloud recommendations as a posture-side MITRE ATT&CK mapping, and patching as the MS17-010 control.
+- [[Securing IaaS and PaaS Services]] — linked the management-ports/JIT recommendation scenario and confidential computing.
+- [[External Attack Surface Management (EASM)]] — Azure Resource Graph is now a wiki link.
+- [[Data Classification and Protection]] — encryption-in-use row now links to confidential computing enclaves.
+- [[Zero Trust]] — data-pillar Confidential Computing reference linked to its new note.
+- [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — linked Always Encrypted with secure enclaves and Confidential Ledger context.
+- [[Trusted Platform Module (TPM)]] — Trusted Launch vs. confidential VMs/enclaves cross-link.
+- [[Key Vault]] — Managed HSM as an Azure confidential service, attestation-gated key release.
+- [[Secure Future Initiative (SFI)]] — Microsoft's internal use of confidential computing under SFI.
+
+---
+
 ## 2026-09-23
 
 **Added**

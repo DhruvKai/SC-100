@@ -24,6 +24,36 @@ Maps which SC-100 security capability is unlocked by which Microsoft 365 SKU or 
 
 ---
 
+## Keep in Mind: E3 vs. E5 in One Line
+
+```
+E3  =  Productivity  +  Basic identity  +  Device management
+    ≈  Office/Windows Enterprise  +  Entra ID P1  +  Intune P1
+
+E5  =  E3  +  Advanced security  +  Advanced compliance  +  Advanced identity
+    ≈  E3  +  Defender XDR suite  +  Purview advanced  +  Entra ID P2
+```
+
+| Pillar | E3 (basic) | E5 (advanced) |
+| --- | --- | --- |
+| **Identity** | [[Entra ID]] **P1** — [[Conditional Access]] | Entra ID **P2** — [[Identity Protection]] risk policies, [[PIM]] |
+| **Devices** | [[Intune]] **P1** (MDM/MAM) | Intune P1 + more Intune Suite features (see note below) |
+| **Security** | Baseline only — Defender for Endpoint **P1**, Defender for Office 365 **P1** (new in 2026) | Full [[Microsoft Defender XDR]] suite — Defender for Endpoint **P2**, Defender for Office 365 **P2**, [[Microsoft Defender for Identity]], Defender for Cloud Apps |
+| **Compliance** | Manual sensitivity labels, basic DLP, core eDiscovery/Audit | [[Purview]] advanced — auto-labeling, Insider Risk, Communication Compliance, [[eDiscovery]]/Audit **Premium** |
+| **Productivity** | Office apps, Exchange, SharePoint, Teams, Windows Enterprise E3 | + Teams Phone, Audio Conferencing, Power BI Pro, Windows Enterprise E5 |
+
+**Watch out for these traps**
+
+- **"E5 = Entra ID P2 + Defender XDR" is really the _E5 Security add-on_**, not full E5. Full E5 also includes **advanced compliance** (= the E5 Compliance add-on). So E3 + E5 Security + E5 Compliance ≈ E5.
+- **Intune comes with both tiers.** E3 does not mean "no device management." From 2026 both tiers get more Intune Suite features:
+  - E3 gets Remote Help and Advanced Analytics.
+  - E5 also gets Endpoint Privilege Management, Enterprise App Management and Cloud PKI.
+- **E3 is not "no security."** It includes Defender for Endpoint P1. Defender for Office 365 P1 is rolling out to M365/O365 E3 from June 2026. What E3 lacks is **detection and response** (EDR, hunting, AIR, identity/SaaS threat detection).
+- **E5 now includes a [[Microsoft Security Copilot]] allowance**: 400 SCUs/month per 1,000 paid E5 users, capped at 10,000/month. Anything above the allowance is still billed separately.
+- Neither tier covers Azure resources. That needs [[Microsoft Defender for Cloud]] and [[Microsoft Sentinel]], billed on an Azure subscription (see below).
+
+---
+
 ## Why Architects Choose It
 
 - Almost every control this vault recommends has a **license floor**. A design that assumes Defender for Identity, [[PIM]], or Insider Risk Management on an E3 tenant is not a design — it's an unfunded purchase order.
@@ -67,7 +97,7 @@ flowchart TD
     SecAdd -.->|"together, close to"| M365E5
     CompAdd -.->|"together, close to"| M365E5
 
-    Azure["Billed on an Azure subscription,<br/>NOT in any M365 SKU:<br/>Defender for Cloud, Sentinel,<br/>Security Copilot, Defender for IoT"]
+    Azure["Billed on an Azure subscription,<br/>NOT in any M365 SKU:<br/>Defender for Cloud, Sentinel,<br/>Defender for IoT<br/>(Security Copilot: E5 allowance, overage billed)"]
 ```
 
 ---
@@ -91,10 +121,10 @@ flowchart TD
 | --- | --- | --- |
 | [[Entra ID]] | P1 — [[Conditional Access]], hybrid identity, SSPR writeback | **P2** — [[Identity Protection]], [[PIM]] |
 | Endpoint ([[Securing Server and Client Endpoints]]) | Defender for Endpoint **Plan 1** (next-gen AV, ASR rules, manual response) | Defender for Endpoint **Plan 2** (EDR, Advanced Hunting, TVM, automated investigation) |
-| Email/collab ([[Securing Microsoft 365]]) | Exchange Online Protection only | **Defender for Office 365 Plan 2** (Threat Explorer, Attack Simulation Training, AIR) |
+| Email/collab ([[Securing Microsoft 365]]) | Exchange Online Protection; **Defender for Office 365 Plan 1** rolling out to E3 from June 2026 (Safe Links/Attachments, anti-phishing) | **Defender for Office 365 Plan 2** (Threat Explorer, Attack Simulation Training, AIR) |
 | Identity threat detection | — | **Defender for Identity** (on-prem AD DS sensor — see [[Securing Active Directory Domain Services (AD DS)]]) |
 | SaaS/CASB | — | **Defender for Cloud Apps** ([[SaaS Application Discovery and Control]]) |
-| [[Intune]] | Plan 1 (MDM/MAM) | Plan 1 + Endpoint Analytics (Intune **Suite** — EPM, Remote Help — is still a separate add-on) |
+| [[Intune]] | Plan 1 (MDM/MAM); from 2026 also Remote Help + Advanced Analytics | Plan 1 + the E3 additions + **Endpoint Privilege Management, Enterprise App Management, Cloud PKI** (2026 Intune Suite roll-in) |
 | [[Data Classification and Protection\|Information protection]] | Manual/default sensitivity labels, basic DLP for Exchange/SharePoint/OneDrive | **Automatic** labeling, DLP for endpoint/Teams, [[Purview]] Records Management |
 | Insider risk / compliance | Basic audit, core eDiscovery | **Insider Risk Management**, Communication Compliance, eDiscovery **Premium**, Audit **Premium**, Customer Key/Lockbox, Privileged Access Management for Office 365 |
 
@@ -140,11 +170,11 @@ The most-missed exam boundary — these are **Azure subscription-billed**, not p
 | --- | --- |
 | [[Microsoft Defender for Cloud]] (CSPM/[[Cloud Workload Protection (CWPP)\|CWPP]] plans) | Per protected resource/hour on an Azure subscription. Foundational CSPM is free; Defender plans are not. |
 | [[Microsoft Sentinel]] | Per GB ingested / commitment tiers. **Exception**: the Sentinel benefit for M365 E5/A5/F5/G5 grants a free daily data allowance for eligible M365 connectors — a discount, not inclusion. |
-| [[Microsoft Security Copilot]] | Provisioned SCUs (Security Compute Units), hourly. |
+| [[Microsoft Security Copilot]] | Provisioned SCUs (Security Compute Units), hourly. **Exception**: since Ignite 2025, M365 E5 includes an allowance (400 SCUs/month per 1,000 paid users, max 10,000/month) — usage above it is still billed. |
 | [[OT and ICS Security\|Defender for IoT]] (OT) | Per site/device on an Azure subscription. |
 | [[Entra ID]] Governance, Entra Suite (Private/Internet Access), Permissions Management | Separate Entra add-on SKUs — see [[Identity as the Security Perimeter]]. |
 | [[Priva]], Purview data governance (Unified Catalog) | Separate SKU / pay-as-you-go. |
-| [[Intune]] Suite (EPM, Remote Help, advanced endpoint analytics) | Separate add-on, even on E5. |
+| [[Intune]] Suite | Was a separate add-on; from 2026 most Suite features roll into M365 E3/E5 (see tier table). Check current licensing for anything not listed there. |
 
 ---
 
@@ -158,7 +188,7 @@ flowchart TD
     Q2 -->|No| Q3["Requirement is risk-based CA<br/>or JIT admin roles only?"]
     Q3 -->|Yes| A3["Entra ID P2 standalone<br/>— license admins/high-risk users only"]
     Q3 -->|No| Q4["Requirement is Azure resource posture,<br/>SIEM, or AI-assisted SOC?"]
-    Q4 -->|Yes| A4["Azure subscription billing —<br/>Defender for Cloud / Sentinel / Security Copilot.<br/>No M365 SKU covers these."]
+    Q4 -->|Yes| A4["Azure subscription billing —<br/>Defender for Cloud / Sentinel.<br/>No M365 SKU covers these.<br/>(Security Copilot: E5 allowance + overage)"]
     Q4 -->|No| A5["Fewer than 300 seats?<br/>Business Premium covers E3-class security"]
 ```
 
@@ -188,7 +218,7 @@ AZ-500 largely assumes licenses already exist and focuses on configuring the con
 
 - Treat licensing as a **design constraint with alternatives**, not trivia — the exam's preferred answer is frequently the *narrowest* SKU that meets the requirement (add-on > uplift; standalone Entra ID P2 > E5 for an admins-only requirement).
 - Know the Office 365 vs. Microsoft 365 boundary cold — it is the single most exploited distractor in this area.
-- Know which security products **no** M365 license includes ([[Microsoft Defender for Cloud]], [[Microsoft Sentinel]], [[Microsoft Security Copilot]], Defender for IoT, Entra Suite, Priva).
+- Know which security products **no** M365 license includes ([[Microsoft Defender for Cloud]], [[Microsoft Sentinel]], Defender for IoT, Entra Suite, Priva). [[Microsoft Security Copilot]] is now a partial exception — E5 includes an SCU allowance.
 - Recognize mixed-tier licensing (E5 for admins/high-risk, E3 for the rest) as a legitimate architecture, subject to per-user licensing rules.
 
 ---
@@ -261,5 +291,7 @@ AZ-500 largely assumes licenses already exist and focuses on configuring the con
 ---
 
 ## Verification Flag
+
+**2026 repackaging in flight** — Defender for Office 365 P1 into E3 (rolling out from June 2026), the Intune Suite features rolling into E3/E5 (by roughly Aug 2026), and the Security Copilot SCU allowance in E5 were checked against Microsoft announcements and secondary sources in Sept 2026. The exam question bank may still reflect the *pre-2026* boundaries (e.g. "E3 = EOP only", "Intune Suite is always an add-on"). Re-check the exact per-SKU split against the Microsoft 365 service description.
 
 Microsoft repackages M365 SKUs and add-ons regularly — plan contents, add-on names, and the exact feature-to-tier boundary (especially Defender for Endpoint P1 in E3, Intune plan naming, and what the Entra Suite absorbs) shift between releases. Re-verify each capability against the current Microsoft 365 service description and licensing guidance close to exam date, and treat the tables above as a structural map rather than a billing source of truth.

@@ -145,7 +145,7 @@ flowchart TD
 | DLP (Exchange/SharePoint/OneDrive/Teams) vs. Endpoint DLP | Standard DLP locations govern data *in Microsoft 365 services*. Endpoint DLP governs actions *on the device itself* (USB copy, print, clipboard, browser upload) and requires the device to already be onboarded to Defender for Endpoint — a device-management prerequisite the M365-location policies don't have. |
 | Static DLP severity vs. Adaptive Protection | A standard DLP policy applies the same action to every user matching its conditions. Adaptive Protection varies that strictness *per user*, dynamically, based on their Insider Risk Management score — the same content match can be allowed for one user and blocked for another under one policy. |
 | Customer-managed key (CMK) vs. Microsoft-managed key (MMK) | MMK: Microsoft owns rotation, zero customer effort, default everywhere. CMK: customer owns the key in [[Key Vault]]/Managed HSM, controls rotation *and* revocation (crypto-shredding) — required by compliance regimes mandating customer key control, at the cost of key-availability responsibility shifting to the customer. Which HSM tier backs that key (Premium/Managed HSM/Dedicated HSM/Payment HSM) is its own decision, covered in [[Key Vault]]. |
-| Encryption at rest vs. in transit vs. in use | At rest protects stored data (MMK/CMK); in transit protects data moving over the network (TLS); in use protects data while a process operates on it (Always Encrypted, confidential computing) — the three-state model a complete data protection design must cover, not just the first one people default to. |
+| Encryption at rest vs. in transit vs. in use | At rest protects stored data (MMK/CMK); in transit protects data moving over the network (TLS); in use protects data while a process operates on it (Always Encrypted, [[Confidential Computing Enclaves|confidential computing]]) — the three-state model a complete data protection design must cover, not just the first one people default to. |
 | DLP vs. [[Priva]] Privacy Risk Management | DLP enforces action in the moment against *any* classified sensitive content it's policy-configured to match. Priva Privacy Risk Management proactively flags *personal-data-specific* risk patterns (overexposure, cross-border transfer, retention minimization) for privacy-law compliance — discovery/recommendation, not enforcement; a finding there typically still routes through a DLP policy to actually act. |
 | Standard encryption vs. infrastructure (double) encryption | Standard: one encryption layer at the service level. Infrastructure encryption adds a second layer at the platform level with an independent algorithm/key — defense against a single layer's key or algorithm being compromised, not a replacement for access control. |
 
@@ -225,6 +225,7 @@ AZ-500 already covers configuring sensitivity labels, basic DLP policies, TDE, K
 - [[Ransomware Resiliency and BCDR]]
 - [[Cloud Workload Protection (CWPP)]]
 - [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — full SQL-engine encryption/integrity mechanics.
+- [[Confidential Computing Enclaves]] — encryption in use beyond SQL: SGX enclaves, confidential VMs, attestation.
 - [[Double Key Encryption (DKE)]] — the highest-sensitivity-tier encryption option this note only summarizes.
 
 ---

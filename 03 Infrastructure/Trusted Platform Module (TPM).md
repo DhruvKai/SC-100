@@ -141,6 +141,7 @@ AZ-500 covers BitLocker and Windows Hello for Business at a configuration level 
 - [[Intune]]
 - [[Identity and Access Management (IAM)]]
 - [[Identity as the Security Perimeter]]
+- [[Confidential Computing Enclaves]] — Trusted Launch (Secure Boot + vTPM) vs. confidential VMs/enclaves (memory encryption in use).
 
 ---
 

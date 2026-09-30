@@ -20,7 +20,7 @@ Continuously discovering, inventorying, and risk-scoring every internet-facing a
 
 - CSPM, CWPP, and DSPM (see [[CSPM and CWPP]]) all assume the resource is *already known* — inside a managed subscription, tenant, or repository. EASM is the only layer that starts from zero knowledge and finds what's actually reachable from the internet, known to security or not.
 - Attackers reconnaissance an org exactly the way EASM does — domains, IP blocks, ASNs, WHOIS/certificate data. Running the same discovery defensively flips the reconnaissance advantage to the defender instead of ceding it.
-- Asset inventories drift fastest in exactly the situations a landing zone's own tooling (Azure Resource Graph, Azure Policy) can't see: shadow IT stood up outside IT's purview, and M&A — acquired infrastructure isn't inside the parent tenant's policy/RBAC scope until someone onboards it, and EASM finds it before that onboarding happens.
+- Asset inventories drift fastest in exactly the situations a landing zone's own tooling ([[Azure Resource Graph]], [[Azure Policy]]) can't see: shadow IT stood up outside IT's purview, and M&A — acquired infrastructure isn't inside the parent tenant's policy/RBAC scope until someone onboards it, and EASM finds it before that onboarding happens.
 - Findings feed the same Cloud Security Graph and attack path analysis as CSPM+CWPP+DSPM+CIEM (see [[CSPM and CWPP]]) — an unknown asset with a real vulnerability gets prioritized exactly the way a known one would, the moment it's discovered.
 
 ---

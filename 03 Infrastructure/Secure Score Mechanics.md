@@ -261,6 +261,7 @@ AZ-500 covers reading Secure Score, acting on recommendations, and exempting a r
 
 - [[Security Posture Assessments]]
 - [[Security Scoring Dashboards]]
+- [[Defender for Cloud Recommendations]] — the individual findings the score is built from (Quick fix, exemptions, governance, MITRE mapping).
 - [[Microsoft Defender for Cloud]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Azure Policy]]

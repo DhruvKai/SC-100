@@ -75,10 +75,17 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to automate Defender for Cloud (enable plans, assign standards, pull Secure Score) across many subscriptions via code? | [[Defender for Cloud REST API]] |
 | Need to detect Kerberoasting, DCSync, golden ticket, or other on-prem AD attacks? | [[Microsoft Defender for Identity]] |
 | Need to package/deploy RBAC + Policy + templates together, or migrate away from Azure Blueprints? | [[Azure Blueprints]] (deprecated — see its migration mapping) |
-| Need Windows client update management, or to know when Configuration Manager/Azure Update Manager is still required? | [[Intune]] (client updates) / [[Ransomware Resiliency and BCDR]] (Azure Update Manager, server OS) |
+| Need Windows client update management, or to know when Configuration Manager/Azure Update Manager is still required? | [[Intune]] (client updates) / [[Azure Update Manager]] (server OS) / [[Microsoft Configuration Manager]] (legacy estate) |
 | Need to map an AKS/DevOps task to the correct DevSecOps lifecycle stage (Plan/Develop/Build/Deploy/Operate)? | [[DevOps Security]] |
 | Need to know whether an active or eligible PIM assignment requires activation, or which settings apply at activation vs. assignment creation? | [[PIM]] |
 | Need to search, hold, or export content for litigation/investigation, or know that classic eDiscovery Standard/Premium is retired? | [[eDiscovery]] |
 | Need to pick the least-privilege Entra role for a Secure Score / Purview / Exchange-alias task without over- or under-scoping? | [[Microsoft Entra Built-in Roles]] |
 | Need to know which roles have read/write vs. read-only access to Microsoft Secure Score? | [[Secure Score Mechanics]] |
 | Need to onboard an AWS/GCP account to Defender for Cloud, or know the CSPM free-vs-paid tier split? | [[Security Posture Assessments]] |
+| Need to patch servers across Azure, on-prem, and AWS/GCP with one tool (Windows + Linux)? | [[Azure Update Manager]] + [[Azure Arc]] — strategy in [[Security Updates and Patch Management]] |
+| Need an internal, approval-gated Windows update source, or third-party patches for Azure Update Manager? | [[WSUS]] |
+| Integrating (legacy) Update Management with ConfigMgr, updates not from ConfigMgr and no WSUS? | Give the Windows agent **Microsoft Update** access — [[Azure Update Manager]] |
+| Need to know how a posture weakness could be exploited (MITRE ATT&CK tactics/techniques)? | Open the [[Defender for Cloud Recommendations\|Defender for Cloud recommendation]] — not ARG, Quick fix, or the initiative |
+| Need to query Defender for Cloud findings across many subscriptions? | [[Azure Resource Graph]] |
+| Need data protected while in use — with code changes allowed (smallest TCB)? | SGX enclaves — [[Confidential Computing Enclaves]] |
+| Need data protected while in use — lift-and-shift, no code changes? | Confidential VMs (AMD SEV-SNP / Intel TDX) — [[Confidential Computing Enclaves]] |
