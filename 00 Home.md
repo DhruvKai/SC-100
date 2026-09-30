@@ -19,5 +19,7 @@ type: index
 - [[Architecture Decisions]]
 - [[services|Services]]
 - [[Frameworks Cheat Sheet]]
+- [[Exam Objectives]] — skills outline mapped to notes
+- [[Azure Services Index]] — service pages by category
 - Diagrams — exported diagram assets (folder currently empty)
 - Images — pasted screenshots referenced by notes

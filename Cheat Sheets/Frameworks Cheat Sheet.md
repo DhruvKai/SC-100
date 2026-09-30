@@ -57,7 +57,7 @@ flowchart TD
 | CAF vs. CASR | CAF is the roadmap itself; CASR is the point-in-time review that scores a landing zone against CAF's Secure methodology. |
 | MCSB vs. MCRA | MCSB = scored control baseline (compliance). MCRA = capability reference architecture (target-state design). Exam objective names them together — easy to conflate. |
 | CASR vs. Well-Architected Review | CASR reviews landing zone security only; the Well-Architected Review evaluates one workload across all five WAF pillars. |
-| WAF (framework) vs. [[Azure Firewall\|Azure Web Application Firewall]] | Identical acronym, unrelated: one is an architecture-evaluation framework, the other filters HTTP(S) traffic to web apps. |
+| WAF (framework) vs. [[Azure Web Application Firewall]] | Identical acronym, unrelated: one is an architecture-evaluation framework, the other filters HTTP(S) traffic to web apps. |
 | MCRA vs. Zero Trust | Zero Trust defines the principles; MCRA maps specific products onto those principles. |
 | RaMP vs. MCRA | RaMP is the ordered plan of action with named owners; MCRA is the target-state capability picture. Plan vs. destination. |
 | RaMP vs. SAF | RaMP is a tactical, checklist-level accelerator; SAF is the umbrella, role-aware adoption model RaMP sits inside. |

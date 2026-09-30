@@ -5,6 +5,9 @@ type: cheat-sheet
 domain:
   - ops-identity-compliance
   - apps-data
+aliases:
+  - Managed HSM
+  - Azure Key Vault
 ---
 
 # Azure Key Vault

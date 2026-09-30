@@ -26,6 +26,11 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 - [[Defender for Cloud Recommendations]] — recommendation anatomy (MITRE ATT&CK tactics/techniques, severity vs. risk level, Quick fix, exempt, governance, Enforce/Deny), with the "management ports → review the recommendation" exam scenario.
 - [[Azure Resource Graph]] — cross-subscription KQL querying of posture data, and why it isn't the answer for exploit analysis.
 - [[Confidential Computing Enclaves]] — Intel SGX enclaves (DCsv2/DCsv3 EPC limits, trusted/untrusted partitioning, attestation, SDKs) vs. confidential VMs, confidential containers, and Always Encrypted with secure enclaves.
+- [[Microsoft Defender for Cloud]] — CNAPP hub page (previously the vault's most-linked missing note): capability map pointing to every CSPM/CWPP/DSPM/DevOps/CIEM/EASM note, Defender for Servers P1/P2 features, and Defender for Cloud vs. XDR/Sentinel/Policy.
+- [[Azure Web Application Firewall]] — hosting options (Front Door, Application Gateway, App Gateway for Containers, CDN preview), Detection vs. Prevention, managed/custom/bot rules, and WAF vs. Azure Firewall/DDoS/APIM.
+- [[Microsoft Entra Agent ID]] — agent identities and blueprints, CA/ID Protection/governance for agents, and the Agent 365 licensing split.
+- [[Microsoft Azure Backup Server (MABS)]] — MABS v4 disk-to-disk-to-Azure architecture, domain/dedicated-server requirements, and MABS vs. MARS vs. DPM.
+- [[01 Security Strategy]], [[02 Identity]], [[03 Infrastructure]], [[04 Applications]], [[05 Data]], [[06 Governance]] — section index pages linked from Home (previously blank/missing), each listing its notes and related service pages.
 
 **Updated**
 
@@ -47,6 +52,11 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 - [[Trusted Platform Module (TPM)]] — Trusted Launch vs. confidential VMs/enclaves cross-link.
 - [[Key Vault]] — Managed HSM as an Azure confidential service, attestation-gated key release.
 - [[Secure Future Initiative (SFI)]] — Microsoft's internal use of confidential computing under SFI.
+- [[00 Home]] — added Exam Objectives and Azure Services Index links.
+- [[Key Vault]] — `Managed HSM` alias so the services-index link resolves.
+- [[Network Security Group]] — `ASG` / `Application Security Group` aliases so the services-index link resolves.
+- [[Frameworks Cheat Sheet]] — fixed a WAF comparison link that pointed at Azure Firewall instead of Azure Web Application Firewall.
+- [[Ransomware Resiliency and BCDR]] — MABS/DPM comparison row now links to the new MABS note.
 
 ---
 

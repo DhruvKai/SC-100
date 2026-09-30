@@ -6,6 +6,8 @@ domain:
   - infrastructure
 aliases:
   - NSG
+  - ASG
+  - Application Security Group
 ---
 
 # Network Security Group (NSG)

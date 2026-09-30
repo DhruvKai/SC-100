@@ -89,3 +89,6 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to query Defender for Cloud findings across many subscriptions? | [[Azure Resource Graph]] |
 | Need data protected while in use — with code changes allowed (smallest TCB)? | SGX enclaves — [[Confidential Computing Enclaves]] |
 | Need data protected while in use — lift-and-shift, no code changes? | Confidential VMs (AMD SEV-SNP / Intel TDX) — [[Confidential Computing Enclaves]] |
+| Need OWASP Top 10 / SQLi / XSS / bot / geo-blocking protection for a web app? | [[Azure Web Application Firewall]] (Front Door = global edge, App Gateway = regional VNet) |
+| Need to authenticate and govern autonomous AI agents at scale? | [[Microsoft Entra Agent ID]] (blueprints + Conditional Access for agents) |
+| Need a map of everything Defender for Cloud does and which note covers it? | [[Microsoft Defender for Cloud]] |
