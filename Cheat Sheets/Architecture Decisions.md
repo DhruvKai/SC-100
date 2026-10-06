@@ -55,7 +55,7 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need browser/native-client RDP-SSH with no public IP on the VM? | [[Azure Bastion]] |
 | Need to verify an NSG rule, troubleshoot connectivity, or delegate management across tenants? | [[Network Watcher and Lighthouse]] |
 | Need to secure Exchange/SharePoint/Teams mail and collaboration threats, or M365 Secure Score? | [[Securing Microsoft 365]] |
-| Need IoT device authentication (X.509/SAS/TPM via IoT Hub/DPS), not just device discovery? | [[Securing Server and Client Endpoints]] |
+| Need IoT device authentication (X.509/SAS/TPM via IoT Hub/DPS), not just device discovery? | [[IoT Device Authentication and Transport Security]] |
 | Need App Service-specific hardening (Easy Auth, deployment slots) beyond generic PaaS network controls? | [[Securing IaaS and PaaS Services]] |
 | Need to know which Microsoft 365 SKU or add-on a required control needs (E3 vs. E5 vs. E5 Security/Compliance)? | [[Microsoft 365 Licensing]] |
 | Need to stop a single compromised backup admin from deleting backups or disabling soft delete? | [[Resource Guard]] (Multi-User Authorization) |
@@ -92,3 +92,12 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need OWASP Top 10 / SQLi / XSS / bot / geo-blocking protection for a web app? | [[Azure Web Application Firewall]] (Front Door = global edge, App Gateway = regional VNet) |
 | Need to authenticate and govern autonomous AI agents at scale? | [[Microsoft Entra Agent ID]] (blueprints + Conditional Access for agents) |
 | Need a map of everything Defender for Cloud does and which note covers it? | [[Microsoft Defender for Cloud]] |
+| Need robust IoT device authentication + secure transmission for new devices in public/untrusted locations? | X.509 certificates + TLS 1.2 — [[IoT Device Authentication and Transport Security]] (field gateway only for legacy devices) |
+| Need TTPs of a specific APT/threat actor from a Defender for Cloud alert? | Activity Group Report — [[Defender for Cloud Threat Intelligence Reports]] |
+| Need to share CTI between TIPs using industry-standard formats/protocols with Sentinel? | STIX/TAXII connector (API root + Collection ID) — [[Threat Intelligence]] |
+| Need to passively monitor traffic between VMs for detection? | [[Virtual Network TAP]] |
+| Need DDoS protection + faster load times for websites/REST APIs with minimal staff? | [[Azure CDN]] (or Front Door) |
+| Need web hosting that autoscales, integrates with Azure DevOps, minimal admin overhead? | [[Azure App Service]] |
+| Need to protect remote laptops from phishing/exploit sites in Edge, Chrome and Firefox? | [[Defender for Endpoint Web Protection]] |
+| Need low-overhead testing to catch code vulnerabilities after changes? | Fuzzing + security regression testing — [[Application Security Testing]] |
+| Need unified governance of on-prem, Kubernetes, AWS and GCP resources in place? | [[Azure Arc]] — Azure Policy on non-Azure resources + GitOps across clusters |

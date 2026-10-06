@@ -145,6 +145,8 @@ AZ-500 doesn't cover OT/ICS, the Purdue Model, or Defender for IoT at all — it
 - [[Microsoft Defender XDR]]
 - [[Microsoft Sentinel]]
 - [[Ransomware Resiliency and BCDR]]
+- [[IoT Device Authentication and Transport Security]]
+- [[Virtual Network TAP]]
 
 ---
 

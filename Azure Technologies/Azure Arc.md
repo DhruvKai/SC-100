@@ -57,11 +57,44 @@ flowchart LR
 - Full posture-management decision flow (when multicloud connectors vs. Arc apply) already lives in [[Security Posture Assessments]] — this page is the mechanism, that page is the decision.
 - Ties to "design monitoring to support hybrid and multicloud environments" — Azure Monitor Agent running on an Arc-enabled server is the expected collection path into [[Microsoft Sentinel]] (see [[Azure Security Logging]]). Arc is the specific mechanism behind CAF's named **Unified Operations model** for that exam objective — full model in [[Cloud Adoption Framework (CAF)]].
 - A scenario needing management traffic to avoid the public internet entirely points to Azure Arc Private Link Scope, not a VPN/ExpressRoute-only answer.
+- "Unified management and governance across on-prem, Kubernetes, AWS, GCP" → **Azure Policy on non-Azure resources** + **deploy/manage containerized apps across Kubernetes clusters (GitOps)**. Reject migrate-everything, Azure-only and "autoscale AWS VMs via ARM" options.
+
+## Keywords
+
+- Hybrid and multicloud, unified management and governance
+- Connected Machine agent, Arc-enabled servers / Kubernetes / SQL Server / data services
+- Azure Policy machine configuration (guest configuration), non-Azure resources
+- GitOps, Flux, Kubernetes clusters anywhere
+- Azure Arc Private Link Scope, outbound 443
+- Single control plane, Azure Resource Manager projection
+
+## What Arc Does NOT Do
+
+- **Doesn't migrate workloads.** Resources stay where they are; Arc projects them into ARM for governance. "Migrate everything to Azure to maintain governance" is the classic wrong answer.
+- **Doesn't scale or operate other clouds' native features.** It won't autoscale AWS VMs through ARM; scaling stays with AWS-native tools (Auto Scaling groups).
+- **Isn't Azure-only.** "Restrict management to Azure-native workloads" is the opposite of Arc's purpose.
+- **Doesn't host the Kubernetes control plane.** Arc-enabled Kubernetes attaches clusters; AKS hosts them.
+
+## Exam Scenario
+
+**Scenario:** Unified management and governance across on-prem servers, Kubernetes clusters, AWS and Google Cloud using Azure Arc. Pick two complete solutions.
+
+| Option | Verdict | Why |
+| --- | --- | --- |
+| **Enable Azure Policy for compliance on non-Azure resources** | ✅ | Arc projects resources into ARM so [[Azure Policy]] (machine configuration / guest config) applies everywhere |
+| **Deploy and manage containerized apps across Kubernetes clusters** | ✅ | Arc-enabled Kubernetes: GitOps (Flux) app/config deployment across hybrid and multicloud clusters |
+| Seamlessly migrate all workloads to Azure | ❌ | Arc governs in place; no migration required |
+| Restrict management to Azure-native workloads only | ❌ | Arc exists specifically for non-Azure resources |
+| Automatically scale AWS VMs using ARM | ❌ | Arc manages/monitors AWS VMs but doesn't provide native scaling for them |
+
+Pattern: Arc answers are **govern / secure / monitor / deploy-config in place**, never **migrate** or **operate the other cloud's native features**.
 
 ## Comparison
 
 | Compare | Difference |
 | --- | --- |
+| Azure Arc vs. migration (Azure Migrate) | Arc extends Azure management to resources **where they are**. Azure Migrate **moves** them into Azure. Governance requirements don't imply migration. |
+| Azure Arc vs. Defender for Cloud multicloud connectors | Connectors (AWS/GCP) give agentless **CSPM** of the cloud account. Arc puts an agent on individual **machines/clusters** so Defender for Servers/Containers, Policy guest config and AMA work (decision flow in [[Security Posture Assessments]]). |
 | Azure Arc vs. [[Network Watcher and Lighthouse\|Azure Lighthouse]] | Arc projects *non-Azure resources* into a tenant's own Azure Resource Manager so native Azure tooling can govern them. Lighthouse is cross-*tenant* delegated administration — letting one tenant (typically an MSP) manage resources that already live in a *different* customer's Azure tenant. Different problem: "manage things outside Azure" vs. "manage another tenant's Azure resources." Lighthouse mechanics live in [[Network Watcher and Lighthouse]], not repeated here. |
 | Arc-enabled Kubernetes vs. AKS | AKS is Azure's own managed Kubernetes control plane. Arc-enabled Kubernetes onboards a cluster whose control plane already runs elsewhere (on-prem, another cloud, edge) so it can receive the same GitOps/Policy/Defender treatment — Arc doesn't replace or host the control plane. |
 | Arc-enabled servers vs. Update Manager alone | Update Manager is one capability *unlocked by* Arc for non-Azure servers; Arc itself is the broader projection/identity layer (RBAC, Policy, Defender eligibility) that Update Manager, Change Tracking, and Defender for Servers all depend on. |
@@ -87,4 +120,5 @@ flowchart LR
 - [What is Azure Arc?](https://learn.microsoft.com/en-us/azure/azure-arc/overview) — Microsoft Learn
 - [Azure Arc-enabled servers overview](https://learn.microsoft.com/en-us/azure/azure-arc/servers/overview) — Microsoft Learn
 - [Azure Arc-enabled Kubernetes overview](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/overview) — Microsoft Learn
+- [Describe Azure Arc integration with Azure Policy and Azure Monitor](https://learn.microsoft.com/en-us/training/modules/intro-to-azure-arc/) — Microsoft Learn training
 - [Connect servers via Azure Arc Private Link Scope](https://learn.microsoft.com/en-us/azure/azure-arc/servers/private-link-security) — Microsoft Learn

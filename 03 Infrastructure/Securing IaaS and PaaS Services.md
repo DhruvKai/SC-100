@@ -184,6 +184,8 @@ AZ-500 already covers configuring NSGs, Azure Firewall, Azure Bastion, JIT VM ac
 - [[Shared Responsibility Model]]
 - [[Defender for Cloud Recommendations]] — "Management ports should be closed / protected with JIT" findings and their MITRE ATT&CK mapping.
 - [[Confidential Computing Enclaves]] — encryption in use for IaaS workloads (SGX enclaves, confidential VMs).
+- [[Azure App Service]]
+- [[Azure CDN]]
 
 ---
 

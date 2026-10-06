@@ -30,6 +30,8 @@ Posture management, workload protection, endpoints, network and IaaS/PaaS securi
 | [[App Control for Business and AppLocker]] | Windows application allowlisting options |
 | [[Trusted Platform Module (TPM)]] | Hardware root of trust, attestation, compliance |
 | [[OT and ICS Security]] | Defender for IoT OT edition |
+| [[IoT Device Authentication and Transport Security]] | X.509 + TLS for IoT Hub/DPS; field gateways |
+| [[Defender for Endpoint Web Protection]] | Web threat protection, content filtering, network protection |
 
 ## Network, IaaS and PaaS
 
@@ -39,12 +41,13 @@ Posture management, workload protection, endpoints, network and IaaS/PaaS securi
 | [[Securing IaaS and PaaS Services]] | Exposure and identity controls by deployment model; JIT, Bastion, Private Link |
 | [[Container and Kubernetes Security]] | Image, cluster, network and workload identity security for AKS |
 | [[VPN Gateway]] | S2S vs. P2S and P2S protocol support |
+| [[Virtual Network TAP]] | Passive traffic mirroring for detection (TAP vs. SPAN) |
 | [[Shared Responsibility Model]] | Customer vs. Microsoft ownership across IaaS/PaaS/SaaS |
 
 ## Service Pages
 
 - [[Microsoft Defender for Cloud]] · [[Azure Arc]] · [[Azure Policy]] · [[Azure Resource Graph]] · [[Azure Blueprints]]
-- [[Azure Firewall]] · [[Azure Web Application Firewall]] · [[Front Door and Application Gateway]] · [[DDoS Protection]]
+- [[Azure Firewall]] · [[Azure Web Application Firewall]] · [[Front Door and Application Gateway]] · [[DDoS Protection]] · [[Azure CDN]]
 - [[Network Security Group]] · [[Private Link]] · [[Azure Bastion]] · [[Network Watcher and Lighthouse]]
 - [[Intune]] · [[Azure Update Manager]]
 

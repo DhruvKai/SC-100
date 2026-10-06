@@ -26,6 +26,10 @@ type: index
 
 [[DDoS Protection]]
 
+[[Azure CDN]]
+
+[[Virtual Network TAP]]
+
 # Data
 
 [[Purview]]
@@ -33,3 +37,11 @@ type: index
 [[Key Vault]]
 
 [[Managed HSM]]
+
+# Compute and IoT
+
+[[Azure App Service]]
+
+[[Azure Arc]]
+
+[[IoT Device Authentication and Transport Security|Azure IoT Hub]]

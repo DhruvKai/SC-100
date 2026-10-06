@@ -128,6 +128,7 @@ AZ-500 (and typically AZ-900/SC-900 before it) already assumes this model as pre
 - [[Azure Landing Zones]]
 - [[Security Posture Assessments]]
 - [[Compliance and Privacy]]
+- [[Azure App Service]]
 
 ---
 

@@ -103,6 +103,8 @@ AZ-500 already covers deploying Application Gateway/Front Door, configuring back
 - [[Azure Landing Zones]]
 - [[API Management and Security]]
 - [[Exam Objectives]]
+- [[Azure CDN]]
+- [[Azure App Service]]
 
 ## References
 

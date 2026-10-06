@@ -81,6 +81,7 @@ flowchart LR
 - [[Microsoft Sentinel]] — closes the loop with runtime detection (shift-left's complement, not substitute).
 - [[Conditional Access]] — controls access to pipeline tooling and source repos.
 - [[Key Vault]] — secret management referenced in secure coding (avoid hardcoded secrets, a SE:02 concern).
+- [[Application Security Testing]]
 
 ---
 

@@ -177,6 +177,7 @@ AZ-500 does not cover Defender for Cloud Apps, Cloud Discovery, OAuth App Govern
 - [[Zero Trust]]
 - [[Identity and Access Management (IAM)]]
 - [[Securing Microsoft 365]]
+- [[Defender for Endpoint Web Protection]]
 
 ---
 

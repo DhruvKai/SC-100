@@ -170,6 +170,7 @@ AZ-500 covers configuring individual Defender products in isolation — onboardi
 - [[Ransomware Resiliency and BCDR]]
 - [[Zero Trust]]
 - [[Microsoft Defender for Identity]]
+- [[Defender for Endpoint Web Protection]]
 
 ---
 

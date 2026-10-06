@@ -178,6 +178,7 @@ AZ-500 covers the network-perimeter tools this shift moves away from (Azure Fire
 - [[AI and Copilot Security Architecture]]
 - [[Entra ID]]
 - [[Identity and Access Management (IAM)]]
+- [[Defender for Endpoint Web Protection]]
 
 ---
 

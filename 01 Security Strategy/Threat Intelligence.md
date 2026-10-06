@@ -37,7 +37,7 @@ Architecting how an organization sources, structures, and operationalizes cyber 
 
 ## When NOT to Use
 
-- Standing up the legacy Threat Intelligence Platform (TIP) data connector for a new integration — it's on the deprecation path; use the upload API instead.
+- Standing up the legacy Threat Intelligence Platform (TIP) data connector for a new integration — deprecated, stopped collecting data **June 2026**; use the upload API instead (the TIP connector still appears in exam questions, so know its setup values below).
 - Treating every ingested indicator as equally trustworthy — apply ingestion rules (confidence/age filtering) or low-value indicators flood analysts with noise.
 - Expecting a standalone MDTI portal or license — it retired August 1, 2026; TI is now bundled into Defender XDR/Sentinel licensing, not a separate purchase.
 
@@ -92,6 +92,33 @@ flowchart TD
 
 ---
 
+## Connector Configuration Requirements
+
+What each ingestion path needs to be complete — the "Does this solution meet the goal?" series tests missing values.
+
+| Connector | Direction | Required values | Where configured |
+| --- | --- | --- | --- |
+| **Threat Intelligence – TAXII** | **Pull** — Sentinel's TAXII client polls a TAXII 2.0/2.1 server | **API root URL** + **Collection ID** (+ friendly name; username/password only if the server needs them; polling frequency) | Sentinel data connector page in the target workspace |
+| **Threat Intelligence – TAXII Export** | Push — Sentinel exports to a TAXII **2.1** server | API root URL + Collection ID + Basic auth or API key | Sentinel data connector page |
+| **Threat Intelligence Platforms (TIP)** — deprecated | **Push** — TIP sends indicators via **Microsoft Graph Security `tiIndicators` API** | **Application (client) ID** + **Directory (tenant) ID** + **Client secret**; Graph application permission `ThreatIndicators.ReadWrite.OwnedBy` + **admin consent**; TIP target product **"Azure Sentinel"**, action **"alert"** | App registration in [[Entra ID]] → values entered **in the TIP** → enable connector in Sentinel |
+| **Upload API** (TIP replacement) | Push — STIX objects over REST | Entra app registration (app ID, tenant ID, secret) + Sentinel role on the workspace | App registration + TIP/custom app |
+
+**Mnemonic:** TAXII = **API root + collection ID**. TIP/Graph = **all three Entra values: app ID + tenant (directory) ID + client secret**.
+
+### Exam Scenario — CTI consortium (solution evaluation series)
+
+**Goal:** consortium members automatically share CTI between their TIPs, using **industry-accepted formats and protocols**, supported by Sentinel.
+
+| Proposed solution | Meets goal? | Why |
+| --- | --- | --- |
+| Register app in Entra ID, grant API permissions, add TIP source with the **client secret** | ❌ No | Also needs **application ID** and **directory ID** |
+| Retrieve the TAXII server's **API root** and **Collection ID**, configure the data connector in the target workspace | ✅ Yes | STIX/TAXII = industry standard; TAXII shares CTI over HTTPS; Sentinel pulls from the TAXII server |
+| Define alert action on the TIP, target product Sentinel, provide **application ID + client secret** | ❌ No | **Directory ID** missing — Graph tiIndicators API push needs all three |
+
+Pattern: an incomplete credential set (missing any of app ID / tenant ID / secret) = **No**. "Industry-accepted formats and protocols" = **STIX/TAXII**.
+
+---
+
 ## AZ-500 Review
 
 AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no TI connectors, no TLP. Its closest touchpoint is reading Defender for Cloud/Sentinel alerts, which assumes intelligence already baked into Microsoft's detections rather than architecting how an org sources and curates its own. Treat this as entirely new for SC-100.
@@ -115,6 +142,9 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 - "Ingest Microsoft's own curated indicators with minimal setup" → Defender Threat Intelligence connector (premium for matching analytics), not TAXII.
 - "Connect an existing threat intelligence platform via REST API" → upload API, not the legacy TIP connector (a deprecation distractor).
 - "Understand an active campaign's relevance to our environment" → Threat Analytics, not raw TI indicators.
+- "Industry-accepted formats and protocols" for CTI sharing → **STIX/TAXII**; TAXII connector needs **API root + Collection ID**.
+- TIP connector / Graph tiIndicators push needs **application ID + directory (tenant) ID + client secret** — an answer missing any one fails.
+- Need attacker/APT context **for a single Defender for Cloud alert** → [[Defender for Cloud Threat Intelligence Reports]] (Activity Group report), not Sentinel TI.
 - A scenario describing a standalone MDTI license or portal is testing outdated knowledge — current architecture folds MDTI into Defender XDR/Sentinel at no extra cost.
 
 ---
@@ -124,6 +154,8 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 - **Threat Intelligence vs. Threat Analytics** — raw/structured TI objects powering detection vs. curated analyst reporting on active campaigns; full comparison above.
 - **TAXII connector vs. upload API** — standards-based feed polling vs. custom/TIP REST integration.
 - **Defender TI connector standard vs. premium** — free public/OSINT vs. licensed Microsoft indicators + enriched OSINT + matching analytics.
+- **TAXII (pull) vs. TIP connector (push)** — Sentinel polls a TAXII server with API root + collection ID vs. the TIP pushes through Graph using an Entra app (app ID + tenant ID + secret).
+- **Sentinel TI vs. Defender for Cloud threat reports** — machine-consumable indicators vs. per-alert PDF context for a human; see [[Defender for Cloud Threat Intelligence Reports]].
 
 ---
 
@@ -138,6 +170,9 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 - Traffic Light Protocol (TLP): White / Green / Amber / Red
 - Threat Analytics (Defender XDR active campaign reports)
 - Ingestion rules, indicator confidence and expiration
+- API root URL, Collection ID (TAXII); Application (client) ID, Directory (tenant) ID, client secret (TIP)
+- Microsoft Graph Security tiIndicators API, ThreatIndicators.ReadWrite.OwnedBy
+- Consortium / ISAC sharing, TIP-to-TIP CTI sharing
 
 ---
 
@@ -151,6 +186,8 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 - [[Microsoft Security Copilot]]
 - [[Zero Trust]]
 - [[Attack Chain Models]]
+- [[Defender for Cloud Threat Intelligence Reports]]
+- [[Entra ID]]
 
 ---
 
@@ -158,6 +195,7 @@ AZ-500 doesn't cover structured threat intelligence at all — no STIX/TAXII, no
 
 - [Threat intelligence - Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/understand-threat-intelligence) — Microsoft Learn
 - [Connect to STIX/TAXII threat intelligence feeds](https://learn.microsoft.com/en-us/azure/sentinel/connect-threat-intelligence-taxii) — Microsoft Learn
+- [Connect your threat intelligence platform to Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/connect-threat-intelligence-tip) — Microsoft Learn (TIP connector; deprecation note, app ID/tenant ID/secret)
 - [Threat analytics in Microsoft Defender](https://learn.microsoft.com/en-us/defender-xdr/threat-analytics) — Microsoft Learn
 - https://aka.ms/threatactors
 - (https://aka.ms/mddr)

@@ -212,6 +212,8 @@ AZ-500 covered enabling plans, reading Secure Score, remediating recommendations
 - [[Securing IaaS and PaaS Services]]
 - [[Azure Update Manager]]
 - [[Microsoft 365 Licensing]]
+- [[Defender for Cloud Threat Intelligence Reports]]
+- [[Azure App Service]]
 
 ---
 

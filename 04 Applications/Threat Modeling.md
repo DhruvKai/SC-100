@@ -178,6 +178,7 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - [[AI and Copilot Security Architecture]]
 - [[Data Security Posture Management (DSPM)]]
 - [[Attack Chain Models]]
+- [[Application Security Testing]]
 
 ---
 

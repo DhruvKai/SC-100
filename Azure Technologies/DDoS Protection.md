@@ -83,6 +83,7 @@ AZ-500 already covers enabling DDoS Protection Standard on a VNet at the resourc
 - [[Azure Firewall]]
 - [[Securing IaaS and PaaS Services]]
 - [[Exam Objectives]]
+- [[Azure CDN]]
 
 ## References
 

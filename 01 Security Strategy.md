@@ -33,6 +33,7 @@ Frameworks, SOC design, resiliency and Microsoft's security programs. Covers exa
 | [[Microsoft Defender XDR]] | Cross-signal incident correlation, AIR, attack disruption |
 | [[Playbooks and Automation Rules]] | Automation rules vs. playbooks vs. native XDR response |
 | [[Threat Intelligence]] | Sourcing and operationalizing CTI (STIX/TAXII, TI in Sentinel) |
+| [[Defender for Cloud Threat Intelligence Reports]] | Activity Group vs. Campaign vs. Threat Summary reports |
 | [[Microsoft Security Copilot]] | Generative-AI SOC assistant and agents, SCU capacity |
 | [[Microsoft Incident Response (DART)]] | Microsoft's external IR team and retainers |
 | [[AI and Copilot Security Architecture]] | Securing AI workloads and using AI to defend |

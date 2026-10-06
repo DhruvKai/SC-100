@@ -53,7 +53,7 @@ The pattern to recognize: the correct pair is always one **data-protection** con
 
 ## IoT Workload Security
 
-Distinct from the IoT *device discovery/monitoring* covered above (Defender for IoT Enterprise/OT editions) — this is securing the IoT *workload itself*: how a device proves its identity to Azure IoT Hub/Device Provisioning Service (DPS), and how its telemetry is protected in transit.
+Full depth (X.509 vs. PSK vs. field gateways, exam scenario) in [[IoT Device Authentication and Transport Security]]. Distinct from the IoT *device discovery/monitoring* covered above (Defender for IoT Enterprise/OT editions) — this is securing the IoT *workload itself*: how a device proves its identity to Azure IoT Hub/Device Provisioning Service (DPS), and how its telemetry is protected in transit.
 
 - **Device authentication to IoT Hub** — X.509 certificate-based auth (recommended; supports per-device or group CA-signed certs) vs. Shared Access Signature (SAS) tokens (simpler, symmetric-key based, but a compromised key affects every device sharing it — a much larger blast radius than one compromised certificate).
 - **Device Provisioning Service (DPS)** — zero-touch enrollment at fleet scale, using the same X.509/SAS/TPM mechanisms to prove a device's identity before it's assigned to an IoT Hub — the IoT-specific counterpart to Windows Autopilot's zero-touch device provisioning (see [[Intune]]).
@@ -214,6 +214,8 @@ AZ-500 doesn't cover Intune/endpoint management at all — MDM/MAM, Windows LAPS
 - [[Ransomware Resiliency and BCDR]]
 - [[Securing Active Directory Domain Services (AD DS)]] — domain-joined endpoints inherit the forest's blast radius; LAPS and tier boundaries are covered there.
 - [[Microsoft 365 Licensing]] — Defender for Endpoint Plan 1 vs. Plan 2 vs. Defender for Business is a SKU decision.
+- [[IoT Device Authentication and Transport Security]]
+- [[Defender for Endpoint Web Protection]]
 
 ---
 

@@ -15,6 +15,27 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-10-06
+
+**Added**
+
+- [[IoT Device Authentication and Transport Security]] — X.509 + TLS 1.2 for IoT Hub/DPS vs. PSK/SAS, network-layer encryption and field gateways (IoT Edge, legacy devices only); outdoor-sensor exam scenario.
+- [[Defender for Cloud Threat Intelligence Reports]] — Activity Group vs. Campaign vs. Threat Summary reports, accessed from an alert; APT/TTPs exam scenario.
+- [[Virtual Network TAP]] — passive VM traffic mirroring to a PCAP/IDS collector; TAP vs. SPAN port mirror, packet capture, flow logs, micro-segmentation and sandbox.
+- [[Azure CDN]] — edge caching with inherent DDoS protection for websites/REST APIs; CDN vs. Front Door vs. DDoS Protection plans.
+- [[Azure App Service]] — PaaS hosting with autoscale + Azure DevOps; compute selection table (App Service vs. Functions vs. Spring Apps vs. VMSS vs. AKS).
+- [[Defender for Endpoint Web Protection]] — web threat protection, web content filtering, custom indicators and network protection; Edge/Chrome/Firefox remote-laptop scenario (no proxy).
+- [[Application Security Testing]] — SAST vs. DAST vs. IAST vs. RASP vs. fuzzing vs. security regression testing; "minimize testing overhead" AKS scenario.
+
+**Updated**
+
+- [[Threat Intelligence]] — connector configuration requirements (TAXII = API root + Collection ID; TIP/Graph tiIndicators = app ID + directory ID + client secret), CTI consortium solution-evaluation scenario, TIP connector deprecation (June 2026).
+- [[Azure Arc]] — "What Arc does NOT do" (no migration, no AWS autoscaling, not Azure-only), hybrid/multicloud governance exam scenario, Arc vs. Azure Migrate / multicloud connectors, keywords.
+- [[Securing Server and Client Endpoints]], [[DevOps Security]] — point to the new IoT and testing notes.
+- Backlinks added across network, endpoint, DevOps and SecOps notes; [[services]], [[Architecture Decisions]], section indexes and [[Azure Services Index]] updated.
+
+---
+
 ## 2026-09-30
 
 **Added**

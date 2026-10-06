@@ -108,6 +108,7 @@ flowchart TD
 | Compare | Difference |
 | --- | --- |
 | Defender for DevOps vs. Defender for Cloud CSPM/CWPP | Defender for DevOps scans source/pipeline *before* deployment (pre-prod, shift-left stage). CSPM assesses and CWPP protects the resource *after* deployment (runtime). Same Defender for Cloud console and Secure Score, different lifecycle stage — see [[Shift left (WAF)]] for the shift-left/shift-right framing this maps to. |
+| SAST vs. DAST/IAST/fuzzing | Full testing-technique comparison (incl. fuzzing and security regression testing for low-overhead pipelines) in [[Application Security Testing]]. |
 | SAST vs. SCA | SAST (CodeQL) analyzes the organization's *own* code for vulnerability patterns. SCA analyzes *third-party/open-source* dependencies for known CVEs. Different attack surface — a "vulnerable package version" scenario is SCA, a "custom code has an injection flaw" scenario is SAST. |
 | GitHub Advanced Security vs. GHAzDO | Same underlying CodeQL/secret-scanning engine; GitHub Advanced Security is native to GitHub-hosted repos, GHAzDO is the licensing product that brings the identical capability to Azure DevOps-hosted repos. A naming/platform distinction, not a capability difference. |
 | Defender for DevOps vs. threat modeling | Threat modeling (see [[Threat Modeling]]) reasons about hypothetical design-time threats before code exists; Defender for DevOps scans *actual* code/dependencies/IaC once they exist in a repo. Threat modeling's output (requirements) precedes what Defender for DevOps then continuously verifies. |
@@ -189,6 +190,8 @@ AZ-500 does not cover pipeline or repository security at all — secret scanning
 - [[Azure Well-Architected Framework (WAF)]]
 - [[Threat Modeling]]
 - [[Identity as the Security Perimeter]]
+- [[Application Security Testing]]
+- [[Azure App Service]]
 
 ---
 

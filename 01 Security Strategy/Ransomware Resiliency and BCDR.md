@@ -164,6 +164,7 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - [[Microsoft Incident Response (DART)]]
 - [[Securing Active Directory Domain Services (AD DS)]]
 - [[Rapid Modernization Plan (RaMP)]] — "ransomware recovery readiness" is one of its named initiatives.
+- [[Defender for Cloud Threat Intelligence Reports]]
 
 ---
 

@@ -22,11 +22,12 @@ Microsoft 365 security, application security, APIs and DevSecOps. Covers the app
 | --- | --- |
 | [[Threat Modeling]] | STRIDE, Threat Modeling Tool, OWASP LLM Top 10 |
 | [[DevOps Security]] | DevSecOps lifecycle, Defender for Cloud DevOps security |
+| [[Application Security Testing]] | SAST/DAST/IAST/RASP vs. fuzzing and regression testing |
 | [[API Management and Security]] | APIM as the API policy enforcement point |
 
 ## Service Pages
 
-- [[Azure Web Application Firewall]] · [[Front Door and Application Gateway]] · [[Intune]]
+- [[Azure Web Application Firewall]] · [[Front Door and Application Gateway]] · [[Intune]] · [[Azure App Service]] · [[Azure CDN]]
 - [[Microsoft Entra Agent ID]] (agent identities for AI apps)
 
 See also: [[Exam Objectives]] · [[Architecture Decisions]]

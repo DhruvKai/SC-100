@@ -210,6 +210,8 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - [[Playbooks and Automation Rules]] — the automation-rule vs. playbook vs. native-XDR-response layering under SOAR.
 - [[Microsoft Incident Response (DART)]] — when an incident exceeds internal SOC scope or trust.
 - [[Securing Active Directory Domain Services (AD DS)]]
+- [[Defender for Cloud Threat Intelligence Reports]]
+- [[Virtual Network TAP]]
 
 ---
 

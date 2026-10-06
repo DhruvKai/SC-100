@@ -152,6 +152,8 @@ AZ-500 already covers configuring NSGs, Azure Firewall rules, DDoS Protection pl
 - [[Azure Firewall]]
 - [[Front Door and Application Gateway]]
 - [[DDoS Protection]]
+- [[Virtual Network TAP]]
+- [[Azure CDN]]
 
 ---
 

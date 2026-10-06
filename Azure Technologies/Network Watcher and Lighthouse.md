@@ -82,6 +82,7 @@ AZ-500 already covers using Network Watcher's individual tools (flow logs, IP fl
 - [[Azure Arc]]
 - [[Security Operations]]
 - [[Exam Objectives]]
+- [[Virtual Network TAP]]
 
 ---
 
