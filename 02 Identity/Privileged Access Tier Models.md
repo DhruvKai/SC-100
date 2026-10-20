@@ -24,7 +24,7 @@ Unpacks the containment models [[Securing Privileged Access]] and [[Securing Act
 ## Why Architects Choose It
 
 - Every privileged-access control (PIM, PAWs, Conditional Access, JEA) is *placement* logic — it answers "which plane/tier is this account or device in," and that answer is meaningless without the model itself. Get the model wrong and every downstream control is scoped to the wrong boundary.
-- Microsoft explicitly retired the on-prem-only Tier 0/1/2 language in favor of the **Enterprise Access Model (EAM)** — a cloud-inclusive model covering hybrid, multicloud, SaaS admin, OT/network access, and API access. The exam and current Microsoft Learn guidance use EAM terminology; a design that still speaks only in "Tier 0/1/2" is citing retired vocabulary.
+- The **Enterprise Access Model (EAM)** *builds on* the on-prem-only Tier 0/1/2 AD model. It keeps its containment elements and adds the full access-management needs of a modern enterprise: on-prem + multiple clouds, internal + external users, APIs, OT. Current Microsoft Learn guidance and the exam use EAM terminology. A design that speaks only in "Tier 0/1/2" is using legacy vocabulary.
 - The model enforces a strict one-way hierarchy — **Control plane → Management plane → Data/Workload plane** — so that compromising a lower plane can never grant control of a higher one. This is the architectural reason PAW tiering, deny-logon GPOs, and PIM role scoping all exist.
 - EAM separates *what's being protected* (the three planes) from *how someone reaches it* (User access / App access / Privileged access pathways) — two different axes that a design has to address independently, not one combined "tier."
 
@@ -48,11 +48,114 @@ Unpacks the containment models [[Securing Privileged Access]] and [[Securing Act
 
 ---
 
+## Enterprise Access Model — Learn Page Walkthrough
+
+Section-by-section notes on Microsoft Learn's *Enterprise access model* page (source linked at the bottom).
+
+### 0. Where the model fits
+
+- **Privileged access strategy is one part of an overall enterprise access control strategy.** The EAM shows where privileged access sits among *all* the ways people and systems reach business assets.
+- Companion docs: the **strategy** (why/what), the **[[Rapid Modernization Plan (RaMP)]]** (adoption roadmap), and **privileged access deployment** (implementation).
+- Architect takeaway: don't design privileged access in isolation. It's one pathway in a model that also covers users, partners, customers and APIs.
+
+### 1. Data/Workload plane — where business value lives
+
+- The **primary stores of business value** an organization must protect.
+- Applications and data hold most of the organization's:
+  - **Business processes** (in applications and workloads)
+  - **Intellectual property** (in data and applications)
+- Every other plane and pathway exists to **run, manage or reach** this plane. That's why attackers target the layers above it: controlling them means controlling the data.
+- Exam angle: an app owner or business unit managing **one workload's** config/data is a Data/Workload-plane role.
+
+### 2. Management plane — enterprise IT that runs the workloads
+
+- Enterprise IT **manages and supports the workloads and the infrastructure they're hosted on**, whether **on-premises, Azure or a third-party cloud**. That creates the management plane.
+- Examples: enterprise-wide IT tooling, infrastructure admins, cross-workload management systems.
+- Risk: management tools have **control of the data and workloads by virtue of their function**. Compromising a management tool = compromising everything it manages.
+
+### 3. Control plane — consistent access control for the enterprise
+
+- **Consistent access control across the enterprise** requires a control plane based on **centralized enterprise identity system(s)** (e.g. [[Entra ID]], AD DS, [[Conditional Access]], [[PIM]]).
+- **Often supplemented by network access control** for **older systems such as OT devices**, where identity-based control isn't possible.
+- Highest-impact plane. Whoever controls identity controls every access decision below it.
+
+> **Why the planes matter to attackers:** "Each of these planes has control of the data and workloads by virtue of their functions, creating an attractive pathway for attackers to abuse if they can gain control of either plane." Attackers don't need to breach the data directly if they can own the plane that administers or authorizes it.
+
+### 4. User access pathways
+
+- Systems only create value if they're **accessible to internal users, partners and customers**, using their workstations or devices and **often remote access solutions**.
+- That creates **user access pathways**. They cover employees, **B2B** partners, **B2C** customers and **public** access.
+- Design implication: user access is a pathway to protect (CA, device compliance, session controls), not just a productivity concern.
+
+### 5. Application access pathways
+
+- Systems must often be **available programmatically via APIs** for **process automation**.
+- That creates **application access pathways** and their own **API attack surface**: service principals, keys, tokens, integration accounts.
+- Design implication: API/service access needs the same Zero Trust treatment (workload identity CA, [[Workload Identity Federation]], [[API Management and Security|API gateways]]).
+
+### 6. Privileged access pathways
+
+- The systems must be **managed and maintained by IT staff, developers or others**. That creates **privileged access pathways**.
+- These give a **high level of control over business-critical assets**, so they "**must be stringently protected against compromise**."
+- In the diagram the privileged pathway sits **over** the control, management and data/workload planes, because it's how humans reach the levers of every plane.
+- Implementation lives in [[Securing Privileged Access]]: PAWs, PIM/JIT, separate admin accounts, phishing-resistant MFA.
+
+### 7. What consistent access control requires
+
+The page lists three requirement groups that apply to **all** pathways:
+
+| Requirement | Components | What it means in a design |
+| --- | --- | --- |
+| **Enforce [[Zero Trust]] principles on all access** | **Assume breach** of other components · **Explicit validation** of trust · **Least privilege** access | No pathway or plane is trusted by default. Each access is validated. Rights are minimal. |
+| **Pervasive security and policy enforcement** | Across **internal and external** access (consistent policy) · Across **all access methods**: users, admins, APIs, **service accounts**, etc. | One policy plane (e.g. CA) covering employees, guests, admins and workloads alike. No unmanaged side doors. |
+| **Mitigate unauthorized privilege escalation** | **Enforce hierarchy** so lower planes can't control higher planes (via attacks **or abuse of legitimate processes**): Control → Management → Data/workload · **Continuously audit** for configuration vulnerabilities that enable **inadvertent escalation** · **Monitor and respond** to anomalies that could be attacks | Block "upward" control paths (e.g. a workload admin able to change identity config, a management agent running as a Control-plane account). Audit drift. Feed anomalies to [[Microsoft Sentinel]] / [[Microsoft Defender XDR]]. |
+
+- "**Abuse of legitimate processes**" is important. Escalation doesn't need an exploit. A misconfigured delegation, an over-permissioned automation account or a helpdesk reset path into an admin account is enough.
+
+### 8. Evolution from the AD tier model
+
+- The **AD tier model** focused on **containing unauthorized escalation of privilege in an on-premises Windows Server Active Directory** environment.
+- The EAM **incorporates those elements** and adds **full access management requirements of a modern enterprise**: on-premises, **multiple clouds**, **internal or external user access**, and more.
+
+#### Tier 0 → scope expansion → Control plane
+
+- Tier 0 **expands** to become the **control plane** and covers **all aspects of access control**.
+- It **includes networking** where networking is **the only or best access control option**, e.g. **legacy OT**.
+
+#### Tier 1 → split → Management plane + Data/Workload plane
+
+| New area | Covers |
+| --- | --- |
+| **Management plane** | **Enterprise-wide IT management** functions |
+| **Data/Workload plane** | **Per-workload management**, sometimes by IT, **sometimes by business units** |
+
+- **Why split:** clarity and actionability. It focuses protection on **business-critical systems and admin roles with high intrinsic business value but limited technical control**, e.g. a business owner of a critical app. It also **accommodates developers and DevOps** instead of focusing only on classic infrastructure roles.
+
+#### Tier 2 → split → User access + App access
+
+| New area | Covers |
+| --- | --- |
+| **User access** | **All B2B, B2C and public access** scenarios |
+| **App access** | **API access pathways** and the resulting **attack surface** |
+
+- **Why split:** coverage for **application access** and the many **partner and customer** models. The old Tier 2 was mostly "workstations and helpdesk".
+
+### Summary mapping
+
+| Legacy AD tier | Enterprise access model | Change type |
+| --- | --- | --- |
+| Tier 0 | **Control plane** (+ network access control for legacy/OT) | **Expansion** |
+| Tier 1 | **Management plane** + **Data/Workload plane** | **Split** |
+| Tier 2 | **User access** + **App access** | **Split** |
+| *(not explicit)* | **Privileged access** pathway over all planes | **New framing** |
+
+---
+
 ## Architecture
 
 ```mermaid
 flowchart TD
-    subgraph Legacy["Legacy AD tier model (retired)"]
+    subgraph Legacy["Legacy AD tier model"]
         direction TB
         T0["Tier 0<br/>Domain Admins, DCs, AD FS"]
         T1["Tier 1<br/>Servers, enterprise apps"]
@@ -162,7 +265,9 @@ AZ-500 assumes familiarity with Azure RBAC scope hierarchy, Entra ID roles, and 
 
 ## Exam Tips
 
-- A scenario naming "Tier 0" is testing whether you reach for the **Control plane** / Enterprise Access Model instead of the retired term.
+- A scenario naming "Tier 0" is testing whether you reach for the **Control plane** / Enterprise Access Model instead of the legacy term.
+- "Admin roles with high business value but limited technical control" and "developers/DevOps" are the stated reasons Tier 1 was split.
+- The three EAM requirements: **Zero Trust on all access**, **pervasive policy enforcement** (internal + external, users/admins/APIs/service accounts), **mitigate unauthorized privilege escalation** (enforce hierarchy, continuously audit, monitor and respond).
 - "Which plane does an app owner who only manages their own app's configuration belong to?" → **Data/Workload plane**, not Management (Management is enterprise-wide IT tooling).
 - "Which plane covers a legacy OT network where identity-based control isn't achievable?" → **Control plane** — EAM explicitly folds in network access control for cases like this.
 - "An admin's workstation needs no general browsing/productivity apps at all" → **Privileged** security level, reserved for roles that could cause material organizational damage.
@@ -172,7 +277,7 @@ AZ-500 assumes familiarity with Azure RBAC scope hierarchy, Entra ID roles, and 
 
 ## Common Exam Confusion
 
-- **Tier 0/1/2 vs. Control/Management/Data-Workload planes** — retired vs. current terminology; the split detail above is the frequent trap.
+- **Tier 0/1/2 vs. Control/Management/Data-Workload planes** — legacy vs. current terminology; the split detail above is the frequent trap.
 - **Planes vs. pathways** — protected asset classification vs. access route classification.
 - **Enterprise vs. Specialized vs. Privileged security levels** — device/account hardening tier by business impact, not by department or title.
 - **Enterprise Access Model vs. Azure RBAC/Entra role hierarchy** — containment model vs. the permission-assignment mechanism that implements it.
@@ -181,7 +286,7 @@ AZ-500 assumes familiarity with Azure RBAC scope hierarchy, Entra ID roles, and 
 
 ## Keywords
 
-- Legacy AD tier model, Tier 0, Tier 1, Tier 2 (retired terminology)
+- Legacy AD tier model, Tier 0, Tier 1, Tier 2 (legacy terminology)
 - Enterprise Access Model (EAM), Control plane, Management plane, Data/Workload plane
 - User access, App access, Privileged access pathways
 - Identity systems, authorized elevation paths
@@ -208,7 +313,9 @@ AZ-500 assumes familiarity with Azure RBAC scope hierarchy, Entra ID roles, and 
 
 ## References
 
-- [Enterprise access model](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model) — Microsoft Learn
+- [Enterprise access model](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model) — Microsoft Learn (walkthrough source, read 2026-10-20)
 - [Developing a privileged access strategy](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-strategy) — Microsoft Learn
 - [Securing privileged access security levels](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-security-levels) — Microsoft Learn
 - [[Exam Objectives]]
+
+**Source page:** [Securing privileged access — Enterprise access model (Microsoft Learn)](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model)

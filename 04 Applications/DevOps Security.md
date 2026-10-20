@@ -192,6 +192,7 @@ AZ-500 does not cover pipeline or repository security at all — secret scanning
 - [[Identity as the Security Perimeter]]
 - [[Application Security Testing]]
 - [[Azure App Service]]
+- [[Full Lifecycle Application Security Strategy]] — phase-by-phase SDLC strategy this tooling implements
 
 ---
 

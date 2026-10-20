@@ -33,6 +33,9 @@ Frameworks, SOC design, resiliency and Microsoft's security programs. Covers exa
 | [[Microsoft Defender XDR]] | Cross-signal incident correlation, AIR, attack disruption |
 | [[Playbooks and Automation Rules]] | Automation rules vs. playbooks vs. native XDR response |
 | [[Threat Intelligence]] | Sourcing and operationalizing CTI (STIX/TAXII, TI in Sentinel) |
+| [[STIX and TAXII Connectors]] | TAXII import (API root + Collection ID) and TAXII 2.1 export |
+| [[Threat Intelligence Platform (TIP) Connector]] | Legacy Graph tiIndicators push (app ID + tenant ID + secret); Upload API |
+| [[Threat Intelligence Management in Sentinel]] | Intel explorer, ingestion rules, relationships, ThreatIntelIndicators, export |
 | [[Defender for Cloud Threat Intelligence Reports]] | Activity Group vs. Campaign vs. Threat Summary reports |
 | [[Microsoft Security Copilot]] | Generative-AI SOC assistant and agents, SCU capacity |
 | [[Microsoft Incident Response (DART)]] | Microsoft's external IR team and retainers |

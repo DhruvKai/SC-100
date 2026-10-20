@@ -144,6 +144,8 @@ AZ-500 covers the underlying building blocks — Defender for Cloud/Secure Score
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Zero Trust]]
 - [[Data Classification and Protection]]
+- [[Azure Synapse Analytics]] — MCSB baseline: managed VNet/DEP, CMK, Synapse RBAC
+- [[Sensitivity Labels]]
 
 ---
 

@@ -27,6 +27,7 @@ Identity, access and privileged access. Covers the identity and privileged-acces
 | [[Securing Privileged Access]] | Enterprise access model, PIM, entitlement management, access reviews, CIEM |
 | [[Privileged Access Tier Models]] | AD tier model vs. enterprise access model planes |
 | [[Microsoft Entra Built-in Roles]] | Least-privilege role selection for look-alike roles |
+| [[Administrative Units]] | Scoped delegated admin; restricted management AUs; can't be a CA target |
 
 ## On-Prem Active Directory
 

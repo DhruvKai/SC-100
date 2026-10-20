@@ -119,6 +119,8 @@ AZ-500 covers assigning built-in Entra roles and understanding RBAC basics at a 
 - "Should not be able to make any changes" → the read-only counterpart role (Security Reader over Security Administrator/Security Operator; Global Reader over Global Administrator).
 - A role that grants an *extra* capability beyond what's asked (Security Operator's incident response, Security Administrator's write access when only read was needed) is the wrong answer even if it also satisfies the stated requirement.
 - "Manage a user's email alias" → Exchange Administrator, not User Administrator and not Security Administrator.
+- Built-in roles are the **only** role type [[Conditional Access]] can target. Custom roles and [[Administrative Units|AU-scoped]] assignments aren't supported. "Require MFA for admins" → CA template + built-in directory roles.
+- "Helpdesk may reset passwords only for one region's users" → built-in role (Helpdesk Administrator) scoped to an [[Administrative Units|administrative unit]].
 
 ---
 
@@ -146,6 +148,8 @@ AZ-500 covers assigning built-in Entra roles and understanding RBAC basics at a 
 ## Related Services
 
 - [[Secure Score Mechanics]]
+- [[Administrative Units]] — scope a built-in role to a subset of users/groups/devices
+- [[Conditional Access]] — targets built-in roles only
 - [[Identity and Access Management (IAM)]]
 - [[PIM]]
 - [[Securing Privileged Access]]

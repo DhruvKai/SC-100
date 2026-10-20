@@ -117,6 +117,7 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - "Find permissions nobody uses, across three clouds" → CIEM/Entra Permissions Management, not PIM or access reviews.
 - "Grant a partner org's team access to a project's resources for 90 days with approval" → entitlement management access package.
 - A scenario naming "Tier 0" or the legacy AD tiering model is testing whether you recognize the retired terminology and reach for the Enterprise Access Model instead.
+- "Delegate Entra admin rights over only one region/division's users" → role scoped to an [[Administrative Units|administrative unit]]. "Stop even Global Admins modifying executive accounts" → **restricted management AU**.
 - "Delegate a narrow set of AD DS/Windows Server admin tasks over PowerShell without granting full Domain Admin rights" → JEA, not a broader RBAC/PIM role (PIM governs cloud-directory/Azure RBAC roles, not on-prem server PowerShell sessions).
 
 ---
@@ -161,6 +162,7 @@ AZ-500 already covers configuring PIM activation, individual access reviews, and
 - [[Resource Guard]] — the same separation-of-duties idea applied to backup destruction.
 - [[Privileged Access Tier Models]] — full detail on the legacy Tier 0/1/2 model, the Enterprise Access Model's planes/pathways, and the Enterprise/Specialized/Privileged device security levels only summarized here.
 - [[AdminSDHolder and SDProp]] — the AD mechanism that structurally protects Control-plane accounts.
+- [[Administrative Units]] — scoped delegation; restricted management AUs shield executive/sensitive objects from tenant-wide admins.
 
 ---
 

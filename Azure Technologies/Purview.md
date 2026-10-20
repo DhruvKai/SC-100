@@ -60,6 +60,8 @@ flowchart TD
 
 - [[Data Security Posture Management (DSPM)]]
 - [[Data Classification and Protection]]
+- [[Sensitivity Labels]]
+- [[Microsoft Purview Message Encryption]]
 - [[Compliance and Privacy]]
 - [[Purview Compliance Manager]]
 - [[eDiscovery]]

@@ -94,10 +94,21 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need a map of everything Defender for Cloud does and which note covers it? | [[Microsoft Defender for Cloud]] |
 | Need robust IoT device authentication + secure transmission for new devices in public/untrusted locations? | X.509 certificates + TLS 1.2 — [[IoT Device Authentication and Transport Security]] (field gateway only for legacy devices) |
 | Need TTPs of a specific APT/threat actor from a Defender for Cloud alert? | Activity Group Report — [[Defender for Cloud Threat Intelligence Reports]] |
-| Need to share CTI between TIPs using industry-standard formats/protocols with Sentinel? | STIX/TAXII connector (API root + Collection ID) — [[Threat Intelligence]] |
+| Need to share CTI between TIPs using industry-standard formats/protocols with Sentinel? | STIX/TAXII connector (API root + Collection ID) — [[STIX and TAXII Connectors]] |
+| Need a TIP/custom app without a TAXII server to push TI into Sentinel? | Upload API (legacy TIP connector = app ID + tenant ID + secret, deprecated) — [[Threat Intelligence Platform (TIP) Connector]] |
+| Need to filter noisy TI feeds, link IOCs to actors, or export TI back to partners? | Ingestion rules / relationship builder / TAXII 2.1 export — [[Threat Intelligence Management in Sentinel]] |
+| Need to delegate Entra admin rights over only one region/division's users? | [[Administrative Units]] (scoped role assignment) |
+| Need to stop even Global Admins modifying executive accounts or sensitive groups? | Restricted management AU — [[Administrative Units]] |
+| Need MFA for privileged accounts based on sign-in signals? | [[Conditional Access]] template + **built-in** directory roles (not AUs, not custom roles) |
 | Need to passively monitor traffic between VMs for detection? | [[Virtual Network TAP]] |
 | Need DDoS protection + faster load times for websites/REST APIs with minimal staff? | [[Azure CDN]] (or Front Door) |
 | Need web hosting that autoscales, integrates with Azure DevOps, minimal admin overhead? | [[Azure App Service]] |
 | Need to protect remote laptops from phishing/exploit sites in Edge, Chrome and Firefox? | [[Defender for Endpoint Web Protection]] |
 | Need low-overhead testing to catch code vulnerabilities after changes? | Fuzzing + security regression testing — [[Application Security Testing]] |
 | Need unified governance of on-prem, Kubernetes, AWS and GCP resources in place? | [[Azure Arc]] — Azure Policy on non-Azure resources + GitOps across clusters |
+| Need to embed security across every SDLC phase for a new app? | [[Full Lifecycle Application Security Strategy]] (start with documented security requirements) |
+| Need encrypted email that Gmail/Yahoo!/Outlook.com recipients can read? | [[Microsoft Purview Message Encryption]] — **first** verify Azure RMS is active |
+| Need to encrypt/redirect/disclaim email automatically by condition? | [[Mail Flow Rules]] |
+| Need to classify and protect files, emails, meetings or Teams/sites? | [[Sensitivity Labels]] (create, then publish via label policy) |
+| Need device/user certificates from on-prem AD CS on Intune devices for Wi-Fi/VPN? | [[SCEP Certificate Infrastructure]] (NDES + Certificate Connector) |
+| Need to prevent data exfiltration from an analytics workspace? | Managed VNet + data exfiltration protection — [[Azure Synapse Analytics]] |

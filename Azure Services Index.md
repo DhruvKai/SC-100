@@ -14,6 +14,8 @@ type: index
 
 [[Entra ID]]
 
+[[Administrative Units]]
+
 # Network
 
 [[Azure Firewall]]
@@ -35,6 +37,8 @@ type: index
 [[Purview]]
 
 [[Key Vault]]
+
+[[Azure Synapse Analytics]]
 
 [[Managed HSM]]
 

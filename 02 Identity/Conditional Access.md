@@ -69,6 +69,29 @@ flowchart TD
 - Roll out new/changed policies in **Report-only** mode first; validate impact before enforcing.
 - Always exclude a break-glass account from blocking policies.
 
+### Who a policy can target
+
+| Can target | Can't target |
+| --- | --- |
+| All users, specific users, groups (assigned/dynamic, nested) | [[Administrative Units\|Administrative units]] |
+| **Built-in** directory roles | **Custom roles** |
+| Guest/external user types (B2B, service provider…) | Roles scoped to an **administrative unit** or to a specific object |
+| Single-tenant workload identities (service principals), agent identities (preview) | Managed identities; multitenant/third-party SaaS service principals |
+
+---
+
+## Exam Scenario — MFA for privileged accounts
+
+**Scenario:** Entra ID **P1**. Evaluate **sign-on signals** during authentication. Initial testing phase: users get access, **elevated-privilege accounts require MFA**. Pick two tasks.
+
+| Option | Verdict | Why |
+| --- | --- | --- |
+| **Deploy a CA policy from a template** | ✅ | Template **Require multifactor authentication for admins** |
+| **Specify an assignment that includes built-in roles** | ✅ | CA Directory roles = **built-in roles only** |
+| Add privileged accounts to an administrative unit | ❌ | AUs scope delegated administration. CA can't target them. See [[Administrative Units]]. |
+| Define a custom role for administrators | ❌ | Custom roles aren't supported in CA assignments |
+| Create App Control policies | ❌ | Device app allowlisting, not sign-in ([[App Control for Business and AppLocker]]) |
+
 ---
 
 ## Comparison
@@ -103,6 +126,8 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 - Break-glass accounts must always be excluded — expect distractor answers that "fix" an outage by loosening MFA instead.
 - Report-only mode is the expected first step for any new policy recommendation, not immediate enforcement.
 - Policies combine with AND — a scenario showing unexpected blocks is often caused by an additional policy the question didn't highlight.
+- "Require MFA for admins" → CA template + **built-in directory roles** assignment. Distractors: administrative unit, custom role.
+- "Evaluates sign-on signals as part of the authentication decision" = Conditional Access (needs **P1**; risk-based conditions need P2).
 
 ---
 
@@ -110,6 +135,14 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 
 - **Conditional Access vs. Identity Protection** — one enforces, the other detects; questions often test whether you can identify which system produced a signal vs. which acted on it.
 - **Conditional Access vs. PIM** — tested by scenarios mixing "block risky sign-in" (CA) with "limit standing admin access" (PIM); pick based on whether the control is about the sign-in event or the privilege duration.
+- **Conditional Access vs. [[Administrative Units]]** — CA is a sign-in policy engine. AUs scope *which objects an admin can manage*. AUs can't be a CA target.
+
+| Target admins in CA via… | Supported? |
+| --- | --- |
+| Built-in directory role (e.g. Global Administrator) | ✅ |
+| Group containing admins | ✅ |
+| Custom role | ❌ |
+| Administrative unit / AU-scoped role | ❌ |
 
 ---
 
@@ -123,6 +156,8 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 - Break-glass / emergency access account
 - Report-only mode
 - Policies combine with AND logic
+- CA templates, "Require multifactor authentication for admins"
+- Directory roles assignment: built-in roles only
 
 ---
 
@@ -138,6 +173,9 @@ AZ-500 already covers building individual policies: assignments (users, cloud ap
 - [[Identity as the Security Perimeter]]
 - [[Identity and Access Management (IAM)]]
 - [[Trusted Platform Module (TPM)]]
+- [[Administrative Units]] — can't be targeted by CA
+- [[Microsoft Entra Built-in Roles]] — the only role type CA can target
+- [[App Control for Business and AppLocker]] — distractor in the admin-MFA scenario
 
 ---
 

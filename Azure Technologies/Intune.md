@@ -116,6 +116,7 @@ AZ-500 doesn't cover Intune Suite, co-management workload sliding, Windows Autop
 ## Related
 
 - [[Securing Server and Client Endpoints]]
+- [[SCEP Certificate Infrastructure]] — NDES + Certificate Connector for SCEP certificate profiles
 - [[Securing Privileged Access]]
 - [[PIM]]
 - [[Entra ID]]

@@ -179,6 +179,7 @@ AZ-500 does not cover threat modeling, STRIDE, or DFDs at all — it's scoped to
 - [[Data Security Posture Management (DSPM)]]
 - [[Attack Chain Models]]
 - [[Application Security Testing]]
+- [[Full Lifecycle Application Security Strategy]] — threat modeling starts in design and stays continuous
 
 ---
 

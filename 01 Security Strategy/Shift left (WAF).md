@@ -82,6 +82,7 @@ flowchart LR
 - [[Conditional Access]] — controls access to pipeline tooling and source repos.
 - [[Key Vault]] — secret management referenced in secure coding (avoid hardcoded secrets, a SE:02 concern).
 - [[Application Security Testing]]
+- [[Full Lifecycle Application Security Strategy]] — the WAF Security pillar SDLC strategy, phase by phase
 
 ---
 

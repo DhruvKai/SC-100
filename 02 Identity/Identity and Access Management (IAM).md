@@ -44,7 +44,7 @@ flowchart TD
 - **What's scoped inside a tenant**: identity management (users/groups/devices), app registrations (the OAuth-scope/app-role layer from the Architecture diagram above), and Conditional Access itself — CA is a tenant-level setting, which is why "validate CA alignment with Zero Trust" is evaluated per tenant, not globally.
 - **Directory objects** — every RBAC/Entra-role assignment in this note is a relationship between one of these principal objects, a role, and a scope: users, groups (security or Microsoft 365, assigned or dynamic-membership), devices, app registrations, enterprise applications, and administrative units.
 - **App registration vs. enterprise application** — an app registration is the *global* definition of an application, owned in its home tenant; an enterprise application is the **service principal** — the local, tenant-specific instance of that app registration. A single multi-tenant app registration gets one enterprise application (service principal) per tenant it's consented into, each governable independently — the same "service principal" this note's Comparison table already covers, seen from the directory-object side.
-- **Administrative units** scope delegated directory administration to a *subset* of users, groups, or devices (a department, a subsidiary) without granting a tenant-wide Entra ID role — the directory-object equivalent of Azure RBAC's narrowest-scope resource assignment.
+- **[[Administrative Units]]** scope delegated directory administration to a *subset* of users, groups, or devices (a department, a subsidiary) without granting a tenant-wide Entra ID role — the directory-object equivalent of Azure RBAC's narrowest-scope resource assignment.
 - **Tenant vs. subscription** — a tenant is the identity/directory boundary; a subscription is the billing/resource boundary that trusts exactly one tenant at a time for authentication (subscriptions can be moved between tenants, but only belong to one at a time). Azure RBAC's management-group hierarchy nests *inside* a tenant's subscriptions — the tenant is the true outermost authorization boundary, above Azure RBAC and Entra ID roles alike.
 - **Multi-tenant reality** (M&A, subsidiaries, sovereign/regulatory separation, dev/test isolation) creates the same governance problem "IdP consolidation" solves in [[Identity as the Security Perimeter]] — every extra tenant is a separate authorization boundary to administer, not just a separate IdP. Cross-tenant access settings and B2B (covered there) are the bridge *between* tenants; this note's RBAC/Entra-role scoping happens independently *within* each one.
 
@@ -213,6 +213,7 @@ AZ-500 already covers configuring Azure RBAC role assignments, creating managed 
 ## Related Services
 
 - [[Conditional Access]]
+- [[Administrative Units]] — scoped Entra role assignments and restricted management AUs
 - [[Identity as the Security Perimeter]]
 - [[Entra ID]]
 - [[Key Vault]]

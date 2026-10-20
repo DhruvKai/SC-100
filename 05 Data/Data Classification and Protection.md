@@ -64,9 +64,9 @@ What actually happens once content is labeled — the enforcement layer.
   - **Simulation mode** — every DLP policy can run in test/audit-only mode (matches logged, no user-facing block) before switching to enforcement, the same "pilot before enforce" discipline that applies to auto-labeling.
 - **Retention labels/policies** — govern the data's *lifecycle* (retain-then-delete, retain-then-review) — a records-management concern, distinct from DLP's in-the-moment blocking.
 - **Rights Management protection actions** — a label can bundle encryption, access restriction ("Do Not Forward," "Encrypt-Only my org"), and visual markings (watermark, header/footer) directly into the label definition, so classification and protection happen in one user action.
-  - **Microsoft Purview Message Encryption (OME)** — the email-specific application of Rights Management: encrypts messages so only intended recipients can read them, and works with recipients on **any** email service (Gmail, Yahoo!, Outlook.com) with no special software needed on their end. **Azure Rights Management (Azure RMS) must be activated in the tenant first** — RMS is the underlying encryption/key-management engine Message Encryption depends on; deployment order is: activate Azure RMS → create/publish sensitivity labels (or configure mail flow rules) → encryption actually applies. A scenario asking "what should you do **first**" when planning Purview Message Encryption is testing this prerequisite, not the labels or mail flow rules that come after.
-  - **Mail flow rules (Exchange transport rules)** — optional, condition-based triggers that apply OME automatically (e.g., "encrypt if the subject contains 'secure:'") — configured *after* RMS activation, not instead of it.
-  - Not related: **SCEP (Simple Certificate Enrollment Protocol)** — automated device/client certificate enrollment (via Intune) for things like Wi-Fi/VPN authentication. It has no role in email encryption and is a common distractor in Purview Message Encryption scenarios.
+  - **[[Microsoft Purview Message Encryption]] (OME)** — the email-specific application of Rights Management: encrypts messages so only intended recipients can read them, and works with recipients on **any** email service (Gmail, Yahoo!, Outlook.com) with no special software needed on their end. **Azure Rights Management (Azure RMS) must be activated in the tenant first** — RMS is the underlying encryption/key-management engine Message Encryption depends on; deployment order is: activate Azure RMS → create/publish sensitivity labels (or configure mail flow rules) → encryption actually applies. A scenario asking "what should you do **first**" when planning Purview Message Encryption is testing this prerequisite, not the labels or mail flow rules that come after.
+  - **[[Mail Flow Rules]] (Exchange transport rules)** — optional, condition-based triggers that apply OME automatically (e.g., "encrypt if the subject contains 'secure:'") — configured *after* RMS activation, not instead of it.
+  - Not related: **[[SCEP Certificate Infrastructure|SCEP]] (Simple Certificate Enrollment Protocol)** — automated device/client certificate enrollment (via Intune) for things like Wi-Fi/VPN authentication. It has no role in email encryption and is a common distractor in Purview Message Encryption scenarios.
 - **Insider Risk Management** — correlates label sensitivity with user behavior (mass download, print, unusual sharing) to flag risky patterns DLP's content-only matching wouldn't catch alone.
 - The architecture choice is *which enforcement mechanism fits the requirement*: DLP for in-the-moment prevention, retention for lifecycle/legal hold, Rights Management for persistent protection that travels with the file even outside the tenant.
 
@@ -227,6 +227,10 @@ AZ-500 already covers configuring sensitivity labels, basic DLP policies, TDE, K
 - [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — full SQL-engine encryption/integrity mechanics.
 - [[Confidential Computing Enclaves]] — encryption in use beyond SQL: SGX enclaves, confidential VMs, attestation.
 - [[Double Key Encryption (DKE)]] — the highest-sensitivity-tier encryption option this note only summarizes.
+- [[Sensitivity Labels]] — create/publish mechanics, scopes, label policies, remove vs. delete.
+- [[Microsoft Purview Message Encryption]] — Azure RMS prerequisite and OME setup order.
+- [[Mail Flow Rules]] — transport rules that apply OME automatically.
+- [[Azure Synapse Analytics]] — analytics-platform data protection (MCSB baseline).
 
 ---
 

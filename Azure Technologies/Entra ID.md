@@ -72,6 +72,7 @@ How an **enterprise application** (the per-tenant service principal side of an a
 
 - [[Conditional Access]]
 - [[PIM]]
+- [[Administrative Units]] — delegated admin scope (P1 per AU admin)
 - [[Identity as the Security Perimeter]]
 - [[Identity and Access Management (IAM)]]
 - [[Securing Privileged Access]]

@@ -32,6 +32,7 @@ Posture management, workload protection, endpoints, network and IaaS/PaaS securi
 | [[OT and ICS Security]] | Defender for IoT OT edition |
 | [[IoT Device Authentication and Transport Security]] | X.509 + TLS for IoT Hub/DPS; field gateways |
 | [[Defender for Endpoint Web Protection]] | Web threat protection, content filtering, network protection |
+| [[SCEP Certificate Infrastructure]] | Intune SCEP certificates: Enterprise CA + NDES + Certificate Connector |
 
 ## Network, IaaS and PaaS
 

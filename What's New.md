@@ -15,6 +15,31 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-10-20
+
+**Added**
+
+- [[STIX and TAXII Connectors]] — TAXII 2.0/2.1 import (API root + Collection ID, pull) vs. TAXII 2.1 export; CTI-consortium solution-evaluation series.
+- [[Threat Intelligence Platform (TIP) Connector]] — legacy Graph tiIndicators push (app ID + tenant ID + client secret, "Azure Sentinel" target) and its Upload API replacement; why the alert-action answer fails.
+- [[Threat Intelligence Management in Sentinel]] — Intel explorer, STIX objects, ingestion rules, relationship builder, TLP, `ThreatIntelIndicators`, TAXII 2.1 export.
+- [[Administrative Units]] — scoped delegated admin, restricted management AUs, licensing; CA admin-MFA scenario (CA targets built-in roles, not AUs or custom roles).
+- [[Full Lifecycle Application Security Strategy]] — SC-100 training unit: requirements → design → dev/test → pipeline → production → maintain.
+- [[Microsoft Purview Message Encryption]] — Azure RMS as the only prerequisite, verification cmdlets, setup order; medical-records-to-Gmail "what first" scenario.
+- [[Mail Flow Rules]] — conditions/exceptions/actions logic, properties, message types, OME action.
+- [[SCEP Certificate Infrastructure]] — Intune SCEP via Enterprise CA + NDES + Certificate Connector; SCEP vs. PKCS vs. Cloud PKI; OME distractor.
+- [[Sensitivity Labels]] — create and publish (classic scheme), scopes, label policies, admin units, timing, remove vs. delete.
+- [[Azure Synapse Analytics]] — full MCSB security baseline: managed VNet + DEP, public access/Private Link, Synapse RBAC, CMK double encryption, Defender for SQL, backup.
+
+**Updated**
+
+- [[Privileged Access Tier Models]] — section-by-section walkthrough of the Enterprise access model Learn page (planes, pathways, three requirements, Tier 0/1/2 expansion and splits); "retired" wording corrected to "legacy".
+- [[Conditional Access]] — who a policy can and can't target, admin-MFA exam scenario.
+- [[Threat Intelligence]], [[Microsoft Sentinel]], [[Security Operations]] — link to the new TI connector and management notes.
+- [[Data Classification and Protection]], [[Microsoft Entra Built-in Roles]], [[Securing Privileged Access]], [[Identity and Access Management (IAM)]] — backlinks and exam tips for the new notes.
+- [[services]], [[Architecture Decisions]], section indexes, [[Azure Services Index]] and [[Exam Objectives]] updated.
+
+---
+
 ## 2026-10-06
 
 **Added**

@@ -133,6 +133,7 @@ Pattern: **"fix introduced a new vuln"** → regression testing. **"malformed in
 - [[API Management and Security]]
 - [[Microsoft Defender for Cloud]]
 - [[Azure Web Application Firewall]]
+- [[Full Lifecycle Application Security Strategy]] — where SAST/DAST fit in the SDLC
 
 ---
 

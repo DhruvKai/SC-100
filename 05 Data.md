@@ -11,6 +11,8 @@ Data discovery, classification, posture and encryption (at rest, in transit, in 
 | Note | One line |
 | --- | --- |
 | [[Data Classification and Protection]] | Discover → classify → handle (DLP/retention) → encrypt pipeline |
+| [[Sensitivity Labels]] | Create labels (scopes, protection) and publish via label policies |
+| [[Microsoft Purview Message Encryption]] | Encrypted email to anyone; Azure RMS is the only prerequisite |
 | [[Data Security Posture Management (DSPM)]] | Where sensitive data lives, who can reach it, how exposed it is |
 | [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] | SQL at-rest, tamper-evidence and in-transit protection |
 | [[Double Key Encryption (DKE)]] | Content even Microsoft can't decrypt |
@@ -18,6 +20,6 @@ Data discovery, classification, posture and encryption (at rest, in transit, in 
 
 ## Service Pages
 
-- [[Purview]] · [[Key Vault]] · [[Priva]]
+- [[Purview]] · [[Key Vault]] · [[Priva]] · [[Azure Synapse Analytics]]
 
 See also: [[Exam Objectives]] · [[Architecture Decisions]]

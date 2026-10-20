@@ -188,6 +188,7 @@ AZ-500 already covers enabling TDE with service-managed keys and basic Key Vault
 - [[Securing IaaS and PaaS Services]]
 - [[Confidential Computing Enclaves]] — Always Encrypted *with secure enclaves* and the wider encryption-in-use landscape; Azure Confidential Ledger as a digest store.
 - [[Cloud Workload Protection (CWPP)]] — Defender for SQL runtime/vulnerability protection layered on top of these static controls.
+- [[Azure Synapse Analytics]] — dedicated SQL pool TDE vs. workspace CMK double encryption.
 
 ---
 

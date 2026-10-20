@@ -151,7 +151,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 
 - Security posture of existing application portfolios
 - [[Threat Modeling|Threat modeling for business-critical applications]]
-- Full lifecycle application security strategy
+- [[Full Lifecycle Application Security Strategy|Full lifecycle application security strategy]]
 - [[DevOps Security|Standards/practices for secure application development]]
 - Map technologies to application security requirements
 - [[Identity and Access Management (IAM)|Workload identities for authenticating/accessing Azure resources]]
@@ -165,7 +165,7 @@ Official SC-100 skills-measured outline, kept verbatim from Microsoft Learn for 
 - [[Data Classification and Protection|Encryption at rest/in transit, including Key Vault and infrastructure encryption]]
 - [[Confidential Computing Enclaves|Encryption in use — confidential computing (SGX enclaves, confidential VMs)]]
 - [[AI and Copilot Security Architecture|Data security for AI workloads]]
-- [[Data Security Posture Management (DSPM)|Data security for Azure SQL, Azure Synapse Analytics, Azure Cosmos DB]]
+- [[Data Security Posture Management (DSPM)|Data security for Azure SQL, Azure Synapse Analytics, Azure Cosmos DB]] — see also [[Azure Synapse Analytics]]
 - [[Data Security Posture Management (DSPM)|Data security for Azure Storage]]
 - [[Cloud Workload Protection (CWPP)|Microsoft Defender for Storage and Microsoft Defender for Databases]]
 

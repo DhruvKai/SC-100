@@ -147,6 +147,9 @@ AZ-500 covers configuring individual Defender for Office 365 policies (Safe Link
 - [[Microsoft Defender XDR]]
 - [[Zero Trust]]
 - [[Data Classification and Protection]]
+- [[Microsoft Purview Message Encryption]]
+- [[Mail Flow Rules]]
+- [[Sensitivity Labels]]
 - [[Microsoft 365 Licensing]] — which SKU or add-on actually unlocks each product on this page.
 - [[Secure Score Mechanics]] — how the Microsoft Secure Score referenced here is calculated.
 

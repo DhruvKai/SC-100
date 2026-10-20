@@ -23,7 +23,7 @@ Cloud-native SIEM + SOAR. Ingests logs into a Log Analytics/Data Lake workspace,
 - **Automation rules** — incident-level triage logic (trigger → conditions → ordered actions); the recommended place to attach playbooks — see [[Playbooks and Automation Rules]]
 - **Playbooks** — [[Logic Apps]]-based automated response (SOAR)
 - **UEBA** — behavioral baselining and anomaly detection
-- **Threat intelligence** — indicator ingestion (TAXII, upload, connectors) feeding analytics rules; architecture-level detail in [[Threat Intelligence]]
+- **Threat intelligence** — indicator ingestion (TAXII, upload, connectors) feeding analytics rules; architecture-level detail in [[Threat Intelligence]]; connectors in [[STIX and TAXII Connectors]] and [[Threat Intelligence Platform (TIP) Connector]]; curation/export in [[Threat Intelligence Management in Sentinel]]
 
 ## Key Facts
 
@@ -62,6 +62,9 @@ The Sentinel/Defender convergence is an active, ongoing process, not a completed
 - [[Zero Trust]]
 - [[Security Operations]]
 - [[Threat Intelligence]]
+- [[STIX and TAXII Connectors]]
+- [[Threat Intelligence Platform (TIP) Connector]]
+- [[Threat Intelligence Management in Sentinel]]
 - [[Playbooks and Automation Rules]]
 - [[Logic Apps]]
 - [[Secure Score Mechanics]]

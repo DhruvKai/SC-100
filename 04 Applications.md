@@ -15,11 +15,13 @@ Microsoft 365 security, application security, APIs and DevSecOps. Covers the app
 | [[Securing Microsoft 365]] | Exchange/SharePoint/OneDrive/Teams security posture, Defender for Office 365 |
 | [[SaaS Application Discovery and Control]] | Shadow IT discovery and session control with Defender for Cloud Apps |
 | [[Microsoft 365 Licensing]] | Which SKU/add-on unlocks which control (E3 vs. E5 cheat sheet) |
+| [[Mail Flow Rules]] | Exchange transport rules: conditions/exceptions/actions, OME action |
 
 ## Application Security
 
 | Note | One line |
 | --- | --- |
+| [[Full Lifecycle Application Security Strategy]] | Requirements → design → dev/test → pipeline → production → maintain |
 | [[Threat Modeling]] | STRIDE, Threat Modeling Tool, OWASP LLM Top 10 |
 | [[DevOps Security]] | DevSecOps lifecycle, Defender for Cloud DevOps security |
 | [[Application Security Testing]] | SAST/DAST/IAST/RASP vs. fuzzing and regression testing |
