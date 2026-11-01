@@ -32,6 +32,7 @@ Frameworks, SOC design, resiliency and Microsoft's security programs. Covers exa
 | [[Security Operations]] | SOC architecture: SIEM + XDR + SOAR, workspace topology, MITRE coverage |
 | [[Microsoft Defender XDR]] | Cross-signal incident correlation, AIR, attack disruption |
 | [[Playbooks and Automation Rules]] | Automation rules vs. playbooks vs. native XDR response |
+| [[Sentinel Analytics Rule Types]] | Scheduled, NRT, Microsoft Security, Anomaly, Fusion: which rule type for which detection |
 | [[Threat Intelligence]] | Sourcing and operationalizing CTI (STIX/TAXII, TI in Sentinel) |
 | [[STIX and TAXII Connectors]] | TAXII import (API root + Collection ID) and TAXII 2.1 export |
 | [[Threat Intelligence Platform (TIP) Connector]] | Legacy Graph tiIndicators push (app ID + tenant ID + secret); Upload API |
@@ -51,7 +52,7 @@ Frameworks, SOC design, resiliency and Microsoft's security programs. Covers exa
 ## Service Pages
 
 - [[Microsoft Sentinel]] · [[Microsoft Defender]] · [[Logic Apps]] · [[Azure Security Logging]]
-- [[MARS Agent]] · [[Microsoft Azure Backup Server (MABS)]] · [[Resource Guard]]
+- [[MARS Agent]] · [[Microsoft Azure Backup Server (MABS)]] · [[Resource Guard]] · [[Azure Storage Redundancy]]
 - [[Azure Update Manager]] · [[WSUS]] · [[Microsoft Configuration Manager]]
 
 See also: [[Exam Objectives]] · [[Architecture Decisions]] · [[Frameworks Cheat Sheet]]

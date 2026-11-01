@@ -108,10 +108,52 @@ Every checklist item trades against another WAF pillar (cost, performance, opera
 
 ---
 
+## Reliability & Performance Efficiency: Scaling for Traffic Surges
+
+Security architects still get WAF questions on **availability**, the "A" in CIA. The scaling vocabulary below comes from **PE:05 Optimize scaling and partitioning** (Performance Efficiency checklist) and the Reliability pillar's scaling and redundancy guidance.
+
+| Term | Definition (WAF) | Availability effect |
+| --- | --- | --- |
+| **Scale out** (horizontal) | **Add instances** of a resource and distribute load across them (behind a load balancer) | ✅ More capacity **and** redundancy. No single point of failure. Elastic: autoscale out and in. |
+| **Scale up** (vertical) | **Add capacity to an existing resource** (bigger VM/SKU) | ⚠️ Capped by the largest SKU, often needs a **restart/redeploy**, and leaves **one instance = single point of failure** |
+| **Autoscale** | Platform adjusts capacity from load metrics (CPU, memory, queue depth, HTTP queue length) | Reacts to surges automatically. Set **limits** (cost) and a **buffer**, and avoid **flapping**. |
+| **Scale unit** | Group of resources that scale together | Basis of the scaling design |
+| **Queue-based load leveling** | Put a **queue** between producer and consumer to absorb bursts | Protects the backend, but requests **wait**. It's for async/background work, not interactive page loads. |
+
+**WAF guidance in one line:** horizontal scaling is for **cloud-native, stateless** workloads that can be split into independent parts. Vertical scaling is for workloads that **can't be divided** or whose architecture doesn't support scaling out. Design for scale-out: **avoid singletons**, keep apps **stateless** (externalize session state), avoid **client/session affinity**, and use **PaaS autoscale**.
+
+```
+Traffic surge on a web tier — keep it AVAILABLE?
+  ↓
+Stateless / can be split across instances?
+  ├─ YES → SCALE OUT (more instances + load balancer + autoscale)   ← exam answer
+  └─ NO  → Scale up (bigger SKU) as a stop-gap; redesign to remove state/singletons
+Users far away → slow (latency), not overloaded?
+  → Front Door / CDN (performance, not capacity)
+Backend processing can be async (orders, jobs)?
+  → Queue-based load leveling (+ competing consumers)
+```
+
+### Exam Scenario (got wrong)
+
+> A new product launch makes website traffic surge. Recommend a solution that **handles the surge efficiently and maintains availability**, following the Azure **Well-Architected Framework**.
+
+| Option | Verdict | Why |
+| --- | --- | --- |
+| **Scale out web servers to distribute incoming traffic** | ✅ | Adds instances behind a load balancer (Azure Load Balancer / App Gateway / Front Door). Raises capacity **and** removes the single point of failure. It's both a **Reliability** and a **Performance Efficiency** win, and elastic (scale back in after the surge). |
+| Scale up web servers to handle more traffic | ❌ (my pick) | Bigger box, same count. Hard ceiling at the largest SKU, often a **restart** to resize, and still a **single point of failure**. Improves performance, not availability. |
+| Enhance network performance to reduce latency | ❌ | Makes each request **faster**, but doesn't add capacity for **more** requests. It's a performance tweak, not an availability fix. |
+| Implement a queuing system to manage incoming requests | ❌ | **Load management**: it smooths spikes by making requests **wait**. Useful for async backend work, but users on a website experience delays. It doesn't add capacity. |
+
+**Trap:** "handle more traffic" sounds like "more power", so scale **up**. The tiebreaker is **"maintain availability"**: only scale **out** adds redundancy. **Availability = more instances, not bigger instances.**
+
+---
+
 ## Comparison
 
 | Compare | Difference |
 | --- | --- |
+| Scale out vs. scale up | Horizontal (more instances, adds redundancy, near-unlimited, elastic) vs. vertical (bigger instance, SKU ceiling, often a restart, single point of failure). |
 | WAF (framework) vs. [[Azure Web Application Firewall]] | Same acronym, unrelated: one is an architecture evaluation framework, the other is a network security service filtering HTTP(S) traffic to web apps. |
 | WAF vs. [[Cloud Adoption Framework (CAF)]] | CAF is org-wide lifecycle sequencing; WAF is per-workload architecture evaluation — full comparison already in the CAF note. |
 | Well-Architected Review vs. [[Cloud Adoption Security Review (CASR)]] | The Well-Architected Review evaluates one workload across all five pillars; CASR evaluates a landing zone's security specifically. |
@@ -138,6 +180,7 @@ AZ-500 already covers the individual controls the Security pillar checklist poin
 - A scenario about one workload's design choices points to the WAF Security pillar, not CAF.
 - A scenario about org-wide governance, subscription structure, or adoption sequencing points to CAF, not WAF.
 - Watch for the acronym trap — confirm whether a scenario means "architecture review" or "web traffic filtering" before picking an answer.
+- "Traffic surge" + "maintain availability" → **scale out** (horizontal). Not scale up (single point of failure), not latency tuning, not a queue.
 
 ---
 
@@ -160,6 +203,7 @@ AZ-500 already covers the individual controls the Security pillar checklist poin
 - Sustain and evolve posture
 - Security checklist SE:01–SE:12
 - Antipatterns: uniform segmentation, indiscriminate encryption, absolute security
+- PE:05 scaling and partitioning; scale out (horizontal) vs. scale up (vertical); autoscale; queue-based load leveling
 
 ---
 
@@ -175,6 +219,10 @@ AZ-500 already covers the individual controls the Security pillar checklist poin
 - [[Purview]]
 - [[Key Vault]]
 - [[Security Operations]]
+- [[Front Door and Application Gateway]] — load balancing across scaled-out instances
+- [[Azure App Service]] — PaaS autoscale (scale out)
+- [[Azure Storage Redundancy]] — Reliability pillar at the data layer
+- [[DDoS Protection]] — availability under hostile traffic surges
 
 ---
 
@@ -184,6 +232,7 @@ AZ-500 already covers the individual controls the Security pillar checklist poin
 - https://aka.ms/WAF
 - https://aka.ms/WAFsecure
 - https://aka.ms/wafsecure-assess
+- [Architecture strategies for optimizing scaling and partitioning (PE:05)](https://learn.microsoft.com/en-us/azure/well-architected/performance-efficiency/scale-partition) — Microsoft Learn
 - [[Exam Objectives]]
 
 ---

@@ -40,11 +40,15 @@ type: index
 
 [[Azure Synapse Analytics]]
 
+[[Azure Storage Redundancy]]
+
 [[Managed HSM]]
 
 # Compute and IoT
 
 [[Azure App Service]]
+
+[[Azure Functions]]
 
 [[Azure Arc]]
 

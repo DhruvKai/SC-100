@@ -51,6 +51,85 @@ flowchart TD
     Q4 -->|Yes| A4["Forced tunneling"]
 ```
 
+## Rule Types: Detailed Architecture Decision
+
+### The three rule types side by side
+
+| | **DNAT (NAT) rule** | **Network rule** | **Application rule** |
+| --- | --- | --- | --- |
+| **OSI layer** | L3/L4 + address translation | L3/L4 | **L7** |
+| **Direction** | **Inbound** (internet/intranet → firewall public/private IP → internal resource) | **Any**: outbound, east-west (spoke↔spoke), hybrid (on-prem↔Azure), and allowing translated inbound flows | **Outbound / east-west only**. **Not applied to inbound connections.** |
+| **Matches on** | Destination = **firewall's IP + port** → translated to **private IP + port** | Source IP/range/**IP group**/service tag, destination IP/**FQDN** (via DNS proxy), port, protocol (**TCP/UDP/ICMP/Any**) | Source IP/IP group → **target FQDN / FQDN tag / web category / URL** (URL needs Premium + TLS inspection) |
+| **Protocols** | TCP/UDP | **Any IP protocol** (RDP, SQL, SSH, SMTP, custom ports like 6868) | **HTTP, HTTPS, MSSQL** only |
+| **How it identifies the target** | IP + port | IP + port | **HTTP Host header / HTTPS SNI** |
+| **Typical use** | Publish a private server (API, RDP jump, DB) on the firewall's public IP | "Allow server X to reach IP Y on TCP port Z", non-web protocols, any traffic where an IP is known | "Allow only *.windowsupdate.com / payments.contoso.com", web filtering by domain or category |
+| **Exam trigger** | "access **from the internet**", "public IP", "translate", "publish" | "IP address", "port", "TCP/UDP", "non-HTTP", "RDP/SSH/SQL" | "**FQDN**", "domain", "URL", "web category", "outbound HTTP(S)" |
+
+### Processing order (verified on Learn)
+
+```
+Threat intelligence filtering (if enabled): first, can block before any rule
+  ↓
+DNAT rules     ─┐
+Network rules   ├─ always in this TYPE order, regardless of rule collection group / collection priority
+Application rules ─┘   (within a type: parent policy first → RCG priority → RC priority, 100 = highest)
+  ↓
+Infrastructure rule collection (built-in platform FQDNs)
+  ↓
+Default DENY (nothing allowed until you allow it)
+```
+
+- **Rules are terminating.** First match wins and processing stops.
+- **A network rule match stops processing**, so application rules are never evaluated for that flow (an "allow 443 to *" network rule silently bypasses all FQDN filtering).
+- **A DNAT match translates *and allows*** the traffic, so it isn't re-checked by network rules (current Learn wording). Older guidance and exam explanations pair **DNAT + a network rule**, and the exam answer is still "DNAT rule **and** network rule" for inbound.
+- **Application rules don't apply to inbound.** To filter inbound HTTP(S), put a **WAF** (App Gateway / Front Door) in front ([[Azure Web Application Firewall]]).
+- **Stateful.** Return traffic for an allowed flow is allowed automatically, so no reverse rule is needed.
+- Lock DNAT down with a **specific source IP/range**, never `*`.
+
+### Decision tree
+
+```
+Which direction is the traffic initiated from?
+│
+├─ INBOUND from the internet (or intranet) to a PRIVATE resource behind the firewall
+│     → DNAT rule (firewall public IP:port → private IP:port)
+│       + network rule (exam pairing; restrict the SOURCE, e.g. contractor IP range)
+│     Is it HTTP(S) that needs L7 inspection (OWASP, bots)?
+│       → put App Gateway/Front Door + WAF in front: firewall app rules don't do inbound
+│
+├─ OUTBOUND (Azure → internet / partner)
+│     Destination identified by FQDN / URL / web category over HTTP, HTTPS or MSSQL?
+│       → Application rule (FQDN, FQDN tag e.g. WindowsUpdate, web category; URL = Premium)
+│     Destination identified by IP + port, or a non-web protocol / custom port?
+│       → Network rule
+│     Non-HTTP protocol but you only know an FQDN?
+│       → Network rule with FQDN destination (requires DNS proxy on the firewall)
+│
+├─ EAST-WEST (spoke ↔ spoke, Azure ↔ on-prem)
+│     → Network rule (IP/port), or Application rule if HTTP(S)/MSSQL by FQDN
+│
+└─ Block known-malicious IPs/domains regardless of rules
+      → Threat intelligence filtering (Alert / Alert and deny), evaluated first
+```
+
+### Exam Scenario (got wrong): e-commerce rule types
+
+> CompanyA (e-commerce, expanding into manufacturing, EU/Asia, consolidating into Azure). Secure the e-commerce application. Which Azure Firewall rule type for each requirement?
+
+| Requirement | Answer | Reasoning |
+| --- | --- | --- |
+| Customer access to the **API endpoint** | **DNAT rule + network rule** ✅ | **Inbound from the internet** to a private API. DNAT translates firewall public IP:443 → API private IP:443. The network rule allows the TCP 80/443 flow. |
+| **Contractor** access to the **database server** | **DNAT rule + network rule** (I got this wrong) | Also **inbound from the internet**: contractors are *outside*. Translate firewall public IP → DB server private IP, and allow the port (the explanation uses **RDP 3389**). Restrict the source to the contractors' IPs. An application rule can't help: inbound, and not HTTP/S. |
+| **Transaction server** → **credit card processor** | **Network rule** (I got this wrong) | **Outbound** from Azure to a partner over a **custom TCP port (6868)**, a non-HTTP protocol. **No DNAT** (nothing is being published inbound). **No application rule** (not HTTP/HTTPS/MSSQL and no FQDN given). |
+| (when would it be an application rule?) | Application rule | If the processor were reached over **HTTPS by FQDN** (e.g. `process.payments.com`), filter it with an application rule. |
+
+**How to answer every rule-type question:**
+1. **Who starts the connection?** Outside → in = **DNAT** (+ network). Inside → out = **network** or **application**.
+2. **Outbound: is it HTTP/HTTPS/MSSQL identified by a domain name?** Yes = **application**. No (IP, custom port, RDP/SSH/SQL/SMTP) = **network**.
+3. **"Contractor"/"partner"/"customer" accessing something of yours = inbound.** "Your server" accessing a third party = outbound.
+
+---
+
 ## Key Facts
 
 - DNAT rules run *first* — a network or application rule written against the original (pre-translation) destination won't match; think in terms of the translated path.
@@ -62,6 +141,9 @@ flowchart TD
 - "Publish an internal web server to the internet through the firewall's public IP" → a DNAT rule, not a network rule alone.
 - "Restrict outbound traffic to a specific set of allowed domains" → an application rule (FQDN filtering), not a network rule.
 - "Filter a non-web protocol by IP and port" → a network rule.
+- "Internet users/contractors reach a private server" → **DNAT + network rule**. "Your server reaches a partner on a custom TCP port" → **network rule** only.
+- An "allow 443 to any" **network rule** bypasses every FQDN application rule (network rules are evaluated first and are terminating).
+- "Filter **inbound** HTTP(S) by URL/OWASP" → **WAF**, not a firewall application rule (application rules don't apply inbound).
 - SKU tier selection (Basic/Standard/Premium), Firewall Manager centralization, and the NVA trade-off are covered in [[Network Security Architecture]] — this page assumes that decision is already made.
 
 ## Comparison
@@ -95,6 +177,9 @@ AZ-500 already covers deploying Azure Firewall, configuring NAT/network/applicat
 - [[Azure Landing Zones]]
 - [[Threat Intelligence]]
 - [[Zero Trust]]
+- [[Azure Web Application Firewall]] — inbound HTTP(S) L7 filtering that firewall application rules can't do
+- [[Front Door and Application Gateway]]
+- [[Azure Bastion]] — secure admin access instead of DNAT-publishing RDP/SSH
 - [[Exam Objectives]]
 
 ## References
@@ -102,3 +187,5 @@ AZ-500 already covers deploying Azure Firewall, configuring NAT/network/applicat
 - [What is Azure Firewall?](https://learn.microsoft.com/en-us/azure/firewall/overview) — Microsoft Learn
 - [Azure Firewall rule processing logic](https://learn.microsoft.com/en-us/azure/firewall/rule-processing) — Microsoft Learn
 - [Azure Firewall Policy overview](https://learn.microsoft.com/en-us/azure/firewall-manager/policy-overview) — Microsoft Learn
+- [Azure Firewall Policy rule sets](https://learn.microsoft.com/en-us/azure/firewall/policy-rule-sets) — Microsoft Learn
+- [Filter inbound traffic with Azure Firewall DNAT](https://learn.microsoft.com/en-us/azure/firewall/tutorial-firewall-dnat) — Microsoft Learn

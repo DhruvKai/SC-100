@@ -107,6 +107,10 @@ flowchart LR
 
 **Recall rule:** *Agent needs an update source → WSUS if it exists, otherwise Microsoft Update.*
 
+**The trap (the answer I picked):** "Configure ConfigMgr to manage security updates" looks like the fix for "security updates are not received from ConfigMgr". It isn't. That line is a **scenario fact** telling you the agent needs another source. It's not a problem to solve.
+
+**Elimination technique:** the stem lists the documented prerequisites it has already met (Update Management in the Automation account, Log Analytics workspace with Update Management). The answer is the **one prerequisite it leaves out**: the Windows agent's update source. Decision tree in [[Architecture Decisions]].
+
 ### Modern equivalent: AUM + ConfigMgr co-existence
 
 - **Disable Automatic Updates** on the machine (`NoAutoUpdate = 1` under `HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU`).

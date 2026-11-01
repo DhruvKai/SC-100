@@ -38,7 +38,7 @@ Fully managed PaaS for hosting **web apps, REST APIs and mobile back ends**, wit
 
 ## When NOT to use
 
-- Event-driven, short-lived code (process an image, send a notification, handle a payment event) → **Azure Functions**.
+- Event-driven, short-lived code (process an image, send a notification, handle a payment event) → **[[Azure Functions]]**.
 - Spring Boot microservices platform → **Azure Spring Apps** (retiring, so check status).
 - Full OS control, custom agents or lift-and-shift VMs → **VM Scale Sets** (autoscale but still IaaS).
 - Container orchestration at scale → AKS / Container Apps (see [[Container and Kubernetes Security]]).
@@ -64,6 +64,31 @@ Same scenario as [[Azure CDN]]: IaaS-hosted websites and REST APIs, minimal IT s
 - **Scaling + DevOps + minimal overhead → App Service.**
 - **DDoS → Azure CDN.**
 - Functions, Spring Apps and VMSS each satisfy part of the requirement but lose on workload fit (Functions, Spring Apps) or admin overhead (VMSS).
+
+### Got wrong (again): option-by-option for the compute dropdown
+
+> Requirements: web workloads **scale automatically**, REST APIs + websites **protected from DDoS**, **Azure DevOps integration**, and the org has **minimal IT staff**.
+
+| Option | Autoscale | Azure DevOps | Admin overhead | Fits websites + REST APIs? | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| **Azure App Service** | ✅ Built-in autoscale rules (scale **out** instances) | ✅ Native deployment center, Pipelines, **deployment slots** | **Lowest**: Microsoft runs OS, patching, runtime, load balancing | ✅ Built for web apps and APIs | ✅ **Answer** |
+| Virtual Machine Scale Sets | ✅ | ✅ (via pipelines/agents) | ❌ **High**: you still own OS images, patching, agents, load balancer config. It's still **IaaS**, the thing that overwhelmed the staff. | ✅ | ❌ |
+| Azure Functions | ✅ (event-driven, per-execution) | ✅ | Very low | ⚠️ Event-triggered code, not hosting existing websites and REST APIs | ❌ |
+| Azure Spring Apps | ✅ | ✅ | Low | ⚠️ Spring Boot–specific (and being retired) | ❌ |
+| AKS | ✅ | ✅ | Medium–high (cluster operations) | ✅ | ❌ overhead |
+
+**The traps:**
+1. **"Migrated to Azure IaaS"** tempts you to stay IaaS (VMSS). But the *problem* in the stem is that IaaS management is "an overwhelming task" for minimal staff, so the fix is to **move up the stack to PaaS**.
+2. **"Scale up automatically"** is loose exam wording. App Service autoscale adds **instances** (scale **out**). Manual "scale up" = a bigger App Service plan tier. Read "scale automatically", not "vertical".
+3. **Every option autoscales**, so autoscale isn't the tiebreaker. **"Minimal administrative overhead" + "websites and REST APIs"** is.
+
+```
+Host websites/REST APIs, autoscale, DevOps, minimal staff → App Service (PaaS)
+Event-triggered snippets, pay per run                    → Functions
+Need OS control / custom agents / lift-and-shift VMs     → VM Scale Sets (IaaS, high overhead)
+Container orchestration                                  → AKS
++ DDoS for those sites/APIs with low effort              → Azure CDN / Front Door
+```
 
 ---
 

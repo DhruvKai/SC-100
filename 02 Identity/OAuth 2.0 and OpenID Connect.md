@@ -57,6 +57,26 @@ The four-party OAuth 2.0 delegation model (authorization server, client, resourc
 
 **Memory hook** — read the names literally: the *owner* owns/authorizes, the *client* is the app asking, the *authorization* server does the authorizing work and issues the token, the *resource* server hosts the resource the token is for.
 
+### Exam Scenario (got wrong)
+
+> Custom-built customer mobile apps. Auth data sits in per-app Azure databases. Centralize with Entra ID + OAuth 2.0. Match each OAuth party to its process.
+
+| Role | Correct process | Who it is in this scenario |
+| --- | --- | --- |
+| Authorization server | **Gives scoped access** to a protected resource | Entra ID |
+| Client | **Requests access** to a protected resource | The custom mobile app |
+| Resource owner | **Authorizes access** to a protected resource | The customer (end user) |
+| Resource server | **Uses access tokens to accept requests** | The backend API/database |
+
+**Order the flow, then the verbs fall into place:** client **requests** → owner **authorizes** → authorization server **gives** (scoped token) → resource server **accepts** (with the token).
+
+**Two near-identical verbs:**
+
+| Pair | How to tell them apart |
+| --- | --- |
+| "**Authorizes** access" vs. "**Gives scoped** access" | A *person* says yes = **resource owner**. A *system* issues the token with scopes = **authorization server**. Despite its name, the authorization server doesn't "authorize" in this question's wording. |
+| "**Requests** access" vs. "**Uses tokens to accept** requests" | The **client** sends the request. The **resource server** receives it and checks the token. |
+
 ---
 
 ## Architecture

@@ -136,6 +136,7 @@ AZ-500 doesn't cover Purview Information Protection or DKE at all. All of this �
 - [[Data Classification and Protection]] — where DKE sits among sensitivity-label protection options.
 - [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — the SQL-side "even the provider/DBA can't read this" analogs (Always Encrypted, TDE-CMK).
 - [[Key Vault]] — BYOK/CMK contrast, the single-key model DKE goes beyond.
+- [[Microsoft 365 Customer Key]] — service-side at-rest key control that keeps M365 features working (the usual alternative to DKE).
 - [[Purview]]
 - [[Compliance and Privacy]]
 - [[Priva]]

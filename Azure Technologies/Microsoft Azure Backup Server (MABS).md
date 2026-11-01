@@ -104,6 +104,7 @@ Not covered in AZ-500 beyond Recovery Services vault security features.
 - [[MARS Agent]]
 - [[Ransomware Resiliency and BCDR]]
 - [[Resource Guard]]
+- [[Azure Storage Redundancy]] — vault replication for the Azure copy (ZRS for in-region zone resilience)
 - [[Securing Active Directory Domain Services (AD DS)]]
 
 ---

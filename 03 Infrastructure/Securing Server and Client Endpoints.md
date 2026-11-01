@@ -43,11 +43,22 @@ A recurring multi-select pattern: "recommend a solution for managing client data
 | --- | --- | --- |
 | **App protection policies (APP)** | **Yes** | Protects the data itself inside managed apps — encryption, selective wipe, copy/paste restriction. Directly answers "data accessed by and stored on the device." |
 | **Conditional Access policies** | **Yes** | Governs the conditions under which access to the data is granted in the first place (location, risk, device state) — the access-gate half of the solution; APP alone doesn't control whether access is granted. |
-| User and Entity Behavior Analytics (UEBA) | No | A Defender for Cloud Apps anomaly-**detection** feature (unusual sign-in times/locations) — finds suspicious behavior after the fact, doesn't manage or protect data at rest on the device. |
+| User and Entity Behavior Analytics (UEBA) | No (my pick) | A Sentinel / Defender for Cloud Apps anomaly-**detection** feature (unusual sign-in times/locations) — finds suspicious behavior after the fact, doesn't manage or protect data at rest on the device. |
 | [[App Control for Business and AppLocker\|App Control for Business policies]] | No | Controls which **Windows executables/scripts** are allowed to run on a system — an OS execution-control problem, not a mobile client-data problem. |
 | User risk policies | No | An [[Identity Protection]] control that responds to *identity compromise signals* (impossible travel, anonymous VPN) — protects the sign-in, not the data sitting on the device. |
 
 The pattern to recognize: the correct pair is always one **data-protection** control (APP) plus one **access-gating** control (Conditional Access) — the distractors are all real controls that solve an adjacent but different problem (behavior detection, OS execution control, identity risk).
+
+**Why UEBA was a trap:** "managing client data" + health-care context makes *monitoring* feel right. But **managing** data on a device means **preventive control** (who can open it, can it leave the app, can it be wiped). UEBA only **detects** after the fact. Ask yourself: *prevent/manage → APP + CA. Detect → UEBA / Identity Protection.*
+
+```
+Client data on MOBILE devices?
+  ↓
+Gate access to it        → Conditional Access ("Require app protection policy")
+Protect it inside apps   → App protection policies (MAM: PIN, no copy/paste, selective wipe)
+Device corporate-owned?  → add MDM compliance ("Require compliant device")
+Detect odd behaviour     → UEBA (detection, not management): never the "manage data" answer
+```
 
 ---
 

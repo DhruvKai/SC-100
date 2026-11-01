@@ -16,6 +16,7 @@ Data discovery, classification, posture and encryption (at rest, in transit, in 
 | [[Data Security Posture Management (DSPM)]] | Where sensitive data lives, who can reach it, how exposed it is |
 | [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] | SQL at-rest, tamper-evidence and in-transit protection |
 | [[Double Key Encryption (DKE)]] | Content even Microsoft can't decrypt |
+| [[Microsoft 365 Customer Key]] | Customer-managed root keys for M365 data at rest; onboarding order |
 | [[Confidential Computing Enclaves]] | Encryption in use: SGX enclaves vs. confidential VMs |
 
 ## Service Pages

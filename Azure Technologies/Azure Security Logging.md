@@ -29,6 +29,40 @@ Six core log sources architects combine into a centralized logging design.
 - **Microsoft Entra ID reports** cover both sign-in logs (authentication events) and audit logs (directory changes — e.g., role assignments, app registrations).
 - VM guest logs require the Azure Monitor Agent (AMA); Arc-enabled servers extend the same collection to hybrid/on-prem and multicloud VMs.
 
+## Azure Monitor Data Source Categories
+
+The exam sorts monitoring data **by the tier it comes from**. Practice questions use the older Learn taxonomy (left column). The current Learn page groups the same data slightly differently (right column).
+
+| Exam category | What it covers | Examples | Collected by | Current Learn grouping |
+| --- | --- | --- | --- | --- |
+| **Application** | **Performance and functionality of your app code**, on any platform (Azure, other cloud, on-prem) | Requests, page views, exceptions, dependencies, traces, app metrics | **Application Insights** | Apps and workloads → Application data |
+| **Infrastructure** | **Guest OS** and **containers** the app runs on | Windows Events, Syslog, perf counters, IIS/text logs, processes/dependencies, AKS/Arc Kubernetes logs and Prometheus metrics | **Azure Monitor Agent + DCR**, VM Insights, Container Insights, managed Prometheus | Infrastructure (VM data, Kubernetes cluster data) |
+| **Azure Platform** | Azure **resources**, **subscriptions** and **tenant**, plus **changes** to Azure resources and service health/incidents | Platform metrics, resource logs, **Activity log** (subscription), **Entra ID audit + sign-in logs** (tenant), Service Health, resource changes | Automatic + **diagnostic settings** | Azure resources + Log data from Microsoft Entra ID |
+| **Custom sources** | Anything else, sent to Azure Monitor **via the REST API** | Logs Ingestion API (any REST client), custom metrics REST API, Event Hubs ingestion | **Logs Ingestion API** + DCR | Custom sources |
+
+**Memory hook (bottom-up stack):** *Azure Platform* (tenant → subscription → resource) → *Infrastructure* (guest OS / containers) → *Application* (your code) → *Custom* (REST API, anything else).
+
+```
+"Performance and functionality" of the app      → Application (App Insights)
+"Containers" / "guest OS"                         → Infrastructure (AMA, Container Insights)
+"Tenant-level" / "subscription" / "resource changes" / "service health"
+                                                  → Azure Platform (Entra logs, Activity log, resource logs)
+"REST API to send log data"                       → Custom sources (Logs Ingestion API)
+```
+
+### Exam Scenario (got wrong)
+
+> Hybrid estate (Azure + on-prem), no existing monitoring. Use Azure Monitor and categorize data by source.
+
+| Description | Correct | What I picked | Why I was wrong |
+| --- | --- | --- | --- |
+| Data about **performance and functionality** | **Application** | Infrastructure | "Performance" pulled me toward servers, but "performance **and functionality**" = **app code** (App Insights). |
+| Data about **containers and guest OS** | **Infrastructure** | Azure Platform | Containers and guest OS are **inside** the VM/cluster. The Azure platform can't see them without an agent. |
+| Data about **tenant-level operations** | **Azure Platform** | Application | Tenant = **Entra ID** (the top of the Azure platform hierarchy), not your app. |
+| **REST APIs** to send log data | **Custom sources** | Custom sources ✅ | — |
+
+**Rule:** if the data exists **without installing anything**, it's **Azure Platform**. If you need an **agent in the OS/cluster**, it's **Infrastructure**. If you need an **SDK in the code**, it's **Application**. If **you push it** via REST, it's **Custom**.
+
 ## Diagnostic Settings
 
 The resource-level configuration object that actually routes platform logs/metrics to a destination — nothing above reaches Sentinel or long-term storage without one.
@@ -74,6 +108,8 @@ The resource-level configuration object that actually routes platform logs/metri
 - [[Azure Arc]]
 - [[Azure Policy]]
 - [[Network Watcher and Lighthouse]]
+- [[Sentinel Analytics Rule Types]] — what Sentinel does with the logs once collected
+- [[Container and Kubernetes Security]] — Infrastructure-tier container data
 - [[Exam Objectives]]
 
 ## References
@@ -83,6 +119,7 @@ The resource-level configuration object that actually routes platform logs/metri
 - [Azure Monitor Agent overview](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/agents-overview) — Microsoft Learn
 - [Data collection rules (DCR) overview](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-rule-overview) — Microsoft Learn
 - [Diagnostic settings overview](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings) — Microsoft Learn
+- [Azure Monitor data sources and data collection methods](https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/data-sources) — Microsoft Learn
 
 ## Verification Flag
 

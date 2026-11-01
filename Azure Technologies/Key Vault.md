@@ -108,6 +108,8 @@ flowchart LR
 - [[Zero Trust]]
 - [[SQL Data Protection (TDE, Ledger, TDS 8.0)]] — TDE's customer-managed key (BYOK/CMK) architecture, backed by this vault.
 - [[Confidential Computing Enclaves]] — Managed HSM listed among Azure confidential services; attestation-gated key release to TEEs.
+- [[Microsoft 365 Customer Key]] — Premium vaults / Managed HSM holding M365 root keys (two subscriptions, soft delete + purge protection).
+- [[Azure Functions]] — Key Vault references for function app secrets (not automatic).
 - [[Exam Objectives]]
 
 ## References

@@ -48,6 +48,31 @@ Finding unsanctioned SaaS usage (Shadow IT) and applying real-time, in-session c
 - **Access policies** — block or allow a session from *starting at all*, based on conditions (device compliance, location, sign-in risk) — a pre-session gate.
 - **Session policies** — control specific actions *within* an already-started session: block download/upload/copy-paste, apply DLP content inspection, or monitor-only without blocking.
 
+## Threat Detection (Anomaly Detection Policies)
+
+- Built-in **anomaly detection policies** use **UEBA** baselines across connected apps: **impossible travel**, activity from infrequent country, anonymous IP addresses, suspicious inbox rules, mass download, ransomware activity.
+- They **detect and alert**. Prevention is session/access policies.
+
+## Exam Scenario (got wrong): pick the Defender for Cloud Apps component
+
+> Defender for Cloud Apps + Entra ID P1, Entra ID as the sole IdP. After account breaches: **control data travel** and **identify app risks** before data loss.
+
+| Requirement | Component | Why |
+| --- | --- | --- |
+| Prevent **downloading sensitive documents on unmanaged devices** | **Conditional Access App Control** ✅ | Reverse-proxy **session policy**: inspect the file and block the download when the device isn't compliant/managed |
+| Create an **app risk report from uploaded firewall logs** | **Cloud Discovery** (I got this wrong) | Cloud Discovery ingests **firewall/proxy logs** (snapshot upload or continuous via log collector) and scores each app against the **Cloud App Catalog** risk factors. "Uploaded logs" + "risk report" = Cloud Discovery, always. |
+| Identify **logons indicating impossible travel** | **Anomaly detection policy** ✅ | Built-in UEBA anomaly policy: two sign-ins from locations too far apart for the time between them |
+| (distractor) Data encryption policy | ❌ | A **DEP** is a **Microsoft 365 Customer Key** construct (which root keys encrypt M365 data at rest). Not a Defender for Cloud Apps component. See [[Microsoft 365 Customer Key]]. |
+
+```
+"Uploaded firewall/proxy logs", "shadow IT", "app risk score/report" → Cloud Discovery
+"Block download/upload/copy on unmanaged device", "in-session"       → Conditional Access App Control (session policy)
+"Block the session from starting"                                     → CA App Control access policy (or plain Conditional Access)
+"Impossible travel", "infrequent country", "mass download" alerts     → Anomaly detection policy
+"Risky OAuth app permissions"                                         → App Governance
+"Encryption keys for M365 data at rest"                               → Customer Key DEP (not MDA)
+```
+
 ---
 
 ## When to Use

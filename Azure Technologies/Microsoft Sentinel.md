@@ -16,7 +16,7 @@ Cloud-native SIEM + SOAR. Ingests logs into a Log Analytics/Data Lake workspace,
 ## Core Capabilities
 
 - **Data connectors** — ingest logs from Azure, M365, on-prem, other clouds, third-party
-- **Analytics rules** — scheduled, near-real-time (NRT), and ML-based detections → generate incidents
+- **Analytics rules** — scheduled, near-real-time (NRT), Microsoft Security, Anomaly, Fusion and other ML-based detections → generate incidents; which type for which need is in [[Sentinel Analytics Rule Types]]
 - **Incidents** — grouped alerts with investigation graph
 - **Hunting** — proactive KQL queries + notebooks over raw log data
 - **Workbooks** — dashboards/visualizations
@@ -66,6 +66,7 @@ The Sentinel/Defender convergence is an active, ongoing process, not a completed
 - [[Threat Intelligence Platform (TIP) Connector]]
 - [[Threat Intelligence Management in Sentinel]]
 - [[Playbooks and Automation Rules]]
+- [[Sentinel Analytics Rule Types]]
 - [[Logic Apps]]
 - [[Secure Score Mechanics]]
 - [[Exam Objectives]]

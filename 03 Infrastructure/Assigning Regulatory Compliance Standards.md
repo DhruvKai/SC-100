@@ -90,6 +90,81 @@ flowchart TD
 
 ---
 
+## Exam Scenario (got wrong): Evaluate a Subscription Against ISO 27001
+
+> Multiple Azure subscriptions host custom apps for clients. A new manufacturing customer gets a **new subscription** with the workload **already deployed**. The customer must **evaluate the deployment for compliance with ISO 27001**. You've **enabled Defender for Cloud** on the subscription and **checked compliance with Azure CIS**. Which task evaluates the subscription's posture against ISO 27001?
+
+### Read the stem first: what's already done
+
+| Clue in the stem | What it tells you |
+| --- | --- |
+| "Enabled Defender for Cloud on the subscription" | **MCSB (formerly Azure Security Benchmark) is already auto-assigned.** It's the default standard the moment Defender for Cloud is on. |
+| "Checked compliance with **Azure CIS**" | CIS Microsoft Azure Foundations Benchmark is a **non-default** standard. Adding non-default standards needs a **paid Defender plan**, so the paid plan (enhanced security) is **already on**. |
+| "Workload components have been deployed" | The job is to **evaluate what exists**, not to deploy or govern something new. |
+| "ISO 27001" | A **named regulatory standard** in Defender for Cloud's catalog. It's off until someone adds it. |
+
+**So the only missing step: add ISO 27001 as a standard on that subscription.**
+
+### Option-by-option breakdown
+
+#### ✅ Add a standard in Microsoft Defender for Cloud
+
+- **What it does:** Defender for Cloud → **Regulatory compliance** → **Manage compliance policies** → pick the **subscription** → **Security policies** → toggle **ISO 27001** On.
+- **Under the hood:** this assigns the ISO 27001 **[[Azure Policy]] initiative** to the subscription. Its policy definitions evaluate the **existing** resources.
+- **Result:** ISO 27001 appears on the **Regulatory compliance dashboard** with a pass/fail per control, refreshed about every **12 hours**. Automated controls are scored from policy state. Non-technical ones become **manual assessments** (attest + evidence). You can download a PDF/CSV report for the customer's auditor.
+- **Why it fits:** it's the only option that **evaluates an already-deployed subscription against ISO 27001** and reports the result.
+- **Prerequisite:** a paid Defender plan (not Servers Plan 1 / APIs Plan 1). Already met, as the CIS check proves.
+- **Permission:** Owner or Policy Contributor on the scope.
+
+#### ❌ Assign the Azure Security Benchmark to the subscription (my pick)
+
+- **What it is:** **Azure Security Benchmark (ASB)** is the old name of the **[[Microsoft Cloud Security Benchmark (MCSB)]]**, Microsoft's own cloud security control set and the baseline behind **Secure Score**.
+- **Why it's wrong #1, already done:** MCSB/ASB is **assigned automatically** when Defender for Cloud is enabled on a subscription. "Assigning" it again adds nothing.
+- **Why it's wrong #2, wrong standard:** MCSB is **Microsoft's best-practice benchmark**, not ISO 27001. Its controls are cross-referenced to industry frameworks (e.g. CIS, NIST SP 800-53, PCI DSS), but a mapping table isn't an ISO 27001 compliance evaluation. The customer needs a per-ISO-control report.
+- **Why it's tempting:** "benchmark" + "evaluate posture" sounds right, and ASB is the thing you remember from AZ-500. But posture ≠ **compliance against a named standard**.
+- **When it *would* be right:** "Measure the subscription against Microsoft's recommended security baseline / drive Secure Score." Even then, it's already on by default.
+
+#### ❌ Enable enhanced security features for the subscription
+
+- **What it is:** "Enhanced security features" is the **older name for the paid Defender plans** (Defender for Servers, Storage, SQL, etc.). Before that it was "Azure Defender".
+- **What it does:** unlocks workload protection (CWPP) and lets you **add non-default regulatory standards**.
+- **Why it's wrong:** it's a **prerequisite, not the evaluation step**, and it's **already done**. Azure CIS is a non-default standard, so it couldn't have been checked without a paid plan. Enabling plans alone **doesn't add ISO 27001**. The standard still has to be toggled on.
+- **Trap:** a "necessary but not sufficient" answer. The question asks which task **evaluates against ISO 27001**, not what's needed at some point.
+
+#### ❌ Publish the ISO 27001 blueprint in Azure Blueprints
+
+- **What it is:** [[Azure Blueprints]] packages **ARM templates + RBAC + policy assignments + resource groups** into a versioned artifact to **deploy** consistent, governed environments. Microsoft shipped an **ISO 27001 blueprint sample**.
+- **Why it's wrong #1, deploy vs. evaluate:** Blueprints is for **building** environments to a pattern. The workload is **already deployed** and only needs **evaluating**.
+- **Why it's wrong #2, publish ≠ assign:** **publishing** a blueprint just creates an immutable version in the definition location. Nothing touches a subscription until it's **assigned**. So "publish" wouldn't even apply anything.
+- **Why it's wrong #3, deprecated:** Azure Blueprints is **deprecated** (successors: Template Specs + Deployment Stacks + Azure Policy). It's a frequent distractor.
+- **Why it's tempting:** the option literally says "ISO 27001", which pattern-matches the stem. **The right noun in the wrong service is a classic distractor.**
+
+### Recall rule
+
+```
+"Evaluate EXISTING resources against a NAMED standard (ISO/PCI/NIST/SOC/HIPAA)"
+  → Defender for Cloud: ADD THE STANDARD (Regulatory compliance → Manage compliance policies)
+
+"Microsoft's own baseline / Secure Score"
+  → MCSB (ex-Azure Security Benchmark): already ON by default
+
+"Unlock non-default standards + workload protection"
+  → Paid Defender plans (= "enhanced security features"): prerequisite only
+
+"Deploy a NEW environment to a compliant pattern"
+  → Landing zone / Template Specs + Deployment Stacks + Azure Policy
+     (Azure Blueprints = deprecated distractor)
+```
+
+| Name you'll see | Same thing as |
+| --- | --- |
+| Azure Security Benchmark (ASB) | Microsoft Cloud Security Benchmark (MCSB) |
+| Enhanced security features / Azure Defender | Paid Defender for Cloud plans |
+| Azure Security Center | Microsoft Defender for Cloud |
+| Azure CIS | CIS Microsoft Azure Foundations Benchmark (a non-default standard) |
+
+---
+
 ## Architecture Decisions
 
 ```mermaid
@@ -140,6 +215,7 @@ AZ-500 covers enabling Defender for Cloud and reading/remediating individual rec
 - "A user needs to view regulatory compliance results but shouldn't be able to change policy" → grant `Reader` (or `Resource Policy Contributor` + `Security Admin`), not `Security Reader` — `Security Reader` alone won't show the compliance data.
 - "A control requires physical security procedures documentation" → manual assessment with attestation and attached evidence, not an automated policy check.
 - "The org wants regulatory compliance state in their existing SIEM continuously" → continuous export to Event Hubs/Log Analytics, not manual periodic report downloads.
+- "Evaluate an existing subscription against ISO 27001" → **add the standard in Defender for Cloud**. Not "assign Azure Security Benchmark" (default, and the wrong standard), not "enable enhanced security" (prerequisite only), not "publish the ISO blueprint" (deploys rather than evaluates, and is deprecated).
 - "We enabled Defender for Servers Plan 1 but can't add a non-default standard" → Plan 1 (and API Plan 1) don't unlock compliance standards; a higher/different plan is required.
 - A scenario needing the *same* standard tracked for both technical config and organizational process points to assigning it once in Defender for Cloud and letting it surface into Compliance Manager, not configuring both separately.
 
@@ -178,6 +254,8 @@ AZ-500 covers enabling Defender for Cloud and reading/remediating individual rec
 - [[Defender for Cloud REST API]] — programmatic assignment via `Standard Assignments`/`Regulatory Compliance Standards` operations.
 - [[Microsoft Defender for Cloud]]
 - [[Playbooks and Automation Rules]] — triggering a workflow on assessment state change.
+- [[Azure Blueprints]] — deprecated deploy-time packaging; distractor in "evaluate against ISO 27001".
+- [[Secure Score Mechanics]] — MCSB drives Secure Score; named standards don't.
 
 ---
 

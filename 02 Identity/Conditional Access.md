@@ -90,7 +90,17 @@ flowchart TD
 | **Specify an assignment that includes built-in roles** | ✅ | CA Directory roles = **built-in roles only** |
 | Add privileged accounts to an administrative unit | ❌ | AUs scope delegated administration. CA can't target them. See [[Administrative Units]]. |
 | Define a custom role for administrators | ❌ | Custom roles aren't supported in CA assignments |
-| Create App Control policies | ❌ | Device app allowlisting, not sign-in ([[App Control for Business and AppLocker]]) |
+| Create App Control policies | ❌ (my pick) | Device app allowlisting, not sign-in ([[App Control for Business and AppLocker]]) |
+
+**Why "App Control" was a trap:** it sounds like **Conditional Access App Control**, the session-control feature of Defender for Cloud Apps that *is* related to CA. But the option says **App Control policies**, i.e. **App Control for Business** (formerly WDAC), which is Windows code-integrity allowlisting on the device. Neither one requires MFA at sign-in.
+
+| Similar name | What it really is | Relation to sign-in MFA |
+| --- | --- | --- |
+| **App Control for Business** (WDAC) | Which executables may run on a Windows device | None |
+| **Conditional Access App Control** | Defender for Cloud Apps reverse-proxy **session** controls (block download, monitor), routed from a CA policy | Applies *after* sign-in, doesn't require MFA |
+| **Conditional Access policy** | Grant control **Require MFA** for assigned users/roles | ✅ This is the answer |
+
+**Elimination rule:** "sign-on signals" + "require MFA" → it's a **Conditional Access** question. Keep only the options that build a CA policy (template + who it's assigned to), then check the assignment is a **built-in** role.
 
 ---
 

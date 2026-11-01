@@ -84,7 +84,7 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to onboard an AWS/GCP account to Defender for Cloud, or know the CSPM free-vs-paid tier split? | [[Security Posture Assessments]] |
 | Need to patch servers across Azure, on-prem, and AWS/GCP with one tool (Windows + Linux)? | [[Azure Update Manager]] + [[Azure Arc]] — strategy in [[Security Updates and Patch Management]] |
 | Need an internal, approval-gated Windows update source, or third-party patches for Azure Update Manager? | [[WSUS]] |
-| Integrating (legacy) Update Management with ConfigMgr, updates not from ConfigMgr and no WSUS? | Give the Windows agent **Microsoft Update** access — [[Azure Update Manager]] |
+| Integrating (legacy) Update Management with ConfigMgr, updates not from ConfigMgr and no WSUS? | Give the Windows agent **Microsoft Update** access — [[Azure Update Manager]] (full tree under Decision Trees below) |
 | Need to know how a posture weakness could be exploited (MITRE ATT&CK tactics/techniques)? | Open the [[Defender for Cloud Recommendations\|Defender for Cloud recommendation]] — not ARG, Quick fix, or the initiative |
 | Need to query Defender for Cloud findings across many subscriptions? | [[Azure Resource Graph]] |
 | Need data protected while in use — with code changes allowed (smallest TCB)? | SGX enclaves — [[Confidential Computing Enclaves]] |
@@ -112,3 +112,304 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Need to classify and protect files, emails, meetings or Teams/sites? | [[Sensitivity Labels]] (create, then publish via label policy) |
 | Need device/user certificates from on-prem AD CS on Intune devices for Wi-Fi/VPN? | [[SCEP Certificate Infrastructure]] (NDES + Certificate Connector) |
 | Need to prevent data exfiltration from an analytics workspace? | Managed VNet + data exfiltration protection — [[Azure Synapse Analytics]] |
+| Need backups replicated across availability zones with data kept in the same region? | **ZRS** on the Recovery Services vault — [[Azure Storage Redundancy]] (GRS/GZRS leave the region) |
+| Need to restore backups in the paired region during a regional disaster? | **GRS + Cross Region Restore** — [[Azure Storage Redundancy]] |
+| Which CAF security discipline covers a dev team adopting DevOps? | **Innovation security** — [[Cloud Adoption Framework (CAF)]] |
+| Website traffic surge, keep it available (WAF)? | **Scale out** (horizontal), not scale up — [[Azure Well-Architected Framework (WAF)]] |
+| Sentinel: correlate low-impact events (exploit chaining) / turn Defender for Cloud Apps alerts into incidents / catch after-hours logins? | **Fusion / Microsoft Security / Anomaly** — [[Sentinel Analytics Rule Types]] |
+| Categorize Azure Monitor data by source (app perf, guest OS/containers, tenant, REST)? | **Application / Infrastructure / Azure Platform / Custom** — [[Azure Security Logging]] |
+| Match OAuth 2.0 roles to processes? | Owner **authorizes**, client **requests**, authorization server **gives scoped access**, resource server **accepts tokens** — [[OAuth 2.0 and OpenID Connect]] |
+| Evaluate an existing subscription against ISO 27001? | **Add the standard** in Defender for Cloud — [[Assigning Regulatory Compliance Standards]] |
+| Continuous export at resource-group level, to Logic Apps, or cross-tenant? | **Defender for Cloud REST API** — [[Defender for Cloud REST API]] |
+| Which MCSB control is "protect identity and authentication systems"? | **IM-2**: restrict privileged roles, strong auth for privileged access, audit high-risk activity — [[Microsoft Cloud Security Benchmark (MCSB)]] |
+| Deploy Microsoft's updated security baseline across endpoints? | **Intune security baselines** (not OSA, a framework) — [[Intune]] |
+| BitLocker on Entra-joined Windows 11 VDI VMs, no agent, OS-level? | **Intune disk encryption policy** (not ConfigMgr, SSE or Defender for Storage) — [[Intune]] |
+| IoT Hub firewall ports? | **MQTT 8883, AMQP 5671, anything over WebSockets/HTTPS 443** — [[IoT Device Authentication and Transport Security]] |
+| Manage client data on mobile devices? | **Conditional Access + app protection policies** (not UEBA) — [[Securing Server and Client Endpoints]] |
+| Moving APIs to Azure Functions: what do you get automatically? | **No infrastructure to manage + pay per execution.** Not HSM secrets (Key Vault), not hardened containers, not CDN — [[Azure Functions]] |
+| Which Azure Firewall rule type: internet → private server / server → partner custom port / server → FQDN over HTTPS? | **DNAT + network / network / application** — [[Azure Firewall]] |
+| Expose one VM on 80/443 only, future VMs private? | **Public IP on that NIC + NSG inbound web rules** (NAT Gateway = outbound only; firewall app rules don't do inbound) — [[Network Security Group]] |
+| Defender for Cloud Apps: block download on unmanaged device / risk report from firewall logs / impossible travel? | **CA App Control / Cloud Discovery / Anomaly detection policy** — [[SaaS Application Discovery and Control]] |
+| Company must manage keys M365 uses for data at rest: first step after prerequisites? | **Run the Customer Key Onboarding Service**, then DEPs — [[Microsoft 365 Customer Key]] |
+| Protect SSH/RDP access to server VMs? | **Azure Bastion** (JIT only shrinks the exposure window; NSG = filter; forced tunneling = egress) — [[Azure Bastion]] |
+
+---
+
+## Decision Trees
+
+Multi-step decisions that don't fit in one table row.
+
+### Patching / update source
+
+```
+What are you patching?
+  ↓
+Windows 10/11 CLIENTS            → Intune update rings / Windows Autopatch
+SERVERS (Azure/on-prem/AWS/GCP,
+  Windows + Linux)               → Azure Update Manager (+ Azure Arc for non-Azure)
+Legacy Windows estate,
+  disconnected/low-bandwidth     → Configuration Manager (SUP = WSUS + Distribution Points)
+Third-party apps via AUM         → publish them to WSUS
+
+Every Windows machine needs ONE update source:
+  ↓
+Gets updates from ConfigMgr?     → ConfigMgr SUP (WSUS underneath) is the source
+NOT from ConfigMgr + WSUS exists → point the Windows agent at WSUS
+NOT from ConfigMgr + no WSUS     → give the Windows agent Microsoft Update access
+```
+
+**Legacy question: "Integrate Update Management with ConfigMgr. What's the prerequisite?"**
+
+```
+Tick off what the stem already gives you:
+  ✔ Update Management added to the Automation account
+  ✔ Log Analytics workspace with Update Management enabled
+  ✔ ConfigMgr present (current branch 1606+)
+  ↓
+The one prerequisite left = the Windows agent's update source
+  ↓
+"Security updates are NOT received from ConfigMgr" + no WSUS mentioned
+  ↓
+Give the Windows agent access to Microsoft Update ✅
+```
+
+| Distractor | Why it's wrong |
+| --- | --- |
+| Configure ConfigMgr to manage security updates | The stem states "not from ConfigMgr" as a **fact**, not a problem to fix. The goal is to let Update Management do it. |
+| Configure the agent to talk to WSUS | No WSUS server exists. Building one isn't a prerequisite, it's a new deployment. |
+| Hybrid-join servers and devices | An [[Intune]]/[[Conditional Access]] requirement, not a patching one. |
+
+See [[Azure Update Manager]], [[Microsoft Configuration Manager]], [[WSUS]], [[Security Updates and Patch Management]].
+
+### Backup / storage redundancy
+
+```
+Must data stay in ONE region (data residency)?
+  ├─ YES → survive a zone/datacenter failure?
+  │          ├─ YES → ZRS   ← "replicate across availability zones, same region"
+  │          └─ NO  → LRS   (cheapest; rack/drive failures only)
+  └─ NO  → survive a REGIONAL outage?
+             ├─ restore backups in the paired region → GRS + Cross Region Restore
+             ├─ storage account, zones + region      → GZRS (not offered for Recovery Services vaults)
+             └─ read the secondary without failover  → RA-GRS / RA-GZRS
+```
+
+Recovery Services vault: **default GRS**, options **LRS/ZRS/GRS**, set **before** the first backup. Zones = ZRS, regions = GRS. → [[Azure Storage Redundancy]]
+
+### CAF security disciplines
+
+```
+DevOps / DevSecOps / dev team / pace of innovation  → Innovation security
+Boundaries, segmentation, network + identity        → Access control
+Detect / respond / recover, SOC                     → Security operations
+Protect data/apps/infra, brownfield + greenfield    → Asset protection
+Posture over time, compliance, delegated decisions  → Security governance
+```
+
+Match the discipline to **what's being changed**, not to who's asking. → [[Cloud Adoption Framework (CAF)]]
+
+### Scaling for availability (WAF)
+
+```
+Traffic surge + "maintain availability"?
+  → SCALE OUT (more instances + load balancer + autoscale)
+Can't split the workload (stateful, singleton)?
+  → scale up as a stop-gap, then redesign
+Slow for distant users (latency)?
+  → Front Door / CDN (performance, not capacity)
+Async backend work bursts?
+  → Queue-based load leveling
+```
+
+Availability = **more** instances, not **bigger** ones. → [[Azure Well-Architected Framework (WAF)]]
+
+```
+IaaS web estate overwhelming minimal staff + autoscale + Azure DevOps?
+  → Azure App Service (PaaS); not VMSS (still IaaS overhead), not Functions (event code)
++ DDoS protection for those websites/REST APIs, low effort?
+  → Azure CDN (inherent DDoS at the edge) / Front Door (+ WAF if OWASP is named)
+```
+
+Every compute option autoscales. **Minimal admin overhead** decides it. → [[Azure App Service]], [[Azure CDN]]
+
+```
+Breach via unpatched OS → move APIs to serverless (Azure Functions):
+  ✔ No infrastructure/OS to manage (Microsoft patches)
+  ✔ Pay only while code runs (Consumption / Flex)
+  ✘ Secrets in HSMs        → only if YOU add Key Vault (Premium) / Managed HSM
+  ✘ Hardened containers    → a container platform, not plain Functions
+  ✘ Assets on a CDN        → a separate Azure CDN / Front Door decision
+```
+
+If the statement needs **another service added on purpose**, it's not an impact of the move. → [[Azure Functions]]
+
+### Sentinel analytics rule type
+
+```
+Many weak signals that only matter together (exploit chaining) → Fusion
+Alerts already raised by another Microsoft product             → Microsoft Security rule
+Unusual for this user (after hours, odd volume)                → Anomaly
+Anomalous RDP/SSH login                                        → ML Behavior Analytics
+Own KQL logic, minutes matter                                  → NRT (every minute)
+Own KQL logic, otherwise                                       → Scheduled
+Logs vs. Microsoft TI indicators                               → Threat Intelligence matching analytics
+```
+
+In the Defender portal, Fusion and Microsoft Security rules are **off**, and Defender XDR creates and correlates those incidents. → [[Sentinel Analytics Rule Types]]
+
+### Azure Monitor data source category
+
+```
+No install needed (resources, Activity log, Entra tenant logs) → Azure Platform
+Agent in guest OS / container cluster                          → Infrastructure
+SDK in the app code (performance + functionality)              → Application
+You push it via REST API                                       → Custom sources
+```
+
+→ [[Azure Security Logging]]
+
+### Compliance evaluation and export (Defender for Cloud)
+
+```
+Evaluate EXISTING resources against a NAMED standard (ISO/PCI/NIST)?
+  → Add the standard (Regulatory compliance → Manage compliance policies)
+Microsoft's own baseline / Secure Score?
+  → MCSB (= Azure Security Benchmark): already ON by default
+Unlock non-default standards?
+  → Paid Defender plan (= "enhanced security features"): prerequisite only
+Deploy a NEW environment to a compliant pattern?
+  → Template Specs + Deployment Stacks + Azure Policy (Blueprints = deprecated)
+
+Continuous export…
+  RG scope / Logic Apps / cross-tenant / multiple configs → REST API
+  Same config on many subscriptions                        → Azure Policy (DeployIfNotExists)
+  One subscription → Log Analytics / Event Hubs            → Azure portal
+```
+
+→ [[Assigning Regulatory Compliance Standards]], [[Defender for Cloud REST API]]
+
+### Identity: OAuth roles, MCSB IM controls, admin MFA
+
+```
+OAuth 2.0 flow:  Client REQUESTS → Resource owner AUTHORIZES →
+                 Authorization server GIVES SCOPED ACCESS (token) →
+                 Resource server ACCEPTS requests with the token
+
+MCSB IM:  IM-2 protect identity system  = restrict privileged roles + strong auth
+                                          for privileged access + audit high-risk activity
+          IM-3 app identities (managed identity)   IM-6 strong auth/passwordless for all
+          IM-7 Conditional Access                  IM-8 secrets exposure
+
+Require MFA for admins (P1)?
+  → CA policy from template "Require MFA for admins" + assignment = BUILT-IN roles
+     ✗ administrative units   ✗ custom roles   ✗ App Control for Business (device allowlisting)
+```
+
+→ [[OAuth 2.0 and OpenID Connect]], [[Microsoft Cloud Security Benchmark (MCSB)]], [[Conditional Access]]
+
+### Azure Firewall rule type
+
+```
+1. Who STARTS the connection?
+   OUTSIDE → IN (customers, contractors, partners reaching YOUR private resource)
+     → DNAT rule (firewall public IP:port → private IP:port) + network rule
+       restrict the source; inbound HTTP(S) needing L7 → WAF, not app rules
+   INSIDE → OUT / east-west (your server reaching the internet, partner, other spoke)
+     → go to 2
+2. Is it HTTP / HTTPS / MSSQL identified by a DOMAIN (FQDN, URL, web category)?
+     YES → Application rule   (FQDN tags, web categories; URL filtering = Premium + TLS inspection)
+     NO  → Network rule       (IP + port + TCP/UDP/ICMP: RDP, SSH, SQL, SMTP, custom ports)
+3. Block known-bad IPs/domains before any rule?
+     → Threat intelligence filtering (evaluated first)
+```
+
+| Requirement | Rule |
+| --- | --- |
+| Customers → API endpoint (internet → private) | DNAT + network |
+| Contractors → database server (internet → private) | DNAT + network |
+| Transaction server → card processor on TCP 6868 | Network |
+| Server → `process.payments.com` over HTTPS | Application |
+| VMs → Windows Update only | Application (FQDN tag) |
+
+Order: **TI → DNAT → Network → Application → infrastructure FQDNs → deny.** Rules are terminating, so a network rule match skips application rules. → [[Azure Firewall]]
+
+### Microsoft 365 data encryption keys
+
+```
+Company must manage/revoke keys M365 uses for data AT REST?
+  → Customer Key
+     prereqs: licence → 2 Azure subs → service principals → Key Vaults (soft delete + purge
+              protection) → create/import RSA keys (no expiry)
+     FIRST after prereqs: Customer Key Onboarding Service (Validate → Enable)
+     then: data encryption policies (multi-workload / Exchange mailbox / SharePoint-OneDrive)
+Microsoft must be UNABLE to decrypt specific content?
+  → Double Key Encryption (labels; breaks search/eDiscovery/Copilot for that content)
+Protection that travels with the file/email?
+  → Sensitivity labels (Azure RMS)
+Control Microsoft engineer access?
+  → Customer Lockbox
+```
+
+→ [[Microsoft 365 Customer Key]], [[Double Key Encryption (DKE)]]
+
+### Defender for Cloud Apps components
+
+```
+Uploaded firewall/proxy logs → app risk report (shadow IT) → Cloud Discovery
+Block download/copy in-session on unmanaged devices        → Conditional Access App Control
+Impossible travel / infrequent country / mass download     → Anomaly detection policy
+Risky OAuth app permissions                                → App Governance
+"Data encryption policy"                                   → Customer Key, NOT Defender for Cloud Apps
+```
+
+→ [[SaaS Application Discovery and Control]]
+
+### Inbound vs. outbound building blocks
+
+```
+INBOUND (internet → your VM/app)
+  One VM, simple             → Public IP on NIC + NSG allow 80/443 (default DenyAllInBound)
+  Many VMs, L4               → Public Load Balancer + NSG
+  Web app needing L7/OWASP   → App Gateway / Front Door + WAF
+  Through a central firewall → Azure Firewall DNAT (+ network rule)
+  Admin RDP/SSH              → Azure Bastion (no public IP on the VM)
+OUTBOUND (your VMs → internet)
+  Plain SNAT, scale          → NAT Gateway (outbound ONLY, never inbound)
+  Filter by FQDN/category    → Azure Firewall application rule
+  Filter by IP/port          → Azure Firewall network rule / NSG outbound rule
+GROUPING
+  Rules by VM role           → ASG (only works inside an NSG rule)
+```
+
+→ [[Network Security Group]], [[Azure Firewall]]
+
+### VM admin access (SSH/RDP)
+
+```
+Securely SSH/RDP into Azure VMs from anywhere, no public IP, no open 22/3389?
+  → Azure Bastion   (Premium = session recording / private-only)
+Shrink the exposure window on a direct path that still exists?
+  → JIT VM access (Defender for Servers P2), a complement, not the access solution
+Filter which IPs/ports reach a subnet?
+  → NSG (building block)
+Route/inspect OUTBOUND internet traffic?
+  → Forced tunneling / Azure Firewall (unrelated to inbound admin access)
+Network-level or per-app private access for many resources?
+  → VPN Gateway / Entra Private Access
+```
+
+"Protecting SSH **access**" = Bastion. "Reduce **exposure** of open management ports" = JIT. → [[Azure Bastion]], [[Securing IaaS and PaaS Services]]
+
+### Endpoints: baselines, BitLocker, mobile data, IoT ports
+
+```
+Deploy/update a security baseline across devices → Intune security baselines
+  (OSA = framework, Autopilot = provisioning, Purview = data)
+BitLocker, Entra-joined Windows VMs/VDI, no agent → Intune disk encryption policy
+  (ConfigMgr needs its client agent; SSE = platform layer; Defender for Storage = threats)
+Client data on mobile devices                    → Conditional Access + app protection policies
+  (UEBA detects, it doesn't manage data)
+IoT Hub ports                                    → MQTT 8883 · AMQP 5671 · WebSockets/HTTPS 443 · never 80
+```
+
+Intune isn't mobile-only. It manages Windows 10/11 including Entra-joined Azure VMs (VDI). → [[Intune]], [[Securing Server and Client Endpoints]], [[IoT Device Authentication and Transport Security]]

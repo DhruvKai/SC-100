@@ -180,6 +180,7 @@ AZ-500 covers installing the MARS agent, creating a Recovery Services vault, bac
 - [[Ransomware Resiliency and BCDR]]
 - [[Resource Guard]] — Multi-User Authorization, the vault-operation successor to the security PIN.
 - [[Key Vault]] — recommended store for the backup passphrase.
+- [[Azure Storage Redundancy]] — the vault's LRS/ZRS/GRS setting decides where MARS recovery points are replicated.
 - [[Securing Active Directory Domain Services (AD DS)]] — DC system state backup as Tier 0 recovery.
 - [[PIM]] — JIT activation of the second authorization when MUA replaces the PIN.
 - [[Securing Server and Client Endpoints]]

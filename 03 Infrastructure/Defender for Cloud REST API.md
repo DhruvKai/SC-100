@@ -108,6 +108,40 @@ flowchart TD
 
 ---
 
+## Continuous Export: Portal vs. REST API vs. Azure Policy
+
+**Continuous export** streams Defender for Cloud data as it changes, or as weekly snapshots. Exportable data: **recommendations** (+ severity, security findings), **Secure Score** (+ controls), **security alerts**, **regulatory compliance**, **attack paths**. Under the hood every export configuration is an **`Microsoft.Security/automations`** resource, the same resource type that powers **workflow automation** (Logic Apps).
+
+| Method | Scope | Destinations | Extras / limits |
+| --- | --- | --- | --- |
+| **Azure portal** (Environment settings → subscription → Continuous export) | **Subscription only** | Event Hubs, Log Analytics | **One** export configuration per subscription. Target can be in another **subscription**, but not another tenant. |
+| **REST API** (`Automations`) | **Subscription or resource group** | Event Hubs, Log Analytics, **Logic Apps** (the automation action types) | **Multiple** configurations per subscription, tags, finer filters, and **cross-tenant** targets (the only supported way to export to another tenant). |
+| **Azure Policy** (DeployIfNotExists) | Subscription(s), assigned at **management group** scale | Event Hubs, Log Analytics | At-scale rollout for many subscriptions. **No cross-tenant**, and Lighthouse doesn't fix that. |
+
+```
+Need to export Defender for Cloud data continuously…
+  ├─ Scope = RESOURCE GROUP?                  → REST API
+  ├─ Destination = LOGIC APPS?                → REST API (automations resource)
+  │                                              (portal: use "Workflow automation" instead)
+  ├─ Destination in ANOTHER TENANT?           → REST API
+  ├─ More than one config per subscription?   → REST API
+  ├─ Same config on 100s of subscriptions?    → Azure Policy (DeployIfNotExists)
+  └─ One subscription → LA / Event Hub        → Azure portal
+```
+
+### Exam Scenario (got wrong)
+
+> Defender for Cloud monitors compliance for Azure workloads. Resources also live in other hybrid clouds, and a **custom risk management system** tracks compliance and remediation across them. Design **continuous export of regulatory compliance data**.
+
+| Requirement | Answer | Why the others fail |
+| --- | --- | --- |
+| **Export at the resource group level** | **Defender REST API** | Portal and Azure Policy configure exports at **subscription** level only. |
+| **Export to Azure Logic Apps** | **Defender REST API** ✅ | The portal's Continuous export page only offers **Event Hubs** and **Log Analytics** tabs. Azure Policy is for enforcement and deploy-at-scale. |
+
+**Trap:** "Azure Policy" feels right because compliance and policy go together. But Policy only helps **roll out** an export config across subscriptions. It can't go below subscription scope or target Logic Apps. **Anything non-default (RG scope, Logic Apps, cross-tenant, multiple configs) = REST API.**
+
+---
+
 ## Architecture Decisions
 
 ```mermaid
@@ -159,6 +193,7 @@ AZ-500 doesn't test the Defender for Cloud REST API directly — API-driven auto
 - "Assign PCI DSS to 300 subscriptions consistently" → `Standard Assignments` via the API (or assign once at management group scope — see [[Assigning Regulatory Compliance Standards]]), not per-subscription portal toggling.
 - "Feed Secure Score into an executive Power BI dashboard" → `Secure Scores`/`Assessments` API, not a manual export.
 - "Alerts need to reach a third-party SOAR platform that isn't Sentinel" → the `Alerts` REST API (or the `Automations` resource to push events out), not assuming Sentinel is the only path.
+- "Continuous export at **resource group** level" or "export to **Logic Apps**" or "export to a workspace in **another tenant**" → **REST API**. Portal and Azure Policy are subscription-level.
 - A scenario about Conditional Access, PIM, or Entra ID role automation pointing to this API is a trap — that's Microsoft Graph/Entra ID's API surface, not Defender for Cloud's.
 
 ---
@@ -205,6 +240,8 @@ AZ-500 doesn't test the Defender for Cloud REST API directly — API-driven auto
 
 - [Microsoft Defender for Cloud REST APIs](https://learn.microsoft.com/en-us/rest/api/defenderforcloud/) — Microsoft Learn
 - [Pricings - Update](https://learn.microsoft.com/en-us/rest/api/defenderforcloud/pricings/update) — Microsoft Learn
+- [Set up continuous export in the Azure portal](https://learn.microsoft.com/en-us/azure/defender-for-cloud/continuous-export) — Microsoft Learn
+- [Export alerts and recommendations with continuous export](https://learn.microsoft.com/en-us/azure/defender-for-cloud/benefits-of-continuous-export) — Microsoft Learn
 - [[Exam Objectives]]
 
 ---
@@ -212,3 +249,5 @@ AZ-500 doesn't test the Defender for Cloud REST API directly — API-driven auto
 ## Verification Flag
 
 The REST operation-group list reflects the composite API surface at the time this note was written; Defender for Cloud's API surface (new plans, new operation groups) evolves frequently. Re-verify the current operation-group list and API version against Microsoft Learn close to exam date.
+
+Continuous export: the live Learn pages (2026) confirm portal = subscription with Event Hubs/Log Analytics tabs, and REST API = required for cross-tenant targets. The **resource-group scope** and **Logic Apps destination** for the REST API come from the older "continuous export via REST API" Learn content and the practice-exam explanation. Re-check them against the current `Automations` REST reference.

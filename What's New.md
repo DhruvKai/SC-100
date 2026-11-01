@@ -15,6 +15,37 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-11-01
+
+**Added**
+
+- [[Azure Storage Redundancy]] — LRS/ZRS/GRS/GZRS (copies, location, durability, residency), Recovery Services vault rules (default GRS, no GZRS, set before first backup, Cross Region Restore needs GRS); ZRS-for-in-region-zones exam scenario.
+- [[Microsoft 365 Customer Key]] — Learn-verified setup order (prerequisites → Onboarding Service → data encryption policies), Customer Key vs. DKE/labels/Lockbox/Azure CMK; "what first after prerequisites" scenario.
+- [[Azure Functions]] — hosting plans (billing, scale, isolation), security controls (managed identity, Key Vault references, default key storage), and the "move payment APIs to Functions" Yes/No scenario.
+- [[Sentinel Analytics Rule Types]] — Scheduled, NRT, Microsoft Security, Anomaly, Fusion, TI matching, ML Behavior Analytics; Defender-portal effect on Fusion and Microsoft Security rules; Fusion/Microsoft Security/Anomaly matching scenario.
+
+**Updated**
+
+- [[Architecture Decisions]] — new Decision Trees section: patching and update source, backup redundancy, CAF security disciplines, WAF scaling, Sentinel rule types, Azure Monitor data categories, compliance evaluation and continuous export, identity (OAuth roles, MCSB IM, admin MFA), endpoints (baselines, BitLocker, mobile data, IoT ports), Azure Firewall rule types, inbound vs. outbound building blocks, VM admin access, M365 encryption keys, Defender for Cloud Apps components; a quick-lookup row for every scenario.
+- [[Azure Update Manager]] — why "Configure ConfigMgr to manage security updates" is a trap, and how to find the answer by ticking off the prerequisites the stem already gives.
+- [[Cloud Adoption Framework (CAF)]] — the five Secure-methodology security disciplines (legacy, still examined) and the Innovation security vs. Security operations DevOps scenario.
+- [[Azure Well-Architected Framework (WAF)]] — PE:05 scale out vs. scale up, autoscale, queue-based load leveling; traffic-surge availability scenario.
+- [[Azure Security Logging]] — Azure Monitor data source categories (Application/Infrastructure/Azure Platform/Custom) mapped to current Learn groupings, with a drag-drop scenario.
+- [[Assigning Regulatory Compliance Standards]] — detailed option-by-option ISO 27001 scenario (add standard vs. ASB vs. enhanced security vs. Blueprints) and a legacy-name mapping table.
+- [[Defender for Cloud REST API]] — continuous export: portal vs. REST API vs. Azure Policy (scope, destinations, cross-tenant); resource-group/Logic Apps scenario.
+- [[Microsoft Cloud Security Benchmark (MCSB)]] — IM-1 to IM-8 control table and the IM-2 "protect identity and authentication systems" scenario.
+- [[Intune]] — Intune isn't mobile-only (VDI/Entra-joined VMs), security baselines and disk encryption, updated-baseline (vs. OSA) and BitLocker-VDI (vs. ConfigMgr/SSE) scenarios.
+- [[IoT Device Authentication and Transport Security]] — IoT Hub protocol ports (MQTT 8883, AMQP 5671, WebSockets/HTTPS 443) and the firewall scenario.
+- [[Azure Firewall]] — detailed rule-type architecture decision: DNAT vs. network vs. application (layer, direction, protocols, match fields), Learn-verified processing order (TI → DNAT → network → application → infrastructure → deny), terminating rules, no inbound application rules; e-commerce API/contractor/card-processor scenario.
+- [[SaaS Application Discovery and Control]] — anomaly detection policies, plus the component-matching scenario (CA App Control / Cloud Discovery / anomaly detection; "data encryption policy" distractor).
+- [[Network Security Group]] — "publish one web VM, keep future VMs private" scenario (public IP + NSG vs. NAT Gateway / firewall application rule / ASG), with a correction (NAT Gateway is outbound-only); NSG vs. NAT Gateway and ASG vs. NSG comparisons.
+- [[Azure App Service]] — option-by-option compute table (App Service vs. VMSS vs. Functions vs. Spring Apps vs. AKS) for the minimal-staff/autoscale/DevOps scenario, and the "IaaS stem" and "scale up" wording traps.
+- [[Azure Bastion]] — "protect SSH access to server VMs" scenario: Bastion vs. JIT vs. NSG vs. forced tunneling, with a correction (JIT requests are auto-approved for users with the initiate permission, not manually approved); comparison rows vs. NSG, forced tunneling, VPN/ZTNA.
+- [[OAuth 2.0 and OpenID Connect]], [[Conditional Access]], [[Securing Server and Client Endpoints]] — got-wrong breakdowns: OAuth role verbs, the "App Control" naming trap, and UEBA vs. APP + CA.
+- [[services]], [[Ransomware Resiliency and BCDR]], [[MARS Agent]], [[Microsoft Azure Backup Server (MABS)]], [[Microsoft Sentinel]], section indexes and [[Azure Services Index]] — links to the new notes.
+
+---
+
 ## 2026-10-20
 
 **Added**

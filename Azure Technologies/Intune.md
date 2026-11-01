@@ -65,6 +65,55 @@ flowchart TD
     Q1 -->|Disconnected/low-bandwidth sites,<br/>or devices not Entra-joined/Intune-enrolled| A9["Keep Configuration Manager<br/>Software Update Point + Distribution Points"]
 ```
 
+## Intune Is Not Mobile-Only
+
+A common misread: Intune manages **Windows 10/11, macOS, iOS/iPadOS, Android and Linux**. That includes **Entra-joined Azure VMs** used as **VDI** (Azure Virtual Desktop personal hosts, Windows 365 Cloud PCs, dedicated Windows 11 VMs). **VDI = virtual desktop infrastructure** (desktops hosted as VMs), not mobile devices. If a Windows 11 VM is Entra-joined and MDM-enrolled, Intune manages it like a laptop.
+
+**Why it's "agentless":** Windows has the **MDM client built into the OS** (OMA-DM/CSPs). Intune configures BitLocker, baselines, firewall etc. without installing anything. [[Microsoft Configuration Manager]] needs its **client agent** plus on-prem site infrastructure.
+
+## Security Baselines and Disk Encryption (Endpoint security)
+
+| Feature | What it is | Where |
+| --- | --- | --- |
+| **Security baselines** | Microsoft-recommended, pre-configured groups of settings. Types include **Windows** (10/11), **Defender for Endpoint**, **Microsoft Edge**, **Microsoft 365 Apps**, **Windows 365**. Microsoft publishes **new baseline versions**, and you **update the profile to the new version** (review the changes, then deploy). | Endpoint security → Security baselines |
+| **Disk encryption policy** | **BitLocker** profiles (Windows) and **FileVault** (macOS): encryption method, startup authentication, recovery key escrow to **Entra ID** | Endpoint security → Disk encryption |
+| **Endpoint security policies** | Antivirus, firewall, ASR, EDR, account protection. Can also reach **Windows Server** via **Defender for Endpoint security settings management** | Endpoint security |
+
+### Exam Scenario (got wrong): Deploy an updated security baseline
+
+> Baselines enforce posture on server and client endpoints. Microsoft releases a **posture update** with settings against recent **ransomware TTPs**. It's tested with no operational impact. What should be used to **deploy the updated baseline across the enterprise**?
+
+| Option | Verdict | Why |
+| --- | --- | --- |
+| **Microsoft Intune** | ✅ | Intune **security baselines** are versioned. Microsoft ships the update, and you move the baseline profile to the new version and deploy it to device groups. It's the deployment and enforcement tool. |
+| Microsoft Operational Security Assurance (OSA) | ❌ (my pick) | OSA is a **framework / set of best practices** (Microsoft's operational security practices) for **assessing** operational security and prioritizing gaps. It's **guidance, not a tool**, so it can't push settings to any device. |
+| Windows Autopilot | ❌ | **Provisioning** (zero-touch enrollment of new or reset devices). It hands the device to Intune, and Intune applies the baseline. Autopilot doesn't manage baselines. |
+| Microsoft Purview | ❌ | **Data** governance/protection (classification, DLP, compliance). Not device configuration. |
+
+**Trap:** "posture" + "operational security" in the stem pattern-matches **Operational** Security Assurance. But the question asks *what to use to deploy*. A framework never deploys anything. **Tool vs. framework:** if the verb is *deploy/enforce/configure*, pick a **product**.
+
+### Exam Scenario (got wrong): BitLocker for VDI, no agent
+
+> VDI in Azure: each employee has a **dedicated Windows 11 Enterprise VM**, **Entra ID-joined**. Implement **BitLocker** on all VDI instances. The tool must **not require an agent**, and encryption must be **manageable at the OS level**.
+
+| Option | Verdict | Why |
+| --- | --- | --- |
+| **Microsoft Intune** | ✅ | Entra-joined Windows 11 is MDM-manageable with the **built-in MDM client, no agent**. **Endpoint security → Disk encryption → BitLocker** profile manages encryption **inside the OS**, with recovery keys escrowed to Entra ID. |
+| Microsoft Endpoint Configuration Manager | ❌ (my pick) | Has BitLocker management, but **requires the ConfigMgr client agent** and on-prem site infrastructure (management point etc.). It's built around domain/hybrid estates, not cloud-only Entra-joined Azure VMs. Fails "no agent". |
+| Azure Storage Server-Side Encryption (SSE) | ❌ | AES-256 encryption of managed disks **at the storage/platform layer**. On by default and can't be disabled. **Not visible or manageable in the guest OS**, and it isn't BitLocker. Fails "manageable at the OS level". |
+| Microsoft Defender for Storage | ❌ | **Threat protection** for storage accounts (malware scanning, anomalous access, sensitive-data threat detection). It doesn't encrypt anything. |
+
+**Decision rule:**
+
+```
+Encrypt Windows VM/desktop disks…
+  ├─ Inside the guest OS (BitLocker), no agent, Entra-joined → Intune disk encryption policy
+  ├─ Inside the guest OS, on-prem/hybrid estate with ConfigMgr client → ConfigMgr BitLocker Management
+  ├─ Platform/storage layer, nothing to manage → SSE (default, PMK or CMK)
+  └─ Host-level incl. temp disk & caches → Encryption at host
+"Protect storage from malware/threats" → Defender for Storage (not encryption)
+```
+
 ## Key Facts
 
 - Co-management workloads move independently — an org can shift device configuration to Intune while ConfigMgr still owns app deployment, and vice versa, during the transition window.
@@ -84,6 +133,8 @@ flowchart TD
 - "Patch Windows 10/11 clients with minimal ongoing admin effort" → Windows Autopatch, not a hand-tuned update ring or ConfigMgr.
 - "Patch Windows Server across Azure, Arc-enabled, and on-prem" → Azure Update Manager — naming Intune here is a distractor, Intune update rings don't cover Server SKUs.
 - "Branch office with poor bandwidth needs locally cached update content at scale" → keep/retain Configuration Manager's Software Update Point + Distribution Points, not pure cloud-delivered update rings.
+- "Deploy Microsoft's updated security baseline across the enterprise" → **Intune security baselines**. Not OSA (a framework), not Autopilot (provisioning), not Purview (data).
+- "BitLocker on Entra-joined Windows 11 VDI VMs, no agent, managed at OS level" → **Intune disk encryption policy**. Not ConfigMgr (agent), not SSE (platform layer), not Defender for Storage (threat protection).
 
 ## Comparison
 
@@ -116,6 +167,10 @@ AZ-500 doesn't cover Intune Suite, co-management workload sliding, Windows Autop
 ## Related
 
 - [[Securing Server and Client Endpoints]]
+- [[Microsoft Configuration Manager]] — agent-based alternative (distractor in the BitLocker VDI scenario)
+- [[Trusted Platform Module (TPM)]] — BitLocker's hardware key protector
+- [[Microsoft Cloud Security Benchmark (MCSB)]] — server/infrastructure baseline vs. Intune client baselines
+- [[Purview]] — data governance, distractor in the baseline scenario
 - [[SCEP Certificate Infrastructure]] — NDES + Certificate Connector for SCEP certificate profiles
 - [[Securing Privileged Access]]
 - [[PIM]]
@@ -136,5 +191,7 @@ AZ-500 doesn't cover Intune Suite, co-management workload sliding, Windows Autop
 - [What is Windows Autopatch?](https://learn.microsoft.com/en-us/windows/deployment/windows-autopatch/overview/windows-autopatch-overview) — Microsoft Learn
 
 ## Verification Flag
+
+The list of Intune security baseline types, and which endpoint security policies reach Windows Server through Defender for Endpoint security settings management, are from training knowledge. Re-check the current list on Learn.
 
 Windows Autopatch's included licensing, its third-party/driver update coverage, and Intune's own application update management capability are all areas Microsoft actively expands — re-verify current scope and licensing against Microsoft Learn close to exam date.

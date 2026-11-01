@@ -74,6 +74,41 @@ flowchart TD
 
 ---
 
+## Identity Management (IM) Domain: Control-by-Control
+
+Exam questions quote a control's **"security principle"** bullets and ask which control they belong to. Learn the IM IDs:
+
+| ID | Control (MCSB v2 title) | Principle in one line | Classic distractor phrase |
+| --- | --- | --- | --- |
+| **IM-1** | Centralize identity and authentication (while ensuring isolation) | One identity system ([[Entra ID]]) for all cloud and non-cloud resources | "standardize on Entra ID" |
+| **IM-2** | **Protect identity and authentication systems** | **Restrict privileged roles and accounts. Require strong authentication for all privileged access. Monitor and audit high-risk activities.** | — |
+| **IM-3** | Manage application identities securely and automatically | **Managed identities** (or service principals where MI isn't possible) instead of human accounts or stored secrets | "use managed application identities" |
+| **IM-4** | Authenticate server and services | Authenticate the remote server/service you connect to (TLS, certificates) | "verify server identity" |
+| **IM-5** | Use single sign-on (SSO) for application access | SSO for apps via Entra ID | "SSO" |
+| **IM-6** | Use strong authentication controls | MFA and **passwordless** for all users | "enforce passwordless / MFA for everyone" |
+| **IM-7** | Restrict resource access based on conditions | [[Conditional Access]]: explicit verification of user, device, location, risk | "conditions", "Conditional Access" |
+| **IM-8** | Restrict the exposure of credentials and secrets | Detect live secrets in code, store in [[Key Vault]] | "secret scanning", "no secrets in code" |
+
+> MCSB **v1** also had **IM-9: Secure user access to existing applications** (legacy/on-prem apps via App Proxy / SHA). It isn't in the v2 IM list.
+
+### Exam Scenario (got wrong): "Protect identity and authentication systems"
+
+> Migrating all workloads (PaaS + IaaS) to Azure. Meet Microsoft and security best practices using **MCSB** controls. The first control to implement is **protection of identity and authentication systems**. Which **three** common security controls?
+
+| Option | Verdict | Belongs to |
+| --- | --- | --- |
+| **Monitor and audit strong authentication for all privileged access** | ✅ | **IM-2** ("require strong authentication for all privileged access") |
+| **Restrict privileged roles and accounts** | ✅ | **IM-2** |
+| **Monitor and audit high risk activities** | ✅ | **IM-2** |
+| Enforce strong passwordless authentication | ❌ (my pick) | **IM-6** Use strong authentication controls. Applies to *all users*, not specifically to protecting the identity system. |
+| Use managed application identities | ❌ (my pick) | **IM-3** Manage application identities securely and automatically |
+
+**Trap:** every option is good identity hygiene, so the question is **"which control number?"**, not **"is it secure?"** IM-2 is about protecting the **identity system itself**, so its bullets all point at **privileged** access (who can change the identity system) and **monitoring** (detecting attacks on it). Passwordless-for-everyone is IM-6 and app identities are IM-3.
+
+**Recall rule for IM-2: "Restrict, Require, Review"**: **restrict** privileged roles, **require** strong auth for privileged access, **review** (monitor/audit) high-risk activity. All three are about **privilege**.
+
+---
+
 ## Comparison
 
 | Compare | Difference |
@@ -102,6 +137,8 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 ## Exam Tips
 
 - A scenario aligning AI workloads to MCSB is testing awareness of the new AI Security domain in v2.
+- "Protect identity and authentication systems" = **IM-2** → restrict privileged roles, strong auth for privileged access, monitor/audit high-risk activity. Passwordless = IM-6. Managed identities = IM-3.
+- **Azure Security Benchmark (ASB)** = the old name of MCSB. It's auto-assigned when Defender for Cloud is enabled, so "assign ASB" is rarely the missing step (see [[Assigning Regulatory Compliance Standards]]).
 - "Pre-mapped to CIS/NIST/PCI-DSS" is MCSB's distinguishing exam fact — don't confuse this regulatory pre-mapping with MCRA, which has none.
 - The enforcement mechanism for MCSB is **Azure Policy**, not manual configuration — expect this in "how do you enforce this at scale" questions. Azure Blueprints is deprecated; don't pick it if offered as an option (see [[Azure Blueprints]]).
 
@@ -122,6 +159,8 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 - Regulatory Compliance dashboard
 - Azure Policy enforcement (Azure Blueprints is deprecated — see [[Azure Blueprints]])
 - MCSB v2 preview, AI Security domain
+- Azure Security Benchmark (ASB), the former name
+- IM-1 to IM-8; IM-2 protect identity and authentication systems
 - Plan, Monitor, Establish lifecycle
 
 ---
@@ -136,12 +175,19 @@ AZ-500 already covers implementing the individual technical controls MCSB refere
 - [[AI and Copilot Security Architecture]]
 - [[Secure Future Initiative (SFI)]]
 - [[Azure Blueprints]]
+- [[Assigning Regulatory Compliance Standards]] — MCSB is the default standard. Named standards (ISO, PCI) are added.
+- [[Securing Privileged Access]] — IM-2 / PA domain in practice
+- [[PIM]]
+- [[Identity Protection]] — monitoring high-risk sign-ins (IM-2)
+- [[Conditional Access]] — IM-7
+- [[Workload Identity Federation]] — IM-3 for non-Azure workloads
 
 ---
 
 ## References
 
 - [Microsoft cloud security benchmark introduction](https://learn.microsoft.com/en-us/security/benchmark/azure/introduction) — Microsoft Learn
+- [MCSB v2: Identity Management](https://learn.microsoft.com/en-us/security/benchmark/azure/mcsb-v2-identity-management) — Microsoft Learn
 - [[Exam Objectives]]
 - aka.ms/MCSB
 - 

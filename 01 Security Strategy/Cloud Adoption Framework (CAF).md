@@ -136,6 +136,46 @@ flowchart LR
 
 ---
 
+## Secure Methodology: The Five Security Disciplines (legacy, still examined)
+
+> The current Secure methodology on Learn (Sept 2025) is organized around **posture modernization, incident preparedness and response, the CIA triad, and posture sustainment** across every CAF phase. The older Secure methodology used the **five security disciplines** below, and **practice and exam questions still name them**. Don't mix them up with Govern's five governance disciplines (Cost Management, Security Baseline, etc.).
+
+| Discipline | What it covers | Exam trigger words |
+| --- | --- | --- |
+| **Access control** | Network **and** identity controls that create **boundaries and segmentation** (Zero Trust access) | "boundaries", "segmentation", "network + identity controls" |
+| **Security operations** | **Detect, respond, recover** from attacks. Use data to reduce dwell time and breach risk (SOC). | "monitor", "detect/respond/recover", "incident", "SOC" |
+| **Asset protection** | Protect business-critical **data, apps and infrastructure**. Bring existing (brownfield) and new (greenfield) assets up to standard. | "protect assets/data", "brownfield/greenfield", "patching, encryption, configuration" |
+| **Security governance** | **Monitor and improve posture** over time. Make **delegated decisions** that let the org accelerate innovation while accepting new risk. | "posture", "compliance", "continuous improvement", "delegated decisions" |
+| **Innovation security** | Make security an **integral part of DevSecOps**. Put security expertise into the DevOps cycle and **shift decision-making from central teams to workload teams**. | "DevOps", "DevSecOps", "pace of innovation", "dev team", "new apps/services" |
+
+```
+Scenario mentions DevOps / DevSecOps / dev team / pace of innovation?
+  → Innovation security
+Boundaries, segmentation, identity + network controls?
+  → Access control
+Detect / respond / recover, SOC, monitoring for breaches?
+  → Security operations
+Protecting data/apps/infrastructure, brownfield + greenfield?
+  → Asset protection
+Posture over time, compliance, delegated risk decisions?
+  → Security governance
+```
+
+### Exam Scenario (got wrong)
+
+> New Azure subscription. The dev team wants to **adopt DevOps models to increase the pace of innovation**. SecOps wants deployments reviewed against CAF security disciplines. Which discipline must the dev team follow **before** adopting DevOps?
+
+| Option | Verdict | Why |
+| --- | --- | --- |
+| **Innovation Security** | ✅ | Its whole purpose is integrating security into DevOps (DevSecOps). "DevOps" + "innovation" in the stem names it directly. |
+| Security Operations | ❌ (my pick) | Detect/respond/recover. It runs *after* deployment and isn't a prerequisite for adopting DevOps. |
+| Access Control | ❌ | Network/identity boundaries. Not specific to how dev teams build and ship. |
+| Security Governance | ❌ | Posture and delegated decisions across the estate. Not the DevOps integration discipline. |
+
+**Trap:** "SecOps team asks…" pulls you toward **Security Operations**. The *requester* is SecOps, but the *subject* is the dev team adopting DevOps, so it's **Innovation security**. Match the discipline to **what's being changed**, not to who's asking.
+
+---
+
 ## Architecture Decisions
 
 ```mermaid
@@ -188,6 +228,7 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - Distractors often mislabel Secure-phase controls (Defender for Cloud, Sentinel) as Govern-phase, or vice versa — check whether the scenario is about *risk/compliance* or *active protection*.
 - "Recommend a strategy based on CAF and WAF" questions expect you to name the specific methodology or pillar, not just "use CAF."
 - "Design monitoring to support hybrid and multicloud environments" → the Unified Operations model: same control tiers, extended via Azure Arc — not a separate tool per environment.
+- "Dev team adopting DevOps / increase pace of innovation" → **Innovation security** discipline (see [[DevOps Security]]). Don't pick Security Operations just because SecOps is the one asking.
 
 ---
 
@@ -197,6 +238,7 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - **CAF vs. [[Azure Well-Architected Framework (WAF)]]** — CAF is the org-wide roadmap; WAF is per-workload guidance across five pillars. See the WAF note for the acronym collision with [[Azure Web Application Firewall]].
 - **Platform landing zone vs. application landing zone** — shared foundation vs. workload-specific environment built on it.
 - **Primary Cloud Controls vs. Hybrid & Multicloud Extension** — same control tiers, different reach; see Comparison above.
+- **Govern's five disciplines vs. Secure's five security disciplines** — Cost Management / Security Baseline / Resource Consistency / Identity Baseline / Deployment Acceleration vs. Access control / Security operations / Asset protection / Security governance / Innovation security. "Security Baseline" (Govern) ≠ "Security governance" (Secure).
 
 ---
 
@@ -211,6 +253,8 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - Unified Operations model, Unified Operations Solution
 - Primary Cloud Controls, Hybrid & Multicloud Extension
 - Govern's five disciplines, Manage's five disciplines
+- Security disciplines: access control, security operations, asset protection, security governance, innovation security
+- Innovation security → DevSecOps, shift decisions to workload teams
 - Basic features / Enhanced visibility / Automated controls (control tiers)
 
 ---
@@ -230,6 +274,8 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 - [[Azure Landing Zones]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Entra ID]]
+- [[DevOps Security]]: Innovation security discipline in practice
+- [[Azure Well-Architected Framework (WAF)]]
 
 ---
 
@@ -247,5 +293,7 @@ AZ-500 already covers the individual controls that populate Govern and Secure �
 ## Verification Flag
 
 The Unified Operations model (Govern/Manage discipline names, the Basic features/Enhanced visibility/Automated controls tiers, Primary Cloud Controls vs. Hybrid & Multicloud Extension) was transcribed from a Microsoft Learn training-module diagram, not cross-checked against the live CAF Manage methodology page. Re-verify exact discipline names and diagram terminology against [Cloud Adoption Framework: Manage](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/manage/) before treating it as exam-final wording.
+
+The five security disciplines (Access control, Security operations, Asset protection, Security governance, Innovation security) are from the **older** CAF Secure methodology and the practice-exam explanation. The live Secure overview (Sept 2025) no longer lists them, so re-check which framing the live exam uses.
 
 The Govern Methodology section (governance MVP process, Cloud Governance Team, Five Disciplines of Cloud Governance) is transcribed from training-knowledge recall, not a live re-read of the current page — re-verify against [Cloud Adoption Framework: Govern](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/govern/) before treating discipline names/process steps as exam-final wording.

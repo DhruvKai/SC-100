@@ -161,6 +161,7 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 - [[Securing Server and Client Endpoints]]
 - [[Resource Guard]] — Multi-User Authorization, the control that stops a privileged identity disabling the protections above.
 - [[MARS Agent]] — direct-to-vault Windows backup; passphrase + security PIN + soft delete for hybrid workloads and DC system state.
+- [[Azure Storage Redundancy]] — vault replication type (LRS/ZRS/GRS), data residency vs. regional resilience, Cross Region Restore.
 - [[Microsoft Incident Response (DART)]]
 - [[Securing Active Directory Domain Services (AD DS)]]
 - [[Rapid Modernization Plan (RaMP)]] — "ransomware recovery readiness" is one of its named initiatives.

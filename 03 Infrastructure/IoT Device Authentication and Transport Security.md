@@ -119,6 +119,51 @@ Pattern: requirement says **"authentication" + "interception"** → answer must 
 
 ---
 
+## IoT Protocols and Firewall Ports
+
+Devices (and gateways) only make **outbound** connections to IoT Hub, so the on-prem firewall needs these **outbound** ports open:
+
+| Protocol | Port | Notes |
+| --- | --- | --- |
+| **MQTT** | **8883** | Lightweight, small code footprint. Good for constrained devices and unreliable or high-latency links. One device per TLS connection (no multiplexing). |
+| **MQTT over WebSockets** | **443** | Same protocol tunnelled over HTTPS's port, for when only 443 is allowed outbound |
+| **AMQP** | **5671** | Richer features. **Connection multiplexing** (many devices over one connection), so it's suited to field/protocol gateways. |
+| **AMQP over WebSockets** | **443** | AMQP tunnelled over 443 |
+| **HTTPS** | **443** | Request/response only, no cloud-to-device push (devices poll). Highest overhead. |
+| HTTP | 80 | **Never used** for IoT Hub. Unencrypted, so it's always a distractor. |
+
+**Memory hook:**
+- **Every WebSockets variant = 443.** If "WebSockets" or "HTTPS" is in the name, the answer is 443.
+- **MQTT = 8883** ("double 8, double 3": MQTT is the *small, light* one).
+- **AMQP = 5671** (AMQP is the *multiplexing gateway* protocol).
+- Plain **1883** (MQTT without TLS) and **5672** (AMQP without TLS) are the unencrypted ports. **IoT Hub requires TLS**, so they're never correct.
+
+```
+Firewall only allows 443 outbound?
+  → MQTT over WebSockets or AMQP over WebSockets (or HTTPS)
+Constrained single device, flaky network?
+  → MQTT (8883)
+Gateway aggregating many devices over one connection?
+  → AMQP (5671)
+Simple, infrequent telemetry, no cloud-to-device push needed?
+  → HTTPS (443)
+```
+
+### Exam Scenario (got wrong)
+
+> Migrating IoT provisioning/monitoring/management to Azure IoT Hub. Remote-site sensors connect to the Defender for IoT portal. Which port should the on-prem firewall allow for each protocol?
+
+| Protocol | Correct port | Why |
+| --- | --- | --- |
+| AMQP | **5671** | AMQP over TLS |
+| AMQP over WebSockets | **443** ✅ (got this one) | WebSockets ride on 443 |
+| MQTT | **8883** | MQTT over TLS |
+| MQTT over WebSockets | **443** | WebSockets ride on 443 |
+
+**Trap:** mixing up which native port belongs to which protocol. Lock in **M-QTT ↔ 8883** and **A-MQP ↔ 5671**, then every "WebSockets" item is 443.
+
+---
+
 ## Comparison
 
 | Compare | Difference |
@@ -143,6 +188,7 @@ Pattern: requirement says **"authentication" + "interception"** → answer must 
 - "Individually revoke one compromised device without affecting others" → X.509 (per-device cert), not SAS.
 - "Zero-touch provisioning of millions of devices" → DPS.
 - "Hardware-protected device identity" → TPM attestation / key in HSM.
+- Ports: **MQTT 8883, AMQP 5671, anything over WebSockets or HTTPS 443**. Port 80 is never right.
 
 ---
 
