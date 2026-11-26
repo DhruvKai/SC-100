@@ -49,7 +49,7 @@ The actionable output of [[Microsoft Defender for Cloud]] posture assessment. Ea
 | **Fix / Quick fix** | One-click remediation for supported recommendations (view the remediation logic first) |
 | **Assign owner + due date** | Governance rules, SLA tracking, weekly owner emails |
 | **Exempt** | Waive or mitigate for specific resources (replaces deprecated "disable rules") |
-| **Workflow automation** | Trigger a [[Logic Apps\|logic app]] |
+| **Workflow automation** | Trigger a [[Logic Apps\|logic app]] (see [[Defender for Cloud Workflow Automation]]) |
 | **Enforce / Deny** | Prevent future misconfigurations (DeployIfNotExists / Deny via [[Azure Policy]]) |
 | **Open query** | Jump to [[Azure Resource Graph]] (affected resources or security findings) |
 
@@ -172,6 +172,7 @@ AZ-500 covers reading and remediating recommendations, Quick fix, exemptions and
 - [[Securing IaaS and PaaS Services]]
 - [[Azure Bastion]]
 - [[Logic Apps]]
+- [[Defender for Cloud Workflow Automation]]
 - [[CSPM and CWPP]]
 - [[Security Updates and Patch Management]]
 

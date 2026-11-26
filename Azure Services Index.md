@@ -50,6 +50,18 @@ type: index
 
 [[Azure Functions]]
 
+# Automation and Integration
+
+[[Logic Apps]]
+
+[[Azure Automation]]
+
+[[Azure Event Hubs]]
+
+[[Azure Monitor Alerts and Action Groups]]
+
+[[Defender for Cloud Workflow Automation]]
+
 [[Azure Arc]]
 
 [[IoT Device Authentication and Transport Security|Azure IoT Hub]]

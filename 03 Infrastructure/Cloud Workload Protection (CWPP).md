@@ -143,6 +143,7 @@ AZ-500 already covers enabling individual Defender for Cloud plans and reading t
 - [[Microsoft Defender]]
 - [[Microsoft Defender XDR]]
 - [[Security Operations]]
+- [[Defender for Cloud Workflow Automation]] — automating response to the alerts CWPP plans raise
 - [[Securing IaaS and PaaS Services]]
 - [[Container and Kubernetes Security]]
 

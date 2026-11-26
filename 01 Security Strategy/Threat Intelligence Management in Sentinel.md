@@ -218,6 +218,7 @@ You know Sentinel analytics rules, workbooks and KQL hunting. New here: the TI *
 - [[Microsoft Sentinel]]
 - [[Security Operations]] — analytics + hunting consume this TI
 - [[Playbooks and Automation Rules]]
+- [[Sentinel Workbooks, Playbooks and Notebooks]] — the Threat Intelligence workbook and MSTICPy TI enrichment in notebooks
 - [[Attack Chain Models]] — attack patterns map to MITRE ATT&CK
 - [[Microsoft Defender XDR]] — Intel explorer lives in the Defender portal
 

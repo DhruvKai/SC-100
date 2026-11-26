@@ -49,7 +49,7 @@ Microsoft's **CNAPP** (Cloud-Native Application Protection Platform). It assesse
 | **CIEM** | Over-permissioned identities across clouds | [[Securing Privileged Access]] |
 | EASM | Unknown internet-facing assets | [[External Attack Surface Management (EASM)]] |
 | AI security posture | AI-SPM, threat protection for AI services | [[AI and Copilot Security Architecture]] |
-| Automation | REST API, workflow automation, continuous export | [[Defender for Cloud REST API]], [[Logic Apps]] |
+| Automation | Workflow automation (→ Logic Apps), continuous export (→ Event Hubs / Log Analytics), REST API | [[Defender for Cloud Workflow Automation]], [[Defender for Cloud REST API]], [[Logic Apps]], [[Azure Event Hubs]] |
 | Querying | KQL over posture data | [[Azure Resource Graph]] |
 | Hybrid onboarding | Non-Azure servers/K8s/SQL | [[Azure Arc]] |
 
@@ -165,6 +165,8 @@ AZ-500 covered enabling plans, reading Secure Score, remediating recommendations
 - "JIT, FIM, EDR on servers" → **Defender for Servers Plan 2**.
 - "MITRE tactics for a misconfiguration" → review the **recommendation**.
 - "Prove compliance to PCI/ISO" → regulatory compliance dashboard, not Secure Score.
+- "Evaluate and remediate alerts with workflow automation, minimal development" → **Logic Apps** ([[Defender for Cloud Workflow Automation]]). Not Functions, Event Hubs or Azure Monitor webhooks.
+- "Stream alerts/recommendations to a third-party SIEM" → continuous export → **Event Hubs**.
 
 ## Common Exam Confusion
 
@@ -198,6 +200,9 @@ AZ-500 covered enabling plans, reading Secure Score, remediating recommendations
 - [[Secure Score Mechanics]]
 - [[Assigning Regulatory Compliance Standards]]
 - [[Defender for Cloud REST API]]
+- [[Defender for Cloud Workflow Automation]]
+- [[Logic Apps]]
+- [[Azure Event Hubs]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]
 - [[Azure Policy]]
 - [[Azure Arc]]

@@ -15,6 +15,24 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-11-26
+
+**Added**
+
+- [[Defender for Cloud Workflow Automation]] — alert/recommendation/compliance triggers → Consumption Logic App, permissions (Security Admin, Logic App Contributor/Operator), Azure Policy at-scale deployment; four-way Logic Apps vs. Functions vs. Event Hubs vs. Azure Monitor webhooks comparison; "evaluate and remediate alerts, minimize development effort" scenario.
+- [[Sentinel Workbooks, Playbooks and Notebooks]] — show vs. act vs. analyze: Azure Monitor Workbooks, Logic Apps playbooks, Jupyter/MSTICPy on Azure ML and data lake notebooks (VS Code, PySpark, jobs); permissions, cost, and the hunting query/livestream/bookmark/watchlist confusion table.
+- [[Azure Event Hubs]] — streaming concepts (partitions, consumer groups, Capture, Kafka), tiers/retention, security controls, third-party SIEM pattern; Event Hubs vs. Event Grid vs. Service Bus.
+- [[Azure Monitor Alerts and Action Groups]] — alert rules, action groups and action types (webhook, secure webhook, Logic App, Function, runbook, Event Hub, ITSM), alert processing rules; which product uses which automation pipeline.
+- [[Azure Automation]] — runbooks and Hybrid Runbook Worker; runbook vs. Logic App vs. Function; retired features (Update Management, Run As).
+
+**Updated**
+
+- [[Logic Apps]] — rebuilt on the service template: Consumption vs. Standard table, Defender for Cloud workflow automation, comparisons with Functions/Automation/Event Hubs/webhooks/Power Automate, permissions.
+- [[Azure Functions]] — Functions vs. Logic Apps ("minimize development effort"), Automation and Event Hubs comparisons.
+- [[Playbooks and Automation Rules]] — Sentinel playbook vs. Defender for Cloud workflow automation, and playbook vs. workbook vs. notebook rows.
+- [[Microsoft Sentinel]] and [[Microsoft Defender for Cloud]] — capability lines and exam tips linking the new automation notes.
+- [[Architecture Decisions]] — six quick-lookup rows plus "Security automation engine" and "Sentinel workbooks, playbooks, notebooks" decision trees.
+
 ## 2026-11-01
 
 **Added**

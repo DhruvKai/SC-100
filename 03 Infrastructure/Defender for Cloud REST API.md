@@ -233,6 +233,8 @@ AZ-500 doesn't test the Defender for Cloud REST API directly — API-driven auto
 - [[Azure Landing Zones]] — where this API gets embedded as IaC.
 - [[DevOps Security]] — DevOps connector operation groups.
 - [[Playbooks and Automation Rules]] — `Automations` resource, Logic Apps integration.
+- [[Defender for Cloud Workflow Automation]] — the portal feature the `Automations` resource backs (alert/recommendation/compliance → Logic App).
+- [[Azure Event Hubs]] — continuous export streaming target for third-party SIEMs.
 
 ---
 

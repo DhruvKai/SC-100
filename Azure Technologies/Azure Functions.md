@@ -97,6 +97,9 @@ Serverless, event-driven compute. You deploy **code** (functions) triggered by H
 | **Functions vs. containers (Container Apps/AKS)** | Deploy code, platform-managed runtime vs. deploy images, where you own image hardening and base-image patching. |
 | **Function keys vs. Entra ID auth** | Shared secret in a header/query string vs. identity-based tokens. Prefer Easy Auth/APIM + Entra ID. |
 | **App settings vs. Key Vault references** | Platform-encrypted config vs. secrets in Key Vault (HSM-backed only on Premium Key Vault / Managed HSM), fetched via managed identity. |
+| **Functions vs. [[Logic Apps]]** | You write **code** vs. a low-code **designer + connectors**. For "automate/remediate with **minimal development effort**", Logic Apps wins. Defender for Cloud workflow automation and Sentinel playbooks are Logic Apps, not Functions ([[Defender for Cloud Workflow Automation]]). |
+| **Functions vs. [[Azure Automation]]** | Event-driven app code billed per execution vs. PowerShell/Python ops runbooks, incl. on-prem via Hybrid Runbook Worker |
+| **Functions vs. [[Azure Event Hubs]]** | Compute vs. a streaming pipe. A Function is often the *consumer* of an event hub (Event Hubs trigger). |
 
 ---
 
@@ -118,6 +121,7 @@ AZ-500 covers managed identities, Key Vault references, App Service/Functions au
 - "Secrets in HSMs" is **never automatic**. It needs Key Vault (Premium) or Managed HSM.
 - "Hardened containers" → a container platform, not plain Functions.
 - "Websites + REST APIs, autoscale, DevOps, minimal staff" → [[Azure App Service]], not Functions.
+- "Evaluate and remediate Defender for Cloud alerts with workflow automation, minimize development effort" → **Logic Apps**, not Functions. Functions means writing and maintaining code.
 
 ## Common Exam Confusion
 
@@ -149,6 +153,11 @@ AZ-500 covers managed identities, Key Vault references, App Service/Functions au
 - [[Front Door and Application Gateway]]
 - [[Security Updates and Patch Management]]: serverless removes OS patching
 - [[Identity and Access Management (IAM)]]
+- [[Logic Apps]]: low-code alternative for automation
+- [[Defender for Cloud Workflow Automation]]
+- [[Azure Automation]]
+- [[Azure Event Hubs]]
+- [[Azure Monitor Alerts and Action Groups]]: the Azure Function action type
 
 ---
 

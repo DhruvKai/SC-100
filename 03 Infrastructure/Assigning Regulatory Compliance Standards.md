@@ -86,7 +86,7 @@ flowchart TD
 - **Manual assessments**: controls Azure Policy can't technically evaluate (a process, a physical control, a contractual clause) — remediated by **attesting**: selecting the relevant subscriptions, entering supporting information, and attaching evidence, then saving. This is the mechanism behind "prove a non-technical control is met."
 - **Investigate and drill down**: select a standard → a control → **Control details** to see **Overview**, **Your Actions** (your remediation/attestation work), and **Microsoft Actions** (what Microsoft has already done for Microsoft-managed portions of the control) — the same Microsoft-managed/customer-managed/shared control split [[Purview Compliance Manager]] uses.
 - **Reporting**: **Download report** produces a point-in-time PDF/CSV summary for stakeholders/auditors; **Audit reports** downloads Microsoft's own signed certification reports (PCI, SOC, ISO, etc.) demonstrating Azure/Dynamics' own compliance with the framework — evidence about the platform, not your workload.
-- **Automation**: workflow automation can trigger a Logic App whenever a regulatory compliance assessment changes state (e.g., notify a compliance owner on a failed assessment) — see [[Playbooks and Automation Rules]].
+- **Automation**: workflow automation can trigger a Logic App whenever a regulatory compliance assessment changes state (e.g., notify a compliance owner on a failed assessment) — see [[Defender for Cloud Workflow Automation]] and [[Playbooks and Automation Rules]].
 
 ---
 
@@ -254,6 +254,8 @@ AZ-500 covers enabling Defender for Cloud and reading/remediating individual rec
 - [[Defender for Cloud REST API]] — programmatic assignment via `Standard Assignments`/`Regulatory Compliance Standards` operations.
 - [[Microsoft Defender for Cloud]]
 - [[Playbooks and Automation Rules]] — triggering a workflow on assessment state change.
+- [[Defender for Cloud Workflow Automation]] — the *regulatory compliance assessment* trigger and its Azure Policy at-scale deployment.
+- [[Azure Event Hubs]] — continuous export target for an external SIEM/GRC tool.
 - [[Azure Blueprints]] — deprecated deploy-time packaging; distractor in "evaluate against ISO 27001".
 - [[Secure Score Mechanics]] — MCSB drives Secure Score; named standards don't.
 

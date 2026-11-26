@@ -208,6 +208,9 @@ AZ-500 covers enabling Sentinel on a single workspace/subscription, creating ind
 - [[Attack Chain Models]]
 - [[OT and ICS Security]]
 - [[Playbooks and Automation Rules]] — the automation-rule vs. playbook vs. native-XDR-response layering under SOAR.
+- [[Sentinel Workbooks, Playbooks and Notebooks]] — show (workbooks) vs. act (playbooks) vs. analyze (notebooks).
+- [[Azure Event Hubs]] — the streaming boundary when a third-party SIEM sits alongside or instead of Sentinel.
+- [[Defender for Cloud Workflow Automation]] — cloud-posture automation that doesn't route through the SOC.
 - [[Microsoft Incident Response (DART)]] — when an incident exceeds internal SOC scope or trust.
 - [[Securing Active Directory Domain Services (AD DS)]]
 - [[Defender for Cloud Threat Intelligence Reports]]

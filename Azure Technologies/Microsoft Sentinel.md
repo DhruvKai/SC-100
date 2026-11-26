@@ -18,8 +18,8 @@ Cloud-native SIEM + SOAR. Ingests logs into a Log Analytics/Data Lake workspace,
 - **Data connectors** — ingest logs from Azure, M365, on-prem, other clouds, third-party
 - **Analytics rules** — scheduled, near-real-time (NRT), Microsoft Security, Anomaly, Fusion and other ML-based detections → generate incidents; which type for which need is in [[Sentinel Analytics Rule Types]]
 - **Incidents** — grouped alerts with investigation graph
-- **Hunting** — proactive KQL queries + notebooks over raw log data
-- **Workbooks** — dashboards/visualizations
+- **Hunting** — proactive KQL queries + **notebooks** (Jupyter on Azure ML, MSTICPy, data lake PySpark) over raw log data
+- **Workbooks** — dashboards/visualizations (Azure Monitor Workbooks). Workbooks *show*, playbooks *act*, notebooks *analyze*: see [[Sentinel Workbooks, Playbooks and Notebooks]]
 - **Automation rules** — incident-level triage logic (trigger → conditions → ordered actions); the recommended place to attach playbooks — see [[Playbooks and Automation Rules]]
 - **Playbooks** — [[Logic Apps]]-based automated response (SOAR)
 - **UEBA** — behavioral baselining and anomaly detection
@@ -66,7 +66,10 @@ The Sentinel/Defender convergence is an active, ongoing process, not a completed
 - [[Threat Intelligence Platform (TIP) Connector]]
 - [[Threat Intelligence Management in Sentinel]]
 - [[Playbooks and Automation Rules]]
+- [[Sentinel Workbooks, Playbooks and Notebooks]]
 - [[Sentinel Analytics Rule Types]]
 - [[Logic Apps]]
+- [[Azure Event Hubs]]: used instead of Sentinel when data must reach a third-party SIEM
+- [[Defender for Cloud Workflow Automation]]: Defender for Cloud's own Logic App automation
 - [[Secure Score Mechanics]]
 - [[Exam Objectives]]

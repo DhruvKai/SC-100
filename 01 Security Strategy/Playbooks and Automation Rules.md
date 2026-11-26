@@ -117,6 +117,8 @@ flowchart TD
 | **Sentinel playbook vs. Defender XDR AIR** | AIR is built-in, verdict-based auto-remediation inside Defender XDR (no configuration, entity-scoped). A playbook is custom orchestration you author, typically spanning systems Defender doesn't own. |
 | **Sentinel playbook vs. Defender XDR attack disruption** | Attack disruption autonomously contains an in-progress attack in real time using high-confidence signals across the XDR estate; a playbook runs after an incident exists and does exactly what you scripted. |
 | **Automation rule suppression vs. tuning the analytics rule** | Suppression hides the incident but keeps generating it; tuning fixes the detection. Suppression is a stopgap — Microsoft's own guidance prefers tuning. |
+| **Sentinel playbook vs. [[Defender for Cloud Workflow Automation]]** | Both are Logic Apps. A playbook is triggered by a Sentinel incident/alert/entity through an automation rule. Workflow automation is triggered by a Defender for Cloud alert, recommendation or compliance assessment, with no Sentinel involved. |
+| **Playbook vs. workbook vs. notebook** | Act vs. show vs. analyze (Python/ML). See [[Sentinel Workbooks, Playbooks and Notebooks]]. |
 | **[[Logic Apps]] Consumption vs. Standard** | Playbooks can run on either hosting model; Standard supports stateless workflows and VNet integration for playbooks that must reach private endpoints. |
 
 ---
@@ -178,6 +180,9 @@ AZ-500 introduces Sentinel playbooks as Logic Apps at a "connect a playbook to a
 
 - [[Microsoft Sentinel]]
 - [[Logic Apps]]
+- [[Sentinel Workbooks, Playbooks and Notebooks]]
+- [[Defender for Cloud Workflow Automation]]
+- [[Azure Automation]]: runbook ≠ playbook
 - [[Security Operations]]
 - [[Microsoft Defender XDR]]
 - [[Microsoft Incident Response (DART)]]

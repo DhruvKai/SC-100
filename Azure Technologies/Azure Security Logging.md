@@ -67,7 +67,7 @@ The exam sorts monitoring data **by the tier it comes from**. Practice questions
 
 The resource-level configuration object that actually routes platform logs/metrics to a destination — nothing above reaches Sentinel or long-term storage without one.
 
-- **Destinations** — a Log Analytics workspace (for Sentinel/KQL analysis), a Storage account (cheap long-term/compliance retention), an Event Hub (streaming out to a SIEM or partner tool), or a partner integration — one diagnostic setting can target **multiple destinations simultaneously**.
+- **Destinations** — a Log Analytics workspace (for Sentinel/KQL analysis), a Storage account (cheap long-term/compliance retention), an Event Hub (streaming out to a SIEM or partner tool, see [[Azure Event Hubs]]), or a partner integration — one diagnostic setting can target **multiple destinations simultaneously**.
 - **Up to 5 diagnostic settings per resource** — lets the same log data go to Sentinel *and* cold storage at once, a common compliance pattern (hot data for detection, cold data for retention/audit).
 - **Category groups** — `audit` (security/compliance-relevant categories only) vs. `allLogs` (everything the resource emits) — simplifies category selection instead of enumerating every log category by hand.
 - **Not retroactive** — a diagnostic setting only captures logs from the point it's created forward; turning it on after an incident doesn't backfill what already happened.
@@ -110,6 +110,8 @@ The resource-level configuration object that actually routes platform logs/metri
 - [[Network Watcher and Lighthouse]]
 - [[Sentinel Analytics Rule Types]] — what Sentinel does with the logs once collected
 - [[Container and Kubernetes Security]] — Infrastructure-tier container data
+- [[Azure Event Hubs]] — diagnostic settings destination for streaming to a third-party SIEM
+- [[Azure Monitor Alerts and Action Groups]] — alerting on the logs once collected (action groups, webhooks)
 - [[Exam Objectives]]
 
 ## References

@@ -132,6 +132,12 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Defender for Cloud Apps: block download on unmanaged device / risk report from firewall logs / impossible travel? | **CA App Control / Cloud Discovery / Anomaly detection policy** — [[SaaS Application Discovery and Control]] |
 | Company must manage keys M365 uses for data at rest: first step after prerequisites? | **Run the Customer Key Onboarding Service**, then DEPs — [[Microsoft 365 Customer Key]] |
 | Protect SSH/RDP access to server VMs? | **Azure Bastion** (JIT only shrinks the exposure window; NSG = filter; forced tunneling = egress) — [[Azure Bastion]] |
+| Evaluate and remediate Defender for Cloud alerts with workflow automation, minimal development? | **Logic Apps** (not Functions = code, Event Hubs = streaming, Azure Monitor webhooks = HTTP callback) — [[Defender for Cloud Workflow Automation]] |
+| Stream Azure/Defender security data to Splunk/QRadar/third-party SIEM? | **Event Hubs** (diagnostic settings / continuous export) — [[Azure Event Hubs]] |
+| Event Hubs vs. Event Grid vs. Service Bus? | **Stream telemetry / route discrete events / transactional messages** — [[Azure Event Hubs]] |
+| Azure Monitor alert must call an Entra-authenticated endpoint? | **Secure webhook** action in the action group — [[Azure Monitor Alerts and Action Groups]] |
+| Run PowerShell remediation on on-prem servers from Azure? | **Azure Automation + Hybrid Runbook Worker** — [[Azure Automation]] |
+| Sentinel: visualize / automate response / Python-ML hunting? | **Workbook / playbook / notebook** — [[Sentinel Workbooks, Playbooks and Notebooks]] |
 
 ---
 
@@ -256,6 +262,38 @@ Logs vs. Microsoft TI indicators                               → Threat Intell
 ```
 
 In the Defender portal, Fusion and Microsoft Security rules are **off**, and Defender XDR creates and correlates those incidents. → [[Sentinel Analytics Rule Types]]
+
+### Security automation engine
+
+```
+Which product raised the event?
+  Defender for Cloud alert / recommendation / compliance → Workflow automation → Logic App
+  Sentinel incident / alert / entity                     → Automation rule → playbook (Logic App)
+  Defender XDR endpoint / identity / email               → Native AIR / attack disruption (no build)
+  Azure Monitor metric / log / Activity Log alert        → Action group (email, webhook, Logic App,
+                                                           Function, runbook, Event Hub, ITSM)
+
+What must happen?
+  Act with minimal development (connectors, approvals)   → Logic Apps
+  Custom code / heavy parsing                            → Azure Functions (often called by a Logic App)
+  PowerShell on hybrid/on-prem machines                  → Azure Automation (Hybrid Runbook Worker)
+  Move the data to another SIEM / data lake              → Event Hubs (continuous export / diagnostic settings)
+  Just notify an existing HTTP endpoint                  → Webhook (secure webhook if Entra auth needed)
+```
+
+→ [[Defender for Cloud Workflow Automation]], [[Playbooks and Automation Rules]], [[Logic Apps]], [[Azure Event Hubs]], [[Azure Monitor Alerts and Action Groups]]
+
+### Sentinel workbooks, playbooks, notebooks
+
+```
+Show it (dashboard, report, trend, compliance view) → Workbook (Azure Monitor Workbooks, KQL)
+Do something (notify, enrich, remediate)            → Playbook (Logic App) via automation rule
+Analyze in code (Python, ML, external data)         → Notebook (Jupyter + MSTICPy on Azure ML)
+  …at data-lake scale, scheduled                    → Data lake notebooks / jobs (VS Code, PySpark)
+Saved KQL hunt                                      → Hunting query (not a notebook)
+```
+
+→ [[Sentinel Workbooks, Playbooks and Notebooks]]
 
 ### Azure Monitor data source category
 

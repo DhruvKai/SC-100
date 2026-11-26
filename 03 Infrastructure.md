@@ -21,6 +21,7 @@ Posture management, workload protection, endpoints, network and IaaS/PaaS securi
 | [[CSPM and CWPP]] | CNAPP: posture + workload + data + permissions, attack paths |
 | [[External Attack Surface Management (EASM)]] | Discovering unknown internet-facing assets |
 | [[Defender for Cloud REST API]] | Programmatic posture/compliance automation |
+| [[Defender for Cloud Workflow Automation]] | Alert/recommendation/compliance → Logic App; vs. Functions, Event Hubs, webhooks |
 
 ## Endpoints
 
