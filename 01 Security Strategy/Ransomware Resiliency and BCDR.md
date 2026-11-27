@@ -149,6 +149,7 @@ AZ-500 already covers configuring Azure Backup, Recovery Services vaults, soft d
 
 ## Related Services
 
+- [[Azure Site Recovery]]: replication and failover (DR), which complements immutable backup
 - [[Zero Trust]]
 - [[PIM]]
 - [[Microsoft Cloud Security Benchmark (MCSB)]]

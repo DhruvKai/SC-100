@@ -154,7 +154,7 @@ AZ-500 covers Recovery Services vaults, backup RBAC roles (Backup Contributor/Op
 - A Resource Guard in the same subscription, owned by the same admins, is a distractor — the answer must include the ownership separation.
 - Resource Guard and vault must be in the **same region**; the Resource Guard is a distinct ARM resource, not a vault setting.
 - Disabling soft delete and removing MUA are always protected operations — an answer implying an attacker could simply turn MUA off first is wrong.
-- MUA also applies to **Azure Site Recovery**, not just Azure Backup.
+- MUA also applies to **[[Azure Site Recovery]]**, not just Azure Backup.
 
 ---
 

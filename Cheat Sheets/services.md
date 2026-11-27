@@ -134,3 +134,9 @@ One-line description per service. Update whenever a new service note is created.
 | [[Azure Automation]]                                                | PowerShell/Python runbooks, Hybrid Runbook Worker for on-prem; not the engine for Defender for Cloud/Sentinel automation (that's Logic Apps). |
 | [[Sentinel Workbooks, Playbooks and Notebooks]]                     | Workbook = show (Azure Monitor Workbooks), playbook = act (Logic Apps), notebook = analyze (Jupyter/MSTICPy on Azure ML, data lake PySpark). |
 | [[Azure Traffic Manager]] | DNS-based global traffic router (Priority/Weighted/Performance/Geographic/Multivalue/Subnet), any protocol, no data path: no WAF, TLS offload or caching. Non-HTTP global and DR failover answer; HTTP + WAF → Front Door. |
+| [[Azure Load Balancer]] | Layer 4 TCP/UDP load balancer in the data path: public/internal, Standard (secure by default), Gateway LB for NVA chaining, HA ports, cross-region anycast tier. |
+| [[Azure Site Recovery]] | VM replication + orchestrated failover/failback (DR); recovery plans, test failover; keeps you running, while Backup restores data (ransomware). |
+| [[Azure Event Grid]] | Push-based pub/sub event routing (BlobCreated, SecretNearExpiry, malware scan results) to Functions/Logic Apps/webhooks; not for streaming. |
+| [[Azure Service Bus]] | Enterprise message broker: queues/topics, FIFO sessions, dead-letter, transactions; Premium for private endpoints and CMK. |
+| [[Azure IoT Edge]] | Containerized edge runtime and field gateway (transparent / protocol / identity translation); nested edge for Purdue-layered OT networks. |
+| [[Power Automate]] | Power Platform citizen-developer automation; governed by Power Platform DLP connector policies. Security playbooks use Logic Apps instead. |

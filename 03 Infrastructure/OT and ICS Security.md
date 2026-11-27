@@ -138,6 +138,7 @@ AZ-500 doesn't cover OT/ICS, the Purdue Model, or Defender for IoT at all — it
 
 ## Related Services
 
+- [[Azure IoT Edge]]: nested edge gateways for Purdue-layered networks
 - [[Securing Server and Client Endpoints]]
 - [[Security Operations]]
 - [[Network Security Architecture]]

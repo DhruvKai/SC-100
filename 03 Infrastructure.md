@@ -49,7 +49,7 @@ Posture management, workload protection, endpoints, network and IaaS/PaaS securi
 ## Service Pages
 
 - [[Microsoft Defender for Cloud]] · [[Azure Arc]] · [[Azure Policy]] · [[Azure Resource Graph]] · [[Azure Blueprints]]
-- [[Azure Firewall]] · [[Azure Web Application Firewall]] · [[Front Door and Application Gateway]] · [[DDoS Protection]] · [[Azure CDN]] · [[Azure Traffic Manager]]
+- [[Azure Firewall]] · [[Azure Web Application Firewall]] · [[Front Door and Application Gateway]] · [[DDoS Protection]] · [[Azure CDN]] · [[Azure Traffic Manager]] · [[Azure Load Balancer]] · [[Azure Site Recovery]] · [[Azure IoT Edge]]
 - [[Network Security Group]] · [[Private Link]] · [[Azure Bastion]] · [[Network Watcher and Lighthouse]]
 - [[Intune]] · [[Azure Update Manager]]
 

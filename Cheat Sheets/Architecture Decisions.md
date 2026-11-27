@@ -412,7 +412,7 @@ Risky OAuth app permissions                                → App Governance
 ```
 INBOUND (internet → your VM/app)
   One VM, simple             → Public IP on NIC + NSG allow 80/443 (default DenyAllInBound)
-  Many VMs, L4               → Public Load Balancer + NSG
+  Many VMs, L4               → Public [[Azure Load Balancer]] + NSG
   Web app needing L7/OWASP   → App Gateway / Front Door + WAF
   Through a central firewall → Azure Firewall DNAT (+ network rule)
   Admin RDP/SSH              → Azure Bastion (no public IP on the VM)

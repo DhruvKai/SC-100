@@ -22,15 +22,17 @@ type: index
 
 [[Private Link]]
 
-[[NSG]]
+[[Network Security Group|NSG]]
 
-[[ASG]]
+[[Network Security Group|ASG]]
 
 [[DDoS Protection]]
 
 [[Azure CDN]]
 
 [[Azure Traffic Manager]]
+
+[[Azure Load Balancer]]
 
 [[Virtual Network TAP]]
 
@@ -44,7 +46,9 @@ type: index
 
 [[Azure Storage Redundancy]]
 
-[[Managed HSM]]
+[[Azure Site Recovery]]
+
+[[Key Vault|Managed HSM]]
 
 # Compute and IoT
 
@@ -60,6 +64,12 @@ type: index
 
 [[Azure Event Hubs]]
 
+[[Azure Event Grid]]
+
+[[Azure Service Bus]]
+
+[[Power Automate]]
+
 [[Azure Monitor Alerts and Action Groups]]
 
 [[Defender for Cloud Workflow Automation]]
@@ -67,3 +77,5 @@ type: index
 [[Azure Arc]]
 
 [[IoT Device Authentication and Transport Security|Azure IoT Hub]]
+
+[[Azure IoT Edge]]
