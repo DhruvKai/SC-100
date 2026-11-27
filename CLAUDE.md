@@ -119,6 +119,8 @@ Example
 
 Never use normal hyperlinks for internal notes.
 
+Aliased links: inside a table row escape the pipe — `[[Note\|Alias]]` — or the table splits the link. Outside tables never escape it — `[[Note|Alias]]` — or Obsidian looks for a note ending in `\`.
+
 Exception: image embeds. Use standard markdown image syntax, not `![[filename.png]]` — see the GitHub section below for why.
 
 Every important Azure service must have its own page.

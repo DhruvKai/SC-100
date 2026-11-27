@@ -143,6 +143,8 @@ flowchart TD
 | Cloud Discovery vs. OAuth App Governance | Cloud Discovery finds *unknown* SaaS usage from network traffic signal. OAuth App Governance assesses risk from *already-consented* third-party app permissions to Microsoft 365 data. Different risk surface and data source — one doesn't substitute for the other. |
 | Access policy vs. session policy | Access policies gate whether a session is allowed to *start*. Session policies control specific actions *during* an already-started session (block/allow download, DLP, monitor). A scenario needing to prevent access outright needs an access policy; one needing to allow access but restrict in-session actions needs a session policy. |
 | Connector-based integration vs. Conditional Access App Control (reverse proxy) | A built-in app connector gives deep, API-based visibility and app-specific control actions. Reverse-proxy "any app" mode gives broader coverage (works on apps with no native connector) but shallower, more generic session control. |
+| Defender for Cloud Apps vs. [[Purview]] | Defender for Cloud Apps discovers **apps** (shadow IT) and detects **threat behaviour** (anomaly detection). Purview discovers and protects **data** (classification, labels, DLP) and has no threat analytics. "Discovery + threat behaviour analysis" → Defender for Cloud Apps. MDA reuses Purview labels/DLP inside SaaS apps. |
+| Anomaly detection vs. Purview Insider Risk Management | Anomaly detection: compromised or malicious **sessions** (impossible travel, ransomware activity). Insider Risk: **trusted employees** misusing data (departing user, HR signals). |
 | Conditional Access App Control vs. Global Secure Access | Full comparison already in [[Identity as the Security Perimeter]] — App Control governs the SaaS session *after* sign-in (in-session policies); Global Secure Access governs the network *path* to a resource pre-connection. Complementary layers, not repeated here. |
 
 ---
@@ -177,6 +179,7 @@ AZ-500 does not cover Defender for Cloud Apps, Cloud Discovery, OAuth App Govern
 - **Cloud Discovery vs. OAuth App Governance** — network-traffic-based shadow IT discovery vs. consent-based permission risk; full comparison above.
 - **Access policy vs. session policy** — pre-session gate vs. in-session action control.
 - **Connector-based vs. reverse-proxy app integration** — deep API control vs. broad but shallow session control.
+- **Defender for Cloud Apps vs. [[Purview]]**: apps + threats vs. data. "Threat behaviour" never points to Purview.
 - **Conditional Access App Control vs. Global Secure Access** — see [[Identity as the Security Perimeter]] for the full breakdown; don't re-derive it here.
 
 ---

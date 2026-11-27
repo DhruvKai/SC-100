@@ -34,8 +34,8 @@ STRIDE is applied **per DFD element** — every process, data store, data flow, 
 | **S**poofing | Authentication | Impersonating another user or service identity | Strong authN (MFA, [[Entra ID]]-backed identity), mutual TLS between services |
 | **T**ampering | Integrity | Modifying data in transit or at rest | TLS in transit, encryption + integrity checks (hashes/signatures) at rest, least-privilege write access |
 | **R**epudiation | Non-repudiation | Denying an action with no audit trail to disprove it | Signed, tamper-evident logging (see [[Azure Security Logging]]), timestamps tied to an authenticated identity |
-| **I**nformation Disclosure | Confidentiality | Exposing data to an unauthorized party | Encryption, least-privilege RBAC, [[Securing IaaS and PaaS Services|Private Link/network isolation]] |
-| **D**enial of Service | Availability | Exhausting a resource so legitimate users can't use it | Rate limiting, autoscale, [[Network Security Architecture|DDoS Protection]] |
+| **I**nformation Disclosure | Confidentiality | Exposing data to an unauthorized party | Encryption, least-privilege RBAC, [[Securing IaaS and PaaS Services\|Private Link/network isolation]] |
+| **D**enial of Service | Availability | Exhausting a resource so legitimate users can't use it | Rate limiting, autoscale, [[Network Security Architecture\|DDoS Protection]] |
 | **E**levation of Privilege | Authorization | Gaining capability beyond what was granted | Least privilege, input validation, [[PIM]]-style just-in-time elevation |
 
 - **Process** elements are typically exposed to all six STRIDE categories; **data stores** are mainly Tampering/Information Disclosure/Repudiation (no execution, so no Spoofing/DoS in the classic model); **data flows** are Tampering/Information Disclosure/DoS; **external entities** are usually Spoofing/Repudiation only, since the model doesn't control their internals.
@@ -52,7 +52,7 @@ STRIDE's six categories don't name several threats specific to generative AI/LLM
 | Prompt Injection (direct/jailbreak, indirect) | A user tries to override system instructions, or a poisoned document tricks the model into leaking data when summarized | Content Safety / Prompt Shields — see [[AI and Copilot Security Architecture]] |
 | Insecure Output Handling | Model output is executed as code or inserted into a downstream query without validation | Treat model output as untrusted input — validate/sanitize before use, same as any external input in classic STRIDE |
 | Excessive Agency | An autonomous agent with broad tool/API access acts beyond its intended scope | Scope agent permissions narrowly via [[Microsoft Entra Agent ID]] — least privilege |
-| Sensitive Information Disclosure | A response surfaces training data or over-permissioned org content | [[Data Security Posture Management (DSPM)|Purview DSPM]] data risk assessment before rollout |
+| Sensitive Information Disclosure | A response surfaces training data or over-permissioned org content | [[Data Security Posture Management (DSPM)\|Purview DSPM]] data risk assessment before rollout |
 | Training Data / Model Poisoning | Fine-tuning on unvetted or malicious data skews model behavior | Vet and control training data sources — the same supply-chain discipline as [[DevOps Security]] applied to data instead of code |
 
 - This is an industry framework (OWASP), not a Microsoft one — cite it as the threat taxonomy, but map mitigations to the Microsoft controls above, the same way this note maps STRIDE mitigations to controls elsewhere in the vault.

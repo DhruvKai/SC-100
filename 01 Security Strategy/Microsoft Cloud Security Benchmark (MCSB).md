@@ -113,7 +113,7 @@ Exam questions quote a control's **"security principle"** bullets and ask which 
 
 | Compare | Difference |
 | --- | --- |
-| MCSB vs. [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]] | MCSB is a scored control baseline; MCRA is a capability reference architecture — full comparison in the MCRA note. |
+| MCSB vs. [[Microsoft Cybersecurity Reference Architectures (MCRA)\|MCRA]] | MCSB is a scored control baseline; MCRA is a capability reference architecture — full comparison in the MCRA note. |
 | MCSB v1 vs. v2 (preview) | v2 is Azure-focused with expanded domains (including a new AI Security domain, 7 recommendations), 420+ built-in Azure Policy definitions, and risk/threat-based guidance; v1's per-service baselines aren't yet available in v2. |
 | Security Domain vs. Control vs. Subcontrol | Domain = high-level grouping (e.g., Data Protection); Control = specific requirement within it (e.g., DP-1); Subcontrol = granular implementation step (e.g., DP-1.1). |
 

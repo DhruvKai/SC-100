@@ -15,6 +15,20 @@ Maintained per the Changelog rule in `CLAUDE.md` — update this page in the sam
 
 ---
 
+## 2026-11-27
+
+**Added**
+
+- [[Azure Traffic Manager]] — DNS-based global routing explained simply; six routing methods, endpoint types, nested profiles; HTTP vs. non-HTTP and global vs. regional load-balancer decision table; vs. Front Door/App Gateway/Load Balancer/CDN/Azure DNS; Site Recovery DR pattern and probe/service-tag notes.
+
+**Updated**
+
+- [[Purview]] — rebuilt as the master Purview note: plain-English definition first, every solution with a memory hook, "Purview is the WRONG answer" table, discovery and behaviour traps (Insider Risk vs. Defender for Cloud Apps anomaly detection vs. Sentinel UEBA), old-name map, hook-word keyword lists.
+- [[SaaS Application Discovery and Control]] — Defender for Cloud Apps vs. Purview and anomaly detection vs. Insider Risk comparisons.
+- [[Front Door and Application Gateway]] and [[Azure CDN]] — Traffic Manager comparisons now link the new note.
+- [[Architecture Decisions]] — Purview/Traffic Manager quick-lookup rows plus "Purview or not?" and "Global vs. regional load balancing" decision trees.
+- Broken aliased links fixed across 11 notes — escaped the alias pipe inside tables (e.g. CWPP/DSPM rows in [[Security Posture Assessments]], [[Threat Modeling]], [[Data Classification and Protection]]) and removed the stray escape from bullet links in [[Frameworks Cheat Sheet]].
+
 ## 2026-11-26
 
 **Added**

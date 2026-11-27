@@ -41,10 +41,10 @@ flowchart TD
 ```
 
 - **[[Zero Trust]]** is the principle every other framework here is judged against — it has no scorecard of its own; **[[Rapid Modernization Plan (RaMP)|RaMP]]** is the checklist-level plan that sequences the work toward it, sitting below SAF and above product configuration.
-- **[[Security Adoption Framework (SAF)\|SAF]]** is the umbrella: it integrates [[Microsoft Cybersecurity Reference Architectures (MCRA)\|MCRA]] (capability mapping), [[Cloud Adoption Framework (CAF)\|CAF]] (adoption lifecycle), SDL, and CISO workshops into one role-aware model — CAF and MCRA are inputs into SAF, not synonyms for it.
-- **[[Cloud Adoption Framework (CAF)\|CAF]]** sequences *when* controls appear org-wide; its **Secure** methodology is what gets *scored* by [[Microsoft Cloud Security Benchmark (MCSB)\|MCSB]] and *maturity-checked* by [[Cloud Adoption Security Review (CASR)\|CASR]] once a landing zone is baseline-secure.
-- **[[Azure Well-Architected Framework (WAF)\|WAF]]** picks up *after* CAF's Ready phase lands a workload in an application landing zone — it evaluates that one workload's architecture, CAF doesn't reach that depth.
-- **[[Secure Future Initiative (SFI)\|SFI]]** is Microsoft's own internal engineering commitment, not something you adopt directly — it's one of the sources [[Microsoft Cloud Security Benchmark (MCSB)\|MCSB]] synthesizes into customer-facing controls.
+- **[[Security Adoption Framework (SAF)|SAF]]** is the umbrella: it integrates [[Microsoft Cybersecurity Reference Architectures (MCRA)|MCRA]] (capability mapping), [[Cloud Adoption Framework (CAF)|CAF]] (adoption lifecycle), SDL, and CISO workshops into one role-aware model — CAF and MCRA are inputs into SAF, not synonyms for it.
+- **[[Cloud Adoption Framework (CAF)|CAF]]** sequences *when* controls appear org-wide; its **Secure** methodology is what gets *scored* by [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]] and *maturity-checked* by [[Cloud Adoption Security Review (CASR)|CASR]] once a landing zone is baseline-secure.
+- **[[Azure Well-Architected Framework (WAF)|WAF]]** picks up *after* CAF's Ready phase lands a workload in an application landing zone — it evaluates that one workload's architecture, CAF doesn't reach that depth.
+- **[[Secure Future Initiative (SFI)|SFI]]** is Microsoft's own internal engineering commitment, not something you adopt directly — it's one of the sources [[Microsoft Cloud Security Benchmark (MCSB)|MCSB]] synthesizes into customer-facing controls.
 - Net effect: **Zero Trust** sets the target, **SAF** sequences the org-wide modernization, **CAF** operationalizes it as an adoption lifecycle, **WAF** checks the resulting workload, and **MCSB/CASR** score how well any of it actually landed.
 
 ---

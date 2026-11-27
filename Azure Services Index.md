@@ -30,6 +30,8 @@ type: index
 
 [[Azure CDN]]
 
+[[Azure Traffic Manager]]
+
 [[Virtual Network TAP]]
 
 # Data

@@ -138,6 +138,11 @@ Decision-tree style quick reference. Update as new decision points come up.
 | Azure Monitor alert must call an Entra-authenticated endpoint? | **Secure webhook** action in the action group — [[Azure Monitor Alerts and Action Groups]] |
 | Run PowerShell remediation on on-prem servers from Azure? | **Azure Automation + Hybrid Runbook Worker** — [[Azure Automation]] |
 | Sentinel: visualize / automate response / Python-ML hunting? | **Workbook / playbook / notebook** — [[Sentinel Workbooks, Playbooks and Notebooks]] |
+| Discover sensitive data, label it, stop it leaking, retain it, prove compliance? | **Purview** (data). Threats, attacks or app discovery → Defender, never Purview — [[Purview]] |
+| "Discovery + threat behaviour analysis" of cloud apps? | **Defender for Cloud Apps** (Cloud Discovery + anomaly detection), NOT Purview — [[SaaS Application Discovery and Control]] |
+| Departing employee stealing data vs. compromised account in a cloud app? | **Purview Insider Risk Management** vs. **Defender for Cloud Apps anomaly detection** — [[Purview]] |
+| Global routing for a non-HTTP (TCP/UDP) app, or DNS-based failover across regions/on-prem? | **Traffic Manager** (Priority = DR, Performance = latency, Geographic = sovereignty) — [[Azure Traffic Manager]] |
+| Global HTTP(S) app needing WAF / TLS offload / caching? | **Front Door**, not Traffic Manager (DNS only, no data path) — [[Front Door and Application Gateway]] |
 
 ---
 
@@ -451,3 +456,48 @@ IoT Hub ports                                    → MQTT 8883 · AMQP 5671 · W
 ```
 
 Intune isn't mobile-only. It manages Windows 10/11 including Entra-joined Azure VMs (VDI). → [[Intune]], [[Securing Server and Client Endpoints]], [[IoT Device Authentication and Transport Security]]
+
+### Purview or not?
+
+```
+Question is about DATA (PII, documents, email, records)?
+  Classify / label / encrypt           → Purview Information Protection (sensitivity labels)
+  Stop sharing / USB / upload          → Purview DLP (Endpoint DLP needs MDE onboarding)
+  Employee stealing data (resigning)   → Purview Insider Risk Management
+  Keep N years / delete / records      → Data Lifecycle / Records Management
+  Litigation / legal hold              → eDiscovery
+  Who did what in M365                 → Audit
+  Compliance score vs. GDPR/ISO        → Compliance Manager
+  Catalog / lineage / scan estate      → Data Map / Unified Catalog (on-prem → SHIR)
+  Harassment in chats                  → Communication Compliance
+  Stop two groups talking              → Information Barriers
+  Person asks for their own data       → Priva (not Purview)
+Question is about THREATS (attack, malware, anomaly, compromised)?
+  Shadow IT / app discovery / anomaly  → Defender for Cloud Apps
+  Risky sign-in                        → Entra ID Protection
+  Endpoint / email / AD attacks        → Defender for Endpoint / Office 365 / Identity
+  Correlate + hunt                     → Sentinel / Defender XDR
+```
+
+"Threat" in the stem rules out Purview. → [[Purview]], [[SaaS Application Discovery and Control]]
+
+### Global vs. regional load balancing
+
+```
+HTTP(S)?
+  Global   → Front Door        (WAF, caching, TLS offload, Anycast)
+  Regional → Application Gateway (WAF, VNet)
+Not HTTP (TCP/UDP)?
+  Global   → Traffic Manager (DNS) / cross-region Load Balancer (anycast IP, instant failover)
+  Regional → Azure Load Balancer
+"DNS-based" → Traffic Manager, always
+Traffic Manager routing:
+  Primary + backup (DR, with Site Recovery) → Priority
+  Lowest latency                            → Performance
+  Country / data sovereignty                → Geographic (use nested profiles for HA)
+  % split, canary                           → Weighted
+  Office IP ranges                          → Subnet
+  Several IPs at once                       → Multivalue
+```
+
+Traffic Manager never sees the traffic, so it's never the WAF/TLS answer. → [[Azure Traffic Manager]], [[Front Door and Application Gateway]]

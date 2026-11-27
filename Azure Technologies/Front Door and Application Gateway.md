@@ -77,7 +77,7 @@ flowchart TD
 | Front Door vs. Application Gateway | Front Door: global edge (Anycast), cross-region failover, CDN caching, backend can be anywhere. Application Gateway: regional, VNet-deployed, routes to backends inside that network including fully private origins. Scope is the deciding factor, not feature overlap. |
 | Front Door Standard vs. Premium | Premium adds native Private Link connectivity to the origin (no public IP needed on the backend) and a more advanced bundled WAF/Bot Protection ruleset — the tier to recommend when the origin must stay fully private. |
 | Application Gateway v1 vs. v2 | v2 adds autoscaling and better performance/zone redundancy over the legacy v1 SKU — v2 is the current recommendation for any new deployment. |
-| Front Door vs. Azure Traffic Manager | Traffic Manager is DNS-based (Layer 4) global routing — no HTTP awareness, no WAF, no caching, just directing clients to a region via DNS response. Front Door is Layer 7, HTTP-aware, and can inspect/route/cache/protect the actual request — the reason Front Door is the current recommendation for HTTP(S) global routing scenarios over Traffic Manager. |
+| Front Door vs. [[Azure Traffic Manager]] | Traffic Manager is DNS-based global routing — no HTTP awareness, no WAF, no caching, just directing clients to a region via DNS response. Front Door is Layer 7, HTTP-aware, and can inspect/route/cache/protect the actual request — the reason Front Door is the current recommendation for HTTP(S) global routing scenarios over Traffic Manager. |
 
 ## AZ-500 Review
 
@@ -91,11 +91,12 @@ AZ-500 already covers deploying Application Gateway/Front Door, configuring back
 - Application Gateway v1 vs. v2 (autoscaling)
 - WAF policy attachment point (Front Door vs. Application Gateway)
 - Rules Engine (Front Door)
-- Azure Traffic Manager (DNS-based, Layer 4) vs. Front Door (Layer 7)
+- Azure Traffic Manager (DNS-based, any protocol, no data path) vs. Front Door (Layer 7 proxy)
 
 ## Related
 
 - [[Network Security Architecture]]
+- [[Azure Traffic Manager]]: DNS-based global routing for non-HTTP workloads
 - [[Azure Web Application Firewall]]
 - [[Securing IaaS and PaaS Services]]
 - [[Private Link]]

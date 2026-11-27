@@ -98,7 +98,7 @@ flowchart TD
 | Reconnaissance | Account/SMB session enumeration, DNS reconnaissance, user and group membership enumeration |
 | Compromised credential | Brute force, password spray, Kerberoasting, AS-REP roasting |
 | Lateral movement | Pass-the-hash, pass-the-ticket, overpass-the-hash, remote code execution attempts |
-| Domain dominance | DCSync, DCShadow, golden ticket, skeleton key, malicious replication, AD FS/AD CS abuse, [[AdminSDHolder and SDProp|AdminSDHolder]] tampering |
+| Domain dominance | DCSync, DCShadow, golden ticket, skeleton key, malicious replication, AD FS/AD CS abuse, [[AdminSDHolder and SDProp\|AdminSDHolder]] tampering |
 
 ---
 

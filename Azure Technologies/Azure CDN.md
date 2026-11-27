@@ -65,7 +65,7 @@ Pattern: "minimize administrative overhead" pushes toward **PaaS**, so VMSS lose
 | **Azure CDN vs. Front Door** | CDN = caching + edge delivery. Front Door = global L7 load balancer + CDN + WAF + failover + Private Link origins (Premium). Front Door is the modern superset. |
 | **Azure CDN vs. DDoS Protection** | CDN gets platform DDoS protection as a by-product of its edge. DDoS Network/IP Protection is a paid plan for **public IPs in a VNet**, with adaptive tuning, telemetry, SLA, cost protection and DRR. |
 | **Azure CDN vs. WAF** | Volumetric absorption/caching vs. L7 request inspection (SQLi/XSS/bots). WAF attaches to Front Door/App Gateway. |
-| **CDN vs. Traffic Manager** | Caches and serves content at the edge vs. DNS-based routing only (no caching, no proxy). |
+| **CDN vs. [[Azure Traffic Manager]]** | Caches and serves content at the edge vs. DNS-based routing only (no caching, no proxy). |
 
 ---
 

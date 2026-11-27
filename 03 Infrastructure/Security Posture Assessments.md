@@ -55,9 +55,9 @@ Defender for Cloud's CSPM layer has **two plans**, available across Azure, AWS, 
 | Asset inventory, Secure Score, MCSB recommendations, workflow automation, data export | ✔ | ✔ |
 | Attack path analysis, Security Exposure Management/Cloud Security Explorer (risk hunting) | ✘ | ✔ |
 | Agentless VM/container vulnerability and secrets scanning | ✘ | ✔ |
-| [[Data Security Posture Management (DSPM)|Data security posture management]], sensitive data scanning | ✘ | ✔ |
-| [[Container and Kubernetes Security|AI security posture, API security posture, AKS security dashboard]] | ✘ | ✔ |
-| [[External Attack Surface Management (EASM)|External attack surface management]], internet exposure analysis | ✘ | ✔ |
+| [[Data Security Posture Management (DSPM)\|Data security posture management]], sensitive data scanning | ✘ | ✔ |
+| [[Container and Kubernetes Security\|AI security posture, API security posture, AKS security dashboard]] | ✘ | ✔ |
+| [[External Attack Surface Management (EASM)\|External attack surface management]], internet exposure analysis | ✘ | ✔ |
 | Regulatory compliance assessments (named standards) | ✘ | ✔ |
 | Custom recommendations, governance rules (remediation at scale), critical assets protection | ✘ | ✔ |
 
@@ -115,8 +115,8 @@ flowchart TD
 | --- | --- |
 | Posture assessment vs. regulatory compliance dashboard | Posture assessment scores against MCSB continuously; the compliance dashboard maps that same data to a *named external standard* for audit purposes. |
 | Defender for Cloud Secure Score vs. Microsoft Secure Score (M365) | Same name, different products — Defender for Cloud's score covers cloud resource configuration; the Microsoft 365 Secure Score covers identity/app/device posture in the Defender portal. Don't conflate them on the exam. |
-| CSPM vs. [[Cloud Workload Protection (CWPP)|CWPP]] | Posture assessment (CSPM) evaluates configuration; workload protection (CWPP) actively defends the running resource — full comparison in the CWPP note, and how they combine in [[CSPM and CWPP]]. |
-| CSPM vs. [[Data Security Posture Management (DSPM)|DSPM]] | CSPM scores *resource configuration*; DSPM scores risk to the *data itself* (sensitivity, exposure, access) — complementary, not interchangeable. Full comparison in the DSPM note. |
+| CSPM vs. [[Cloud Workload Protection (CWPP)\|CWPP]] | Posture assessment (CSPM) evaluates configuration; workload protection (CWPP) actively defends the running resource — full comparison in the CWPP note, and how they combine in [[CSPM and CWPP]]. |
+| CSPM vs. [[Data Security Posture Management (DSPM)\|DSPM]] | CSPM scores *resource configuration*; DSPM scores risk to the *data itself* (sensitivity, exposure, access) — complementary, not interchangeable. Full comparison in the DSPM note. |
 | Foundational CSPM vs. Defender CSPM | Foundational: free, Secure Score/MCSB/asset inventory baseline. Defender CSPM: paid, adds attack path analysis, agentless scanning, DSPM, EASM, regulatory compliance assessments, and governance-at-scale — a scenario asking for attack paths or agentless scanning on the free plan is under-licensed. |
 | Default access vs. least privilege access (AWS onboarding) | Default: grants permissions for current *and future* Defender capabilities in one step. Least privilege: grants only what's needed today, with follow-up prompts as new capabilities are enabled — a deliberate least-privilege-vs-operational-convenience tradeoff at connector creation time. |
 
